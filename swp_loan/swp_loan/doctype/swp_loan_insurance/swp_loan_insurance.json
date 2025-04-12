@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-04-08 15:27:29.609132",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "f01",
+  "f02",
+  "f03",
+  "f04",
+  "f05"
+ ],
+ "fields": [
+  {
+   "fieldname": "f01",
+   "fieldtype": "Data",
+   "label": "\u0e23\u0e2b\u0e31\u0e2a"
+  },
+  {
+   "fieldname": "f02",
+   "fieldtype": "Data",
+   "label": "\u0e04\u0e33\u0e2d\u0e18\u0e34\u0e1a\u0e32\u0e22"
+  },
+  {
+   "default": "0",
+   "fieldname": "f03",
+   "fieldtype": "Check",
+   "label": "\u0e04\u0e33\u0e16\u0e32\u0e21\u0e2a\u0e38\u0e02\u0e20\u0e32\u0e1e"
+  },
+  {
+   "fieldname": "f04",
+   "fieldtype": "Data",
+   "label": "\u0e25\u0e34\u0e07\u0e04\u0e4c\u0e43\u0e1a\u0e2a\u0e21\u0e31\u0e04\u0e23"
+  },
+  {
+   "fieldname": "f05",
+   "fieldtype": "Float",
+   "label": "\u0e2a\u0e38\u0e17\u0e18\u0e34"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-04-08 15:30:08.797888",
+ "modified_by": "Administrator",
+ "module": "Swp Loan",
+ "name": "SWP_Loan_Insurance",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
