@@ -513,6 +513,32 @@ frappe.ui.form.on("SWP_Loan_Request", {
             $('#step-progress-bar .step').removeClass('active');
             $(`#step-progress-bar .step[data-step="${step_number}"]`).addClass('active');
         }
+        
+
+        const stepToSectionMap = {
+            1: 'section_header_collateral',
+            2: 'section_header_loan_condition',
+            3: 'section_header_borrower',
+            4: 'section_header_guarantor'
+        };
+        
+        // เพิ่ม event สำหรับคลิกที่วงกลม
+        $('#step-progress-bar .step').on('click', function () {
+            const stepNumber = $(this).data('step');
+            const sectionFieldname = stepToSectionMap[stepNumber];
+        
+            if (sectionFieldname && frm.fields_dict[sectionFieldname]) {
+                const sectionWrapper = frm.fields_dict[sectionFieldname].wrapper;
+        
+                // Scroll ไปยังตำแหน่งของ section นั้น
+                $('html, body').animate({
+                    scrollTop: $(sectionWrapper).offset().top - 50 // เว้นระยะห่างขอบจอด้านบน
+                }, 500); // ระยะเวลาเลื่อน 0.5 วินาที
+        
+                // ตั้งค่า active สีใน progress bar
+                set_active_step(stepNumber);
+            }
+        });
         // ----------------------------------------------- End input progress bar
 
 
