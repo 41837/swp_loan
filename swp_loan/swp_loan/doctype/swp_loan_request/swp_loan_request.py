@@ -1,7 +1,7 @@
 # Copyright (c) 2025, SWP and contributors
 # For license information, please see license.txt
 
-# import frappe
+# import frappez
 from frappe.model.document import Document
 
 

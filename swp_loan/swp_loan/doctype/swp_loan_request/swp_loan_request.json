@@ -1,19 +1,51 @@
 {
  "actions": [],
- "allow_rename": 1,
+ "autoname": "LR-.YY.MM.-.#####",
  "creation": "2025-04-08 13:20:46.203679",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_xhew",
   "amended_from",
-  "section_break_xywx",
+  "section_input_progress_bar",
+  "input_progress_bar",
+  "section_header_document",
   "internal_loan_application_id",
-  "section_break_knot",
-  "header_collateral",
+  "banner_a_score",
+  "banner_b_score",
+  "column_break_pbkg",
+  "banner_type",
+  "state",
+  "banner_campaign",
+  "column_break_bctu",
+  "banner_cus_customer_id",
+  "banner_borrower_fullname",
+  "banner_collateral_id",
+  "column_break_sxyo",
+  "banner_financing_amount_net",
+  "banner_total_fees_net",
+  "banner_remaining_transfer_amount",
+  "section_header_borrower_search",
+  "header_borrower_search",
+  "section_borrower_search",
+  "cus_search_id",
+  "btn_search_borrower",
+  "column_break_ilnp",
+  "f04_3",
+  "cus_is_customer_blocked",
+  "cus_is_new",
+  "section_header_collateral_search",
+  "header_collateral_search",
   "section_collateral_search",
   "col_search_id",
   "btn_search_collateral",
+  "search_collateral",
+  "column_break_bffb",
+  "col_search_ocr",
+  "btn_search_collateral_ocr",
+  "search_collateral_ocr_remark",
+  "section_header_collateral",
+  "header_collateral",
   "section_collateral_details",
   "col_collatteral_id",
   "col_is_collateral_new",
@@ -81,11 +113,13 @@
   "col_location",
   "btn_search_land",
   "section_collateral_land2",
-  "hyperlink_treasury_page",
+  "btn_treasury_page",
   "column_break_pjnz",
-  "hyperlink_dol_page",
+  "btn_dol_page",
   "column_break_earg",
+  "hyperlink_treasury_page",
   "column_break_qtmt",
+  "hyperlink_dol_page",
   "section_collateral_land3",
   "col_rai",
   "col_ngan",
@@ -117,7 +151,7 @@
   "column_break_otdi",
   "column_break_rtcw",
   "btn_save_collateral",
-  "section_break_zpps",
+  "section_header_loan_condition",
   "header_loan_condition",
   "section_loan_condition",
   "lease_type",
@@ -135,7 +169,7 @@
   "campaign_code",
   "campaign_interest_rate",
   "btn_search_campaign",
-  "section_break_nvkr",
+  "section_loan_condition2",
   "payment_frequency",
   "term",
   "total_periods_month",
@@ -144,11 +178,11 @@
   "agreement_date",
   "first_due_date",
   "last_due_date",
-  "section_break_zdtl",
+  "section_loan_condition3",
   "company",
-  "section_break_yghb",
+  "section_loan_condition4",
   "btn_calculate_loan_condition",
-  "section_break_vaaz",
+  "section_loan_condition5",
   "financing_amount_net",
   "yield_percent",
   "yield_amount",
@@ -157,9 +191,9 @@
   "column_break_qapy",
   "installment_amount",
   "last_installment_amount",
-  "section_break_wuod",
+  "section_loan_condition6",
   "table_fees",
-  "section_break_rvst",
+  "section_loan_condition7",
   "column_break_jrxd",
   "column_break_cmkj",
   "total_fees_charged",
@@ -167,17 +201,17 @@
   "total_fees_discount",
   "column_break_kiij",
   "total_fees_net",
-  "section_break_ipsj",
+  "section_loan_condition8",
   "table_insurance",
-  "section_break_auas",
+  "section_loan_condition9",
   "column_break_qcbv",
   "column_break_trmr",
   "column_break_iojx",
   "column_break_uqjp",
   "total_insurance_net",
-  "section_break_vljx",
+  "section_loan_condition10",
   "table_deduction",
-  "section_break_aumf",
+  "section_loan_condition11",
   "column_break_bqqd",
   "column_break_mqfj",
   "deduction01",
@@ -185,10 +219,10 @@
   "deduction02",
   "column_break_uaqo",
   "deduction03",
-  "section_break_exxf",
+  "section_loan_condition12",
   "column_break_sxca",
   "table_outstanding_balance",
-  "section_break_wfft",
+  "section_loan_condition13",
   "column_break_nsfy",
   "column_break_spfj",
   "ob01",
@@ -196,7 +230,7 @@
   "ob02",
   "column_break_bujy",
   "ob03",
-  "section_break_gplo",
+  "section_loan_condition14",
   "bank_account",
   "bank_account_type",
   "bank_account_number",
@@ -207,17 +241,12 @@
   "total_deduction",
   "advanced_installment_amount",
   "remaining_transfer_amount",
-  "section_break_uwbq",
+  "section_loan_condition15",
   "column_break_hlml",
   "column_break_ngke",
   "btn_save_loan_condition",
-  "section_borrower_search",
-  "cus_search_id",
-  "btn_search_borrower",
-  "column_break_ilnp",
-  "f04_3",
-  "cus_is_customer_blocked",
-  "cus_is_new",
+  "section_header_borrower",
+  "header_borrower",
   "section_borrower_details",
   "cus_customer_id",
   "cus_first_name",
@@ -231,7 +260,7 @@
   "cus_age",
   "cus_expiry_date",
   "cus_issuer",
-  "section_break_kdtl",
+  "section_borrower_details2",
   "cus_nick_name",
   "cus_nationality",
   "cus_race",
@@ -239,7 +268,7 @@
   "cus_customer_type",
   "cus_gender",
   "cus_marital_status",
-  "section_break_gssk",
+  "section_borrower_details3",
   "cus_occupation",
   "cus_work_experience_year",
   "cus_work_experience_month",
@@ -249,49 +278,51 @@
   "cus_monthly_salary",
   "cus_extra_income",
   "cus_total_expense",
-  "section_break_wrzc",
+  "section_borrower_details4",
   "cus_workplace",
   "cus_name_of_manager",
   "column_break_owwd",
   "cus_department",
   "cus_position",
-  "section_borrower_address",
+  "section_borrower_details5",
   "copy_from",
   "column_break_jmng",
   "f119_2",
-  "section_break_ebpo",
+  "section_borrower_details6",
   "table_borrower_address",
-  "section_break_zaaf",
+  "section_borrower_details7",
   "table_borrower_social_info",
-  "section_break_fgfc",
+  "section_borrower_details8",
   "cus_delivery_address",
   "column_break_wzwm",
-  "section_break_rzcc",
+  "section_borrower_details9",
   "consent_marketing",
   "consent_marketing_value",
   "column_break_dxgv",
   "consent_sensitive_data",
   "consent_sensitive_data_value",
-  "section_break_bvwn",
+  "section_borrower_details10",
   "f121",
   "column_break_zeia",
   "f122",
-  "section_break_bipp",
+  "section_borrower_details11",
   "table_borrower_other_asset",
-  "section_break_wjwg",
+  "section_borrower_details12",
   "table_related_person",
-  "section_break_uoud",
+  "section_borrower_details13",
   "f123",
-  "section_break_wyul",
+  "section_borrower_details14",
   "column_break_ooua",
   "column_break_dnjy",
   "btn_save_borrower",
+  "section_header_guarantor",
+  "header_guarantor",
   "section_guarantor",
   "table_guarantor",
   "section_break_lwby",
   "column_break_yxbp",
   "column_break_lnrf",
-  "btn_send_approve",
+  "btn_submit",
   "column_break_plas"
  ],
  "fields": [
@@ -319,13 +350,11 @@
    "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d"
   },
   {
-   "collapsible": 1,
    "fieldname": "section_borrower_search",
    "fieldtype": "Section Break",
    "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
   },
   {
-   "collapsible": 1,
    "fieldname": "section_borrower_details",
    "fieldtype": "Section Break",
    "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
@@ -379,24 +408,8 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "section_break_nvkr",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "column_break_adds",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_wuod",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "section_break_ipsj",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "section_break_vljx",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "table_fees",
@@ -423,20 +436,8 @@
    "options": "SWP_Loan_Deduction"
   },
   {
-   "fieldname": "section_break_yghb",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "section_break_vaaz",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "column_break_qapy",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_gplo",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "column_break_nbvq",
@@ -475,10 +476,6 @@
    "label": "\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
   },
   {
-   "fieldname": "section_break_uwbq",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "btn_save_loan_condition",
    "fieldtype": "Button",
    "is_virtual": 1,
@@ -495,24 +492,12 @@
    "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
   },
   {
-   "fieldname": "section_break_kdtl",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "column_break_bsuj",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "section_break_gssk",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "column_break_usfd",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_wrzc",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "column_break_owwd",
@@ -525,40 +510,24 @@
    "options": "SWP_Borrower_Address"
   },
   {
-   "fieldname": "section_break_zaaf",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "table_borrower_social_info",
    "fieldtype": "Table",
-   "label": "\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e42\u0e0b\u0e40\u0e0a\u0e35\u0e22\u0e25",
+   "label": "\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e42\u0e0b\u0e40\u0e0a\u0e35\u0e22\u0e25 (\u0e23\u0e30\u0e1a\u0e38\u0e41\u0e2d\u0e1b\u0e1e\u0e25\u0e34\u0e40\u0e04\u0e0a\u0e31\u0e48\u0e19\u0e41\u0e25\u0e30\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e2b\u0e15\u0e38\u0e43\u0e2b\u0e49\u0e04\u0e23\u0e1a\u0e16\u0e49\u0e27\u0e19)",
    "options": "SWP_Borrower_Social_Information"
-  },
-  {
-   "fieldname": "section_break_fgfc",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "column_break_wzwm",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "section_break_rzcc",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "column_break_dxgv",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_bvwn",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "f121",
    "fieldtype": "Select",
    "label": "\u0e01\u0e32\u0e23\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07\u0e41\u0e2d\u0e1b\u0e28\u0e23\u0e35\u0e2a\u0e27\u0e31\u0e2a\u0e14\u0e34\u0e4c",
-   "options": "\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07\u0e41\u0e25\u0e49\u0e27\n\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07"
+   "options": "\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07\u0e41\u0e25\u0e49\u0e27\n\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07\n\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49\u0e44\u0e21\u0e48\u0e2a\u0e30\u0e14\u0e27\u0e01\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07"
   },
   {
    "fieldname": "column_break_zeia",
@@ -568,10 +537,6 @@
    "fieldname": "f122",
    "fieldtype": "Data",
    "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e01\u0e32\u0e23\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07 (\u0e2d\u0e32\u0e08\u0e40\u0e1b\u0e47\u0e19 ID \u0e2b\u0e23\u0e37\u0e2d Token \u0e43\u0e0a\u0e49\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e01\u0e32\u0e23\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07)"
-  },
-  {
-   "fieldname": "section_break_bipp",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "table_borrower_other_asset",
@@ -587,11 +552,13 @@
   {
    "fieldname": "consent_marketing",
    "fieldtype": "HTML",
+   "is_virtual": 1,
    "label": "\u0e04\u0e27\u0e32\u0e21\u0e22\u0e34\u0e19\u0e22\u0e2d\u0e21\u0e14\u0e49\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15\u0e25\u0e32\u0e14"
   },
   {
    "fieldname": "consent_sensitive_data",
    "fieldtype": "HTML",
+   "is_virtual": 1,
    "label": "\u0e04\u0e27\u0e32\u0e21\u0e22\u0e34\u0e19\u0e22\u0e2d\u0e21\u0e14\u0e49\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e2d\u0e48\u0e2d\u0e19\u0e44\u0e2b\u0e27"
   },
   {
@@ -599,7 +566,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "collapsible": 1,
    "fieldname": "section_guarantor",
    "fieldtype": "Section Break",
    "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e1c\u0e39\u0e49\u0e04\u0e49\u0e33"
@@ -611,18 +577,10 @@
    "options": "SWP_Guarantor"
   },
   {
-   "fieldname": "section_break_uoud",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "f43_2",
    "fieldtype": "HTML",
    "label": "\u0e40\u0e27\u0e49\u0e19\u0e1a\u0e23\u0e23\u0e17\u0e31\u0e14\u0e40\u0e1b\u0e47\u0e19\u0e40\u0e08\u0e49\u0e32\u0e02\u0e2d\u0e07",
    "options": "<br>"
-  },
-  {
-   "fieldname": "section_break_rvst",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "column_break_jrxd",
@@ -641,10 +599,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "section_break_auas",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "column_break_qcbv",
    "fieldtype": "Column Break"
   },
@@ -659,10 +613,6 @@
   {
    "fieldname": "column_break_uqjp",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_aumf",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "column_break_bqqd",
@@ -706,14 +656,6 @@
    "label": "\u0e2b\u0e31\u0e01\u0e40\u0e07\u0e34\u0e19\u0e2a\u0e38\u0e17\u0e18\u0e34",
    "precision": "2",
    "read_only": 1
-  },
-  {
-   "fieldname": "section_break_exxf",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "section_break_wfft",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "column_break_nsfy",
@@ -761,11 +703,15 @@
   {
    "fieldname": "hyperlink_treasury_page",
    "fieldtype": "HTML",
+   "hidden": 1,
+   "is_virtual": 1,
    "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e23\u0e32\u0e04\u0e32\u0e01\u0e23\u0e21\u0e18\u0e19\u0e32\u0e23\u0e31\u0e01\u0e29\u0e4c"
   },
   {
    "fieldname": "hyperlink_dol_page",
    "fieldtype": "HTML",
+   "hidden": 1,
+   "is_virtual": 1,
    "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e01\u0e23\u0e21\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19"
   },
   {
@@ -781,7 +727,8 @@
   {
    "fieldname": "col_car_mileage",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e44\u0e21\u0e25\u0e4c"
+   "label": "\u0e40\u0e25\u0e02\u0e44\u0e21\u0e25\u0e4c",
+   "reqd": 1
   },
   {
    "fieldname": "col_insurance_policy_number",
@@ -820,7 +767,8 @@
   {
    "fieldname": "col_date_of_tax_expiry",
    "fieldtype": "Date",
-   "label": "\u0e27\u0e31\u0e19\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38\u0e20\u0e32\u0e29\u0e35\u0e23\u0e16"
+   "label": "\u0e27\u0e31\u0e19\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38\u0e20\u0e32\u0e29\u0e35\u0e23\u0e16",
+   "reqd": 1
   },
   {
    "fieldname": "col_year_of_possession",
@@ -878,7 +826,8 @@
    "fieldname": "cus_marital_status",
    "fieldtype": "Select",
    "label": "\u0e2a\u0e16\u0e32\u0e19\u0e20\u0e32\u0e1e\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e23\u0e2a",
-   "options": "\u0e42\u0e2a\u0e14\n\u0e2a\u0e21\u0e23\u0e2a"
+   "options": "\u0e42\u0e2a\u0e14\n\u0e2a\u0e21\u0e23\u0e2a",
+   "reqd": 1
   },
   {
    "fieldname": "cus_additional_occupation",
@@ -886,18 +835,10 @@
    "label": "\u0e2d\u0e32\u0e0a\u0e35\u0e1e\u0e40\u0e2a\u0e23\u0e34\u0e21"
   },
   {
-   "fieldname": "section_break_wjwg",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "table_related_person",
    "fieldtype": "Table",
    "label": "\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e17\u0e37\u0e48\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e02\u0e49\u0e2d\u0e07",
    "options": "SWP_Related_Person"
-  },
-  {
-   "fieldname": "section_break_zdtl",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "company",
@@ -909,7 +850,7 @@
    "fieldname": "btn_search_collateral",
    "fieldtype": "Button",
    "is_virtual": 1,
-   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32"
+   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e08\u0e32\u0e01\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48"
   },
   {
    "fieldname": "btn_save_borrower",
@@ -938,10 +879,6 @@
   {
    "fieldname": "column_break_ngke",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_wyul",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "column_break_ooua",
@@ -989,10 +926,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "section_break_xywx",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "column_break_jmng",
    "fieldtype": "Column Break"
   },
@@ -1001,10 +934,6 @@
    "fieldtype": "Select",
    "label": "\u0e2a\u0e16\u0e32\u0e19\u0e30\u0e43\u0e19\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19",
    "options": "\u0e40\u0e08\u0e49\u0e32\u0e1a\u0e49\u0e32\u0e19\n\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48\u0e08\u0e31\u0e14\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e02\u0e2d\u0e07\u0e2a\u0e32\u0e02\u0e32\n\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\u0e19\u0e32\u0e19\u0e40\u0e01\u0e34\u0e19 5 \u0e1b\u0e35\n\u0e21\u0e35\u0e1a\u0e34\u0e25\u0e04\u0e48\u0e32\u0e19\u0e49\u0e33\u0e04\u0e48\u0e32\u0e44\u0e1f\u0e0a\u0e37\u0e48\u0e2d\u0e15\u0e31\u0e27\u0e40\u0e2d\u0e07\n\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e49\u0e32\u0e23\u0e32\u0e0a\u0e01\u0e32\u0e23/\u0e23\u0e31\u0e10\u0e27\u0e34\u0e2a\u0e32\u0e2b\u0e01\u0e34\u0e08"
-  },
-  {
-   "fieldname": "section_break_ebpo",
-   "fieldtype": "Section Break"
   },
   {
    "fieldname": "btn_search_campaign",
@@ -1019,24 +948,22 @@
    "label": "\u0e04\u0e33\u0e19\u0e27\u0e13\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21/\u0e04\u0e48\u0e32\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19\u0e20\u0e31\u0e22/\u0e15\u0e32\u0e23\u0e32\u0e07\u0e01\u0e32\u0e23\u0e0a\u0e33\u0e23\u0e30\u0e40\u0e07\u0e34\u0e19"
   },
   {
-   "fieldname": "section_borrower_address",
-   "fieldtype": "Section Break",
-   "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
-  },
-  {
    "fieldname": "cus_customer_id",
    "fieldtype": "Data",
-   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e1a\u0e31\u0e15\u0e23"
+   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e1a\u0e31\u0e15\u0e23",
+   "reqd": 1
   },
   {
    "fieldname": "cus_first_name",
    "fieldtype": "Data",
-   "label": "\u0e0a\u0e37\u0e48\u0e2d"
+   "label": "\u0e0a\u0e37\u0e48\u0e2d",
+   "reqd": 1
   },
   {
    "fieldname": "cus_last_name",
    "fieldtype": "Data",
-   "label": "\u0e19\u0e32\u0e21\u0e2a\u0e01\u0e38\u0e25"
+   "label": "\u0e19\u0e32\u0e21\u0e2a\u0e01\u0e38\u0e25",
+   "reqd": 1
   },
   {
    "fieldname": "cus_search_id",
@@ -1051,11 +978,13 @@
   {
    "fieldname": "consent_marketing_value",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "consent_marketing_value"
   },
   {
    "fieldname": "consent_sensitive_data_value",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "consent_sensitive_data_value"
   },
   {
@@ -1068,7 +997,8 @@
   {
    "fieldname": "col_collatteral_id",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19",
+   "reqd": 1
   },
   {
    "fieldname": "col_product",
@@ -1111,13 +1041,15 @@
   {
    "fieldname": "col_vehicle_identification_number",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e15\u0e31\u0e27\u0e16\u0e31\u0e07"
+   "label": "\u0e40\u0e25\u0e02\u0e15\u0e31\u0e27\u0e16\u0e31\u0e07",
+   "reqd": 1
   },
   {
    "fieldname": "col_model_year",
    "fieldtype": "Select",
    "label": "\u0e1b\u0e35\u0e17\u0e35\u0e48\u0e1c\u0e25\u0e34\u0e15",
    "options": "2025\n2024\n2023",
+   "reqd": 1,
    "sort_options": 1
   },
   {
@@ -1131,12 +1063,14 @@
    "fieldname": "col_color",
    "fieldtype": "Select",
    "label": "\u0e2a\u0e35\u0e23\u0e16",
-   "options": "\u0e02\u0e32\u0e27\n\u0e14\u0e33"
+   "options": "\u0e02\u0e32\u0e27\n\u0e14\u0e33",
+   "reqd": 1
   },
   {
    "fieldname": "col_engine_number",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e22\u0e19\u0e15\u0e4c"
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e22\u0e19\u0e15\u0e4c",
+   "reqd": 1
   },
   {
    "default": "0",
@@ -1148,47 +1082,55 @@
    "fieldname": "col_brand",
    "fieldtype": "Select",
    "label": "\u0e22\u0e35\u0e48\u0e2b\u0e49\u0e2d",
-   "options": "TOYOTA"
+   "options": "TOYOTA",
+   "reqd": 1
   },
   {
    "fieldname": "col_model",
    "fieldtype": "Select",
    "label": "\u0e23\u0e38\u0e48\u0e19",
-   "options": "YARIS"
+   "options": "YARIS",
+   "reqd": 1
   },
   {
    "fieldname": "col_submodel",
    "fieldtype": "Select",
    "label": "\u0e23\u0e38\u0e48\u0e19\u0e22\u0e48\u0e2d\u0e22",
-   "options": "YARIS-TOYOTA-CA 1.5 \u0e40\u0e01\u0e35\u0e22\u0e23\u0e4c\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34"
+   "options": "YARIS-TOYOTA-CA 1.5 \u0e40\u0e01\u0e35\u0e22\u0e23\u0e4c\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34",
+   "reqd": 1
   },
   {
    "fieldname": "col_gear",
    "fieldtype": "Select",
    "label": "\u0e40\u0e01\u0e35\u0e22\u0e23\u0e4c",
-   "options": "\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\n\u0e18\u0e23\u0e23\u0e21\u0e14\u0e32"
+   "options": "\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\n\u0e18\u0e23\u0e23\u0e21\u0e14\u0e32",
+   "reqd": 1
   },
   {
    "fieldname": "col_engine_size",
    "fieldtype": "Select",
    "label": "\u0e02\u0e19\u0e32\u0e14\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e22\u0e19\u0e15\u0e4c",
-   "options": "1500 cc\n2200 cc"
+   "options": "1500 cc\n2200 cc",
+   "reqd": 1
   },
   {
    "fieldname": "col_date_of_license_expiry",
    "fieldtype": "Date",
-   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e34\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38"
+   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e34\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38",
+   "reqd": 1
   },
   {
    "fieldname": "col_license_plate_number",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e23\u0e16"
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e23\u0e16",
+   "reqd": 1
   },
   {
    "fieldname": "col_province_registration",
    "fieldtype": "Select",
    "label": "\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14",
-   "options": "\u0e01\u0e23\u0e38\u0e07\u0e40\u0e17\u0e1e\u0e21\u0e2b\u0e32\u0e19\u0e04\u0e23\n\u0e1b\u0e17\u0e38\u0e21\u0e18\u0e32\u0e19\u0e35"
+   "options": "\u0e01\u0e23\u0e38\u0e07\u0e40\u0e17\u0e1e\u0e21\u0e2b\u0e32\u0e19\u0e04\u0e23\n\u0e1b\u0e17\u0e38\u0e21\u0e18\u0e32\u0e19\u0e35",
+   "reqd": 1
   },
   {
    "fieldname": "col_sheet",
@@ -1198,12 +1140,14 @@
   {
    "fieldname": "col_land_parcel_number",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19"
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19",
+   "reqd": 1
   },
   {
    "fieldname": "col_dealing_file_number",
    "fieldtype": "Data",
-   "label": "\u0e2b\u0e19\u0e49\u0e32\u0e2a\u0e33\u0e23\u0e27\u0e08"
+   "label": "\u0e2b\u0e19\u0e49\u0e32\u0e2a\u0e33\u0e23\u0e27\u0e08",
+   "reqd": 1
   },
   {
    "default": "0.00",
@@ -1216,26 +1160,30 @@
    "fieldname": "col_subdistrict",
    "fieldtype": "Select",
    "label": "\u0e41\u0e02\u0e27\u0e07/\u0e15\u0e33\u0e1a\u0e25",
-   "options": "\u0e08\u0e2d\u0e21\u0e1e\u0e25"
+   "options": "\u0e08\u0e2d\u0e21\u0e1e\u0e25",
+   "reqd": 1
   },
   {
    "default": "\u0e08\u0e15\u0e38\u0e08\u0e31\u0e01\u0e23",
    "fieldname": "col_district",
    "fieldtype": "Data",
    "label": "\u0e40\u0e02\u0e15/\u0e2d\u0e33\u0e40\u0e20\u0e2d",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "default": "\u0e01\u0e23\u0e38\u0e07\u0e40\u0e17\u0e1e\u0e21\u0e2b\u0e32\u0e19\u0e04\u0e23",
    "fieldname": "col_province",
    "fieldtype": "Data",
    "label": "\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "col_title_deed_number",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e42\u0e09\u0e19\u0e14"
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e42\u0e09\u0e19\u0e14",
+   "reqd": 1
   },
   {
    "fieldname": "col_volume",
@@ -1294,7 +1242,8 @@
   {
    "fieldname": "col_land_owner",
    "fieldtype": "Data",
-   "label": "\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e16\u0e37\u0e2d\u0e04\u0e23\u0e2d\u0e07"
+   "label": "\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e16\u0e37\u0e2d\u0e04\u0e23\u0e2d\u0e07",
+   "reqd": 1
   },
   {
    "default": "0",
@@ -1314,7 +1263,8 @@
    "fieldname": "col_mortgage_limit",
    "fieldtype": "Float",
    "label": "\u0e27\u0e07\u0e40\u0e07\u0e34\u0e19\u0e01\u0e32\u0e23\u0e08\u0e14\u0e08\u0e33\u0e19\u0e2d\u0e07",
-   "precision": "2"
+   "precision": "2",
+   "reqd": 1
   },
   {
    "default": "0.00",
@@ -1341,24 +1291,28 @@
    "fieldname": "lease_type",
    "fieldtype": "Select",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e01\u0e32\u0e23\u0e43\u0e2b\u0e49\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d",
-   "options": "\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e40\u0e07\u0e34\u0e19\u0e01\u0e39\u0e49 (\u0e44\u0e21\u0e48\u0e21\u0e35\u0e20\u0e32\u0e29\u0e35)\n\u0e40\u0e0a\u0e48\u0e32\u0e0b\u0e37\u0e49\u0e2d"
+   "options": "\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e40\u0e07\u0e34\u0e19\u0e01\u0e39\u0e49 (\u0e44\u0e21\u0e48\u0e21\u0e35\u0e20\u0e32\u0e29\u0e35)\n\u0e40\u0e0a\u0e48\u0e32\u0e0b\u0e37\u0e49\u0e2d",
+   "reqd": 1
   },
   {
    "fieldname": "application_type",
    "fieldtype": "Select",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e43\u0e1a\u0e04\u0e33\u0e02\u0e2d",
-   "options": "\u0e43\u0e2b\u0e21\u0e48\n\u0e23\u0e35\u0e44\u0e1f\u0e41\u0e19\u0e19\u0e0b\u0e4c"
+   "options": "\u0e43\u0e2b\u0e21\u0e48\n\u0e23\u0e35\u0e44\u0e1f\u0e41\u0e19\u0e19\u0e0b\u0e4c",
+   "reqd": 1
   },
   {
    "fieldname": "registration_year",
    "fieldtype": "Select",
    "label": "\u0e1b\u0e35\u0e17\u0e35\u0e48\u0e08\u0e14\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19",
-   "options": "2024"
+   "options": "2024",
+   "reqd": 1
   },
   {
    "fieldname": "requested_amount",
    "fieldtype": "Float",
-   "label": "\u0e22\u0e2d\u0e14\u0e08\u0e31\u0e14\u0e15\u0e31\u0e49\u0e07\u0e15\u0e49\u0e19"
+   "label": "\u0e22\u0e2d\u0e14\u0e08\u0e31\u0e14\u0e15\u0e31\u0e49\u0e07\u0e15\u0e49\u0e19",
+   "reqd": 1
   },
   {
    "fieldname": "ltv",
@@ -1377,7 +1331,8 @@
    "fieldname": "installment_type",
    "fieldtype": "Select",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e04\u0e48\u0e32\u0e07\u0e27\u0e14",
-   "options": "\u0e04\u0e48\u0e32\u0e07\u0e27\u0e14\u0e1b\u0e01\u0e15\u0e34"
+   "options": "\u0e04\u0e48\u0e32\u0e07\u0e27\u0e14\u0e1b\u0e01\u0e15\u0e34",
+   "reqd": 1
   },
   {
    "fieldname": "marketing_code",
@@ -1389,7 +1344,8 @@
    "fieldname": "source_of_customer",
    "fieldtype": "Select",
    "label": "\u0e17\u0e35\u0e48\u0e21\u0e32\u0e02\u0e2d\u0e07\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32",
-   "options": "\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\u0e41\u0e19\u0e30\u0e19\u0e33\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\n\u0e23\u0e16\u0e02\u0e32\u0e22 \u0e08\u0e31\u0e14\u0e15\u0e48\u0e2d"
+   "options": "\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\u0e41\u0e19\u0e30\u0e19\u0e33\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\n\u0e23\u0e16\u0e02\u0e32\u0e22 \u0e08\u0e31\u0e14\u0e15\u0e48\u0e2d",
+   "reqd": 1
   },
   {
    "fieldname": "referral",
@@ -1401,13 +1357,15 @@
    "fieldname": "ownership",
    "fieldtype": "Select",
    "label": "\u0e01\u0e23\u0e23\u0e21\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c",
-   "options": "01.\u0e42\u0e2d\u0e19\u0e25\u0e2d\u0e22/\u0e44\u0e21\u0e48\u0e42\u0e2d\u0e19 --> SP2022(New)\n02.\u0e42\u0e2d\u0e19\u0e01\u0e23\u0e23\u0e21\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c --> SP2022(New)"
+   "options": "01.\u0e42\u0e2d\u0e19\u0e25\u0e2d\u0e22/\u0e44\u0e21\u0e48\u0e42\u0e2d\u0e19 --> SP2022(New)\n02.\u0e42\u0e2d\u0e19\u0e01\u0e23\u0e23\u0e21\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c --> SP2022(New)",
+   "reqd": 1
   },
   {
    "fieldname": "campaign_code",
    "fieldtype": "Select",
    "label": "\u0e41\u0e04\u0e21\u0e40\u0e1b\u0e0d",
-   "options": "\u0e01010N (1% CTV \u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e22\u0e01\u0e40\u0e27\u0e49\u0e19 Fees & Insurance \u0e44\u0e14\u0e49)"
+   "options": "\u0e01010N (1% CTV \u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e22\u0e01\u0e40\u0e27\u0e49\u0e19 Fees & Insurance \u0e44\u0e14\u0e49)",
+   "reqd": 1
   },
   {
    "fieldname": "campaign_interest_rate",
@@ -1419,13 +1377,15 @@
    "fieldname": "payment_frequency",
    "fieldtype": "Select",
    "label": "\u0e23\u0e30\u0e22\u0e30\u0e2b\u0e48\u0e32\u0e07\u0e1c\u0e48\u0e2d\u0e19\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e15\u0e48\u0e2d\u0e07\u0e27\u0e14",
-   "options": "1"
+   "options": "1",
+   "reqd": 1
   },
   {
    "fieldname": "term",
    "fieldtype": "Select",
    "label": "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e07\u0e27\u0e14\u0e17\u0e31\u0e49\u0e07\u0e2a\u0e31\u0e0d\u0e0d\u0e32",
-   "options": "12\n16\n24"
+   "options": "12\n16\n24",
+   "reqd": 1
   },
   {
    "fieldname": "total_periods_month",
@@ -1435,12 +1395,14 @@
   {
    "fieldname": "due_day",
    "fieldtype": "Select",
-   "label": "\u0e0a\u0e33\u0e23\u0e30\u0e17\u0e38\u0e01\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48"
+   "label": "\u0e0a\u0e33\u0e23\u0e30\u0e17\u0e38\u0e01\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48",
+   "reqd": 1
   },
   {
    "fieldname": "agreement_date",
    "fieldtype": "Date",
-   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e17\u0e33\u0e2a\u0e31\u0e0d\u0e0d\u0e32"
+   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e17\u0e33\u0e2a\u0e31\u0e0d\u0e0d\u0e32",
+   "reqd": 1
   },
   {
    "fieldname": "first_due_date",
@@ -1530,7 +1492,6 @@
    "default": "0.00",
    "fieldname": "total_fees_net",
    "fieldtype": "Float",
-   "is_virtual": 1,
    "label": "\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e1a\u0e21\u0e2a\u0e38\u0e17\u0e18\u0e34",
    "precision": "2",
    "read_only": 1
@@ -1539,7 +1500,6 @@
    "default": "0.00",
    "fieldname": "total_insurance_net",
    "fieldtype": "Float",
-   "is_virtual": 1,
    "label": "\u0e04\u0e48\u0e32\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19\u0e2a\u0e38\u0e17\u0e18\u0e34",
    "precision": "2",
    "read_only": 1
@@ -1548,6 +1508,7 @@
    "default": "0.00",
    "fieldname": "virtual_financing_amount_net",
    "fieldtype": "Float",
+   "is_virtual": 1,
    "label": "\u0e22\u0e2d\u0e14\u0e08\u0e31\u0e14\u0e44\u0e1f\u0e41\u0e19\u0e19\u0e0b\u0e4c (\u0e2a\u0e38\u0e17\u0e18\u0e34)",
    "precision": "2",
    "read_only": 1
@@ -1556,6 +1517,7 @@
    "default": "0.00",
    "fieldname": "virtual_total_fees_net",
    "fieldtype": "Float",
+   "is_virtual": 1,
    "label": "\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21 (\u0e2a\u0e38\u0e17\u0e18\u0e34)",
    "precision": "2",
    "read_only": 1
@@ -1564,6 +1526,7 @@
    "default": "0.00",
    "fieldname": "virtual_total_insurance_net",
    "fieldtype": "Float",
+   "is_virtual": 1,
    "label": "\u0e04\u0e48\u0e32\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19 (\u0e2a\u0e38\u0e17\u0e18\u0e34)",
    "precision": "2",
    "read_only": 1
@@ -1594,24 +1557,27 @@
   {
    "fieldname": "col_search_id",
    "fieldtype": "Data",
-   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e08\u0e32\u0e01\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
   },
   {
    "fieldname": "bank_account",
    "fieldtype": "Select",
    "label": "\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49",
-   "options": "\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e40\u0e1e\u0e22\u0e4c\n\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23\u0e01\u0e2a\u0e34\u0e01\u0e23\u0e44\u0e17\u0e22"
+   "options": "\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e40\u0e1e\u0e22\u0e4c\n\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23\u0e01\u0e2a\u0e34\u0e01\u0e23\u0e44\u0e17\u0e22",
+   "reqd": 1
   },
   {
    "fieldname": "bank_account_type",
    "fieldtype": "Select",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1a\u0e31\u0e0d\u0e0a\u0e35",
-   "options": "\u0e2d\u0e2d\u0e21\u0e17\u0e23\u0e31\u0e1e\u0e22\u0e4c\n\u0e01\u0e23\u0e30\u0e41\u0e2a\u0e23\u0e32\u0e22\u0e27\u0e31\u0e19"
+   "options": "\u0e2d\u0e2d\u0e21\u0e17\u0e23\u0e31\u0e1e\u0e22\u0e4c\n\u0e01\u0e23\u0e30\u0e41\u0e2a\u0e23\u0e32\u0e22\u0e27\u0e31\u0e19",
+   "reqd": 1
   },
   {
    "fieldname": "bank_account_number",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e1a\u0e31\u0e0d\u0e0a\u0e35"
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e1a\u0e31\u0e0d\u0e0a\u0e35",
+   "reqd": 1
   },
   {
    "default": "0",
@@ -1623,23 +1589,27 @@
   {
    "fieldname": "cus_date_of_birth",
    "fieldtype": "Date",
-   "label": "\u0e27\u0e31\u0e19\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e1b\u0e35\u0e40\u0e01\u0e34\u0e14"
+   "label": "\u0e27\u0e31\u0e19\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e1b\u0e35\u0e40\u0e01\u0e34\u0e14",
+   "reqd": 1
   },
   {
    "fieldname": "cus_issue_date",
    "fieldtype": "Date",
-   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23"
+   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23",
+   "reqd": 1
   },
   {
    "fieldname": "cus_identification_type",
    "fieldtype": "Select",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1a\u0e31\u0e15\u0e23",
-   "options": "\u0e1a\u0e31\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e0a\u0e19\n\u0e1e\u0e32\u0e2a\u0e1b\u0e2d\u0e23\u0e4c\u0e15"
+   "options": "\u0e1a\u0e31\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e0a\u0e19\n\u0e1e\u0e32\u0e2a\u0e1b\u0e2d\u0e23\u0e4c\u0e15",
+   "reqd": 1
   },
   {
    "fieldname": "cus_salutation",
    "fieldtype": "Select",
-   "label": "\u0e04\u0e33\u0e19\u0e33\u0e2b\u0e19\u0e49\u0e32"
+   "label": "\u0e04\u0e33\u0e19\u0e33\u0e2b\u0e19\u0e49\u0e32",
+   "reqd": 1
   },
   {
    "fieldname": "cus_age",
@@ -1649,12 +1619,14 @@
   {
    "fieldname": "cus_expiry_date",
    "fieldtype": "Date",
-   "label": "\u0e1a\u0e31\u0e15\u0e23\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38"
+   "label": "\u0e1a\u0e31\u0e15\u0e23\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38",
+   "reqd": 1
   },
   {
    "fieldname": "cus_issuer",
    "fieldtype": "Select",
-   "label": "\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23\u0e42\u0e14\u0e22"
+   "label": "\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23\u0e42\u0e14\u0e22",
+   "reqd": 1
   },
   {
    "fieldname": "cus_nick_name",
@@ -1665,19 +1637,22 @@
    "fieldname": "cus_nationality",
    "fieldtype": "Select",
    "label": "\u0e2a\u0e31\u0e0d\u0e0a\u0e32\u0e15\u0e34",
-   "options": "\u0e44\u0e17\u0e22"
+   "options": "\u0e44\u0e17\u0e22",
+   "reqd": 1
   },
   {
    "fieldname": "cus_race",
    "fieldtype": "Select",
    "label": "\u0e40\u0e0a\u0e37\u0e49\u0e2d\u0e0a\u0e32\u0e15\u0e34",
-   "options": "\u0e44\u0e17\u0e22"
+   "options": "\u0e44\u0e17\u0e22",
+   "reqd": 1
   },
   {
    "fieldname": "cus_customer_type",
    "fieldtype": "Select",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49",
-   "options": "\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e18\u0e23\u0e23\u0e21\u0e14\u0e32\n\u0e19\u0e34\u0e15\u0e34\u0e1a\u0e38\u0e04\u0e04\u0e25"
+   "options": "\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e18\u0e23\u0e23\u0e21\u0e14\u0e32\n\u0e19\u0e34\u0e15\u0e34\u0e1a\u0e38\u0e04\u0e04\u0e25",
+   "reqd": 1
   },
   {
    "default": "0",
@@ -1747,19 +1722,22 @@
    "fieldname": "cus_gender",
    "fieldtype": "Select",
    "label": "\u0e40\u0e1e\u0e28",
-   "options": "\u0e0a\u0e32\u0e22\n\u0e2b\u0e0d\u0e34\u0e07\n\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38"
+   "options": "\u0e0a\u0e32\u0e22\n\u0e2b\u0e0d\u0e34\u0e07\n\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38",
+   "reqd": 1
   },
   {
    "fieldname": "cus_occupation",
    "fieldtype": "Select",
    "label": "\u0e2d\u0e32\u0e0a\u0e35\u0e1e",
-   "options": "\u0e42\u0e1b\u0e23\u0e41\u0e01\u0e23\u0e21\u0e40\u0e21\u0e2d\u0e23\u0e4c\n\u0e19\u0e31\u0e01\u0e1a\u0e2d\u0e25\n\u0e04\u0e23\u0e39"
+   "options": "\u0e42\u0e1b\u0e23\u0e41\u0e01\u0e23\u0e21\u0e40\u0e21\u0e2d\u0e23\u0e4c\n\u0e19\u0e31\u0e01\u0e1a\u0e2d\u0e25\n\u0e04\u0e23\u0e39",
+   "reqd": 1
   },
   {
    "fieldname": "cus_delivery_address",
    "fieldtype": "Select",
    "label": "\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e08\u0e31\u0e14\u0e2a\u0e48\u0e07\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23",
-   "options": "\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1a\u0e31\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e0a\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e35\u0e48\u0e17\u0e33\u0e07\u0e32\u0e19"
+   "options": "\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1a\u0e31\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e0a\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e35\u0e48\u0e17\u0e33\u0e07\u0e32\u0e19",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_lwby",
@@ -1772,12 +1750,6 @@
   {
    "fieldname": "column_break_lnrf",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "btn_send_approve",
-   "fieldtype": "Button",
-   "is_virtual": 1,
-   "label": "\u0e2a\u0e48\u0e07\u0e2d\u0e19\u0e38\u0e21\u0e31\u0e15\u0e34\u0e43\u0e1a\u0e04\u0e33\u0e02\u0e2d\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d"
   },
   {
    "fieldname": "column_break_plas",
@@ -1808,10 +1780,6 @@
    "label": "header_collateral"
   },
   {
-   "fieldname": "section_break_knot",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "section_collateral_vehicle3",
    "fieldtype": "Section Break"
   },
@@ -1840,14 +1808,311 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "section_break_zpps",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "header_loan_condition",
    "fieldtype": "HTML",
    "is_virtual": 1,
    "label": "header_loan_condition"
+  },
+  {
+   "fieldname": "section_loan_condition2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_loan_condition3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_loan_condition4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_loan_condition5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_loan_condition6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_loan_condition7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_loan_condition8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_loan_condition9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_loan_condition10",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_loan_condition11",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_loan_condition12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_loan_condition13",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_loan_condition14",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_loan_condition15",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_borrower_details2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_borrower_details3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_borrower_details4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_borrower_details5",
+   "fieldtype": "Section Break",
+   "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
+  },
+  {
+   "fieldname": "section_borrower_details6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_borrower_details7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_borrower_details8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_borrower_details9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_borrower_details10",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_borrower_details11",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_borrower_details12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_borrower_details13",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_borrower_details14",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_header_collateral",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_header_loan_condition",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_header_borrower",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "header_borrower",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "header_borrower"
+  },
+  {
+   "fieldname": "section_header_guarantor",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "header_guarantor",
+   "fieldtype": "HTML",
+   "is_virtual": 1
+  },
+  {
+   "fieldname": "btn_submit",
+   "fieldtype": "Button",
+   "is_virtual": 1,
+   "label": "\u0e2a\u0e48\u0e07\u0e2d\u0e19\u0e38\u0e21\u0e31\u0e15\u0e34\u0e43\u0e1a\u0e04\u0e33\u0e02\u0e2d\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d"
+  },
+  {
+   "fieldname": "section_header_document",
+   "fieldtype": "Section Break",
+   "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e43\u0e1a\u0e04\u0e33\u0e02\u0e2d\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e40\u0e1a\u0e37\u0e49\u0e2d\u0e07\u0e15\u0e49\u0e19"
+  },
+  {
+   "fieldname": "column_break_bffb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "col_search_ocr",
+   "fieldtype": "Attach",
+   "label": "\u0e41\u0e19\u0e1a\u0e23\u0e39\u0e1b\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
+  },
+  {
+   "fieldname": "btn_search_collateral_ocr",
+   "fieldtype": "Button",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e08\u0e32\u0e01\u0e23\u0e39\u0e1b"
+  },
+  {
+   "fieldname": "section_header_borrower_search",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "header_borrower_search",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "header_borrower_search"
+  },
+  {
+   "fieldname": "section_header_collateral_search",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "header_collateral_search",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "header_collateral_search"
+  },
+  {
+   "fieldname": "column_break_pbkg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_bctu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_sxyo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "banner_financing_amount_net",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e22\u0e2d\u0e14\u0e08\u0e31\u0e14",
+   "precision": "2"
+  },
+  {
+   "fieldname": "banner_total_fees_net",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21",
+   "precision": "2"
+  },
+  {
+   "fieldname": "banner_remaining_transfer_amount",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e22\u0e2d\u0e14\u0e42\u0e2d\u0e19",
+   "precision": "2"
+  },
+  {
+   "fieldname": "banner_a_score",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "a_score",
+   "options": "<h1 style=\"text-align: center;\">A : -</h1>"
+  },
+  {
+   "fieldname": "banner_b_score",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "b_score",
+   "options": "<h1 style=\"text-align: center;\">B : -</h1>"
+  },
+  {
+   "fieldname": "banner_type",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17"
+  },
+  {
+   "fieldname": "banner_campaign",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "\u0e41\u0e04\u0e21\u0e40\u0e1b\u0e0d"
+  },
+  {
+   "fieldname": "banner_cus_customer_id",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
+  },
+  {
+   "default": "\u0e17\u0e2d\u0e07\u0e40\u0e2b\u0e21\u0e35\u0e22\u0e27 \u0e17\u0e14\u0e2a\u0e2d\u0e1a\u0e2d\u0e22\u0e39\u0e48",
+   "fieldname": "banner_borrower_fullname",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "\u0e0a\u0e37\u0e48\u0e2d-\u0e19\u0e32\u0e21\u0e2a\u0e01\u0e38\u0e25\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
+  },
+  {
+   "fieldname": "banner_collateral_id",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
+  },
+  {
+   "fieldname": "search_collateral",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "options": "<p style=\"color: red;\">***\u0e01\u0e23\u0e2d\u0e01\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e15\u0e31\u0e27\u0e16\u0e31\u0e07\u0e23\u0e16\u0e2b\u0e23\u0e37\u0e2d\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e1a\u0e19\u0e42\u0e09\u0e19\u0e14\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19</p>"
+  },
+  {
+   "fieldname": "search_collateral_ocr_remark",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "search_collateral_ocr_remark",
+   "options": "<p style=\"color: red;\">***\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e44\u0e1f\u0e25\u0e4c\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e2d\u0e48\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e08\u0e32\u0e01\u0e40\u0e25\u0e48\u0e21\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e23\u0e16</p>\n"
+  },
+  {
+   "fieldname": "btn_treasury_page",
+   "fieldtype": "Button",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e23\u0e32\u0e04\u0e32\u0e01\u0e23\u0e21\u0e18\u0e19\u0e32\u0e23\u0e31\u0e01\u0e29\u0e4c"
+  },
+  {
+   "fieldname": "btn_dol_page",
+   "fieldtype": "Button",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e01\u0e23\u0e21\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19"
+  },
+  {
+   "fieldname": "input_progress_bar",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "input_progress_bar"
+  },
+  {
+   "fieldname": "section_input_progress_bar",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "\u0e2a\u0e16\u0e32\u0e19\u0e30",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
@@ -1855,10 +2120,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-04-11 17:35:24.160099",
+ "modified": "2025-04-18 14:15:46.282135",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {

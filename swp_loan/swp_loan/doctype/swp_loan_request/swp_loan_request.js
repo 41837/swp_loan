@@ -10,6 +10,109 @@
 
 frappe.ui.form.on("SWP_Loan_Request", {
     onload: function(frm) {
+
+        // ----------------------------------------------- Start --- ขั้นตอนสร้างเอกสารใหม่
+        if (frm.is_new()) {
+            const address_defaults = [
+                { def_address_type: "บัตรประชาชน" },
+                { def_address_type: "ทะเบียนบ้าน" },
+                { def_address_type: "ที่อยู่ปัจจุบัน" },
+                { def_address_type: "ที่ทำงาน" }
+            ];
+            address_defaults.forEach(data => {
+                let row = frm.add_child('table_borrower_address');
+                row.address_type = data.def_address_type;
+                // row.address_location = data.def_address_location;
+            });
+            frm.refresh_field('table_borrower_address');
+            
+
+
+            const social_defaults = [
+                { social_type: "Email", social_remark: "email@example.com" },
+                { social_type: "Line", social_remark: "line_id" },
+                { social_type: "Facebook", social_remark: "facebook_username" },
+                { social_type: "Instagram", social_remark: "instagram_handle" },
+                { social_type: "Tiktok", social_remark: "tiktok_account" }
+            ];
+            social_defaults.forEach(data => {
+                let row = frm.add_child('table_borrower_social_info');
+                row.platform = data.social_type;
+                row.remark = data.social_remark;
+            });
+            frm.refresh_field('table_borrower_social_info');
+        }
+        // ----------------------------------------------- End --- ขั้นตอนสร้างเอกสารใหม่
+
+
+
+        // ----------------------------------------------- Start --- Disable save button
+        frm.disable_save();
+        // ----------------------------------------------- End --- Disable save button
+
+
+
+        // ----------------------------------------------- Start --- สีของ header เอกสาร
+        $(frm.fields_dict.section_header_document?.wrapper)
+            .css({
+                "background-color": "#C5D9F1"
+            })
+            .find('.section-head')
+            .css({
+                // "background-color": "#d6deb8", //เขียว
+                "background-color": "#abc1e4", //ฟ้า
+                // "background-color": "#dccbe7", //ม่วง บริษัท ศรีสวัสดิ์ ดิจิตอล จำกัด
+                "border-radius": "6px",
+                "text-align": "center",
+                "color": "black"
+            });
+        // ----------------------------------------------- End--- สีของ header เอกสาร
+
+
+
+
+
+
+
+        // ----------------------------------------------- Start --- ดึงค่ามาใส่ใน Banner
+        frm.set_value("internal_loan_application_id", frm.doc.name);
+        frm.set_value("banner_type", "Loan");
+        frm.set_value("state", frm.doc.state);
+        frm.set_value("banner_campaign", "M001N");
+        frm.set_value("banner_cus_customer_id", frm.doc.cus_customer_id);
+        frm.set_value("banner_borrower_fullname", frm.doc.cus_first_name + " " + frm.doc.cus_last_name);
+        frm.set_value("banner_collateral_id", frm.doc.col_collatteral_id);
+        frm.set_value("banner_financing_amount_net", frm.doc.financing_amount_net);
+        frm.set_value("banner_total_fees_net", frm.doc.total_fees_net);
+        frm.set_value("banner_remaining_transfer_amount", frm.doc.remaining_transfer_amount);
+        // ----------------------------------------------- End --- ดึงค่ามาใส่ใน Banner
+
+        
+        // ----------------------------------------------- Start --- ข้อมูลใน field virtual ยอดจัด
+        frm.fields_dict.banner_financing_amount_net.$wrapper
+            .find('.like-disabled-input')
+            .css({
+                "text-align": "right"
+            });
+        // ----------------------------------------------- End --- ข้อมูลใน field virtual ยอดจัด
+
+
+        
+        // ----------------------------------------------- Start --- ข้อมูลใน field virtual ค่าธรรมเนียม
+        frm.fields_dict.banner_total_fees_net.$wrapper
+            .find('.like-disabled-input')
+            .css('text-align', 'right');
+        // ----------------------------------------------- End --- ข้อมูลใน field virtual ค่าธรรมเนียม
+
+
+
+        // ----------------------------------------------- Start --- ข้อมูลใน field virtual ยอดโอน
+        frm.fields_dict.banner_remaining_transfer_amount.$wrapper
+            .find('.like-disabled-input')
+            .css('text-align', 'right');
+        // ----------------------------------------------- End --- ข้อมูลใน field virtual ยอดโอน
+
+
         
         // ----------------------------------------------- Start --- Disable add row button on child table
         frm.fields_dict.table_fees.grid.cannot_add_rows = true;
@@ -48,25 +151,84 @@ frappe.ui.form.on("SWP_Loan_Request", {
 
 
 
-        // ----------------------------------------------- Start --- Header collateral section
-        let html_header_collateral = `
-            <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; background: #f5f5f5; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
-                <div><strong>รายละเอียดหลักประกัน</strong></div>
-                <button id="toggle-collateral-btn" class="btn btn-sm btn-default">ย่อ</button>
-            </div>
+        // ----------------------------------------------- Start --- Header borrower search section
+        let html_header_borrower_search = `
+        <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+            <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ค้นหาผู้กู้</div>
+            <button id="toggle-borrower_search-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+                <i class="fa fa-chevron-up"></i>
+            </button>
+        </div>
+        `;
+        
+        frm.fields_dict.header_borrower_search.$wrapper.html(html_header_borrower_search);
+        
+        let isCollapsed_header_borrower_search = false;
+        
+        $("#toggle-borrower_search-btn").on("click", function () {
+            isCollapsed_header_borrower_search = !isCollapsed_header_borrower_search;
+        
+            if (isCollapsed_header_borrower_search) {
+                frm.fields_dict.section_borrower_search.wrapper.hide();
+                $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+            } else {
+                frm.fields_dict.section_borrower_search.wrapper.show();
+                $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+            }
+        });        
+        // End --- Header borrower_search section
+
+
+
+
+        // ----------------------------------------------- Start --- Header collateral search section
+        let html_header_collateral_search= `
+        <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+            <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ค้นหาหลักประกัน</div>
+            <button id="toggle-collateral_search-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+                <i class="fa fa-chevron-up"></i>
+            </button>
+        </div>
         `;
 
-        // ใส่ HTML ที่เราสร้างลงไปใน field header_collateral
+        frm.fields_dict.header_collateral_search.$wrapper.html(html_header_collateral_search);
+
+        let isCollapsed_header_collateral_search = false;
+
+        $("#toggle-collateral_search-btn").on("click", function () {
+            isCollapsed_header_collateral_search = !isCollapsed_header_collateral_search;
+
+            if (isCollapsed_header_collateral_search) {
+                frm.fields_dict.section_collateral_search.wrapper.hide();
+                $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+            } else {
+                frm.fields_dict.section_collateral_search.wrapper.show();
+                $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+            }
+        });
+        // ----------------------------------------------- End --- Header collateral search section
+
+
+
+
+        // ----------------------------------------------- Start --- Header collateral section
+        let html_header_collateral = `
+        <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+            <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">หลักประกัน</div>
+            <button id="toggle-collateral-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+                <i class="fa fa-chevron-up"></i>
+            </button>
+        </div>
+        `;
+
         frm.fields_dict.header_collateral.$wrapper.html(html_header_collateral);
 
         let isCollapsed_header_collateral = false;
 
-        // ปุ่ม toggle
         $("#toggle-collateral-btn").on("click", function () {
             isCollapsed_header_collateral = !isCollapsed_header_collateral;
 
             if (isCollapsed_header_collateral) {
-                frm.fields_dict.section_collateral_search.wrapper.hide();
                 frm.fields_dict.section_collateral_details.wrapper.hide();
                 frm.fields_dict.section_collateral_details2.wrapper.hide();
                 frm.fields_dict.section_collateral_vehicle.wrapper.hide();
@@ -82,9 +244,8 @@ frappe.ui.form.on("SWP_Loan_Request", {
                 frm.fields_dict.section_collateral_land6.wrapper.hide();
                 frm.fields_dict.section_collateral_details3.wrapper.hide();
                 frm.fields_dict.section_collateral_details4.wrapper.hide();
-                $(this).text("ขยาย");
+                $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
             } else {
-                frm.fields_dict.section_collateral_search.wrapper.show();
                 frm.fields_dict.section_collateral_details.wrapper.show();
                 frm.fields_dict.section_collateral_details2.wrapper.show();
                 frm.fields_dict.section_collateral_vehicle.wrapper.show();
@@ -100,77 +261,347 @@ frappe.ui.form.on("SWP_Loan_Request", {
                 frm.fields_dict.section_collateral_land6.wrapper.show();
                 frm.fields_dict.section_collateral_details3.wrapper.show();
                 frm.fields_dict.section_collateral_details4.wrapper.show();
-                $(this).text("ย่อ");
+                $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
             }
         });
-        // End --- Header collateral section
+        // ----------------------------------------------- End --- Header collateral section
 
 
 
-        // ----------------------------------------------- Start --- Header collateral section
+        // ----------------------------------------------- Start --- Header loan condition section
         let html_header_loan_condition= `
-            <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; background: #f5f5f5; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
-                <div><strong>รายละเอียดสินเชื่อ</strong></div>
-                <button id="toggle-loan-condition-btn" class="btn btn-sm btn-default">ย่อ</button>
-            </div>
+        <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+            <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">รายละเอียดสินเชื่อ</div>
+            <button id="toggle-loan_condition-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+                <i class="fa fa-chevron-up"></i>
+            </button>
+        </div>
         `;
 
         frm.fields_dict.header_loan_condition.$wrapper.html(html_header_loan_condition);
 
         let isCollapsed_header_loan_condition = false;
 
-        $("#toggle-loan-condition-btn").on("click", function () {
+        $("#toggle-loan_condition-btn").on("click", function () {
             isCollapsed_header_loan_condition = !isCollapsed_header_loan_condition;
 
             if (isCollapsed_header_loan_condition) {
                 frm.fields_dict.section_loan_condition.wrapper.hide();
-                $(this).text("ขยาย");
+                frm.fields_dict.section_loan_condition2.wrapper.hide();
+                frm.fields_dict.section_loan_condition3.wrapper.hide();
+                frm.fields_dict.section_loan_condition4.wrapper.hide();
+                frm.fields_dict.section_loan_condition5.wrapper.hide();
+                frm.fields_dict.section_loan_condition6.wrapper.hide();
+                frm.fields_dict.section_loan_condition7.wrapper.hide();
+                frm.fields_dict.section_loan_condition8.wrapper.hide();
+                frm.fields_dict.section_loan_condition9.wrapper.hide();
+                frm.fields_dict.section_loan_condition10.wrapper.hide();
+                frm.fields_dict.section_loan_condition11.wrapper.hide();
+                frm.fields_dict.section_loan_condition12.wrapper.hide();
+                frm.fields_dict.section_loan_condition13.wrapper.hide();
+                frm.fields_dict.section_loan_condition14.wrapper.hide();
+                frm.fields_dict.section_loan_condition15.wrapper.hide();
+                $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
             } else {
                 frm.fields_dict.section_loan_condition.wrapper.show();
-                $(this).text("ย่อ");
+                frm.fields_dict.section_loan_condition2.wrapper.show();
+                frm.fields_dict.section_loan_condition3.wrapper.show();
+                frm.fields_dict.section_loan_condition4.wrapper.show();
+                frm.fields_dict.section_loan_condition5.wrapper.show();
+                frm.fields_dict.section_loan_condition6.wrapper.show();
+                frm.fields_dict.section_loan_condition7.wrapper.show();
+                frm.fields_dict.section_loan_condition8.wrapper.show();
+                frm.fields_dict.section_loan_condition9.wrapper.show();
+                frm.fields_dict.section_loan_condition10.wrapper.show();
+                frm.fields_dict.section_loan_condition11.wrapper.show();
+                frm.fields_dict.section_loan_condition12.wrapper.show();
+                frm.fields_dict.section_loan_condition13.wrapper.show();
+                frm.fields_dict.section_loan_condition14.wrapper.show();
+                frm.fields_dict.section_loan_condition15.wrapper.show();
+                $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
             }
         });
+        // ----------------------------------------------- End --- Header loan condition section
+
+
+
+
+
+        // ----------------------------------------------- Start --- Header borrower section
+        let html_header_borrower= `
+        <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+            <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ผู้กู้</div>
+            <button id="toggle-borrower-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+                <i class="fa fa-chevron-up"></i>
+            </button>
+        </div>
+        `;
+
+        frm.fields_dict.header_borrower.$wrapper.html(html_header_borrower);
+
+        let isCollapsed_header_borrower = false;
+
+        $("#toggle-borrower-btn").on("click", function () {
+            isCollapsed_header_borrower = !isCollapsed_header_borrower;
+
+            if (isCollapsed_header_borrower) {
+                frm.fields_dict.section_borrower_details.wrapper.hide();
+                frm.fields_dict.section_borrower_details2.wrapper.hide();
+                frm.fields_dict.section_borrower_details3.wrapper.hide();
+                frm.fields_dict.section_borrower_details4.wrapper.hide();
+                frm.fields_dict.section_borrower_details5.wrapper.hide();
+                frm.fields_dict.section_borrower_details6.wrapper.hide();
+                frm.fields_dict.section_borrower_details7.wrapper.hide();
+                frm.fields_dict.section_borrower_details8.wrapper.hide();
+                frm.fields_dict.section_borrower_details9.wrapper.hide();
+                frm.fields_dict.section_borrower_details10.wrapper.hide();
+                frm.fields_dict.section_borrower_details11.wrapper.hide();
+                frm.fields_dict.section_borrower_details12.wrapper.hide();
+                frm.fields_dict.section_borrower_details13.wrapper.hide();
+                frm.fields_dict.section_borrower_details14.wrapper.hide();
+                $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+            } else {
+                frm.fields_dict.section_borrower_details.wrapper.show();
+                frm.fields_dict.section_borrower_details2.wrapper.show();
+                frm.fields_dict.section_borrower_details3.wrapper.show();
+                frm.fields_dict.section_borrower_details4.wrapper.show();
+                frm.fields_dict.section_borrower_details5.wrapper.show();
+                frm.fields_dict.section_borrower_details6.wrapper.show();
+                frm.fields_dict.section_borrower_details7.wrapper.show();
+                frm.fields_dict.section_borrower_details8.wrapper.show();
+                frm.fields_dict.section_borrower_details9.wrapper.show();
+                frm.fields_dict.section_borrower_details10.wrapper.show();
+                frm.fields_dict.section_borrower_details11.wrapper.show();
+                frm.fields_dict.section_borrower_details12.wrapper.show();
+                frm.fields_dict.section_borrower_details13.wrapper.show();
+                frm.fields_dict.section_borrower_details14.wrapper.show();
+                $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+            }
+        });
+        // ----------------------------------------------- End --- Header borrower section
+
+
+
+        // ----------------------------------------------- Start --- Header guarantor section
+        let html_header_guarantor= `
+        <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+            <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ผู้ค้ำ</div>
+            <button id="toggle-guarantor-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+                <i class="fa fa-chevron-up"></i>
+            </button>
+        </div>
+        `;
+
+        frm.fields_dict.header_guarantor.$wrapper.html(html_header_guarantor);
+
+        let isCollapsed_header_guarantor = false;
+
+        $("#toggle-guarantor-btn").on("click", function () {
+            isCollapsed_header_guarantor = !isCollapsed_header_guarantor;
+
+            if (isCollapsed_header_guarantor) {
+                frm.fields_dict.section_guarantor.wrapper.hide();
+                $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+            } else {
+                frm.fields_dict.section_guarantor.wrapper.show();
+                $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+            }
+        });
+        // ----------------------------------------------- End --- Header guarantor section
     },
 
-    
+
+
     refresh(frm) {
 
+
+        // ----------------------------------------------- Start ซ่อนปุ่ม print
+        $('use[href="#icon-printer"]')
+            .closest('button')
+            .hide();
+        // ----------------------------------------------- End ซ่อนปุ่ม print
         
 
 
+        // ----------------------------------------------- Start สีขอบของ field ทั้งหมด
+        frm.$wrapper
+            .find('.frappe-control input, .frappe-control textarea, .frappe-control select')
+            .css({
+                "border": "1px solid darkgrey",
+            });
+        // ----------------------------------------------- End สีขอบของ field ทั้งหมด
+
+
+
+        // ----------------------------------------------- Start --- เลขที่ใบสมัครขอสินเชื่อ
+        frm.fields_dict.internal_loan_application_id.$wrapper
+            .find('.form-control')
+            .css({
+                "border": "2px solid #007bff"
+            });
+        // ----------------------------------------------- End --- เลขที่ใบสมัครขอสินเชื่อ
+
+
+
+        // ----------------------------------------------- Start input progress bar
+        let progress_bar_html = `
+        <div id="step-progress-bar" style="display: flex; justify-content: space-around; margin-bottom: 20px;">
+            <div class="step" data-step="1">
+                <div class="circle">1</div>
+                <div class="label">หลักประกัน</div>
+            </div>
+            <div class="step" data-step="2">
+                <div class="circle">2</div>
+                <div class="label">รายละเอียดสินเชื่อ</div>
+            </div>
+            <div class="step" data-step="3">
+                <div class="circle">3</div>
+                <div class="label">ผู้กู้</div>
+            </div>
+            <div class="step" data-step="4">
+                <div class="circle">4</div>
+                <div class="label">ผู้ค้ำ</div>
+            </div>
+        </div>
+
+        <style>
+            #step-progress-bar .step {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                flex: 1;
+            }
+
+            #step-progress-bar .circle {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: #e0e0e0;
+                color: #555;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+
+            #step-progress-bar .label {
+                font-size: 13px;
+                text-align: center;
+                color: #555;
+            }
+
+            #step-progress-bar .step.active .circle {
+                background-color: #ff914d;
+                color: white;
+            }
+
+            #step-progress-bar .step.active .label {
+                font-weight: bold;
+                color: #ff914d;
+            }
+        </style>
+        `;
+
+        frm.fields_dict.input_progress_bar.$wrapper.html(progress_bar_html);
+
+        // กำหนดขั้นตอนที่ active เริ่มต้น
+        set_active_step(1);
+
+        function set_active_step(step_number) {
+            $('#step-progress-bar .step').removeClass('active');
+            $(`#step-progress-bar .step[data-step="${step_number}"]`).addClass('active');
+        }
+        // ----------------------------------------------- End input progress bar
+
+
+
+        // ----------------------------------------------- Start State
+        if (frm.is_new()) {
+
+            // ----------------------------------------------- Start เปิด/ปิด section แต่ละ State
+            frm.fields_dict.section_header_document.wrapper.hide();
+            frm.fields_dict.section_header_borrower_search.wrapper.show();
+            frm.fields_dict.section_borrower_search.wrapper.show();
+            frm.fields_dict.section_header_collateral_search.wrapper.show();
+            frm.fields_dict.section_collateral_search.wrapper.show();
+            // ----------------------------------------------- End เปิด/ปิด section แต่ละ State
+            
+        }
+        else if (frm.doc.col_collatteral_id && frm.doc.lease_type && frm.doc.cus_customer_id) {
+            frm.fields_dict.section_header_document.wrapper.show();
+            frm.fields_dict.section_input_progress_bar.wrapper.hide();
+        }
+        else if (frm.doc.state === "Draft") {
+            // frm.fields_dict.section_header_document.wrapper.hide();
+        }
+        else {
+            // ----------------------------------------------- Start เปิด/ปิด section แต่ละ State
+            frm.fields_dict.section_header_borrower_search.wrapper.hide();
+            frm.fields_dict.section_borrower_search.wrapper.hide();
+            frm.fields_dict.section_header_collateral_search.wrapper.hide();
+            frm.fields_dict.section_collateral_search.wrapper.hide();
+            // ----------------------------------------------- End เปิด/ปิด section แต่ละ State
+        }
+        // ----------------------------------------------- End State
+
+
+
+        // ----------------------------------------------- Start --- Attachment custom button
+        frm.add_custom_button(
+            '<i class="fa fa-plus" style="margin-right: 5px;"></i> เพิ่มเอกสารแนบ',
+            function () {
+                const url = 'http://10.1.112.126:8000/app/file-attachment/IA000%E0%B8%AEQ250400001';
+                const width = 1000;
+                const height = 700;
+                const left = (window.screen.width / 2) - (width / 2);
+                const top = (window.screen.height / 2) - (height / 2);
         
-
-
-        // Start --- Attachment custom button
-        frm.add_custom_button(__('เอกสารแนบ'), function() {
-            const url = 'http://10.1.112.126:8000/app/file-attachment/IA000%E0%B8%AEQ250400001';
-            const width = 1000;
-            const height = 700;
-            const left = (window.screen.width / 2) - (width / 2);
-            const top = (window.screen.height / 2) - (height / 2);
-
-            window.open(
-                url,
-                'เอกสารแนบ',
-                `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes`
-            );
+                window.open(
+                    url,
+                    'เอกสารแนบ',
+                    `width=${width},height=${height},top=${top},left=${left},resizable=yes,scrollbars=yes`
+                );
+            }
+        ).css({
+            "background-color": "#007bff",
+            "color": "#fff",
+            "border": "none",
+            "box-shadow": "0 0 15px rgba(0,123,255,0.6)",
+            "animation": "pulseGlow 1.5s infinite"
         });
-        // End   --- Attachment custom button
+        
+        // Animation
+        $(`<style>
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 10px rgba(0,123,255, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(0,123,255, 1);
+            }
+            100% {
+                box-shadow: 0 0 10px rgba(0,123,255, 0.5);
+            }
+        }
+        </style>`).appendTo("head");
+        // ----------------------------------------------- End --- Attachment custom button
 
 
         
-        // Start --- Scroll button
+        // ----------------------------------------------- Start --- Scroll button
         // Check existing button (because this function use in refresh event)
         if (!frm.page.scroll_buttons_added) {
 
             // HTML Scroll to top
             let $btnTop = $(`<button class="btn btn-secondary" style="position:fixed; bottom:80px; right:30px; z-index:1000; display:none;">
-                                <i class="fa fa-arrow-up"></i> Top
+                                <i class="fa fa-arrow-up"></i> เลื่อนบนสุด
                             </button>`);
 
             // HTML Scroll to bottom
             let $btnBottom = $(`<button class="btn btn-secondary" style="position:fixed; bottom:30px; right:30px; z-index:1000; display:none;">
-                                    <i class="fa fa-arrow-down"></i> Bottom
+                                    <i class="fa fa-arrow-down"></i> เลื่อนล่างสุด
                                 </button>`);
 
             // Add button to body
@@ -187,22 +618,22 @@ frappe.ui.form.on("SWP_Loan_Request", {
                 }
             });
 
-            // JS Scroll to top
+            // Scroll to top
             $btnTop.on('click', function() {
                 $('html, body').animate({ scrollTop: 0 }, 'slow');
             });
 
-            // JS Scroll to bottom
+            // Scroll to bottom
             $btnBottom.on('click', function() {
                 $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
             });
 
             frm.page.scroll_buttons_added = true; // protect duplicate button
         }
-        // End   --- Scroll button
+        // ----------------------------------------------- End --- Scroll button
 
 
-        // Start --- Collateral search button
+        // ----------------------------------------------- Start --- Collateral search button
         frm.fields_dict.btn_search_collateral.$wrapper
             .css({
                 "text-align": "left",
@@ -213,8 +644,30 @@ frappe.ui.form.on("SWP_Loan_Request", {
             .css({
                 "font-size": "16px",
                 "padding": "8px 16px",
+                'background-color': 'salmon',
+                'color': 'white',
+                'border': 'none',
             });
-        // End   --- Collateral search button
+        // ----------------------------------------------- End --- Collateral search button
+
+        
+
+        // ----------------------------------------------- Start --- Collateral search button
+        frm.fields_dict.btn_search_collateral_ocr.$wrapper
+            .css({
+                "text-align": "left",
+            })
+            .find("button")
+            .removeClass("btn-xs btn-default")
+            .addClass("btn-md btn-info")
+            .css({
+                "font-size": "16px",
+                "padding": "8px 16px",
+                'background-color': 'salmon',
+                'color': 'white',
+                'border': 'none',
+            });
+        // ----------------------------------------------- End --- Collateral search button
 
             
         
@@ -229,12 +682,15 @@ frappe.ui.form.on("SWP_Loan_Request", {
             .css({
                 "font-size": "16px",
                 "padding": "8px 16px",
+                'background-color': 'salmon',
+                'color': 'white',
+                'border': 'none',                
             });
-        // End   --- Land search button
+        // ----------------------------------------------- End --- Land search button
 
 
         
-        // Start --- Collateral save button
+        // ----------------------------------------------- Start --- Collateral save button
         frm.fields_dict.btn_save_collateral.$wrapper
             .css({
                 "text-align": "right",
@@ -243,14 +699,89 @@ frappe.ui.form.on("SWP_Loan_Request", {
             .removeClass("btn-xs btn-default")
             .addClass("btn-md btn-primary")
             .css({
-                "font-size": "16px",
-                "padding": "8px 16px",
+                'font-size': '16px',
+                'padding': '8px 16px',
+                'background-color': '#4a7ef6',
+                'color': 'white',
+                'border': 'none',
+            })
+            .on('click', function() {
+
+                // กำหนด mandatory field ใน section หลักประกัน
+                let required_fields = [
+                    "col_collatteral_id",
+                    "col_product",
+                    "col_subproduct",
+                    // "col_vehicle_identification_number",
+                    // "col_model_year",
+                    // "col_color",
+                    // "col_engine_number",
+                    // "col_brand",
+                    // "col_model",
+                    // "col_submodel",
+                    // "col_gear",
+                    // "col_engine_size",
+                    // "col_car_mileage",
+                    // "col_date_of_license_expiry",
+                    // "col_license_plate_number",
+                    // "col_province_registration",
+                    // "col_date_of_tax_expiry",
+                ];
+
+                let missing_fields = [];
+
+                required_fields.forEach(fieldname => {
+                    let value = frm.doc[fieldname];
+                    if (!value) {
+                        missing_fields.push(frm.fields_dict[fieldname].df.label);
+                    }
+                });
+
+                // Validate missing field
+                if (missing_fields.length > 0) {
+                    frappe.msgprint({
+                        title: "กรุณากรอกข้อมูลให้ครบ",
+                        message: "ข้อมูลที่จำเป็นต้องกรอก: <br><b> - " + missing_fields.join("<br> - ") + "</bt>",
+                        indicator: "red"
+                    });
+                    return;
+                }
+
+                // Save data
+                frappe.call({
+                    method: "swp_loan.api.save_util.custom_save_without_validation", // Save without validation
+                    args: {
+                        doc: JSON.stringify(frm.doc)
+                    },
+                    callback: function(r) {
+                        if (!r.exc && r.message.name) {
+
+                            // Alert message
+                            frappe.show_alert({
+                                message: 'ข้อมูลหลักประกันถูกบันทึกแล้ว',
+                                indicator: 'green'
+                            }, 5);
+
+                            // Redirect to saved document
+                            frappe.set_route("form", "SWP_Loan_Request", r.message.name);
+
+                            // Collapse section
+                            $("#toggle-collateral-btn").trigger("click");
+                        }
+                    }
+                });
+
+
+
+
             });
-        // End   --- Collateral save button
+
+        
+        // ----------------------------------------------- End --- Collateral save button
 
 
         
-        // Start --- Campaign search button
+        // ----------------------------------------------- Start --- Campaign search button
         frm.fields_dict.btn_search_campaign.$wrapper
             .css({
                 "text-align": "left",
@@ -261,12 +792,15 @@ frappe.ui.form.on("SWP_Loan_Request", {
             .css({
                 "font-size": "16px",
                 "padding": "8px 16px",
+                'background-color': 'salmon',
+                'color': 'white',
+                'border': 'none',
             });
-        // End   --- Campaign search button
+        // ----------------------------------------------- End --- Campaign search button
 
         
 
-        // Start --- Loan condition calculate button
+        // ----------------------------------------------- Start --- Loan condition calculate button
         frm.fields_dict.btn_calculate_loan_condition.$wrapper
             .css({
                 "text-align": "left",
@@ -277,12 +811,15 @@ frappe.ui.form.on("SWP_Loan_Request", {
             .css({
                 "font-size": "16px",
                 "padding": "8px 16px",
+                'background-color': 'salmon',
+                'color': 'white',
+                'border': 'none',
             });
-        // End   --- Loan condition calculate button
+        // ----------------------------------------------- End --- Loan condition calculate button
 
         
 
-        // Start --- Loan condition save button
+        // ----------------------------------------------- Start --- Loan condition save button
         frm.fields_dict.btn_save_loan_condition.$wrapper
             .css({
                 "text-align": "right",
@@ -293,12 +830,22 @@ frappe.ui.form.on("SWP_Loan_Request", {
             .css({
                 "font-size": "16px",
                 "padding": "8px 16px",
+                'background-color': '#4a7ef6',
+                'color': 'white',
+                'border': 'none',
+            })
+            .on('click', function() {
+                $("#toggle-loan_condition-btn").trigger("click");
+                frappe.show_alert({
+                    message: 'ข้อมูลรายละเอียดสินเชื่อถูกบันทึกแล้ว',
+                    indicator: 'green'
+                }, 5);
             });
-        // End   --- Loan condition save button
+        // ----------------------------------------------- End --- Loan condition save button
 
         
 
-        // Start --- Borrower search button
+        // ----------------------------------------------- Start --- Borrower search button
         frm.fields_dict.btn_search_borrower.$wrapper
             .css({
                 "text-align": "left",
@@ -309,6 +856,9 @@ frappe.ui.form.on("SWP_Loan_Request", {
             .css({
                 "font-size": "16px",
                 "padding": "8px 16px",
+                'background-color': 'salmon',
+                'color': 'white',
+                'border': 'none',
             })
             .on('click', function() {
 
@@ -331,7 +881,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
                     args: {
                         doctype: 'SWP_Loan_Request',
                         filters: {
-                            f05: frm.doc.cus_search_id
+                            cus_customer_id: frm.doc.cus_search_id
                         },
                         fields: ['name', 'cus_first_name', 'cus_last_name'],
                         limit_page_length: 5
@@ -362,10 +912,10 @@ frappe.ui.form.on("SWP_Loan_Request", {
                     }
                 });
             });
-        // End   --- Borrower search button
+        // ----------------------------------------------- End --- Borrower search button
 
 
-        // Start --- Borrower save button
+        // ----------------------------------------------- Start --- Borrower save button
         frm.fields_dict.btn_save_borrower.$wrapper
             .css({
                 "text-align": "right",
@@ -376,51 +926,72 @@ frappe.ui.form.on("SWP_Loan_Request", {
             .css({
                 "font-size": "16px",
                 "padding": "8px 16px",
+                'background-color': '#4a7ef6',
+                'color': 'white',
+                'border': 'none',
+            })
+            .on('click', function() {
+                $("#toggle-borrower-btn").trigger("click");
+                frappe.show_alert({
+                    message: 'ข้อมูลผู้กู้ถูกบันทึกแล้ว',
+                    indicator: 'green'
+                }, 5);
             });
-        // End   --- Borrower save button
+        // ----------------------------------------------- End --- Borrower save button
+
+
+
+        // ----------------------------------------------- Start --- Submit button
+        frm.fields_dict.btn_submit.$wrapper
+        .css({
+            "text-align": "center",
+        })
+        .find("button")
+        .removeClass("btn-xs btn-default")
+        .addClass("btn-md btn-primary")
+        .css({
+            "font-size": "16px",
+            "padding": "8px 16px",
+            'background-color': '#4a7ef6',
+            'color': 'white',
+            'border': 'none',
+        })
+        .on('click', function() {
+            frappe.show_alert({
+                message: 'สร้างใบคำขอสำเร็จ ระบบจะส่งให้ผู้อนุมัติโดยอัตโนมัติ',
+                indicator: 'green'
+            }, 7);
+        });
+        // ----------------------------------------------- End --- Sudbmit button
 
         
 
-        // Start --- Hyperlink for open Treasury department website
+        // ----------------------------------------------- Start --- Hyperlink for open Treasury department website
         let html_hyperlink_treasury_page = `
             <a href="ttps://landsmaps.dol.go.th/" target="_blank" style="color: black; text-decoration: underline; font-size: 13px;">
                 ค้นหาราคากรมธนารักษ์
             </a>
         `;
         frm.fields_dict['hyperlink_treasury_page'].wrapper.innerHTML = html_hyperlink_treasury_page;
-        // End   --- Hyperlink for open Treasury department website
+        // ----------------------------------------------- End --- Hyperlink for open Treasury department website
 
 
 
-        // Start --- Hyperlink for open DOL website
+        // ----------------------------------------------- Start --- Hyperlink for open DOL website
         let html_hyperlink_dol_page = `
             <a href="ttps://landsmaps.dol.go.th/" target="_blank" style="color: black; text-decoration: underline; font-size: 13px;">
                 ค้นหาข้อมูลกรมที่ดิน
             </a>
         `;
         frm.fields_dict['hyperlink_dol_page'].wrapper.innerHTML = html_hyperlink_dol_page;
-        // End   --- Hyperlink for open DOL website
+        // ----------------------------------------------- End --- Hyperlink for open DOL website
+
+    },
 
 
 
-        // Start --- Default expand section
-        frm.fields_dict.section_collateral_search.collapse(false);
-        frm.fields_dict.section_collateral_details.collapse(false);
-        frm.fields_dict.section_collateral_vehicle.collapse(false);
-        frm.fields_dict.section_collateral_land.collapse(false);
-        frm.fields_dict.section_loan_condition.collapse(false);
-        frm.fields_dict.section_borrower_search.collapse(false);
-        frm.fields_dict.section_borrower_details.collapse(false);
-        frm.fields_dict.section_guarantor.collapse(false);
-        frm.fields_dict.section_attachment.collapse(false);
-        // End   --- Default expand section
-
-
-   },
-
-
-   // Start --- On change field cus_search_id
-   cus_search_id: function(frm) {
+    // ----------------------------------------------- Start --- On change field cus_search_id
+    cus_search_id: function(frm) {
     // If has value
     if (frm.doc.cus_search_id) {
         frm.fields_dict.cus_search_id.$wrapper
@@ -429,9 +1000,8 @@ frappe.ui.form.on("SWP_Loan_Request", {
             .css('color', '');
         }
     },
+    // ----------------------------------------------- End --- On change field cus_search_id
 
 
-
-
-
+    
 });

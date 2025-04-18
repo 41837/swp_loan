@@ -14,21 +14,25 @@
   {
    "fieldname": "f01",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14"
   },
   {
    "fieldname": "f02",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "\u0e22\u0e2d\u0e14\u0e40\u0e23\u0e35\u0e22\u0e01\u0e40\u0e01\u0e47\u0e1a"
   },
   {
    "fieldname": "f03",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "\u0e2a\u0e48\u0e27\u0e19\u0e25\u0e14"
   },
   {
    "fieldname": "f04",
    "fieldtype": "Float",
+   "in_list_view": 1,
    "label": "\u0e2a\u0e38\u0e17\u0e18\u0e34"
   }
  ],
@@ -36,7 +40,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-04-08 15:32:58.678099",
+ "modified": "2025-04-17 10:11:14.790702",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Deduction",
