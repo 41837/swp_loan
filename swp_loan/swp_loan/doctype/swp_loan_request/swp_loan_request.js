@@ -764,6 +764,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
 
                             // Redirect to saved document
                             frappe.set_route("form", "SWP_Loan_Request", r.message.name);
+                            // cur_frm.refresh_doc();
 
                             // Collapse section
                             $("#toggle-collateral-btn").trigger("click");
@@ -835,11 +836,56 @@ frappe.ui.form.on("SWP_Loan_Request", {
                 'border': 'none',
             })
             .on('click', function() {
-                $("#toggle-loan_condition-btn").trigger("click");
-                frappe.show_alert({
-                    message: 'ข้อมูลรายละเอียดสินเชื่อถูกบันทึกแล้ว',
-                    indicator: 'green'
-                }, 5);
+
+                // กำหนด mandatory field ใน section
+                let required_fields = [
+                    "lease_type",
+                    "application_type",
+                    "registration_year",
+                ];
+
+                let missing_fields = [];
+
+                required_fields.forEach(fieldname => {
+                    let value = frm.doc[fieldname];
+                    if (!value) {
+                        missing_fields.push(frm.fields_dict[fieldname].df.label);
+                    }
+                });
+
+                // Validate missing field
+                if (missing_fields.length > 0) {
+                    frappe.msgprint({
+                        title: "กรุณากรอกข้อมูลให้ครบ",
+                        message: "ข้อมูลที่จำเป็นต้องกรอก: <br><b> - " + missing_fields.join("<br> - ") + "</bt>",
+                        indicator: "red"
+                    });
+                    return;
+                }
+
+                // Save data
+                frappe.call({
+                    method: "swp_loan.api.save_util.custom_save_without_validation", // Save without validation
+                    args: {
+                        doc: JSON.stringify(frm.doc)
+                    },
+                    callback: function(r) {
+                        if (!r.exc && r.message.name) {
+
+                            // Alert message
+                            frappe.show_alert({
+                                message: 'ข้อมูลรายละเอียดสินเชื่อถูกบันทึกแล้ว',
+                                indicator: 'green'
+                            }, 5);
+
+                            // Redirect to saved document
+                            frappe.set_route("form", "SWP_Loan_Request", r.message.name);
+
+                            // Collapse section
+                            $("#toggle-loan_condition-btn").trigger("click");
+                        }
+                    }
+                });
             });
         // ----------------------------------------------- End --- Loan condition save button
 
