@@ -1,0 +1,19 @@
+{
+ "content": null,
+ "creation": "2025-04-25 13:28:36.279960",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2025-04-25 14:01:46.061112",
+ "modified_by": "Administrator",
+ "module": "Swp Loan",
+ "name": "swp_loan_request_branch",
+ "owner": "Administrator",
+ "page_name": "swp_loan_request_branch",
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Loan Request Branch"
+}
