@@ -242,3 +242,12 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 
+# JavaScript Assets
+app_include_js = [
+    "/assets/swp_loan/js/vue_components/LoanDetailPage.js"
+]
+
+# CSS Assets
+app_include_css = [
+    "/assets/swp_loan/css/loan_detail_page.css"
+]

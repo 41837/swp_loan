@@ -7,6 +7,18 @@ frappe.pages['swp_loan_request_approval'].on_page_load = function(wrapper) {
 
 	// frappe.msgprint('Custom page - Loan Request Approval');
 
+	let route = frappe.get_route(); 
+    let loan_request_number = route[1]; // ตัวที่ 1 คือ parameter หลังชื่อ page
+
+	if (!loan_request_number) {
+        // ถ้าไม่ส่ง parameter มา ➔ โชว์ error และหยุดทำงาน
+        frappe.msgprint(__('กรุณาระบุ Loan Request ใน URL เช่น /app/swp_loan_request_approval/LR-2504-00064'));
+        return;
+    }
+
+	frappe.msgprint(loan_request_number);
+
+
 	// สร้าง div ที่จะใช้วางฟอร์ม
     $(page.body).html(`<div id="form-area"></div>`);
 
@@ -17,6 +29,28 @@ frappe.pages['swp_loan_request_approval'].on_page_load = function(wrapper) {
         df: {
             fieldname: 'internal_loan_application_id',
             label: 'เลขที่ใบคำขอสินเชื่อ',
+            fieldtype: 'Data',
+            reqd: 0,
+			read_only: 1
+        },
+        render_input: true
+    });
+
+	let cus_first_name_field = frappe.ui.form.make_control({
+        parent: $('#form-area'),
+        df: {
+            fieldname: 'cus_first_name',
+            label: 'ชื่อผู้กู้',
+			read_only: 1
+		},
+		render_input: true
+	})
+
+	let attachment_group_field = frappe.ui.form.make_control({
+        parent: $('#form-area'),
+        df: {
+            fieldname: 'attachment_group',
+            label: 'ไฟล์ของ',
             fieldtype: 'Data',
             reqd: 0,
 			read_only: 1
@@ -77,15 +111,24 @@ frappe.pages['swp_loan_request_approval'].on_page_load = function(wrapper) {
 		method: 'frappe.client.get',
 		args: {
 			doctype: 'SWP_Loan_Request',
-			name: 'LR-2504-00064'
+			name: loan_request_number
 		},
 		callback: function(r) {
-            if (r.message) {
-                const doc = r.message;
-                internal_loan_application_id_field.set_value(doc.name); // ✅ ใส่ค่า name ลงใน field
-            } else {
-                internal_loan_application_id_field.set_value('ไม่พบข้อมูล');
-            }
+            const doc = r.message;
+            internal_loan_application_id_field.set_value(doc.name);
+        }
+	});
+
+
+	frappe.call({
+		method: 'frappe.client.get',
+		args: {
+			doctype: 'SWP_Attachment',
+			name: 'm1e5k5elfu'
+		},
+		callback: function(r) {
+            const doc = r.message;
+            attachment_group_field.set_value(doc.f01);
         }
 	});
 
