@@ -8,15 +8,7 @@ frappe.pages['swp_loan_request_approval'].on_page_load = function(wrapper) {
 	// frappe.msgprint('Custom page - Loan Request Approval');
 
 	let route = frappe.get_route(); 
-    let loan_request_number = route[1]; // ตัวที่ 1 คือ parameter หลังชื่อ page
-
-	if (!loan_request_number) {
-        // ถ้าไม่ส่ง parameter มา ➔ โชว์ error และหยุดทำงาน
-        frappe.msgprint(__('กรุณาระบุ Loan Request ใน URL เช่น /app/swp_loan_request_approval/LR-2504-00064'));
-        return;
-    }
-
-	frappe.msgprint(loan_request_number);
+    let loan_request_name = route[1]; // ตัวที่ 1 คือ parameter หลังชื่อ page
 
 
 	// สร้าง div ที่จะใช้วางฟอร์ม
@@ -35,16 +27,6 @@ frappe.pages['swp_loan_request_approval'].on_page_load = function(wrapper) {
         },
         render_input: true
     });
-
-	let cus_first_name_field = frappe.ui.form.make_control({
-        parent: $('#form-area'),
-        df: {
-            fieldname: 'cus_first_name',
-            label: 'ชื่อผู้กู้',
-			read_only: 1
-		},
-		render_input: true
-	})
 
 	let attachment_group_field = frappe.ui.form.make_control({
         parent: $('#form-area'),
@@ -111,7 +93,7 @@ frappe.pages['swp_loan_request_approval'].on_page_load = function(wrapper) {
 		method: 'frappe.client.get',
 		args: {
 			doctype: 'SWP_Loan_Request',
-			name: loan_request_number
+			name: 'LR-2504-00064'
 		},
 		callback: function(r) {
             const doc = r.message;

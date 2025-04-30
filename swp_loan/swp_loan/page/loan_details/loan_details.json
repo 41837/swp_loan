@@ -1,0 +1,19 @@
+{
+ "content": null,
+ "creation": "2025-04-29 10:19:13.207724",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2025-04-29 10:19:13.207724",
+ "modified_by": "Administrator",
+ "module": "Swp Loan",
+ "name": "loan_details",
+ "owner": "Administrator",
+ "page_name": "loan_details",
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Loan Details"
+}

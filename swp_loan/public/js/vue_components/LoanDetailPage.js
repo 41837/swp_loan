@@ -78,7 +78,7 @@ swp_loan.vue_components.LoanDetailPage = {
   data() {
     return {
       loanData: {
-        applicationNumber: '',
+        applicationNumber: '123312',
         loanType: 'M001N',
         requestAmount: 26800.00,
         customerCode: '123456789999',
@@ -106,7 +106,12 @@ swp_loan.vue_components.LoanDetailPage = {
       return new Intl.NumberFormat('th-TH', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(value);
     },
     fetchLoanData(name) {
-        if (!name) return;
+        if (!name) {
+          console.error("No name provided to fetchLoanData");
+          return;
+        }
+        
+        console.log("Fetching loan data for:", name);
         
         frappe.call({
           method: 'swp_loan.swp_loan.page.swp_loan_request_branch.swp_loan_request_branch.get_loan_details',
@@ -114,35 +119,48 @@ swp_loan.vue_components.LoanDetailPage = {
             name: name
           },
           callback: (response) => {
+            console.log("API Response:", response);
+            
             if (response.message) {
               const data = response.message;
-              // ตรวจสอบว่ามีข้อมูล loan_data และมี applicationNumber หรือไม่
+              console.log("Loan data received:", data);
+              
               if (data.loan_data) {
+                console.log("Application Number:", data.loan_data.applicationNumber);
+                
                 this.loanData = {
                   ...this.loanData,
                   ...data.loan_data
                 };
+                
+                console.log("Updated loanData:", this.loanData);
+              } else {
+                console.error("No loan_data in response");
               }
-              if (data.borrower) {
-                this.borrower = data.borrower;
-              }
-              if (data.guarantor) {
-                this.guarantor = data.guarantor;
-              }
-              if (data.collateral) {
-                this.collateral = data.collateral;
-              }
+              
+              // ... โค้ดอื่นๆ ...
+            } else {
+              console.error("No message in response");
             }
+          },
+          error: (err) => {
+            console.error("API Error:", err);
           }
         });
       }
   },
   mounted() {
+    console.log("Vue component mounted");
+    
     // ดึงข้อมูลเมื่อ component ถูกโหลด
     const urlParams = new URLSearchParams(window.location.search);
     const name = urlParams.get('name');
+    console.log("URL Parameter 'name':", name);
+    
     if (name) {
       this.fetchLoanData(name);
+    } else {
+      console.warn("No 'name' parameter in URL");
     }
   }
 };
