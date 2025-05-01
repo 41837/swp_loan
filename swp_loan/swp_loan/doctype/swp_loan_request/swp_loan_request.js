@@ -448,19 +448,19 @@ frappe.ui.form.on("SWP_Loan_Request", {
         <div id="step-progress-bar" style="display: flex; justify-content: space-around; margin-bottom: 20px;">
             <div class="step" data-step="1">
                 <div class="circle">1</div>
-                <div class="label">หลักประกัน</div>
+                <div class="label">ผู้กู้</div>
             </div>
             <div class="step" data-step="2">
                 <div class="circle">2</div>
-                <div class="label">รายละเอียดสินเชื่อ</div>
+                <div class="label">ผู้ค้ำ</div>
             </div>
             <div class="step" data-step="3">
                 <div class="circle">3</div>
-                <div class="label">ผู้กู้</div>
+                <div class="label">หลักประกัน</div>
             </div>
             <div class="step" data-step="4">
                 <div class="circle">4</div>
-                <div class="label">ผู้ค้ำ</div>
+                <div class="label">รายละเอียดสินเชื่อ</div>
             </div>
         </div>
 
@@ -516,10 +516,10 @@ frappe.ui.form.on("SWP_Loan_Request", {
         
 
         const stepToSectionMap = {
-            1: 'section_header_collateral',
-            2: 'section_header_loan_condition',
-            3: 'section_header_borrower',
-            4: 'section_header_guarantor'
+            1: 'section_header_borrower',
+            2: 'section_header_guarantor',
+            3: 'section_header_collateral',
+            4: 'section_header_loan_condition'
         };
         
         // เพิ่ม event สำหรับคลิกที่วงกลม
