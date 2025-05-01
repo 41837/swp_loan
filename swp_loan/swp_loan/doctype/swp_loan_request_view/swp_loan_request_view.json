@@ -1,0 +1,1895 @@
+{
+ "actions": [],
+ "autoname": "LRV-.YY.MM.-.#####",
+ "creation": "2025-04-30 16:20:32.450814",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "tab_general",
+  "section_header_document",
+  "internal_loan_application_id",
+  "banner_a_score",
+  "banner_b_score",
+  "column_break_pbkg",
+  "banner_type",
+  "state",
+  "banner_campaign",
+  "column_break_bctu",
+  "banner_cus_customer_id",
+  "banner_borrower_fullname",
+  "banner_collateral_id",
+  "column_break_sxyo",
+  "banner_financing_amount_net",
+  "banner_total_fees_net",
+  "banner_remaining_transfer_amount",
+  "tab_collateral",
+  "section_collateral_details",
+  "col_collatteral_id",
+  "col_is_collateral_new",
+  "column_break_lvuh",
+  "col_product",
+  "col_subproduct",
+  "section_collateral_details2",
+  "column_break_unzb",
+  "col_appraisal_value",
+  "column_break_ugea",
+  "col_appraisal_value_by_branch",
+  "column_break_eiiu",
+  "col_appraisal_value_by_crd",
+  "column_break_idni",
+  "section_collateral_vehicle",
+  "col_vehicle_identification_number",
+  "col_model_year",
+  "col_age",
+  "col_color",
+  "col_engine_number",
+  "col_no_engine_number",
+  "column_break_tftk",
+  "col_brand",
+  "col_model",
+  "col_submodel",
+  "col_gear",
+  "col_engine_size",
+  "section_collateral_vehicle2",
+  "col_car_mileage",
+  "col_date_of_license_expiry",
+  "column_break_meah",
+  "col_license_plate_number",
+  "col_province_registration",
+  "section_collateral_vehicle3",
+  "col_collateral_format",
+  "column_break_whnz",
+  "section_collateral_vehicle4",
+  "col_insurance_policy_number",
+  "col_date_of_insurance_expiry",
+  "col_insurance_issuer",
+  "column_break_nqdo",
+  "col_policy_number",
+  "col_date_of_policy_expiry",
+  "col_policy_company",
+  "col_date_of_tax_expiry",
+  "section_collateral_vehicle5",
+  "col_year_of_possession",
+  "column_break_fatc",
+  "col_month_of_possession",
+  "column_break_tunp",
+  "col_day_of_possession",
+  "column_break_rcku",
+  "col_total_day_of_possession",
+  "section_collateral_land",
+  "col_sheet",
+  "col_land_parcel_number",
+  "col_dealing_file_number",
+  "col_subdistrict",
+  "col_district",
+  "col_province",
+  "column_break_mcqs",
+  "col_title_deed_number",
+  "col_volume",
+  "col_page",
+  "col_location",
+  "btn_search_land",
+  "section_collateral_land2",
+  "btn_treasury_page",
+  "column_break_pjnz",
+  "btn_dol_page",
+  "column_break_earg",
+  "hyperlink_treasury_page",
+  "column_break_qtmt",
+  "hyperlink_dol_page",
+  "section_collateral_land3",
+  "col_rai",
+  "col_ngan",
+  "col_square_wah",
+  "column_break_jfiz",
+  "section_collateral_land4",
+  "col_building_type",
+  "col_building_age",
+  "col_project_name",
+  "column_break_kopo",
+  "col_building_area",
+  "col_building_appraisal_value_square_meter",
+  "section_collateral_land5",
+  "col_land_owner",
+  "column_break_vmnn",
+  "f43_2",
+  "col_is_host",
+  "section_collateral_land6",
+  "col_land_appraisal_value",
+  "col_building_appraisal_value",
+  "col_total_appraisal_value",
+  "column_break_wcvc",
+  "col_mortgage_limit",
+  "col_total_loan_principal",
+  "col_remaining_loan_principal",
+  "section_collateral_details3",
+  "notes",
+  "tab_loan_condition",
+  "section_loan_condition",
+  "lease_type",
+  "application_type",
+  "registration_year",
+  "requested_amount",
+  "ltv",
+  "calculation_type",
+  "installment_type",
+  "column_break_indy",
+  "marketing_code",
+  "source_of_customer",
+  "referral",
+  "ownership",
+  "campaign_code",
+  "campaign_interest_rate",
+  "btn_search_campaign",
+  "section_loan_condition2",
+  "payment_frequency",
+  "term",
+  "total_periods_month",
+  "column_break_adds",
+  "due_day",
+  "agreement_date",
+  "first_due_date",
+  "last_due_date",
+  "section_loan_condition3",
+  "company",
+  "section_loan_condition4",
+  "btn_calculate_loan_condition",
+  "section_loan_condition5",
+  "financing_amount_net",
+  "yield_percent",
+  "yield_amount",
+  "tax_amount",
+  "total_debtor",
+  "column_break_qapy",
+  "installment_amount",
+  "last_installment_amount",
+  "section_loan_condition6",
+  "table_fees",
+  "section_loan_condition7",
+  "column_break_jrxd",
+  "column_break_cmkj",
+  "total_fees_charged",
+  "column_break_ginj",
+  "total_fees_discount",
+  "column_break_kiij",
+  "total_fees_net",
+  "section_loan_condition8",
+  "table_insurance",
+  "section_loan_condition9",
+  "column_break_qcbv",
+  "column_break_trmr",
+  "column_break_iojx",
+  "column_break_uqjp",
+  "total_insurance_net",
+  "section_loan_condition10",
+  "table_deduction",
+  "section_loan_condition11",
+  "column_break_bqqd",
+  "column_break_mqfj",
+  "deduction01",
+  "column_break_yftt",
+  "deduction02",
+  "column_break_uaqo",
+  "deduction03",
+  "section_loan_condition12",
+  "column_break_sxca",
+  "table_outstanding_balance",
+  "section_loan_condition13",
+  "column_break_nsfy",
+  "column_break_spfj",
+  "ob01",
+  "column_break_zots",
+  "ob02",
+  "column_break_bujy",
+  "ob03",
+  "section_loan_condition14",
+  "bank_account",
+  "bank_account_type",
+  "bank_account_number",
+  "column_break_nbvq",
+  "virtual_financing_amount_net",
+  "virtual_total_fees_net",
+  "virtual_total_insurance_net",
+  "total_deduction",
+  "advanced_installment_amount",
+  "remaining_transfer_amount",
+  "tab_borrower",
+  "section_borrower_details",
+  "cus_customer_id",
+  "cus_first_name",
+  "cus_date_of_birth",
+  "cus_issue_date",
+  "cus_identification_type",
+  "html_rkco",
+  "column_break_reke",
+  "cus_salutation",
+  "cus_last_name",
+  "cus_age",
+  "cus_expiry_date",
+  "cus_issuer",
+  "section_borrower_details2",
+  "cus_nick_name",
+  "cus_nationality",
+  "cus_race",
+  "column_break_bsuj",
+  "cus_customer_type",
+  "cus_gender",
+  "cus_marital_status",
+  "section_borrower_details3",
+  "cus_occupation",
+  "cus_work_experience_year",
+  "cus_work_experience_month",
+  "cus_additional_occupation",
+  "cus_occupation_detail",
+  "column_break_usfd",
+  "cus_monthly_salary",
+  "cus_extra_income",
+  "cus_total_expense",
+  "section_borrower_details4",
+  "cus_workplace",
+  "cus_name_of_manager",
+  "column_break_owwd",
+  "cus_department",
+  "cus_position",
+  "section_borrower_details5",
+  "copy_from",
+  "column_break_jmng",
+  "f119_2",
+  "section_borrower_details6",
+  "table_borrower_address",
+  "section_borrower_details7",
+  "table_borrower_social_info",
+  "section_borrower_details8",
+  "cus_delivery_address",
+  "column_break_wzwm",
+  "section_borrower_details9",
+  "consent_marketing",
+  "consent_marketing_value",
+  "column_break_dxgv",
+  "consent_sensitive_data",
+  "consent_sensitive_data_value",
+  "section_borrower_details10",
+  "f121",
+  "column_break_zeia",
+  "f122",
+  "section_borrower_details11",
+  "table_borrower_other_asset",
+  "section_borrower_details12",
+  "table_related_person",
+  "section_borrower_details13",
+  "f123",
+  "tab_guarantor",
+  "section_guarantor",
+  "table_guarantor",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_header_document",
+   "fieldtype": "Section Break",
+   "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e43\u0e1a\u0e04\u0e33\u0e02\u0e2d\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e40\u0e1a\u0e37\u0e49\u0e2d\u0e07\u0e15\u0e49\u0e19"
+  },
+  {
+   "fieldname": "internal_loan_application_id",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e43\u0e1a\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e02\u0e2d\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d"
+  },
+  {
+   "fieldname": "banner_a_score",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "a_score",
+   "options": "<h1 style=\"text-align: center;\">A : -</h1>"
+  },
+  {
+   "fieldname": "banner_b_score",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "b_score",
+   "options": "<h1 style=\"text-align: center;\">B : -</h1>"
+  },
+  {
+   "fieldname": "column_break_pbkg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "banner_type",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "\u0e2a\u0e16\u0e32\u0e19\u0e30",
+   "read_only": 1
+  },
+  {
+   "fieldname": "banner_campaign",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "\u0e41\u0e04\u0e21\u0e40\u0e1b\u0e0d"
+  },
+  {
+   "fieldname": "column_break_bctu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "banner_cus_customer_id",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
+  },
+  {
+   "default": "\u0e17\u0e2d\u0e07\u0e40\u0e2b\u0e21\u0e35\u0e22\u0e27 \u0e17\u0e14\u0e2a\u0e2d\u0e1a\u0e2d\u0e22\u0e39\u0e48",
+   "fieldname": "banner_borrower_fullname",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "\u0e0a\u0e37\u0e48\u0e2d-\u0e19\u0e32\u0e21\u0e2a\u0e01\u0e38\u0e25\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
+  },
+  {
+   "fieldname": "banner_collateral_id",
+   "fieldtype": "Data",
+   "is_virtual": 1,
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
+  },
+  {
+   "fieldname": "column_break_sxyo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "banner_financing_amount_net",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e22\u0e2d\u0e14\u0e08\u0e31\u0e14",
+   "precision": "2"
+  },
+  {
+   "fieldname": "banner_total_fees_net",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21",
+   "precision": "2"
+  },
+  {
+   "fieldname": "banner_remaining_transfer_amount",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e22\u0e2d\u0e14\u0e42\u0e2d\u0e19",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_collateral_details",
+   "fieldtype": "Section Break",
+   "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
+  },
+  {
+   "fieldname": "col_collatteral_id",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "col_is_collateral_new",
+   "fieldtype": "Check",
+   "label": "\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19\u0e43\u0e2b\u0e21\u0e48"
+  },
+  {
+   "fieldname": "column_break_lvuh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "col_product",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "\u0e01\u0e25\u0e38\u0e48\u0e21\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19",
+   "options": "\u0e23\u0e16\n\u0e1a\u0e49\u0e32\u0e19\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_subproduct",
+   "fieldtype": "Select",
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19",
+   "options": "\u0e21\u0e2d\u0e40\u0e15\u0e2d\u0e23\u0e4c\u0e44\u0e0b\u0e04\u0e4c\n\u0e23\u0e16\u0e22\u0e19\u0e15\u0e4c\n\u0e1a\u0e49\u0e32\u0e19\n\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_collateral_details2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_unzb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "col_appraisal_value",
+   "fieldtype": "Float",
+   "label": "\u0e23\u0e32\u0e04\u0e32\u0e1b\u0e23\u0e30\u0e40\u0e21\u0e34\u0e19",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_ugea",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "col_appraisal_value_by_branch",
+   "fieldtype": "Float",
+   "label": "\u0e23\u0e32\u0e04\u0e32\u0e40\u0e2a\u0e19\u0e2d\u0e42\u0e14\u0e22\u0e2a\u0e32\u0e02\u0e32",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_eiiu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "col_appraisal_value_by_crd",
+   "fieldtype": "Float",
+   "hidden": 1,
+   "label": "\u0e23\u0e32\u0e04\u0e32\u0e1b\u0e23\u0e30\u0e40\u0e21\u0e34\u0e19 CRD",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_idni",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_collateral_vehicle",
+   "fieldtype": "Section Break",
+   "label": "\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19\u0e23\u0e16"
+  },
+  {
+   "fieldname": "col_vehicle_identification_number",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e25\u0e02\u0e15\u0e31\u0e27\u0e16\u0e31\u0e07",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_model_year",
+   "fieldtype": "Select",
+   "label": "\u0e1b\u0e35\u0e17\u0e35\u0e48\u0e1c\u0e25\u0e34\u0e15",
+   "options": "2025\n2024\n2023",
+   "reqd": 1,
+   "sort_options": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "col_age",
+   "fieldtype": "Int",
+   "is_virtual": 1,
+   "label": "\u0e2d\u0e32\u0e22\u0e38\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
+  },
+  {
+   "fieldname": "col_color",
+   "fieldtype": "Select",
+   "label": "\u0e2a\u0e35\u0e23\u0e16",
+   "options": "\u0e02\u0e32\u0e27\n\u0e14\u0e33",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_engine_number",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e22\u0e19\u0e15\u0e4c",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "col_no_engine_number",
+   "fieldtype": "Check",
+   "label": "\u0e44\u0e21\u0e48\u0e21\u0e35\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e22\u0e19\u0e15\u0e4c"
+  },
+  {
+   "fieldname": "column_break_tftk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "col_brand",
+   "fieldtype": "Select",
+   "label": "\u0e22\u0e35\u0e48\u0e2b\u0e49\u0e2d",
+   "options": "TOYOTA",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_model",
+   "fieldtype": "Select",
+   "label": "\u0e23\u0e38\u0e48\u0e19",
+   "options": "YARIS",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_submodel",
+   "fieldtype": "Select",
+   "label": "\u0e23\u0e38\u0e48\u0e19\u0e22\u0e48\u0e2d\u0e22",
+   "options": "YARIS-TOYOTA-CA 1.5 \u0e40\u0e01\u0e35\u0e22\u0e23\u0e4c\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_gear",
+   "fieldtype": "Select",
+   "label": "\u0e40\u0e01\u0e35\u0e22\u0e23\u0e4c",
+   "options": "\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\n\u0e18\u0e23\u0e23\u0e21\u0e14\u0e32",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_engine_size",
+   "fieldtype": "Select",
+   "label": "\u0e02\u0e19\u0e32\u0e14\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e22\u0e19\u0e15\u0e4c",
+   "options": "1500 cc\n2200 cc",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_collateral_vehicle2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "col_car_mileage",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e25\u0e02\u0e44\u0e21\u0e25\u0e4c",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_date_of_license_expiry",
+   "fieldtype": "Date",
+   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e34\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_meah",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "col_license_plate_number",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e23\u0e16",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_province_registration",
+   "fieldtype": "Select",
+   "label": "\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14",
+   "options": "\u0e01\u0e23\u0e38\u0e07\u0e40\u0e17\u0e1e\u0e21\u0e2b\u0e32\u0e19\u0e04\u0e23\n\u0e1b\u0e17\u0e38\u0e21\u0e18\u0e32\u0e19\u0e35",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_collateral_vehicle3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "col_collateral_format",
+   "fieldtype": "Select",
+   "label": "\u0e25\u0e31\u0e01\u0e29\u0e13\u0e30\u0e01\u0e32\u0e23\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19",
+   "options": "\u0e23\u0e16\u0e43\u0e0a\u0e49\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27\n\u0e23\u0e16\u0e23\u0e31\u0e1a\u0e08\u0e49\u0e32\u0e07"
+  },
+  {
+   "fieldname": "column_break_whnz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_collateral_vehicle4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "col_insurance_policy_number",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19\u0e20\u0e31\u0e22"
+  },
+  {
+   "fieldname": "col_date_of_insurance_expiry",
+   "fieldtype": "Date",
+   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19\u0e20\u0e31\u0e22\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38"
+  },
+  {
+   "fieldname": "col_insurance_issuer",
+   "fieldtype": "Data",
+   "label": "\u0e1a\u0e23\u0e34\u0e29\u0e31\u0e17\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19\u0e20\u0e31\u0e22"
+  },
+  {
+   "fieldname": "column_break_nqdo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "col_policy_number",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48 \u0e1e.\u0e23.\u0e1a"
+  },
+  {
+   "fieldname": "col_date_of_policy_expiry",
+   "fieldtype": "Date",
+   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48 \u0e1e.\u0e23.\u0e1a. \u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38"
+  },
+  {
+   "fieldname": "col_policy_company",
+   "fieldtype": "Data",
+   "label": "\u0e1a\u0e23\u0e34\u0e29\u0e31\u0e17 \u0e1e.\u0e23.\u0e1a."
+  },
+  {
+   "fieldname": "col_date_of_tax_expiry",
+   "fieldtype": "Date",
+   "label": "\u0e27\u0e31\u0e19\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38\u0e20\u0e32\u0e29\u0e35\u0e23\u0e16",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_collateral_vehicle5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "col_year_of_possession",
+   "fieldtype": "Select",
+   "label": "\u0e1b\u0e35\u0e17\u0e35\u0e48\u0e04\u0e23\u0e2d\u0e1a\u0e04\u0e23\u0e2d\u0e07\u0e23\u0e16",
+   "options": "2568"
+  },
+  {
+   "fieldname": "column_break_fatc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "col_month_of_possession",
+   "fieldtype": "Select",
+   "label": "\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e17\u0e35\u0e48\u0e04\u0e23\u0e2d\u0e1a\u0e04\u0e23\u0e2d\u0e07\u0e23\u0e16",
+   "options": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12"
+  },
+  {
+   "fieldname": "column_break_tunp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "col_day_of_possession",
+   "fieldtype": "Select",
+   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e04\u0e23\u0e2d\u0e1a\u0e04\u0e23\u0e2d\u0e07\u0e23\u0e16",
+   "options": "1\n2\n3\n4\n5"
+  },
+  {
+   "fieldname": "column_break_rcku",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "col_total_day_of_possession",
+   "fieldtype": "Int",
+   "is_virtual": 1,
+   "label": "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e27\u0e31\u0e19\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14\u0e17\u0e35\u0e48\u0e04\u0e23\u0e2d\u0e1a\u0e04\u0e23\u0e2d\u0e07\u0e23\u0e16",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_collateral_land",
+   "fieldtype": "Section Break",
+   "label": "\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19\u0e1a\u0e49\u0e32\u0e19\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19"
+  },
+  {
+   "fieldname": "col_sheet",
+   "fieldtype": "Data",
+   "label": "<a href=\"http://10.1.112.126:8000/private/files/\u0e27\u0e34\u0e18\u0e35\u0e01\u0e23\u0e2d\u0e01\u0e40\u0e25\u0e02\u0e23\u0e30\u0e27\u0e32\u0e07.png\" style=\"font-size: 13px;\">\u0e23\u0e30\u0e27\u0e32\u0e07 (\u0e01\u0e14\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e14\u0e39\u0e27\u0e34\u0e18\u0e35\u0e01\u0e32\u0e23\u0e01\u0e23\u0e2d\u0e01\u0e40\u0e25\u0e02\u0e23\u0e30\u0e27\u0e32\u0e07)</a>"
+  },
+  {
+   "fieldname": "col_land_parcel_number",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_dealing_file_number",
+   "fieldtype": "Data",
+   "label": "\u0e2b\u0e19\u0e49\u0e32\u0e2a\u0e33\u0e23\u0e27\u0e08",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_subdistrict",
+   "fieldtype": "Select",
+   "label": "\u0e41\u0e02\u0e27\u0e07/\u0e15\u0e33\u0e1a\u0e25",
+   "options": "\u0e08\u0e2d\u0e21\u0e1e\u0e25",
+   "reqd": 1
+  },
+  {
+   "default": "\u0e08\u0e15\u0e38\u0e08\u0e31\u0e01\u0e23",
+   "fieldname": "col_district",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e02\u0e15/\u0e2d\u0e33\u0e40\u0e20\u0e2d",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "\u0e01\u0e23\u0e38\u0e07\u0e40\u0e17\u0e1e\u0e21\u0e2b\u0e32\u0e19\u0e04\u0e23",
+   "fieldname": "col_province",
+   "fieldtype": "Data",
+   "label": "\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_mcqs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "col_title_deed_number",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e42\u0e09\u0e19\u0e14",
+   "reqd": 1
+  },
+  {
+   "fieldname": "col_volume",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e25\u0e48\u0e21"
+  },
+  {
+   "fieldname": "col_page",
+   "fieldtype": "Data",
+   "label": "\u0e2b\u0e19\u0e49\u0e32"
+  },
+  {
+   "default": "0",
+   "fieldname": "col_location",
+   "fieldtype": "Check",
+   "label": "\u0e1a\u0e49\u0e32\u0e19\u0e2b\u0e23\u0e37\u0e2d\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19\u0e15\u0e31\u0e49\u0e07\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e40\u0e02\u0e15\u0e40\u0e17\u0e28\u0e1a\u0e32\u0e25"
+  },
+  {
+   "fieldname": "btn_search_land",
+   "fieldtype": "Button",
+   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32"
+  },
+  {
+   "fieldname": "section_collateral_land2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "btn_treasury_page",
+   "fieldtype": "Button",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e23\u0e32\u0e04\u0e32\u0e01\u0e23\u0e21\u0e18\u0e19\u0e32\u0e23\u0e31\u0e01\u0e29\u0e4c"
+  },
+  {
+   "fieldname": "column_break_pjnz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "btn_dol_page",
+   "fieldtype": "Button",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e01\u0e23\u0e21\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19"
+  },
+  {
+   "fieldname": "column_break_earg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hyperlink_treasury_page",
+   "fieldtype": "HTML",
+   "hidden": 1,
+   "is_virtual": 1,
+   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e23\u0e32\u0e04\u0e32\u0e01\u0e23\u0e21\u0e18\u0e19\u0e32\u0e23\u0e31\u0e01\u0e29\u0e4c"
+  },
+  {
+   "fieldname": "column_break_qtmt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hyperlink_dol_page",
+   "fieldtype": "HTML",
+   "hidden": 1,
+   "is_virtual": 1,
+   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e01\u0e23\u0e21\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19"
+  },
+  {
+   "fieldname": "section_collateral_land3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "col_rai",
+   "fieldtype": "Float",
+   "label": "\u0e44\u0e23\u0e48",
+   "precision": "2"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "col_ngan",
+   "fieldtype": "Float",
+   "label": "\u0e07\u0e32\u0e19",
+   "precision": "2"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "col_square_wah",
+   "fieldtype": "Float",
+   "label": "\u0e15\u0e32\u0e23\u0e32\u0e07\u0e27\u0e32",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_jfiz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_collateral_land4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "col_building_type",
+   "fieldtype": "Select",
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e2a\u0e34\u0e48\u0e07\u0e1b\u0e25\u0e39\u0e01\u0e2a\u0e23\u0e49\u0e32\u0e07",
+   "options": "\u0e1a\u0e49\u0e32\u0e19\u0e40\u0e14\u0e35\u0e48\u0e22\u0e27\n\u0e1a\u0e49\u0e32\u0e19\u0e41\u0e1d\u0e14"
+  },
+  {
+   "default": "0",
+   "fieldname": "col_building_age",
+   "fieldtype": "Int",
+   "label": "\u0e2d\u0e32\u0e22\u0e38\u0e2a\u0e34\u0e48\u0e07\u0e1b\u0e25\u0e39\u0e01\u0e2a\u0e23\u0e49\u0e32\u0e07 (\u0e1b\u0e35)"
+  },
+  {
+   "fieldname": "col_project_name",
+   "fieldtype": "Data",
+   "label": "\u0e0a\u0e37\u0e48\u0e2d\u0e42\u0e04\u0e23\u0e07\u0e01\u0e32\u0e23"
+  },
+  {
+   "fieldname": "column_break_kopo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "col_building_area",
+   "fieldtype": "Float",
+   "label": "\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48\u0e2a\u0e34\u0e48\u0e07\u0e1b\u0e25\u0e39\u0e01\u0e2a\u0e23\u0e49\u0e32\u0e07 (\u0e15\u0e32\u0e23\u0e32\u0e07\u0e40\u0e21\u0e15\u0e23)",
+   "precision": "2"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "col_building_appraisal_value_square_meter",
+   "fieldtype": "Float",
+   "label": "\u0e23\u0e32\u0e04\u0e32\u0e1b\u0e23\u0e30\u0e40\u0e21\u0e34\u0e19\u0e2a\u0e34\u0e48\u0e07\u0e1b\u0e25\u0e39\u0e01\u0e2a\u0e23\u0e49\u0e32\u0e07 (\u0e15\u0e48\u0e2d\u0e15\u0e32\u0e23\u0e32\u0e07\u0e40\u0e21\u0e15\u0e23)",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_collateral_land5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "col_land_owner",
+   "fieldtype": "Data",
+   "label": "\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e16\u0e37\u0e2d\u0e04\u0e23\u0e2d\u0e07",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_vmnn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "f43_2",
+   "fieldtype": "HTML",
+   "label": "\u0e40\u0e27\u0e49\u0e19\u0e1a\u0e23\u0e23\u0e17\u0e31\u0e14\u0e40\u0e1b\u0e47\u0e19\u0e40\u0e08\u0e49\u0e32\u0e02\u0e2d\u0e07",
+   "options": "<br>"
+  },
+  {
+   "default": "0",
+   "fieldname": "col_is_host",
+   "fieldtype": "Check",
+   "label": "\u0e40\u0e1b\u0e47\u0e19\u0e40\u0e08\u0e49\u0e32\u0e02\u0e2d\u0e07"
+  },
+  {
+   "fieldname": "section_collateral_land6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "col_land_appraisal_value",
+   "fieldtype": "Float",
+   "label": "\u0e23\u0e32\u0e04\u0e32\u0e1b\u0e23\u0e30\u0e40\u0e21\u0e34\u0e19\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19",
+   "precision": "2"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "col_building_appraisal_value",
+   "fieldtype": "Float",
+   "label": "\u0e23\u0e32\u0e04\u0e32\u0e1b\u0e23\u0e30\u0e40\u0e21\u0e34\u0e19\u0e2a\u0e34\u0e48\u0e07\u0e1b\u0e25\u0e39\u0e01\u0e2a\u0e23\u0e49\u0e32\u0e07",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0.00",
+   "fieldname": "col_total_appraisal_value",
+   "fieldtype": "Float",
+   "label": "\u0e23\u0e32\u0e04\u0e32\u0e1b\u0e23\u0e30\u0e40\u0e21\u0e34\u0e19\u0e23\u0e27\u0e21",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_wcvc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "col_mortgage_limit",
+   "fieldtype": "Float",
+   "label": "\u0e27\u0e07\u0e40\u0e07\u0e34\u0e19\u0e01\u0e32\u0e23\u0e08\u0e14\u0e08\u0e33\u0e19\u0e2d\u0e07",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "default": "0.00",
+   "fieldname": "col_total_loan_principal",
+   "fieldtype": "Float",
+   "label": "\u0e22\u0e2d\u0e14\u0e08\u0e14\u0e08\u0e33\u0e19\u0e2d\u0e07\u0e23\u0e27\u0e21\u0e17\u0e35\u0e48\u0e40\u0e04\u0e22\u0e02\u0e2d\u0e2a\u0e31\u0e0d\u0e0d\u0e32",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0.00",
+   "fieldname": "col_remaining_loan_principal",
+   "fieldtype": "Float",
+   "label": "\u0e22\u0e2d\u0e14\u0e08\u0e33\u0e19\u0e2d\u0e07\u0e04\u0e07\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e17\u0e33\u0e2a\u0e31\u0e0d\u0e0d\u0e32",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_collateral_details3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e2b\u0e15\u0e38\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
+  },
+  {
+   "fieldname": "section_loan_condition",
+   "fieldtype": "Section Break",
+   "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d"
+  },
+  {
+   "fieldname": "lease_type",
+   "fieldtype": "Select",
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e01\u0e32\u0e23\u0e43\u0e2b\u0e49\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d",
+   "options": "\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e40\u0e07\u0e34\u0e19\u0e01\u0e39\u0e49 (\u0e44\u0e21\u0e48\u0e21\u0e35\u0e20\u0e32\u0e29\u0e35)\n\u0e40\u0e0a\u0e48\u0e32\u0e0b\u0e37\u0e49\u0e2d",
+   "reqd": 1
+  },
+  {
+   "fieldname": "application_type",
+   "fieldtype": "Select",
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e43\u0e1a\u0e04\u0e33\u0e02\u0e2d",
+   "options": "\u0e43\u0e2b\u0e21\u0e48\n\u0e23\u0e35\u0e44\u0e1f\u0e41\u0e19\u0e19\u0e0b\u0e4c",
+   "reqd": 1
+  },
+  {
+   "fieldname": "registration_year",
+   "fieldtype": "Select",
+   "label": "\u0e1b\u0e35\u0e17\u0e35\u0e48\u0e08\u0e14\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19",
+   "options": "2024",
+   "reqd": 1
+  },
+  {
+   "fieldname": "requested_amount",
+   "fieldtype": "Float",
+   "label": "\u0e22\u0e2d\u0e14\u0e08\u0e31\u0e14\u0e15\u0e31\u0e49\u0e07\u0e15\u0e49\u0e19",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ltv",
+   "fieldtype": "Percent",
+   "hidden": 1,
+   "label": "% LTV"
+  },
+  {
+   "fieldname": "calculation_type",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e01\u0e32\u0e23\u0e04\u0e33\u0e19\u0e27\u0e13",
+   "options": "\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e22\u0e2d\u0e14\u0e08\u0e31\u0e14\n\u0e2b\u0e31\u0e01\u0e01\u0e48\u0e2d\u0e19\u0e42\u0e2d\u0e19"
+  },
+  {
+   "fieldname": "installment_type",
+   "fieldtype": "Select",
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e04\u0e48\u0e32\u0e07\u0e27\u0e14",
+   "options": "\u0e04\u0e48\u0e32\u0e07\u0e27\u0e14\u0e1b\u0e01\u0e15\u0e34",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_indy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "marketing_code",
+   "fieldtype": "Select",
+   "label": "\u0e23\u0e2b\u0e31\u0e2a\u0e01\u0e32\u0e23\u0e15\u0e25\u0e32\u0e14",
+   "options": "\u0e1b\u0e49\u0e32\u0e22\u0e2b\u0e19\u0e49\u0e32\u0e2a\u0e32\u0e02\u0e32,\u0e1b\u0e49\u0e32\u0e22\u0e25\u0e49\u0e2d\u0e40\u0e25\u0e37\u0e48\u0e2d\u0e19\nNano Finance_\u0e42\u0e0a\u0e27\u0e4c\u0e2b\u0e48\u0e27\u0e22"
+  },
+  {
+   "fieldname": "source_of_customer",
+   "fieldtype": "Select",
+   "label": "\u0e17\u0e35\u0e48\u0e21\u0e32\u0e02\u0e2d\u0e07\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32",
+   "options": "\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\u0e41\u0e19\u0e30\u0e19\u0e33\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\n\u0e23\u0e16\u0e02\u0e32\u0e22 \u0e08\u0e31\u0e14\u0e15\u0e48\u0e2d",
+   "reqd": 1
+  },
+  {
+   "fieldname": "referral",
+   "fieldtype": "Select",
+   "label": "\u0e1c\u0e39\u0e49\u0e41\u0e19\u0e30\u0e19\u0e33",
+   "options": "\u0e17\u0e2d\u0e07\u0e40\u0e2b\u0e21\u0e35\u0e22\u0e27\n\u0e17\u0e2d\u0e07\u0e42\u0e2e\u0e48\u0e07"
+  },
+  {
+   "fieldname": "ownership",
+   "fieldtype": "Select",
+   "label": "\u0e01\u0e23\u0e23\u0e21\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c",
+   "options": "01.\u0e42\u0e2d\u0e19\u0e25\u0e2d\u0e22/\u0e44\u0e21\u0e48\u0e42\u0e2d\u0e19 --> SP2022(New)\n02.\u0e42\u0e2d\u0e19\u0e01\u0e23\u0e23\u0e21\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c --> SP2022(New)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "campaign_code",
+   "fieldtype": "Select",
+   "label": "\u0e41\u0e04\u0e21\u0e40\u0e1b\u0e0d",
+   "options": "\u0e01010N (1% CTV \u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e22\u0e01\u0e40\u0e27\u0e49\u0e19 Fees & Insurance \u0e44\u0e14\u0e49)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "campaign_interest_rate",
+   "fieldtype": "Percent",
+   "hidden": 1,
+   "label": "\u0e2d\u0e31\u0e15\u0e23\u0e32\u0e14\u0e2d\u0e01\u0e40\u0e1a\u0e35\u0e49\u0e22\u0e02\u0e2d\u0e07\u0e41\u0e04\u0e21\u0e40\u0e1b\u0e0d"
+  },
+  {
+   "fieldname": "btn_search_campaign",
+   "fieldtype": "Button",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e41\u0e04\u0e21\u0e40\u0e1b\u0e0d"
+  },
+  {
+   "fieldname": "section_loan_condition2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "payment_frequency",
+   "fieldtype": "Select",
+   "label": "\u0e23\u0e30\u0e22\u0e30\u0e2b\u0e48\u0e32\u0e07\u0e1c\u0e48\u0e2d\u0e19\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e15\u0e48\u0e2d\u0e07\u0e27\u0e14",
+   "options": "1",
+   "reqd": 1
+  },
+  {
+   "fieldname": "term",
+   "fieldtype": "Select",
+   "label": "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e07\u0e27\u0e14\u0e17\u0e31\u0e49\u0e07\u0e2a\u0e31\u0e0d\u0e0d\u0e32",
+   "options": "12\n16\n24",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_periods_month",
+   "fieldtype": "Int",
+   "label": "\u0e23\u0e30\u0e22\u0e30\u0e40\u0e27\u0e25\u0e32\u0e23\u0e27\u0e21 (\u0e40\u0e14\u0e37\u0e2d\u0e19)"
+  },
+  {
+   "fieldname": "column_break_adds",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "due_day",
+   "fieldtype": "Select",
+   "label": "\u0e0a\u0e33\u0e23\u0e30\u0e17\u0e38\u0e01\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48",
+   "reqd": 1
+  },
+  {
+   "fieldname": "agreement_date",
+   "fieldtype": "Date",
+   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e17\u0e33\u0e2a\u0e31\u0e0d\u0e0d\u0e32",
+   "reqd": 1
+  },
+  {
+   "fieldname": "first_due_date",
+   "fieldtype": "Date",
+   "label": "\u0e27\u0e31\u0e19\u0e40\u0e23\u0e34\u0e48\u0e21\u0e2a\u0e31\u0e0d\u0e0d\u0e32 (\u0e07\u0e27\u0e14\u0e41\u0e23\u0e01)"
+  },
+  {
+   "fieldname": "last_due_date",
+   "fieldtype": "Date",
+   "label": "\u0e27\u0e31\u0e19\u0e2a\u0e34\u0e49\u0e19\u0e2a\u0e38\u0e14\u0e2a\u0e31\u0e0d\u0e0d\u0e32 (\u0e07\u0e27\u0e14\u0e2a\u0e38\u0e14\u0e17\u0e49\u0e32\u0e22)"
+  },
+  {
+   "fieldname": "section_loan_condition3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "\u0e1a\u0e23\u0e34\u0e29\u0e31\u0e17"
+  },
+  {
+   "fieldname": "section_loan_condition4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "btn_calculate_loan_condition",
+   "fieldtype": "Button",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e33\u0e19\u0e27\u0e13\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21/\u0e04\u0e48\u0e32\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19\u0e20\u0e31\u0e22/\u0e15\u0e32\u0e23\u0e32\u0e07\u0e01\u0e32\u0e23\u0e0a\u0e33\u0e23\u0e30\u0e40\u0e07\u0e34\u0e19"
+  },
+  {
+   "fieldname": "section_loan_condition5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "financing_amount_net",
+   "fieldtype": "Float",
+   "label": "\u0e22\u0e2d\u0e14\u0e08\u0e31\u0e14\u0e44\u0e1f\u0e41\u0e19\u0e19\u0e0b\u0e4c (\u0e2a\u0e38\u0e17\u0e18\u0e34)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0.00",
+   "fieldname": "yield_percent",
+   "fieldtype": "Float",
+   "label": "\u0e2d\u0e31\u0e15\u0e23\u0e32\u0e14\u0e2d\u0e01\u0e40\u0e1a\u0e35\u0e49\u0e22",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0.00",
+   "fieldname": "yield_amount",
+   "fieldtype": "Float",
+   "label": "\u0e14\u0e2d\u0e01\u0e40\u0e1a\u0e35\u0e49\u0e22",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0.00",
+   "fieldname": "tax_amount",
+   "fieldtype": "Float",
+   "label": "\u0e20\u0e32\u0e29\u0e35",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0.00",
+   "fieldname": "total_debtor",
+   "fieldtype": "Float",
+   "label": "\u0e22\u0e2d\u0e14\u0e25\u0e39\u0e01\u0e2b\u0e19\u0e35\u0e49\u0e17\u0e31\u0e49\u0e07\u0e2b\u0e21\u0e14",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_qapy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "installment_amount",
+   "fieldtype": "Float",
+   "label": "\u0e04\u0e48\u0e32\u0e07\u0e27\u0e14\u0e41\u0e23\u0e01",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0.00",
+   "fieldname": "last_installment_amount",
+   "fieldtype": "Float",
+   "label": "\u0e04\u0e48\u0e32\u0e07\u0e27\u0e14\u0e2a\u0e38\u0e14\u0e17\u0e49\u0e32\u0e22",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_loan_condition6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_fees",
+   "fieldtype": "Table",
+   "label": "\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21",
+   "options": "SWP_Loan_Fees"
+  },
+  {
+   "fieldname": "section_loan_condition7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_jrxd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_cmkj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "total_fees_charged",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e23\u0e27\u0e21\u0e22\u0e2d\u0e14\u0e40\u0e23\u0e35\u0e22\u0e01\u0e40\u0e01\u0e47\u0e1a",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ginj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "total_fees_discount",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e23\u0e27\u0e21\u0e2a\u0e48\u0e27\u0e19\u0e25\u0e14",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_kiij",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "total_fees_net",
+   "fieldtype": "Float",
+   "label": "\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e1a\u0e21\u0e2a\u0e38\u0e17\u0e18\u0e34",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_loan_condition8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_insurance",
+   "fieldtype": "Table",
+   "label": "\u0e04\u0e48\u0e32\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19",
+   "options": "SWP_Loan_Insurance"
+  },
+  {
+   "fieldname": "section_loan_condition9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_qcbv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_trmr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_iojx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_uqjp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "total_insurance_net",
+   "fieldtype": "Float",
+   "label": "\u0e04\u0e48\u0e32\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19\u0e2a\u0e38\u0e17\u0e18\u0e34",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_loan_condition10",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_deduction",
+   "fieldtype": "Table",
+   "label": "\u0e04\u0e48\u0e32\u0e43\u0e0a\u0e49\u0e08\u0e48\u0e32\u0e22\u0e2b\u0e31\u0e01\u0e08\u0e32\u0e01\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e40\u0e01\u0e48\u0e32",
+   "options": "SWP_Loan_Deduction"
+  },
+  {
+   "fieldname": "section_loan_condition11",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_bqqd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_mqfj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "deduction01",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e23\u0e27\u0e21\u0e22\u0e2d\u0e14\u0e40\u0e23\u0e35\u0e22\u0e01\u0e40\u0e01\u0e47\u0e1a",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_yftt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "deduction02",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e23\u0e27\u0e21\u0e2a\u0e48\u0e27\u0e19\u0e25\u0e14",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_uaqo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "deduction03",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e2b\u0e31\u0e01\u0e40\u0e07\u0e34\u0e19\u0e2a\u0e38\u0e17\u0e18\u0e34",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_loan_condition12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_sxca",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "table_outstanding_balance",
+   "fieldtype": "Table",
+   "label": "\u0e04\u0e48\u0e32\u0e43\u0e0a\u0e49\u0e08\u0e48\u0e32\u0e22\u0e04\u0e07\u0e04\u0e49\u0e32\u0e07\u0e08\u0e32\u0e01\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e40\u0e01\u0e48\u0e32",
+   "options": "SWP_Loan_Deduction"
+  },
+  {
+   "fieldname": "section_loan_condition13",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_nsfy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_spfj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "ob01",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e23\u0e27\u0e21\u0e22\u0e2d\u0e14\u0e40\u0e23\u0e35\u0e22\u0e01\u0e40\u0e01\u0e47\u0e1a",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_zots",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "ob02",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e23\u0e27\u0e21\u0e2a\u0e48\u0e27\u0e19\u0e25\u0e14",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_bujy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "ob03",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e2b\u0e31\u0e01\u0e40\u0e07\u0e34\u0e19\u0e2a\u0e38\u0e17\u0e18\u0e34",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_loan_condition14",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "bank_account",
+   "fieldtype": "Select",
+   "label": "\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49",
+   "options": "\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e40\u0e1e\u0e22\u0e4c\n\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23\u0e01\u0e2a\u0e34\u0e01\u0e23\u0e44\u0e17\u0e22",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bank_account_type",
+   "fieldtype": "Select",
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1a\u0e31\u0e0d\u0e0a\u0e35",
+   "options": "\u0e2d\u0e2d\u0e21\u0e17\u0e23\u0e31\u0e1e\u0e22\u0e4c\n\u0e01\u0e23\u0e30\u0e41\u0e2a\u0e23\u0e32\u0e22\u0e27\u0e31\u0e19",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bank_account_number",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e1a\u0e31\u0e0d\u0e0a\u0e35",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_nbvq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "virtual_financing_amount_net",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e22\u0e2d\u0e14\u0e08\u0e31\u0e14\u0e44\u0e1f\u0e41\u0e19\u0e19\u0e0b\u0e4c (\u0e2a\u0e38\u0e17\u0e18\u0e34)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0.00",
+   "fieldname": "virtual_total_fees_net",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21 (\u0e2a\u0e38\u0e17\u0e18\u0e34)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0.00",
+   "fieldname": "virtual_total_insurance_net",
+   "fieldtype": "Float",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e48\u0e32\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19 (\u0e2a\u0e38\u0e17\u0e18\u0e34)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0.00",
+   "fieldname": "total_deduction",
+   "fieldtype": "Float",
+   "label": "\u0e1b\u0e34\u0e14\u0e1b\u0e23\u0e31\u0e1a\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e40\u0e14\u0e34\u0e21 (\u0e2a\u0e38\u0e17\u0e18\u0e34)",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "default": "0.00",
+   "fieldname": "advanced_installment_amount",
+   "fieldtype": "Float",
+   "label": "\u0e04\u0e48\u0e32\u0e07\u0e27\u0e14\u0e25\u0e48\u0e27\u0e07\u0e2b\u0e19\u0e49\u0e32",
+   "precision": "2"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "remaining_transfer_amount",
+   "fieldtype": "Float",
+   "label": "\u0e04\u0e07\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e42\u0e2d\u0e19",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_borrower_details",
+   "fieldtype": "Section Break",
+   "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
+  },
+  {
+   "fieldname": "cus_customer_id",
+   "fieldtype": "Data",
+   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e1a\u0e31\u0e15\u0e23",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cus_first_name",
+   "fieldtype": "Data",
+   "label": "\u0e0a\u0e37\u0e48\u0e2d",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cus_date_of_birth",
+   "fieldtype": "Date",
+   "label": "\u0e27\u0e31\u0e19\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e1b\u0e35\u0e40\u0e01\u0e34\u0e14",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cus_issue_date",
+   "fieldtype": "Date",
+   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cus_identification_type",
+   "fieldtype": "Select",
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1a\u0e31\u0e15\u0e23",
+   "options": "\u0e1a\u0e31\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e0a\u0e19\n\u0e1e\u0e32\u0e2a\u0e1b\u0e2d\u0e23\u0e4c\u0e15",
+   "reqd": 1
+  },
+  {
+   "fieldname": "html_rkco",
+   "fieldtype": "HTML",
+   "options": "<p style=\"color: red;\">*\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e1a\u0e31\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e15\u0e25\u0e2d\u0e14\u0e0a\u0e35\u0e1e \u0e43\u0e2b\u0e49\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e1a\u0e31\u0e15\u0e23\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e44\u0e1b\u0e2d\u0e35\u0e01 20 \u0e1b\u0e35\u0e08\u0e32\u0e01\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23 !</p>"
+  },
+  {
+   "fieldname": "column_break_reke",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cus_salutation",
+   "fieldtype": "Select",
+   "label": "\u0e04\u0e33\u0e19\u0e33\u0e2b\u0e19\u0e49\u0e32",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cus_last_name",
+   "fieldtype": "Data",
+   "label": "\u0e19\u0e32\u0e21\u0e2a\u0e01\u0e38\u0e25",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cus_age",
+   "fieldtype": "Int",
+   "label": "\u0e2d\u0e32\u0e22\u0e38"
+  },
+  {
+   "fieldname": "cus_expiry_date",
+   "fieldtype": "Date",
+   "label": "\u0e1a\u0e31\u0e15\u0e23\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cus_issuer",
+   "fieldtype": "Select",
+   "label": "\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23\u0e42\u0e14\u0e22",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_borrower_details2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cus_nick_name",
+   "fieldtype": "Data",
+   "label": "\u0e0a\u0e37\u0e48\u0e2d\u0e40\u0e25\u0e48\u0e19"
+  },
+  {
+   "fieldname": "cus_nationality",
+   "fieldtype": "Select",
+   "label": "\u0e2a\u0e31\u0e0d\u0e0a\u0e32\u0e15\u0e34",
+   "options": "\u0e44\u0e17\u0e22",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cus_race",
+   "fieldtype": "Select",
+   "label": "\u0e40\u0e0a\u0e37\u0e49\u0e2d\u0e0a\u0e32\u0e15\u0e34",
+   "options": "\u0e44\u0e17\u0e22",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_bsuj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cus_customer_type",
+   "fieldtype": "Select",
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49",
+   "options": "\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e18\u0e23\u0e23\u0e21\u0e14\u0e32\n\u0e19\u0e34\u0e15\u0e34\u0e1a\u0e38\u0e04\u0e04\u0e25",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cus_gender",
+   "fieldtype": "Select",
+   "label": "\u0e40\u0e1e\u0e28",
+   "options": "\u0e0a\u0e32\u0e22\n\u0e2b\u0e0d\u0e34\u0e07\n\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cus_marital_status",
+   "fieldtype": "Select",
+   "label": "\u0e2a\u0e16\u0e32\u0e19\u0e20\u0e32\u0e1e\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e23\u0e2a",
+   "options": "\u0e42\u0e2a\u0e14\n\u0e2a\u0e21\u0e23\u0e2a",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_borrower_details3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cus_occupation",
+   "fieldtype": "Select",
+   "label": "\u0e2d\u0e32\u0e0a\u0e35\u0e1e",
+   "options": "\u0e42\u0e1b\u0e23\u0e41\u0e01\u0e23\u0e21\u0e40\u0e21\u0e2d\u0e23\u0e4c\n\u0e19\u0e31\u0e01\u0e1a\u0e2d\u0e25\n\u0e04\u0e23\u0e39",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "cus_work_experience_year",
+   "fieldtype": "Int",
+   "label": "\u0e1b\u0e23\u0e30\u0e2a\u0e1a\u0e01\u0e32\u0e23\u0e13\u0e4c (\u0e1b\u0e35)"
+  },
+  {
+   "fieldname": "cus_work_experience_month",
+   "fieldtype": "Select",
+   "label": "\u0e1b\u0e23\u0e30\u0e2a\u0e1a\u0e01\u0e32\u0e23\u0e13\u0e4c (\u0e40\u0e14\u0e37\u0e2d\u0e19)",
+   "options": "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12"
+  },
+  {
+   "fieldname": "cus_additional_occupation",
+   "fieldtype": "Select",
+   "label": "\u0e2d\u0e32\u0e0a\u0e35\u0e1e\u0e40\u0e2a\u0e23\u0e34\u0e21"
+  },
+  {
+   "fieldname": "cus_occupation_detail",
+   "fieldtype": "Small Text",
+   "label": "\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14\u0e2d\u0e32\u0e0a\u0e35\u0e1e"
+  },
+  {
+   "fieldname": "column_break_usfd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "cus_monthly_salary",
+   "fieldtype": "Float",
+   "label": "\u0e23\u0e32\u0e22\u0e44\u0e14\u0e49\u0e2b\u0e25\u0e31\u0e01",
+   "precision": "2"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "cus_extra_income",
+   "fieldtype": "Float",
+   "label": "\u0e23\u0e32\u0e22\u0e44\u0e14\u0e49\u0e40\u0e2a\u0e23\u0e34\u0e21",
+   "precision": "2"
+  },
+  {
+   "default": "0.00",
+   "fieldname": "cus_total_expense",
+   "fieldtype": "Float",
+   "label": "\u0e04\u0e48\u0e32\u0e43\u0e0a\u0e49\u0e08\u0e48\u0e32\u0e22\u0e23\u0e27\u0e21",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_borrower_details4",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cus_workplace",
+   "fieldtype": "Data",
+   "label": "\u0e2a\u0e16\u0e32\u0e19\u0e17\u0e35\u0e48\u0e17\u0e33\u0e07\u0e32\u0e19"
+  },
+  {
+   "fieldname": "cus_name_of_manager",
+   "fieldtype": "Data",
+   "label": "\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23"
+  },
+  {
+   "fieldname": "column_break_owwd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cus_department",
+   "fieldtype": "Data",
+   "label": "\u0e41\u0e1c\u0e19\u0e01"
+  },
+  {
+   "fieldname": "cus_position",
+   "fieldtype": "Data",
+   "label": "\u0e15\u0e33\u0e41\u0e2b\u0e19\u0e48\u0e07"
+  },
+  {
+   "fieldname": "section_borrower_details5",
+   "fieldtype": "Section Break",
+   "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
+  },
+  {
+   "fieldname": "copy_from",
+   "fieldtype": "Select",
+   "label": "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e08\u0e32\u0e01",
+   "options": "\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1a\u0e31\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e0a\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e35\u0e48\u0e17\u0e33\u0e07\u0e32\u0e19"
+  },
+  {
+   "fieldname": "column_break_jmng",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "f119_2",
+   "fieldtype": "Select",
+   "label": "\u0e2a\u0e16\u0e32\u0e19\u0e30\u0e43\u0e19\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19",
+   "options": "\u0e40\u0e08\u0e49\u0e32\u0e1a\u0e49\u0e32\u0e19\n\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48\u0e08\u0e31\u0e14\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e02\u0e2d\u0e07\u0e2a\u0e32\u0e02\u0e32\n\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\u0e19\u0e32\u0e19\u0e40\u0e01\u0e34\u0e19 5 \u0e1b\u0e35\n\u0e21\u0e35\u0e1a\u0e34\u0e25\u0e04\u0e48\u0e32\u0e19\u0e49\u0e33\u0e04\u0e48\u0e32\u0e44\u0e1f\u0e0a\u0e37\u0e48\u0e2d\u0e15\u0e31\u0e27\u0e40\u0e2d\u0e07\n\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e49\u0e32\u0e23\u0e32\u0e0a\u0e01\u0e32\u0e23/\u0e23\u0e31\u0e10\u0e27\u0e34\u0e2a\u0e32\u0e2b\u0e01\u0e34\u0e08"
+  },
+  {
+   "fieldname": "section_borrower_details6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_borrower_address",
+   "fieldtype": "Table",
+   "label": "\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49",
+   "options": "SWP_Borrower_Address"
+  },
+  {
+   "fieldname": "section_borrower_details7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_borrower_social_info",
+   "fieldtype": "Table",
+   "label": "\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e42\u0e0b\u0e40\u0e0a\u0e35\u0e22\u0e25 (\u0e23\u0e30\u0e1a\u0e38\u0e41\u0e2d\u0e1b\u0e1e\u0e25\u0e34\u0e40\u0e04\u0e0a\u0e31\u0e48\u0e19\u0e41\u0e25\u0e30\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e2b\u0e15\u0e38\u0e43\u0e2b\u0e49\u0e04\u0e23\u0e1a\u0e16\u0e49\u0e27\u0e19)",
+   "options": "SWP_Borrower_Social_Information"
+  },
+  {
+   "fieldname": "section_borrower_details8",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "cus_delivery_address",
+   "fieldtype": "Select",
+   "label": "\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e08\u0e31\u0e14\u0e2a\u0e48\u0e07\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23",
+   "options": "\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1a\u0e31\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e0a\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e35\u0e48\u0e17\u0e33\u0e07\u0e32\u0e19",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_wzwm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_borrower_details9",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "consent_marketing",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e27\u0e32\u0e21\u0e22\u0e34\u0e19\u0e22\u0e2d\u0e21\u0e14\u0e49\u0e32\u0e19\u0e01\u0e32\u0e23\u0e15\u0e25\u0e32\u0e14"
+  },
+  {
+   "fieldname": "consent_marketing_value",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "consent_marketing_value"
+  },
+  {
+   "fieldname": "column_break_dxgv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "consent_sensitive_data",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e27\u0e32\u0e21\u0e22\u0e34\u0e19\u0e22\u0e2d\u0e21\u0e14\u0e49\u0e32\u0e19\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e2d\u0e48\u0e2d\u0e19\u0e44\u0e2b\u0e27"
+  },
+  {
+   "fieldname": "consent_sensitive_data_value",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "consent_sensitive_data_value"
+  },
+  {
+   "fieldname": "section_borrower_details10",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "f121",
+   "fieldtype": "Select",
+   "label": "\u0e01\u0e32\u0e23\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07\u0e41\u0e2d\u0e1b\u0e28\u0e23\u0e35\u0e2a\u0e27\u0e31\u0e2a\u0e14\u0e34\u0e4c",
+   "options": "\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07\u0e41\u0e25\u0e49\u0e27\n\u0e22\u0e31\u0e07\u0e44\u0e21\u0e48\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07\n\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49\u0e44\u0e21\u0e48\u0e2a\u0e30\u0e14\u0e27\u0e01\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07"
+  },
+  {
+   "fieldname": "column_break_zeia",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "f122",
+   "fieldtype": "Data",
+   "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e01\u0e32\u0e23\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07 (\u0e2d\u0e32\u0e08\u0e40\u0e1b\u0e47\u0e19 ID \u0e2b\u0e23\u0e37\u0e2d Token \u0e43\u0e0a\u0e49\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e01\u0e32\u0e23\u0e15\u0e34\u0e14\u0e15\u0e31\u0e49\u0e07)"
+  },
+  {
+   "fieldname": "section_borrower_details11",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_borrower_other_asset",
+   "fieldtype": "Table",
+   "label": "\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e2a\u0e34\u0e19\u0e17\u0e23\u0e31\u0e1e\u0e22\u0e4c\u0e2d\u0e37\u0e48\u0e19\u0e46",
+   "options": "SWP_Borrower_Other_Asset"
+  },
+  {
+   "fieldname": "section_borrower_details12",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_related_person",
+   "fieldtype": "Table",
+   "label": "\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e17\u0e37\u0e48\u0e40\u0e01\u0e35\u0e48\u0e22\u0e27\u0e02\u0e49\u0e2d\u0e07",
+   "options": "SWP_Related_Person"
+  },
+  {
+   "fieldname": "section_borrower_details13",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "f123",
+   "fieldtype": "Small Text",
+   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e2b\u0e15\u0e38\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
+  },
+  {
+   "fieldname": "section_guarantor",
+   "fieldtype": "Section Break",
+   "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e1c\u0e39\u0e49\u0e04\u0e49\u0e33"
+  },
+  {
+   "fieldname": "table_guarantor",
+   "fieldtype": "Table",
+   "label": "\u0e23\u0e32\u0e22\u0e01\u0e32\u0e23\u0e1c\u0e39\u0e49\u0e04\u0e49\u0e33",
+   "options": "SWP_Guarantor"
+  },
+  {
+   "fieldname": "tab_general",
+   "fieldtype": "Tab Break",
+   "label": "\u0e17\u0e31\u0e48\u0e27\u0e44\u0e1b"
+  },
+  {
+   "fieldname": "tab_borrower",
+   "fieldtype": "Tab Break",
+   "label": "\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
+  },
+  {
+   "fieldname": "tab_collateral",
+   "fieldtype": "Tab Break",
+   "label": "\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
+  },
+  {
+   "fieldname": "tab_loan_condition",
+   "fieldtype": "Tab Break",
+   "label": "\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d"
+  },
+  {
+   "fieldname": "tab_guarantor",
+   "fieldtype": "Tab Break",
+   "label": "\u0e1c\u0e39\u0e49\u0e04\u0e49\u0e33/\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49\u0e23\u0e48\u0e27\u0e21"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "SWP_Loan_Request_View",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-05-01 21:00:05.933348",
+ "modified_by": "Administrator",
+ "module": "Swp Loan",
+ "name": "SWP_Loan_Request_View",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
