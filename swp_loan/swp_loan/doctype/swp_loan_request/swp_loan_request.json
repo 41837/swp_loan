@@ -1607,8 +1607,9 @@
   },
   {
    "fieldname": "cus_salutation",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e04\u0e33\u0e19\u0e33\u0e2b\u0e19\u0e49\u0e32",
+   "options": "Salutation",
    "reqd": 1
   },
   {
@@ -2120,7 +2121,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-05-01 22:45:24.976705",
+ "modified": "2025-05-07 10:10:20.574457",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",
