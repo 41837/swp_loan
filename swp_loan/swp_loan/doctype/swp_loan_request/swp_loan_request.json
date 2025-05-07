@@ -1082,8 +1082,8 @@
    "fieldname": "col_brand",
    "fieldtype": "Link",
    "label": "\u0e22\u0e35\u0e48\u0e2b\u0e49\u0e2d",
-   "options": "Brand",
-   "reqd": 1
+   "mandatory_depends_on": "eval:![\"H\", \"L\", \"I\"].includes(doc.col_product) && doc.col_product",
+   "options": "Brand"
   },
   {
    "fieldname": "col_model",
@@ -2119,7 +2119,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-05-07 16:39:59.445807",
+ "modified": "2025-05-07 17:35:38.340386",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",
