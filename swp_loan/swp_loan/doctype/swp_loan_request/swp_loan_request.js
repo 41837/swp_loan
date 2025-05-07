@@ -1,15 +1,71 @@
-// Copyright (c) 2025, SWP and contributors
-// For license information, please see license.txt
-
-// frappe.ui.form.on("SWP_Loan_Request", {
-// 	refresh(frm) {
-
-// 	},
-// });
-
-
 frappe.ui.form.on("SWP_Loan_Request", {
     onload: function(frm) {
+        // Hide all sections initially
+        frm.fields_dict.section_header_document.wrapper.hide();
+        frm.fields_dict.section_header_borrower.wrapper.hide();
+        frm.fields_dict.section_borrower_details.wrapper.hide();
+        frm.fields_dict.section_borrower_details2.wrapper.hide();
+        frm.fields_dict.section_borrower_details3.wrapper.hide();
+        frm.fields_dict.section_borrower_details4.wrapper.hide();
+        frm.fields_dict.section_borrower_details5.wrapper.hide();
+        frm.fields_dict.section_borrower_details6.wrapper.hide();
+        frm.fields_dict.section_borrower_details7.wrapper.hide();
+        frm.fields_dict.section_borrower_details8.wrapper.hide();
+        frm.fields_dict.section_borrower_details9.wrapper.hide();
+        frm.fields_dict.section_borrower_details10.wrapper.hide();
+        frm.fields_dict.section_borrower_details11.wrapper.hide();
+        frm.fields_dict.section_borrower_details12.wrapper.hide();
+        frm.fields_dict.section_borrower_details13.wrapper.hide();
+        frm.fields_dict.section_borrower_details14.wrapper.hide();
+        frm.fields_dict.section_header_guarantor.wrapper.hide();
+        frm.fields_dict.section_guarantor.wrapper.hide();
+        frm.fields_dict.section_header_collateral.wrapper.hide();
+        frm.fields_dict.section_collateral_details.wrapper.hide();
+        frm.fields_dict.section_collateral_details2.wrapper.hide();
+        frm.fields_dict.section_collateral_vehicle.wrapper.hide();
+        frm.fields_dict.section_collateral_vehicle2.wrapper.hide();
+        frm.fields_dict.section_collateral_vehicle3.wrapper.hide();
+        frm.fields_dict.section_collateral_vehicle4.wrapper.hide();
+        frm.fields_dict.section_collateral_vehicle5.wrapper.hide();
+        frm.fields_dict.section_collateral_land.wrapper.hide();
+        frm.fields_dict.section_collateral_land2.wrapper.hide();
+        frm.fields_dict.section_collateral_land3.wrapper.hide();
+        frm.fields_dict.section_collateral_land4.wrapper.hide();
+        frm.fields_dict.section_collateral_land5.wrapper.hide();
+        frm.fields_dict.section_collateral_land6.wrapper.hide();
+        frm.fields_dict.section_collateral_details3.wrapper.hide();
+        frm.fields_dict.section_collateral_details4.wrapper.hide();
+        frm.fields_dict.section_header_loan_condition.wrapper.hide();
+        frm.fields_dict.section_loan_condition.wrapper.hide();
+        frm.fields_dict.section_loan_condition2.wrapper.hide();
+        frm.fields_dict.section_loan_condition3.wrapper.hide();
+        frm.fields_dict.section_loan_condition4.wrapper.hide();
+        frm.fields_dict.section_loan_condition5.wrapper.hide();
+        frm.fields_dict.section_loan_condition6.wrapper.hide();
+        frm.fields_dict.section_loan_condition7.wrapper.hide();
+        frm.fields_dict.section_loan_condition8.wrapper.hide();
+        frm.fields_dict.section_loan_condition9.wrapper.hide();
+        frm.fields_dict.section_loan_condition10.wrapper.hide();
+        frm.fields_dict.section_loan_condition11.wrapper.hide();
+        frm.fields_dict.section_loan_condition12.wrapper.hide();
+        frm.fields_dict.section_loan_condition13.wrapper.hide();
+        frm.fields_dict.section_loan_condition14.wrapper.hide();
+        frm.fields_dict.section_loan_condition15.wrapper.hide();
+        frm.fields_dict.section_header_collateral_search.wrapper.hide();
+        frm.fields_dict.section_collateral_search.wrapper.hide();
+        frm.fields_dict.section_input_progress_bar.wrapper.hide();
+        frm.fields_dict.section_form_action.wrapper.hide();
+
+        // Show only borrower search section
+        frm.fields_dict.section_header_borrower_search.wrapper.show();
+        frm.fields_dict.section_borrower_search.wrapper.show();
+
+        // Set HTML content for customer search remark
+        frm.fields_dict.html_customer_search_remark.$wrapper.html(`
+            <div style="color: red; font-size: 13px;">
+                 กรอกหมายเลขบัตรประชาชนของลูกค้า 13 หลัก หรือ เลข Passport เพื่อตรวจสอบข้อมูลในระบบก่อน! หรือ สามารถใส่บัตรประชาชนในเครื่องอ่านบัตร และกด ปุ่มอ่านบัตร/ค้นหา
+            </div><br>
+        `);
 
         // ----------------------------------------------- Start --- ขั้นตอนสร้างเอกสารใหม่
         if (frm.is_new()) {
@@ -22,12 +78,9 @@ frappe.ui.form.on("SWP_Loan_Request", {
             address_defaults.forEach(data => {
                 let row = frm.add_child('table_borrower_address');
                 row.address_type = data.def_address_type;
-                // row.address_location = data.def_address_location;
             });
             frm.refresh_field('table_borrower_address');
             
-
-
             const social_defaults = [
                 { social_type: "Email", social_remark: "email@example.com" },
                 { social_type: "Line", social_remark: "line_id" },
@@ -44,13 +97,9 @@ frappe.ui.form.on("SWP_Loan_Request", {
         }
         // ----------------------------------------------- End --- ขั้นตอนสร้างเอกสารใหม่
 
-
-
         // ----------------------------------------------- Start --- Disable save button
         frm.disable_save();
         // ----------------------------------------------- End --- Disable save button
-
-
 
         // ----------------------------------------------- Start --- สีของ header เอกสาร
         $(frm.fields_dict.section_header_document?.wrapper)
@@ -67,12 +116,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
                 "color": "black"
             });
         // ----------------------------------------------- End--- สีของ header เอกสาร
-
-
-
-
-
-
 
         // ----------------------------------------------- Start --- ดึงค่ามาใส่ใน Banner
         frm.set_value("internal_loan_application_id", frm.doc.name);
@@ -96,15 +139,11 @@ frappe.ui.form.on("SWP_Loan_Request", {
             });
         // ----------------------------------------------- End --- ข้อมูลใน field virtual ยอดจัด
 
-
-        
         // ----------------------------------------------- Start --- ข้อมูลใน field virtual ค่าธรรมเนียม
         frm.fields_dict.banner_total_fees_net.$wrapper
             .find('.like-disabled-input')
             .css('text-align', 'right');
         // ----------------------------------------------- End --- ข้อมูลใน field virtual ค่าธรรมเนียม
-
-
 
         // ----------------------------------------------- Start --- ข้อมูลใน field virtual ยอดโอน
         frm.fields_dict.banner_remaining_transfer_amount.$wrapper
@@ -112,16 +151,12 @@ frappe.ui.form.on("SWP_Loan_Request", {
             .css('text-align', 'right');
         // ----------------------------------------------- End --- ข้อมูลใน field virtual ยอดโอน
 
-
-        
         // ----------------------------------------------- Start --- Disable add row button on child table
         frm.fields_dict.table_fees.grid.cannot_add_rows = true;
         frm.fields_dict.table_insurance.grid.cannot_add_rows = true;
         frm.fields_dict.table_deduction.grid.cannot_add_rows = true;
         frm.fields_dict.table_outstanding_balance.grid.cannot_add_rows = true;
         // End   --- Disable add row button on child table
-
-
 
         // ----------------------------------------------- Start --- Radio button consent marketing field
         frm.fields_dict.consent_marketing.$wrapper.html(`
@@ -135,8 +170,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
         });
         // End   --- Radio button consent marketing field
 
-
-
         // ----------------------------------------------- Start --- Radio button consent sensitive data field
         frm.fields_dict.consent_sensitive_data.$wrapper.html(`
             <label>ความยินยอมด้านข้อมูลอ่อนไหว</label><br>
@@ -148,8 +181,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
             frm.set_value("consent_sensitive_data_value", selected_value);
         });
         // End   --- Radio button consent sensitive data field
-
-
 
         // ----------------------------------------------- Start --- Header borrower search section
         let html_header_borrower_search = `
@@ -178,9 +209,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
         });        
         // End --- Header borrower_search section
 
-
-
-
         // ----------------------------------------------- Start --- Header collateral search section
         let html_header_collateral_search= `
         <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
@@ -207,9 +235,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
             }
         });
         // ----------------------------------------------- End --- Header collateral search section
-
-
-
 
         // ----------------------------------------------- Start --- Header collateral section
         let html_header_collateral = `
@@ -266,8 +291,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
         });
         // ----------------------------------------------- End --- Header collateral section
 
-
-
         // ----------------------------------------------- Start --- Header loan condition section
         let html_header_loan_condition= `
         <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
@@ -323,10 +346,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
         });
         // ----------------------------------------------- End --- Header loan condition section
 
-
-
-
-
         // ----------------------------------------------- Start --- Header borrower section
         let html_header_borrower= `
         <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
@@ -380,8 +399,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
         });
         // ----------------------------------------------- End --- Header borrower section
 
-
-
         // ----------------------------------------------- Start --- Header guarantor section
         let html_header_guarantor= `
         <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
@@ -410,19 +427,13 @@ frappe.ui.form.on("SWP_Loan_Request", {
         // ----------------------------------------------- End --- Header guarantor section
     },
 
-
-
     refresh(frm) {
-
-
         // ----------------------------------------------- Start ซ่อนปุ่ม print
         $('use[href="#icon-printer"]')
             .closest('button')
             .hide();
         // ----------------------------------------------- End ซ่อนปุ่ม print
         
-
-
         // ----------------------------------------------- Start สีขอบของ field ทั้งหมด
         frm.$wrapper
             .find('.frappe-control input, .frappe-control textarea, .frappe-control select')
@@ -431,8 +442,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
             });
         // ----------------------------------------------- End สีขอบของ field ทั้งหมด
 
-
-
         // ----------------------------------------------- Start --- เลขที่ใบสมัครขอสินเชื่อ
         frm.fields_dict.internal_loan_application_id.$wrapper
             .find('.form-control')
@@ -440,8 +449,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
                 "border": "2px solid #007bff"
             });
         // ----------------------------------------------- End --- เลขที่ใบสมัครขอสินเชื่อ
-
-
 
         // ----------------------------------------------- Start input progress bar
         let progress_bar_html = `
@@ -514,7 +521,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
             $(`#step-progress-bar .step[data-step="${step_number}"]`).addClass('active');
         }
         
-
         const stepToSectionMap = {
             1: 'section_header_borrower',
             2: 'section_header_guarantor',
@@ -541,17 +547,12 @@ frappe.ui.form.on("SWP_Loan_Request", {
         });
         // ----------------------------------------------- End input progress bar
 
-
-
         // ----------------------------------------------- Start State
         if (frm.is_new()) {
-
             // ----------------------------------------------- Start เปิด/ปิด section แต่ละ State
             frm.fields_dict.section_header_document.wrapper.hide();
             frm.fields_dict.section_header_borrower_search.wrapper.show();
             frm.fields_dict.section_borrower_search.wrapper.show();
-            frm.fields_dict.section_header_collateral_search.wrapper.show();
-            frm.fields_dict.section_collateral_search.wrapper.show();
             // ----------------------------------------------- End เปิด/ปิด section แต่ละ State
             
         }
@@ -571,8 +572,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
             // ----------------------------------------------- End เปิด/ปิด section แต่ละ State
         }
         // ----------------------------------------------- End State
-
-
 
         // ----------------------------------------------- Start --- Attachment custom button
         frm.add_custom_button(
@@ -614,12 +613,9 @@ frappe.ui.form.on("SWP_Loan_Request", {
         </style>`).appendTo("head");
         // ----------------------------------------------- End --- Attachment custom button
 
-
-        
         // ----------------------------------------------- Start --- Scroll button
         // Check existing button (because this function use in refresh event)
         if (!frm.page.scroll_buttons_added) {
-
             // HTML Scroll to top
             let $btnTop = $(`<button class="btn btn-secondary" style="position:fixed; bottom:80px; right:30px; z-index:1000; display:none;">
                                 <i class="fa fa-arrow-up"></i> เลื่อนบนสุด
@@ -658,7 +654,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
         }
         // ----------------------------------------------- End --- Scroll button
 
-
         // ----------------------------------------------- Start --- Collateral search button
         frm.fields_dict.btn_search_collateral.$wrapper
             .css({
@@ -677,7 +672,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
         // ----------------------------------------------- End --- Collateral search button
 
         
-
         // ----------------------------------------------- Start --- Collateral search button
         frm.fields_dict.btn_search_collateral_ocr.$wrapper
             .css({
@@ -732,7 +726,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
                 'border': 'none',
             })
             .on('click', function() {
-
                 // กำหนด mandatory field ใน section หลักประกัน
                 let required_fields = [
                     "col_collatteral_id",
@@ -781,7 +774,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
                     },
                     callback: function(r) {
                         if (!r.exc && r.message.name) {
-
                             // Alert message
                             frappe.show_alert({
                                 message: 'ข้อมูลหลักประกันถูกบันทึกแล้ว',
@@ -797,10 +789,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
                         }
                     }
                 });
-
-
-
-
             });
 
         
@@ -862,7 +850,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
                 'border': 'none',
             })
             .on('click', function() {
-
                 // กำหนด mandatory field ใน section
                 let required_fields = [
                     "lease_type",
@@ -897,7 +884,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
                     },
                     callback: function(r) {
                         if (!r.exc && r.message.name) {
-
                             // Alert message
                             frappe.show_alert({
                                 message: 'ข้อมูลรายละเอียดสินเชื่อถูกบันทึกแล้ว',
@@ -933,7 +919,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
                 'border': 'none',
             })
             .on('click', function() {
-
                 // Validate empty field before search
                 if (!frm.doc.cus_search_id) {
                     frappe.msgprint('กรุณากรอกหมายเลขประจำตัวผู้กู้ก่อน');
@@ -1060,20 +1045,15 @@ frappe.ui.form.on("SWP_Loan_Request", {
 
     },
 
-
-
     // ----------------------------------------------- Start --- On change field cus_search_id
     cus_search_id: function(frm) {
-    // If has value
-    if (frm.doc.cus_search_id) {
-        frm.fields_dict.cus_search_id.$wrapper
-            .closest('.frappe-control')
-            .find('.control-label')
-            .css('color', '');
+        // If has value
+        if (frm.doc.cus_search_id) {
+            frm.fields_dict.cus_search_id.$wrapper
+                .closest('.frappe-control')
+                .find('.control-label')
+                .css('color', '');
         }
     },
     // ----------------------------------------------- End --- On change field cus_search_id
-
-
-    
 });

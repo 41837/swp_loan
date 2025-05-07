@@ -29,11 +29,14 @@
   "header_borrower_search",
   "section_borrower_search",
   "cus_search_id",
+  "html_borrower_search_remark",
   "btn_search_borrower",
   "column_break_ilnp",
   "f04_3",
   "cus_is_customer_blocked",
   "cus_is_new",
+  "section_borrower_result",
+  "html_borrower_result",
   "section_header_borrower",
   "header_borrower",
   "section_borrower_details",
@@ -319,7 +322,7 @@
   "column_break_hlml",
   "column_break_ngke",
   "btn_save_loan_condition",
-  "section_break_lwby",
+  "section_form_action",
   "column_break_yxbp",
   "column_break_lnrf",
   "btn_submit",
@@ -1741,10 +1744,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "section_break_lwby",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "column_break_yxbp",
    "fieldtype": "Column Break"
   },
@@ -2102,6 +2101,7 @@
   {
    "fieldname": "input_progress_bar",
    "fieldtype": "HTML",
+   "hidden": 1,
    "is_virtual": 1,
    "label": "input_progress_bar"
   },
@@ -2114,6 +2114,24 @@
    "fieldtype": "Data",
    "label": "\u0e2a\u0e16\u0e32\u0e19\u0e30",
    "read_only": 1
+  },
+  {
+   "fieldname": "section_form_action",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "html_borrower_search_remark",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "html_customer_search_remark"
+  },
+  {
+   "fieldname": "section_borrower_result",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "html_borrower_result",
+   "fieldtype": "HTML"
   }
  ],
  "grid_page_length": 50,
@@ -2121,7 +2139,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-05-07 10:10:20.574457",
+ "modified": "2025-05-07 11:42:31.578818",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",
