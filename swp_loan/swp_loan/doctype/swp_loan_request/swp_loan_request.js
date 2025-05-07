@@ -7,6 +7,18 @@
 // 	},
 // });
 
+let borrowerJsLoaded = false;
+function load_borrower_js(callback) {
+    if (!borrowerJsLoaded) {
+        frappe.require("/assets/swp_loan/js/borrower.js", function () {
+            borrowerJsLoaded = true;
+            console.log("borrower.js loaded");
+            if (typeof callback === "function") callback();
+        });
+    } else {
+        if (typeof callback === "function") callback();
+    }
+}
 
 frappe.ui.form.on("SWP_Loan_Request", {
     onload: function(frm) {
@@ -936,6 +948,9 @@ frappe.ui.form.on("SWP_Loan_Request", {
 
                 // Validate empty field before search
                 if (!frm.doc.cus_search_id) {
+                    load_borrower_js(function () {
+                        test();
+                    });
                     frappe.msgprint('กรุณากรอกหมายเลขประจำตัวผู้กู้ก่อน');
                 
                 // Set validate display field
