@@ -1,0 +1,6 @@
+search_borrower.js = section ค้นหาผู้กู้
+borrower.js = section ข้อมูลผู้กู้
+guarantor.js = section ข้อมูลผู้ค้ำ
+search_collateral.js = section ค้นหาหลักประกัน
+collateral.js = section ข้อมูลหลักประกัน
+loan_condition.js = section รายละเอียดสินเชื่อ

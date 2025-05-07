@@ -1,18 +1,70 @@
-// Copyright (c) 2025, SWP and contributors
-// For license information, please see license.txt
-
-// frappe.ui.form.on("SWP_Loan_Request", {
-// 	refresh(frm) {
-
-// 	},
-// });
-
 let borrowerJsLoaded = false;
+let searchBorrowerJsLoaded = false;
+let guarantorJsLoaded = false;
+let searchCollateralJsLoaded = false;
+let collateralJsLoaded = false;
+let loanConditionJsLoaded = false;
+
 function load_borrower_js(callback) {
     if (!borrowerJsLoaded) {
         frappe.require("/assets/swp_loan/js/borrower.js", function () {
             borrowerJsLoaded = true;
-            console.log("borrower.js loaded");
+            if (typeof callback === "function") callback();
+        });
+    } else {
+        if (typeof callback === "function") callback();
+    }
+}
+
+function load_search_borrower_js(callback) {
+    if (!searchBorrowerJsLoaded) {
+        frappe.require("/assets/swp_loan/js/search_borrower.js", function () {
+            searchBorrowerJsLoaded = true;
+            if (typeof callback === "function") callback();
+        });
+    } else {
+        if (typeof callback === "function") callback();
+    }
+}
+
+function load_guarantor_js(callback) {
+    if (!guarantorJsLoaded) {
+        frappe.require("/assets/swp_loan/js/guarantor.js", function () {
+            guarantorJsLoaded = true;
+            console.log("guarantor.js loaded");
+            if (typeof callback === "function") callback();
+        });
+    } else {
+        if (typeof callback === "function") callback();
+    }
+}
+
+function load_search_collateral_js(callback) {
+    if (!searchCollateralJsLoaded) {
+        frappe.require("/assets/swp_loan/js/search_collateral.js", function () {
+            searchCollateralJsLoaded = true;
+            if (typeof callback === "function") callback();
+        });
+    } else {
+        if (typeof callback === "function") callback();
+    }
+}
+
+function load_collateral_js(callback) {
+    if (!collateralJsLoaded) {
+        frappe.require("/assets/swp_loan/js/collateral.js", function () {
+            collateralJsLoaded = true;
+            if (typeof callback === "function") callback();
+        });
+    } else {
+        if (typeof callback === "function") callback();
+    }
+}
+
+function load_loan_condition_js(callback) {
+    if (!loanConditionJsLoaded) {
+        frappe.require("/assets/swp_loan/js/loan_condition.js", function () {
+            loanConditionJsLoaded = true;
             if (typeof callback === "function") callback();
         });
     } else {
@@ -746,9 +798,9 @@ frappe.ui.form.on("SWP_Loan_Request", {
             .on('click', function() {
                 // กำหนด mandatory field ใน section หลักประกัน
                 let required_fields = [
-                    "col_collatteral_id",
+                    // "col_collatteral_id",
                     "col_product",
-                    "col_subproduct",
+                    // "col_subproduct",
                     // "col_vehicle_identification_number",
                     // "col_model_year",
                     // "col_color",
@@ -798,12 +850,81 @@ frappe.ui.form.on("SWP_Loan_Request", {
                                 indicator: 'green'
                             }, 5);
 
-                            // Redirect to saved document
-                            frappe.set_route("form", "SWP_Loan_Request", r.message.name);
-                            // cur_frm.refresh_doc();
-
                             // Collapse section
+                            $("#toggle-collateral_search-btn").trigger("click");
                             $("#toggle-collateral-btn").trigger("click");
+
+                            // Show loan condition sections
+                            frm.fields_dict.section_header_loan_condition.wrapper.show();
+                            frm.fields_dict.section_loan_condition.wrapper.show();
+                            frm.fields_dict.section_loan_condition2.wrapper.show();
+                            frm.fields_dict.section_loan_condition3.wrapper.show();
+                            frm.fields_dict.section_loan_condition4.wrapper.show();
+                            frm.fields_dict.section_loan_condition5.wrapper.show();
+                            frm.fields_dict.section_loan_condition6.wrapper.show();
+                            frm.fields_dict.section_loan_condition7.wrapper.show();
+                            frm.fields_dict.section_loan_condition8.wrapper.show();
+                            frm.fields_dict.section_loan_condition9.wrapper.show();
+                            frm.fields_dict.section_loan_condition10.wrapper.show();
+                            frm.fields_dict.section_loan_condition11.wrapper.show();
+                            frm.fields_dict.section_loan_condition12.wrapper.show();
+                            frm.fields_dict.section_loan_condition13.wrapper.show();
+                            frm.fields_dict.section_loan_condition14.wrapper.show();
+                            frm.fields_dict.section_loan_condition15.wrapper.show();
+
+                            // Initialize header_loan_condition HTML content
+                            let html_header_loan_condition = `
+                            <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+                                <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">รายละเอียดสินเชื่อ</div>
+                                <button id="toggle-loan_condition-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+                                    <i class="fa fa-chevron-up"></i>
+                                </button>
+                            </div>
+                            `;
+
+                            frm.fields_dict.header_loan_condition.$wrapper.html(html_header_loan_condition);
+
+                            // Initialize loan condition toggle button event handler
+                            let isCollapsed_header_loan_condition = false;
+                            $("#toggle-loan_condition-btn").on("click", function () {
+                                isCollapsed_header_loan_condition = !isCollapsed_header_loan_condition;
+
+                                if (isCollapsed_header_loan_condition) {
+                                    frm.fields_dict.section_loan_condition.wrapper.hide();
+                                    frm.fields_dict.section_loan_condition2.wrapper.hide();
+                                    frm.fields_dict.section_loan_condition3.wrapper.hide();
+                                    frm.fields_dict.section_loan_condition4.wrapper.hide();
+                                    frm.fields_dict.section_loan_condition5.wrapper.hide();
+                                    frm.fields_dict.section_loan_condition6.wrapper.hide();
+                                    frm.fields_dict.section_loan_condition7.wrapper.hide();
+                                    frm.fields_dict.section_loan_condition8.wrapper.hide();
+                                    frm.fields_dict.section_loan_condition9.wrapper.hide();
+                                    frm.fields_dict.section_loan_condition10.wrapper.hide();
+                                    frm.fields_dict.section_loan_condition11.wrapper.hide();
+                                    frm.fields_dict.section_loan_condition12.wrapper.hide();
+                                    frm.fields_dict.section_loan_condition13.wrapper.hide();
+                                    frm.fields_dict.section_loan_condition14.wrapper.hide();
+                                    frm.fields_dict.section_loan_condition15.wrapper.hide();
+                                    $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+                                } else {
+                                    frm.fields_dict.section_loan_condition.wrapper.show();
+                                    frm.fields_dict.section_loan_condition2.wrapper.show();
+                                    frm.fields_dict.section_loan_condition3.wrapper.show();
+                                    frm.fields_dict.section_loan_condition4.wrapper.show();
+                                    frm.fields_dict.section_loan_condition5.wrapper.show();
+                                    frm.fields_dict.section_loan_condition6.wrapper.show();
+                                    frm.fields_dict.section_loan_condition7.wrapper.show();
+                                    frm.fields_dict.section_loan_condition8.wrapper.show();
+                                    frm.fields_dict.section_loan_condition9.wrapper.show();
+                                    frm.fields_dict.section_loan_condition10.wrapper.show();
+                                    frm.fields_dict.section_loan_condition11.wrapper.show();
+                                    frm.fields_dict.section_loan_condition12.wrapper.show();
+                                    frm.fields_dict.section_loan_condition13.wrapper.show();
+                                    frm.fields_dict.section_loan_condition14.wrapper.show();
+                                    frm.fields_dict.section_loan_condition15.wrapper.show();
+                                    $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+                                }
+                            });
                         }
                     }
                 });
@@ -872,7 +993,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
                 let required_fields = [
                     "lease_type",
                     "application_type",
-                    "registration_year",
+                    // "registration_year",
                 ];
 
                 let missing_fields = [];
@@ -908,11 +1029,11 @@ frappe.ui.form.on("SWP_Loan_Request", {
                                 indicator: 'green'
                             }, 5);
 
-                            // Redirect to saved document
-                            frappe.set_route("form", "SWP_Loan_Request", r.message.name);
-
                             // Collapse section
-                            $("#toggle-loan_condition-btn").trigger("click");
+                            // $("#toggle-loan_condition-btn").trigger("click");
+
+                            // Show form action section
+                            frm.fields_dict.section_form_action.wrapper.show();
                         }
                     }
                 });
@@ -1194,10 +1315,54 @@ frappe.ui.form.on("SWP_Loan_Request", {
             .on('click', function() {
                 $("#toggle-guarantor-btn").trigger("click");
 
+                // Show collateral sections
+                frm.fields_dict.section_header_collateral.wrapper.show();
+                frm.fields_dict.section_collateral_details.wrapper.show();
+                frm.fields_dict.section_collateral_details2.wrapper.show();
+                frm.fields_dict.section_collateral_vehicle.wrapper.show();
+                frm.fields_dict.section_collateral_vehicle2.wrapper.show();
+                frm.fields_dict.section_collateral_vehicle3.wrapper.show();
+                frm.fields_dict.section_collateral_vehicle4.wrapper.show();
+                frm.fields_dict.section_collateral_vehicle5.wrapper.show();
+                frm.fields_dict.section_collateral_land.wrapper.show();
+                frm.fields_dict.section_collateral_land2.wrapper.show();
+                frm.fields_dict.section_collateral_land3.wrapper.show();
+                frm.fields_dict.section_collateral_land4.wrapper.show();
+                frm.fields_dict.section_collateral_land5.wrapper.show();
+                frm.fields_dict.section_collateral_land6.wrapper.show();
+                frm.fields_dict.section_collateral_details3.wrapper.show();
+                frm.fields_dict.section_collateral_details4.wrapper.show();
+
+                // Show and initialize collateral search section
                 frm.fields_dict.section_header_collateral_search.wrapper.show();
                 frm.fields_dict.section_collateral_search.wrapper.show();
+
+                // Initialize header_collateral HTML content
+                let html_header_collateral = `
+                <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+                    <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">หลักประกัน</div>
+                    <button id="toggle-collateral-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+                        <i class="fa fa-chevron-up"></i>
+                    </button>
+                </div>
+                `;
+
+                frm.fields_dict.header_collateral.$wrapper.html(html_header_collateral);
+
+                // Initialize header_collateral_search HTML content
+                let html_header_collateral_search = `
+                <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+                    <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ค้นหาหลักประกัน</div>
+                    <button id="toggle-collateral_search-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+                        <i class="fa fa-chevron-up"></i>
+                    </button>
+                </div>
+                `;
+
+                frm.fields_dict.header_collateral_search.$wrapper.html(html_header_collateral_search);
             });
-        
+        // ----------------------------------------------- End --- Borrower save button
+
 
 
         // ----------------------------------------------- Start --- Submit button
@@ -1220,8 +1385,13 @@ frappe.ui.form.on("SWP_Loan_Request", {
                 message: 'สร้างใบคำขอสำเร็จ ระบบจะส่งให้ผู้อนุมัติโดยอัตโนมัติ',
                 indicator: 'green'
             }, 7);
+
+            // Redirect to the specified URL after a short delay
+            setTimeout(function() {
+                window.location.href = 'http://172.25.80.199:8000/app/swp_loan_request';
+            }, 2000); // 2 seconds delay to show the alert message
         });
-        // ----------------------------------------------- End --- Sudbmit button
+        // ----------------------------------------------- End --- Submit button
 
         
 
