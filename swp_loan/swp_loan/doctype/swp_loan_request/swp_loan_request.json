@@ -716,9 +716,9 @@
   },
   {
    "fieldname": "col_collateral_format",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e25\u0e31\u0e01\u0e29\u0e13\u0e30\u0e01\u0e32\u0e23\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19",
-   "options": "\u0e23\u0e16\u0e43\u0e0a\u0e49\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27\n\u0e23\u0e16\u0e23\u0e31\u0e1a\u0e08\u0e49\u0e32\u0e07"
+   "options": "Collateral Format"
   },
   {
    "fieldname": "column_break_whnz",
@@ -824,15 +824,16 @@
   },
   {
    "fieldname": "cus_marital_status",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e2a\u0e16\u0e32\u0e19\u0e20\u0e32\u0e1e\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e23\u0e2a",
-   "options": "\u0e42\u0e2a\u0e14\n\u0e2a\u0e21\u0e23\u0e2a",
+   "options": "Marital Status",
    "reqd": 1
   },
   {
    "fieldname": "cus_additional_occupation",
-   "fieldtype": "Select",
-   "label": "\u0e2d\u0e32\u0e0a\u0e35\u0e1e\u0e40\u0e2a\u0e23\u0e34\u0e21"
+   "fieldtype": "Link",
+   "label": "\u0e2d\u0e32\u0e0a\u0e35\u0e1e\u0e40\u0e2a\u0e23\u0e34\u0e21",
+   "options": "Occupation"
   },
   {
    "fieldname": "table_related_person",
@@ -1002,17 +1003,17 @@
   },
   {
    "fieldname": "col_product",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "\u0e01\u0e25\u0e38\u0e48\u0e21\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19",
-   "options": "\u0e23\u0e16\n\u0e1a\u0e49\u0e32\u0e19\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19",
+   "options": "Product",
    "reqd": 1
   },
   {
    "fieldname": "col_subproduct",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19",
-   "options": "\u0e21\u0e2d\u0e40\u0e15\u0e2d\u0e23\u0e4c\u0e44\u0e0b\u0e04\u0e4c\n\u0e23\u0e16\u0e22\u0e19\u0e15\u0e4c\n\u0e1a\u0e49\u0e32\u0e19\n\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19",
+   "options": "Subproduct",
    "reqd": 1
   },
   {
@@ -1048,7 +1049,6 @@
    "fieldname": "col_model_year",
    "fieldtype": "Select",
    "label": "\u0e1b\u0e35\u0e17\u0e35\u0e48\u0e1c\u0e25\u0e34\u0e15",
-   "options": "2025\n2024\n2023",
    "reqd": 1,
    "sort_options": 1
   },
@@ -1061,9 +1061,9 @@
   },
   {
    "fieldname": "col_color",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e2a\u0e35\u0e23\u0e16",
-   "options": "\u0e02\u0e32\u0e27\n\u0e14\u0e33",
+   "options": "Vehicle Color",
    "reqd": 1
   },
   {
@@ -1080,37 +1080,36 @@
   },
   {
    "fieldname": "col_brand",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e22\u0e35\u0e48\u0e2b\u0e49\u0e2d",
-   "options": "TOYOTA",
+   "options": "Brand",
    "reqd": 1
   },
   {
    "fieldname": "col_model",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e23\u0e38\u0e48\u0e19",
-   "options": "YARIS",
+   "options": "Model",
    "reqd": 1
   },
   {
    "fieldname": "col_submodel",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e23\u0e38\u0e48\u0e19\u0e22\u0e48\u0e2d\u0e22",
-   "options": "YARIS-TOYOTA-CA 1.5 \u0e40\u0e01\u0e35\u0e22\u0e23\u0e4c\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34",
+   "options": "Submodel",
    "reqd": 1
   },
   {
    "fieldname": "col_gear",
    "fieldtype": "Select",
    "label": "\u0e40\u0e01\u0e35\u0e22\u0e23\u0e4c",
-   "options": "\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\n\u0e18\u0e23\u0e23\u0e21\u0e14\u0e32",
+   "options": "\n\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\n\u0e18\u0e23\u0e23\u0e21\u0e14\u0e32",
    "reqd": 1
   },
   {
    "fieldname": "col_engine_size",
-   "fieldtype": "Select",
+   "fieldtype": "Data",
    "label": "\u0e02\u0e19\u0e32\u0e14\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e22\u0e19\u0e15\u0e4c",
-   "options": "1500 cc\n2200 cc",
    "reqd": 1
   },
   {
@@ -1127,9 +1126,9 @@
   },
   {
    "fieldname": "col_province_registration",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14",
-   "options": "\u0e01\u0e23\u0e38\u0e07\u0e40\u0e17\u0e1e\u0e21\u0e2b\u0e32\u0e19\u0e04\u0e23\n\u0e1b\u0e17\u0e38\u0e21\u0e18\u0e32\u0e19\u0e35",
+   "options": "Province",
    "reqd": 1
   },
   {
@@ -1158,25 +1157,25 @@
   },
   {
    "fieldname": "col_subdistrict",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "\u0e41\u0e02\u0e27\u0e07/\u0e15\u0e33\u0e1a\u0e25",
-   "options": "\u0e08\u0e2d\u0e21\u0e1e\u0e25",
-   "reqd": 1
+   "options": "Subdistrict"
   },
   {
-   "default": "\u0e08\u0e15\u0e38\u0e08\u0e31\u0e01\u0e23",
+   "fetch_from": "col_subdistrict.district",
    "fieldname": "col_district",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "\u0e40\u0e02\u0e15/\u0e2d\u0e33\u0e40\u0e20\u0e2d",
-   "read_only": 1,
+   "mandatory_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product",
    "reqd": 1
   },
   {
-   "default": "\u0e01\u0e23\u0e38\u0e07\u0e40\u0e17\u0e1e\u0e21\u0e2b\u0e32\u0e19\u0e04\u0e23",
+   "fetch_from": "col_subdistrict.province",
    "fieldname": "col_province",
    "fieldtype": "Data",
    "label": "\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -1217,9 +1216,9 @@
   },
   {
    "fieldname": "col_building_type",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e2a\u0e34\u0e48\u0e07\u0e1b\u0e25\u0e39\u0e01\u0e2a\u0e23\u0e49\u0e32\u0e07",
-   "options": "\u0e1a\u0e49\u0e32\u0e19\u0e40\u0e14\u0e35\u0e48\u0e22\u0e27\n\u0e1a\u0e49\u0e32\u0e19\u0e41\u0e1d\u0e14"
+   "options": "Building Type"
   },
   {
    "default": "0",
@@ -1289,9 +1288,9 @@
   },
   {
    "fieldname": "lease_type",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e01\u0e32\u0e23\u0e43\u0e2b\u0e49\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d",
-   "options": "\u0e2a\u0e31\u0e0d\u0e0d\u0e32\u0e40\u0e07\u0e34\u0e19\u0e01\u0e39\u0e49 (\u0e44\u0e21\u0e48\u0e21\u0e35\u0e20\u0e32\u0e29\u0e35)\n\u0e40\u0e0a\u0e48\u0e32\u0e0b\u0e37\u0e49\u0e2d",
+   "options": "Lease Type",
    "reqd": 1
   },
   {
@@ -1305,7 +1304,6 @@
    "fieldname": "registration_year",
    "fieldtype": "Select",
    "label": "\u0e1b\u0e35\u0e17\u0e35\u0e48\u0e08\u0e14\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19",
-   "options": "2024",
    "reqd": 1
   },
   {
@@ -1329,42 +1327,42 @@
   },
   {
    "fieldname": "installment_type",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e04\u0e48\u0e32\u0e07\u0e27\u0e14",
-   "options": "\u0e04\u0e48\u0e32\u0e07\u0e27\u0e14\u0e1b\u0e01\u0e15\u0e34",
+   "options": "Installment Type",
    "reqd": 1
   },
   {
    "fieldname": "marketing_code",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e23\u0e2b\u0e31\u0e2a\u0e01\u0e32\u0e23\u0e15\u0e25\u0e32\u0e14",
-   "options": "\u0e1b\u0e49\u0e32\u0e22\u0e2b\u0e19\u0e49\u0e32\u0e2a\u0e32\u0e02\u0e32,\u0e1b\u0e49\u0e32\u0e22\u0e25\u0e49\u0e2d\u0e40\u0e25\u0e37\u0e48\u0e2d\u0e19\nNano Finance_\u0e42\u0e0a\u0e27\u0e4c\u0e2b\u0e48\u0e27\u0e22"
+   "options": "Marketing Code"
   },
   {
    "fieldname": "source_of_customer",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e17\u0e35\u0e48\u0e21\u0e32\u0e02\u0e2d\u0e07\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32",
-   "options": "\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\u0e41\u0e19\u0e30\u0e19\u0e33\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e19\n\u0e23\u0e16\u0e02\u0e32\u0e22 \u0e08\u0e31\u0e14\u0e15\u0e48\u0e2d",
+   "options": "Source of Customer",
    "reqd": 1
   },
   {
    "fieldname": "referral",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e1c\u0e39\u0e49\u0e41\u0e19\u0e30\u0e19\u0e33",
-   "options": "\u0e17\u0e2d\u0e07\u0e40\u0e2b\u0e21\u0e35\u0e22\u0e27\n\u0e17\u0e2d\u0e07\u0e42\u0e2e\u0e48\u0e07"
+   "options": "Referral"
   },
   {
    "fieldname": "ownership",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e01\u0e23\u0e23\u0e21\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c",
-   "options": "01.\u0e42\u0e2d\u0e19\u0e25\u0e2d\u0e22/\u0e44\u0e21\u0e48\u0e42\u0e2d\u0e19 --> SP2022(New)\n02.\u0e42\u0e2d\u0e19\u0e01\u0e23\u0e23\u0e21\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c --> SP2022(New)",
+   "options": "Ownership",
    "reqd": 1
   },
   {
    "fieldname": "campaign_code",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e41\u0e04\u0e21\u0e40\u0e1b\u0e0d",
-   "options": "\u0e01010N (1% CTV \u0e44\u0e21\u0e48\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e22\u0e01\u0e40\u0e27\u0e49\u0e19 Fees & Insurance \u0e44\u0e14\u0e49)",
+   "options": "Campaign",
    "reqd": 1
   },
   {
@@ -1377,14 +1375,13 @@
    "fieldname": "payment_frequency",
    "fieldtype": "Select",
    "label": "\u0e23\u0e30\u0e22\u0e30\u0e2b\u0e48\u0e32\u0e07\u0e1c\u0e48\u0e2d\u0e19\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e15\u0e48\u0e2d\u0e07\u0e27\u0e14",
-   "options": "1",
    "reqd": 1
   },
   {
    "fieldname": "term",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e07\u0e27\u0e14\u0e17\u0e31\u0e49\u0e07\u0e2a\u0e31\u0e0d\u0e0d\u0e32",
-   "options": "12\n16\n24",
+   "options": "Term",
    "reqd": 1
   },
   {
@@ -1561,9 +1558,9 @@
   },
   {
    "fieldname": "bank_account",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49",
-   "options": "\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e40\u0e1e\u0e22\u0e4c\n\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23\u0e01\u0e2a\u0e34\u0e01\u0e23\u0e44\u0e17\u0e22",
+   "options": "Bank",
    "reqd": 1
   },
   {
@@ -1600,15 +1597,16 @@
   },
   {
    "fieldname": "cus_identification_type",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1a\u0e31\u0e15\u0e23",
-   "options": "\u0e1a\u0e31\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e0a\u0e19\n\u0e1e\u0e32\u0e2a\u0e1b\u0e2d\u0e23\u0e4c\u0e15",
+   "options": "Identification Type",
    "reqd": 1
   },
   {
    "fieldname": "cus_salutation",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e04\u0e33\u0e19\u0e33\u0e2b\u0e19\u0e49\u0e32",
+   "options": "Salutation",
    "reqd": 1
   },
   {
@@ -1624,8 +1622,9 @@
   },
   {
    "fieldname": "cus_issuer",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23\u0e42\u0e14\u0e22",
+   "options": "Issuer",
    "reqd": 1
   },
   {
@@ -1635,23 +1634,23 @@
   },
   {
    "fieldname": "cus_nationality",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e2a\u0e31\u0e0d\u0e0a\u0e32\u0e15\u0e34",
-   "options": "\u0e44\u0e17\u0e22",
+   "options": "Nationality",
    "reqd": 1
   },
   {
    "fieldname": "cus_race",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e40\u0e0a\u0e37\u0e49\u0e2d\u0e0a\u0e32\u0e15\u0e34",
-   "options": "\u0e44\u0e17\u0e22",
+   "options": "Race",
    "reqd": 1
   },
   {
    "fieldname": "cus_customer_type",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49",
-   "options": "\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e18\u0e23\u0e23\u0e21\u0e14\u0e32\n\u0e19\u0e34\u0e15\u0e34\u0e1a\u0e38\u0e04\u0e04\u0e25",
+   "options": "Business Segment",
    "reqd": 1
   },
   {
@@ -1720,16 +1719,16 @@
   },
   {
    "fieldname": "cus_gender",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e40\u0e1e\u0e28",
-   "options": "\u0e0a\u0e32\u0e22\n\u0e2b\u0e0d\u0e34\u0e07\n\u0e44\u0e21\u0e48\u0e23\u0e30\u0e1a\u0e38",
+   "options": "Gender",
    "reqd": 1
   },
   {
    "fieldname": "cus_occupation",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "\u0e2d\u0e32\u0e0a\u0e35\u0e1e",
-   "options": "\u0e42\u0e1b\u0e23\u0e41\u0e01\u0e23\u0e21\u0e40\u0e21\u0e2d\u0e23\u0e4c\n\u0e19\u0e31\u0e01\u0e1a\u0e2d\u0e25\n\u0e04\u0e23\u0e39",
+   "options": "Occupation",
    "reqd": 1
   },
   {
@@ -2120,7 +2119,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-05-01 22:45:24.976705",
+ "modified": "2025-05-07 16:39:59.445807",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",
