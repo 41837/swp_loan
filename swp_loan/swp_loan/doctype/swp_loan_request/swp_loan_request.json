@@ -11,29 +11,18 @@
   "input_progress_bar",
   "section_header_document",
   "internal_loan_application_id",
-  "banner_a_score",
-  "banner_b_score",
-  "column_break_pbkg",
-  "banner_type",
-  "state",
-  "banner_campaign",
-  "column_break_bctu",
-  "banner_cus_customer_id",
-  "banner_borrower_fullname",
-  "banner_collateral_id",
-  "column_break_sxyo",
-  "banner_financing_amount_net",
-  "banner_total_fees_net",
-  "banner_remaining_transfer_amount",
   "section_header_borrower_search",
   "header_borrower_search",
   "section_borrower_search",
   "cus_search_id",
+  "html_borrower_search_remark",
   "btn_search_borrower",
   "column_break_ilnp",
   "f04_3",
   "cus_is_customer_blocked",
   "cus_is_new",
+  "section_borrower_result",
+  "html_borrower_result",
   "section_header_borrower",
   "header_borrower",
   "section_borrower_details",
@@ -107,7 +96,12 @@
   "section_header_guarantor",
   "header_guarantor",
   "section_guarantor",
+  "has_guarantor",
   "table_guarantor",
+  "section_guarantor2",
+  "column_break_hrmq",
+  "column_break_vrmp",
+  "btn_save_guarantor",
   "section_header_collateral_search",
   "header_collateral_search",
   "section_collateral_search",
@@ -319,7 +313,7 @@
   "column_break_hlml",
   "column_break_ngke",
   "btn_save_loan_condition",
-  "section_break_lwby",
+  "section_form_action",
   "column_break_yxbp",
   "column_break_lnrf",
   "btn_submit",
@@ -863,7 +857,7 @@
    "fieldname": "btn_search_borrower",
    "fieldtype": "Button",
    "is_virtual": 1,
-   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32"
+   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32/\u0e2d\u0e48\u0e32\u0e19\u0e1a\u0e31\u0e15\u0e23"
   },
   {
    "fieldname": "column_break_otdi",
@@ -1739,10 +1733,6 @@
    "reqd": 1
   },
   {
-   "fieldname": "section_break_lwby",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "column_break_yxbp",
    "fieldtype": "Column Break"
   },
@@ -1946,7 +1936,8 @@
   {
    "fieldname": "header_guarantor",
    "fieldtype": "HTML",
-   "is_virtual": 1
+   "is_virtual": 1,
+   "label": "header_guarantor"
   },
   {
    "fieldname": "btn_submit",
@@ -1995,84 +1986,6 @@
    "label": "header_collateral_search"
   },
   {
-   "fieldname": "column_break_pbkg",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_bctu",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_sxyo",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "banner_financing_amount_net",
-   "fieldtype": "Float",
-   "is_virtual": 1,
-   "label": "\u0e22\u0e2d\u0e14\u0e08\u0e31\u0e14",
-   "precision": "2"
-  },
-  {
-   "fieldname": "banner_total_fees_net",
-   "fieldtype": "Float",
-   "is_virtual": 1,
-   "label": "\u0e04\u0e48\u0e32\u0e18\u0e23\u0e23\u0e21\u0e40\u0e19\u0e35\u0e22\u0e21",
-   "precision": "2"
-  },
-  {
-   "fieldname": "banner_remaining_transfer_amount",
-   "fieldtype": "Float",
-   "is_virtual": 1,
-   "label": "\u0e22\u0e2d\u0e14\u0e42\u0e2d\u0e19",
-   "precision": "2"
-  },
-  {
-   "fieldname": "banner_a_score",
-   "fieldtype": "HTML",
-   "is_virtual": 1,
-   "label": "a_score",
-   "options": "<h1 style=\"text-align: center;\">A : -</h1>"
-  },
-  {
-   "fieldname": "banner_b_score",
-   "fieldtype": "HTML",
-   "is_virtual": 1,
-   "label": "b_score",
-   "options": "<h1 style=\"text-align: center;\">B : -</h1>"
-  },
-  {
-   "fieldname": "banner_type",
-   "fieldtype": "Data",
-   "is_virtual": 1,
-   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17"
-  },
-  {
-   "fieldname": "banner_campaign",
-   "fieldtype": "Data",
-   "is_virtual": 1,
-   "label": "\u0e41\u0e04\u0e21\u0e40\u0e1b\u0e0d"
-  },
-  {
-   "fieldname": "banner_cus_customer_id",
-   "fieldtype": "Data",
-   "is_virtual": 1,
-   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
-  },
-  {
-   "default": "\u0e17\u0e2d\u0e07\u0e40\u0e2b\u0e21\u0e35\u0e22\u0e27 \u0e17\u0e14\u0e2a\u0e2d\u0e1a\u0e2d\u0e22\u0e39\u0e48",
-   "fieldname": "banner_borrower_fullname",
-   "fieldtype": "Data",
-   "is_virtual": 1,
-   "label": "\u0e0a\u0e37\u0e48\u0e2d-\u0e19\u0e32\u0e21\u0e2a\u0e01\u0e38\u0e25\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
-  },
-  {
-   "fieldname": "banner_collateral_id",
-   "fieldtype": "Data",
-   "is_virtual": 1,
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
-  },
-  {
    "fieldname": "search_collateral",
    "fieldtype": "HTML",
    "is_virtual": 1,
@@ -2100,6 +2013,7 @@
   {
    "fieldname": "input_progress_bar",
    "fieldtype": "HTML",
+   "hidden": 1,
    "is_virtual": 1,
    "label": "input_progress_bar"
   },
@@ -2108,10 +2022,49 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "state",
-   "fieldtype": "Data",
-   "label": "\u0e2a\u0e16\u0e32\u0e19\u0e30",
-   "read_only": 1
+   "fieldname": "section_form_action",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "html_borrower_search_remark",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "html_borrower_search_remark"
+  },
+  {
+   "fieldname": "section_borrower_result",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "html_borrower_result",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "html_borrower_result"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_guarantor",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "has_guarantor"
+  },
+  {
+   "fieldname": "section_guarantor2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_hrmq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_vrmp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "btn_save_guarantor",
+   "fieldtype": "Button",
+   "is_virtual": 1,
+   "label": "\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e1c\u0e39\u0e49\u0e04\u0e49\u0e33"
   }
  ],
  "grid_page_length": 50,
@@ -2119,7 +2072,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-05-07 16:39:59.445807",
+ "modified": "2025-05-07 17:35:02.032550",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",
