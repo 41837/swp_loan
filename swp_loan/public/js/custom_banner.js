@@ -1,11 +1,11 @@
-function initialize_custom_banner(frm) {
+function initialize_custom_banner(frm, target_field = 'custom_banner') {
     // ดึงค่าจาก field ต่างๆ
     let customerName = `${frm.doc.cus_first_name || ''} ${frm.doc.cus_last_name || ''}`.trim();
     let customerId = frm.doc.cus_customer_id || '';
+    let collateralId = frm.doc.col_collatteral_id || '';
     let loanAmount = frm.doc.loan_amount || '0.00';
     let feeAmount = frm.doc.fee_amount || '0.00';
     let transferAmount = frm.doc.transfer_amount || '0.00';
-    let collateralId = frm.doc.col_collatteral_id || '';
     let productName = frm.doc.product_name || '';
 
     let custom_banner_html = `
@@ -48,5 +48,5 @@ function initialize_custom_banner(frm) {
 			</div>
 		</div>
     `;
-    frm.fields_dict.custom_banner.$wrapper.html(custom_banner_html);    
+    frm.fields_dict[target_field].$wrapper.html(custom_banner_html);    
 } 

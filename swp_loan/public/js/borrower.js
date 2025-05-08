@@ -131,15 +131,20 @@ function ValidateFromBorrower(frm) {
     addressTypes.forEach(type => {
         let row = frm.fields_dict.section_borrower_details6.columns[0].doc.table_borrower_address[type.index];
         
-        errors.push(`ตรวจสอบข้อมูลที่อยู่ (${type.prefix})`);
+        let addressErrorLines = [];
+    
         addressFields.forEach(field => {
             let value = row ? row[field.key] : null;
             if (!value) {
-                errors.push(`- ${field.label}`);
+                addressErrorLines.push(`- ${field.label}`);
             }
         });
     
-        errors.push('<hr/>');
+        if (addressErrorLines.length > 0) {
+            errors.push(`ตรวจสอบข้อมูลที่อยู่ (${type.prefix})`);
+            errors.push(...addressErrorLines);
+            errors.push('<hr/>');
+        }
     });
 
 
