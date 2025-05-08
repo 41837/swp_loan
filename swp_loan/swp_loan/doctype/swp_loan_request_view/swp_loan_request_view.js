@@ -1,36 +1,36 @@
 let customBannerJsLoaded = false;
 
 function load_custom_banner_js(callback, frm) {
-	if (!customBannerJsLoaded) {
-		frappe.require("/assets/swp_loan/js/custom_banner.js", function () {
-			customBannerJsLoaded = true;
-			if (typeof callback === "function") callback(frm);
-		});
-	} else {
-		if (typeof callback === "function") callback(frm);
-	}
+    if (!customBannerJsLoaded) {
+        frappe.require("/assets/swp_loan/js/custom_banner.js", function () {
+            customBannerJsLoaded = true;
+            if (typeof callback === "function") callback(frm);
+        });
+    } else {
+        if (typeof callback === "function") callback(frm);
+    }
 }
 
 frappe.ui.form.on("SWP_Loan_Request_View", {
 	refresh(frm) {
 		load_custom_banner_js(function(frm) {
 			if (frm.fields_dict.custom_banner_general) {
-				initialize_custom_banner(frm);
+				initialize_custom_banner(frm, 'custom_banner_general');
 			}
 			if (frm.fields_dict.custom_banner_borrower) {
-				initialize_custom_banner(frm);
+				initialize_custom_banner(frm, 'custom_banner_borrower');
 			}
 			if (frm.fields_dict.custom_banner_guarantor) {
-				initialize_custom_banner(frm);
+				initialize_custom_banner(frm, 'custom_banner_guarantor');
 			}
 			if (frm.fields_dict.custom_banner_collateral) {
-				initialize_custom_banner(frm);
+				initialize_custom_banner(frm, 'custom_banner_collateral');
 			}
 			if (frm.fields_dict.custom_banner_loan_details) {
-				initialize_custom_banner(frm);
+				initialize_custom_banner(frm, 'custom_banner_loan_details');
 			}
 			if (frm.fields_dict.custom_banner_transaction) {
-				initialize_custom_banner(frm);
+				initialize_custom_banner(frm, 'custom_banner_transaction');
 			}
 		}, frm);
 

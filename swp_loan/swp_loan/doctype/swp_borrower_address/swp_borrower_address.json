@@ -147,12 +147,12 @@
   },
   {
    "fieldname": "mobile_number",
-   "fieldtype": "Phone",
+   "fieldtype": "Data",
    "label": "\u0e42\u0e17\u0e23\u0e28\u0e31\u0e1e\u0e17\u0e4c (\u0e21\u0e37\u0e2d\u0e16\u0e37\u0e2d)"
   },
   {
    "fieldname": "telephone_number",
-   "fieldtype": "Phone",
+   "fieldtype": "Data",
    "label": "\u0e42\u0e17\u0e23\u0e28\u0e31\u0e1e\u0e17\u0e4c"
   },
   {
@@ -202,7 +202,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-05-08 14:46:05.951786",
+ "modified": "2025-05-08 18:11:08.794087",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Borrower_Address",
