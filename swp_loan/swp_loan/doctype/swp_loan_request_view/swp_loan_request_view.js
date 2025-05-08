@@ -1,72 +1,38 @@
-// CopyrFght (c) 2025, SWP and contributors
-// For license information, please see license.txt
+let customBannerJsLoaded = false;
 
-// frappe.ui.form.on("SWP_Loan_Request_View", {
-// 	refresh(frm) {
-
-// 	},
-// });
+function load_custom_banner_js(callback, frm) {
+	if (!customBannerJsLoaded) {
+		frappe.require("/assets/swp_loan/js/custom_banner.js", function () {
+			customBannerJsLoaded = true;
+			if (typeof callback === "function") callback(frm);
+		});
+	} else {
+		if (typeof callback === "function") callback(frm);
+	}
+}
 
 frappe.ui.form.on("SWP_Loan_Request_View", {
 	refresh(frm) {
-		let custom_banner_html = `
-		<div style="border:1px solid #b5c9e7; border-radius:8px; background:#fff; padding:10px; margin-bottom:16px; width:100%; box-sizing:border-box;">
-			<div style="display:flex; justify-content:space-between; align-items:center; background:#c5d9f1; border-radius:6px 6px 0 0; padding:10px 16px;">
-				<div style="font-weight:bold;">ข้อมูลใบคำขอสินเชื่อเบื้องต้น</div>
-				<div style="font-weight:bold;">A000B5680302000003NFX</div>
-			</div>
-			<div style="display:grid; grid-template-columns: 1.2fr 1.2fr 1.2fr 1.2fr 1fr 1fr 1fr; gap:12px; margin-top:8px; width:100%; box-sizing:border-box;">
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px; text-align:center; font-size:22px; font-weight:bold; grid-row:span 2; display:flex; flex-direction:column; justify-content:center;">
-					CE<br><span style='font-size:14px; font-weight:normal;'>Credit กำลังแก้ไขรายการ</span>
-				</div>
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px; text-align:center; font-size:22px; font-weight:bold; grid-row:span 2; display:flex; flex-direction:column; justify-content:center;">
-					LOAN
-				</div>
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div style='color:#888;'>ชื่อลูกค้า</div></div>
-				<div style="background:#f5f6fa; border-radius:6px; padding:12px;">ทองเหมียว ทดสอบอยู่</div>
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div style='color:#888;'>ยอดจัด</div></div>
-				<div style="background:#f5f6fa; border-radius:6px; padding:12px;">26,800.00</div>
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px; text-align:center; font-size:22px; font-weight:bold; grid-row:1 / span 3; grid-column:7; display:flex; flex-direction:column; align-items:center; justify-content:center;">
-					<span>A : -</span>
-					<span style="margin-top:12px;">B : -</span>
-				</div>
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div style='color:#888;'>รหัสลูกค้า</div></div>
-				<div style="background:#f5f6fa; border-radius:6px; padding:12px;">1234567890123</div>
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div style='color:#888;'>ค่าธรรมเนียม</div></div>
-				<div style="background:#f5f6fa; border-radius:6px; padding:12px;">800.00</div>
-				<div style='background:#f5f6fa; border-radius:6px; padding:12px; text-align:center; font-size:14px; grid-column: 1 / span 2;'>M001N - รถจักรยานยนต์ รายเดือน ดอกเบี้ยปกติ</div>
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div style='color:#888;'>รหัสสินค้า</div></div>
-				<div style="background:#f5f6fa; border-radius:6px; padding:12px;">MH123425535343</div>
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div style='color:#888;'>ยอดโอน</div></div>
-				<div style="background:#f5f6fa; border-radius:6px; padding:12px;">26,000.00</div>
-			</div>
-			<div style="margin-top:20px; display:grid; grid-template-columns:repeat(5, 1fr); gap:20px; width:100%;">
-				<button onclick="window.open('https://www.google.com/search', '_blank')" style="background:#ff914d; color:#fff; border:none; border-radius:6px; padding:16px 0; font-size:16px; width:100%;">ข้อมูลโอนเงิน</button>
-				<button onclick="window.open('https://www.google.com/search', '_blank')" style="background:#ff914d; color:#fff; border:none; border-radius:6px; padding:16px 0; font-size:16px; width:100%;">ตั๋ว/สัญญาเงินกู้</button>
-				<button onclick="window.open('https://www.google.com/search', '_blank')" style="background:#ff914d; color:#fff; border:none; border-radius:6px; padding:16px 0; font-size:16px; width:100%;">ใบขอโอนเงิน</button>
-				<button onclick="window.open('https://www.google.com/search', '_blank')" style="background:#ff914d; color:#fff; border:none; border-radius:6px; padding:16px 0; font-size:16px; width:100%;">VDO HL</button>
-				<button onclick="window.open('https://www.google.com/search', '_blank')" style="background:#ff914d; color:#fff; border:none; border-radius:6px; padding:16px 0; font-size:16px; width:100%;">ยกเลิกใบคำขอ</button>
-			</div>
-		</div>
-		`;
-		if (frm.fields_dict.custom_banner_general) {
-			frm.fields_dict.custom_banner_general.$wrapper.html(custom_banner_html);
-		}
-        if (frm.fields_dict.custom_banner_borrower) {
-            frm.fields_dict.custom_banner_borrower.$wrapper.html(custom_banner_html);
-        }
-        if (frm.fields_dict.custom_banner_guarantor) {
-            frm.fields_dict.custom_banner_guarantor.$wrapper.html(custom_banner_html);
-        }
-		if (frm.fields_dict.custom_banner_collateral) {
-			frm.fields_dict.custom_banner_collateral.$wrapper.html(custom_banner_html);
-		}
-		if (frm.fields_dict.custom_banner_loan_details) {
-			frm.fields_dict.custom_banner_loan_details.$wrapper.html(custom_banner_html);
-		}
-        if (frm.fields_dict.custom_banner_transaction) {
-			frm.fields_dict.custom_banner_transaction.$wrapper.html(custom_banner_html);
-		}
+		load_custom_banner_js(function(frm) {
+			if (frm.fields_dict.custom_banner_general) {
+				initialize_custom_banner(frm);
+			}
+			if (frm.fields_dict.custom_banner_borrower) {
+				initialize_custom_banner(frm);
+			}
+			if (frm.fields_dict.custom_banner_guarantor) {
+				initialize_custom_banner(frm);
+			}
+			if (frm.fields_dict.custom_banner_collateral) {
+				initialize_custom_banner(frm);
+			}
+			if (frm.fields_dict.custom_banner_loan_details) {
+				initialize_custom_banner(frm);
+			}
+			if (frm.fields_dict.custom_banner_transaction) {
+				initialize_custom_banner(frm);
+			}
+		}, frm);
 
 		// Add custom styling for approve button
 		if (frm.fields_dict.btn_approve) {
@@ -142,7 +108,7 @@ frappe.ui.form.on("SWP_Loan_Request_View", {
 			);
 		}
 
-        // Add custom styling for release button
+		// Add custom styling for release button
 		if (frm.fields_dict.btn_release) {
 			frm.fields_dict.btn_release.$wrapper.find('button').css({
 				'font-size': '18px',
@@ -179,7 +145,7 @@ frappe.ui.form.on("SWP_Loan_Request_View", {
 			);
 		}
 
-        // Add custom styling for rework button
+		// Add custom styling for rework button
 		if (frm.fields_dict.btn_rework) {
 			frm.fields_dict.btn_rework.$wrapper.find('button').css({
 				'font-size': '18px',

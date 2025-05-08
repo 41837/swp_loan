@@ -15,7 +15,7 @@ function initialize_guarantor_header(frm) {
         <div style="margin: 10px 0;">
             <label style="display: flex; align-items: center; cursor: pointer;">
                 <input type="checkbox" id="has_guarantor_checkbox" style="margin-right: 8px;">
-                <span>ต้องการผู้ค้ำ</span>
+                <span>ไม่มีผู้ค้ำ</span>
             </label>
         </div>
     `);
