@@ -10,6 +10,7 @@
   "section_input_progress_bar",
   "input_progress_bar",
   "section_header_document",
+  "custom_banner",
   "internal_loan_application_id",
   "section_header_borrower_search",
   "header_borrower_search",
@@ -957,6 +958,7 @@
   {
    "fieldname": "internal_loan_application_id",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e43\u0e1a\u0e2a\u0e21\u0e31\u0e04\u0e23\u0e02\u0e2d\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d"
   },
   {
@@ -1888,8 +1890,7 @@
   },
   {
    "fieldname": "section_header_document",
-   "fieldtype": "Section Break",
-   "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e43\u0e1a\u0e04\u0e33\u0e02\u0e2d\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e40\u0e1a\u0e37\u0e49\u0e2d\u0e07\u0e15\u0e49\u0e19"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "column_break_bffb",
@@ -2024,13 +2025,19 @@
    "fieldtype": "Select",
    "label": "\u0e2a\u0e16\u0e32\u0e19\u0e30\u0e43\u0e19\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19",
    "options": "\u0e40\u0e08\u0e49\u0e32\u0e1a\u0e49\u0e32\u0e19\n\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48\u0e08\u0e31\u0e14\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e02\u0e2d\u0e07\u0e2a\u0e32\u0e02\u0e32\n\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\u0e19\u0e32\u0e19\u0e40\u0e01\u0e34\u0e19 5 \u0e1b\u0e35\n\u0e21\u0e35\u0e1a\u0e34\u0e25\u0e04\u0e48\u0e32\u0e19\u0e49\u0e33\u0e04\u0e48\u0e32\u0e44\u0e1f\u0e0a\u0e37\u0e48\u0e2d\u0e15\u0e31\u0e27\u0e40\u0e2d\u0e07\n\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e49\u0e32\u0e23\u0e32\u0e0a\u0e01\u0e32\u0e23/\u0e23\u0e31\u0e10\u0e27\u0e34\u0e2a\u0e32\u0e2b\u0e01\u0e34\u0e08"
+   },
+   {
+   "fieldname": "custom_banner",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "custom_banner"
   }
  ],
  "grid_page_length": 50,
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-08 17:26:10.506494",
+ "modified": "2025-05-08 16:22:31.682368",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",

@@ -7,18 +7,102 @@
  "field_order": [
   "f01",
   "f02",
+  "column_break_hzzq",
+  "relationship",
   "section_guarantor",
-  "f03",
-  "f04",
-  "f05",
-  "f06",
-  "f07",
+  "identification_number",
+  "first_name",
+  "issue_date",
+  "identification_type",
+  "html_rkco",
   "column_break_ungt",
-  "f08",
-  "f09",
-  "f10",
-  "f11",
-  "f12"
+  "salutation",
+  "last_name",
+  "age",
+  "expiry_date",
+  "issuer",
+  "section_guarantor2",
+  "nickname",
+  "nationality",
+  "race",
+  "column_break_ovjg",
+  "guarantor_type",
+  "gender",
+  "marital_status",
+  "section_guarantor3",
+  "occupation",
+  "work_experience_year",
+  "work_experience_month",
+  "occupation_detail",
+  "column_break_wzki",
+  "salary",
+  "section_break_hazp",
+  "workplace",
+  "name_of_manager",
+  "column_break_qqyo",
+  "department",
+  "identification_address_section",
+  "identification_address",
+  "column_break_btxy",
+  "identification_address_nearby",
+  "section_break_uwjo",
+  "identification_subdistrict",
+  "identification_province",
+  "column_break_rlcu",
+  "identification_district",
+  "identification_post_code",
+  "section_break_iuvs",
+  "identification_telephone",
+  "column_break_npxb",
+  "identification_extension",
+  "column_break_oatc",
+  "column_break_tlow",
+  "section_break_pkvu",
+  "identification_latitude",
+  "column_break_glsv",
+  "identification_longitude",
+  "home_address_section",
+  "home_address",
+  "column_break_bxsw",
+  "home_address_nearby",
+  "section_break_ibdj",
+  "home_subdistrict",
+  "home_province",
+  "column_break_znkt",
+  "home_district",
+  "home_post_code",
+  "section_break_cnhq",
+  "home_telephone",
+  "column_break_bzpw",
+  "home_extension",
+  "column_break_dsto",
+  "column_break_ysio",
+  "section_break_zbql",
+  "home_latitude",
+  "column_break_uunu",
+  "home_longitude",
+  "home_copy_from",
+  "address_section",
+  "address",
+  "column_break_snzw",
+  "address_nearby",
+  "section_break_cfjf",
+  "subdistrict",
+  "province",
+  "column_break_hrhs",
+  "district",
+  "post_code",
+  "section_break_eujl",
+  "telephone",
+  "column_break_tbzm",
+  "extension",
+  "column_break_nosx",
+  "column_break_ptyv",
+  "section_break_ftms",
+  "latitude",
+  "column_break_xjzk",
+  "longitude",
+  "copy_from"
  ],
  "fields": [
   {
@@ -37,71 +121,476 @@
    "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e1c\u0e39\u0e49\u0e04\u0e49\u0e33"
   },
   {
-   "fieldname": "f03",
+   "fieldname": "column_break_ungt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_hzzq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "relationship",
+   "fieldtype": "Link",
+   "label": "\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e31\u0e21\u0e1e\u0e31\u0e19\u0e18\u0e4c",
+   "options": "Relationship"
+  },
+  {
+   "fieldname": "identification_number",
    "fieldtype": "Data",
    "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e1a\u0e31\u0e15\u0e23"
   },
   {
-   "fieldname": "f04",
+   "fieldname": "first_name",
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "\u0e0a\u0e37\u0e48\u0e2d"
   },
   {
-   "fieldname": "f05",
-   "fieldtype": "Date",
-   "label": "\u0e27\u0e31\u0e19\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e1b\u0e35\u0e40\u0e01\u0e34\u0e14"
-  },
-  {
-   "fieldname": "f06",
+   "fieldname": "issue_date",
    "fieldtype": "Date",
    "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23"
   },
   {
-   "fieldname": "f07",
+   "fieldname": "identification_type",
    "fieldtype": "Select",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1a\u0e31\u0e15\u0e23"
   },
   {
-   "fieldname": "column_break_ungt",
-   "fieldtype": "Column Break"
+   "fieldname": "html_rkco",
+   "fieldtype": "HTML",
+   "options": "<p style=\"color: red;\">*\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e1a\u0e31\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e15\u0e25\u0e2d\u0e14\u0e0a\u0e35\u0e1e \u0e43\u0e2b\u0e49\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e1a\u0e31\u0e15\u0e23\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e44\u0e1b\u0e2d\u0e35\u0e01 20 \u0e1b\u0e35\u0e08\u0e32\u0e01\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23 !</p>"
   },
   {
-   "fieldname": "f08",
+   "fieldname": "salutation",
    "fieldtype": "Select",
    "label": "\u0e04\u0e33\u0e19\u0e33\u0e2b\u0e19\u0e49\u0e32"
   },
   {
-   "fieldname": "f09",
+   "fieldname": "last_name",
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "\u0e19\u0e32\u0e21\u0e2a\u0e01\u0e38\u0e25"
   },
   {
-   "fieldname": "f10",
+   "fieldname": "age",
    "fieldtype": "Int",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "\u0e2d\u0e32\u0e22\u0e38"
   },
   {
-   "fieldname": "f11",
+   "fieldname": "expiry_date",
    "fieldtype": "Date",
    "label": "\u0e1a\u0e31\u0e15\u0e23\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38"
   },
   {
-   "fieldname": "f12",
+   "fieldname": "issuer",
    "fieldtype": "Select",
    "label": "\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23\u0e42\u0e14\u0e22"
+  },
+  {
+   "fieldname": "nickname",
+   "fieldtype": "Data",
+   "label": "\u0e0a\u0e37\u0e48\u0e2d\u0e40\u0e25\u0e48\u0e19"
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Data",
+   "label": "\u0e2a\u0e31\u0e0d\u0e0a\u0e32\u0e15\u0e34"
+  },
+  {
+   "fieldname": "race",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e0a\u0e37\u0e49\u0e2d\u0e0a\u0e32\u0e15\u0e34"
+  },
+  {
+   "fieldname": "column_break_ovjg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "guarantor_type",
+   "fieldtype": "Select",
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1c\u0e39\u0e49\u0e04\u0e49\u0e33",
+   "options": "\u0e1c\u0e39\u0e49\u0e04\u0e49\u0e33\n\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49\u0e23\u0e48\u0e27\u0e21"
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "label": "\u0e40\u0e1e\u0e28",
+   "options": "Gender"
+  },
+  {
+   "fieldname": "marital_status",
+   "fieldtype": "Link",
+   "label": "\u0e2a\u0e16\u0e32\u0e19\u0e20\u0e32\u0e1e\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e23\u0e2a",
+   "options": "Marital Status"
+  },
+  {
+   "fieldname": "section_guarantor2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_guarantor3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "occupation",
+   "fieldtype": "Link",
+   "label": "\u0e2d\u0e32\u0e0a\u0e35\u0e1e",
+   "options": "Occupation"
+  },
+  {
+   "fieldname": "work_experience_year",
+   "fieldtype": "Int",
+   "label": "\u0e1b\u0e23\u0e30\u0e2a\u0e1a\u0e01\u0e32\u0e23\u0e13\u0e4c (\u0e1b\u0e35)"
+  },
+  {
+   "fieldname": "work_experience_month",
+   "fieldtype": "Select",
+   "label": "\u0e1b\u0e23\u0e30\u0e2a\u0e1a\u0e01\u0e32\u0e23\u0e13\u0e4c (\u0e40\u0e14\u0e37\u0e2d\u0e19)",
+   "options": "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12"
+  },
+  {
+   "fieldname": "occupation_detail",
+   "fieldtype": "Small Text",
+   "label": "\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14\u0e2d\u0e32\u0e0a\u0e35\u0e1e"
+  },
+  {
+   "fieldname": "column_break_wzki",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "salary",
+   "fieldtype": "Float",
+   "label": "\u0e23\u0e32\u0e22\u0e44\u0e14\u0e49\u0e2b\u0e25\u0e31\u0e01",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_btxy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_hazp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "workplace",
+   "fieldtype": "Data",
+   "label": "\u0e2a\u0e16\u0e32\u0e19\u0e17\u0e35\u0e48\u0e17\u0e33\u0e07\u0e32\u0e19"
+  },
+  {
+   "fieldname": "name_of_manager",
+   "fieldtype": "Data",
+   "label": "\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e08\u0e31\u0e14\u0e01\u0e32\u0e23"
+  },
+  {
+   "fieldname": "column_break_qqyo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "\u0e41\u0e1c\u0e19\u0e01"
+  },
+  {
+   "fieldname": "identification_address_section",
+   "fieldtype": "Section Break",
+   "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1a\u0e31\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e0a\u0e19"
+  },
+  {
+   "fieldname": "identification_address",
+   "fieldtype": "Data",
+   "label": "\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48"
+  },
+  {
+   "fieldname": "identification_address_nearby",
+   "fieldtype": "Data",
+   "label": "\u0e2a\u0e16\u0e32\u0e19\u0e17\u0e35\u0e48\u0e43\u0e01\u0e25\u0e49\u0e40\u0e04\u0e35\u0e22\u0e07"
+  },
+  {
+   "fieldname": "section_break_uwjo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "identification_subdistrict",
+   "fieldtype": "Link",
+   "label": "\u0e15\u0e33\u0e1a\u0e25/\u0e41\u0e02\u0e27\u0e07",
+   "options": "Subdistrict",
+   "read_only_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product"
+  },
+  {
+   "fieldname": "identification_province",
+   "fieldtype": "Link",
+   "label": "\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14",
+   "options": "Province"
+  },
+  {
+   "fieldname": "column_break_rlcu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "identification_district",
+   "fieldtype": "Data",
+   "label": "\u0e2d\u0e33\u0e40\u0e20\u0e2d/\u0e40\u0e02\u0e15",
+   "options": "District"
+  },
+  {
+   "fieldname": "identification_post_code",
+   "fieldtype": "Data",
+   "label": "\u0e23\u0e2b\u0e31\u0e2a\u0e44\u0e1b\u0e23\u0e29\u0e13\u0e35\u0e22\u0e4c"
+  },
+  {
+   "fieldname": "section_break_iuvs",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "identification_telephone",
+   "fieldtype": "Data",
+   "label": "\u0e42\u0e17\u0e23\u0e28\u0e31\u0e1e\u0e17\u0e4c"
+  },
+  {
+   "fieldname": "column_break_npxb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "identification_extension",
+   "fieldtype": "Data",
+   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e15\u0e48\u0e2d"
+  },
+  {
+   "fieldname": "column_break_oatc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_tlow",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_pkvu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "identification_latitude",
+   "fieldtype": "Data",
+   "label": "\u0e25\u0e30\u0e15\u0e34\u0e08\u0e39\u0e14"
+  },
+  {
+   "fieldname": "column_break_glsv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "identification_longitude",
+   "fieldtype": "Data",
+   "label": "\u0e25\u0e2d\u0e07\u0e08\u0e34\u0e08\u0e39\u0e14"
+  },
+  {
+   "fieldname": "home_address_section",
+   "fieldtype": "Section Break",
+   "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19"
+  },
+  {
+   "fieldname": "home_address",
+   "fieldtype": "Data",
+   "label": "\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48"
+  },
+  {
+   "fieldname": "column_break_bxsw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "home_address_nearby",
+   "fieldtype": "Data",
+   "label": "\u0e2a\u0e16\u0e32\u0e19\u0e17\u0e35\u0e48\u0e43\u0e01\u0e25\u0e49\u0e40\u0e04\u0e35\u0e22\u0e07"
+  },
+  {
+   "fieldname": "section_break_ibdj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "home_subdistrict",
+   "fieldtype": "Data",
+   "label": "\u0e15\u0e33\u0e1a\u0e25"
+  },
+  {
+   "fieldname": "home_province",
+   "fieldtype": "Link",
+   "label": "\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14",
+   "options": "Province"
+  },
+  {
+   "fieldname": "column_break_znkt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "home_district",
+   "fieldtype": "Data",
+   "label": "\u0e2d\u0e33\u0e40\u0e20\u0e2d",
+   "options": "District"
+  },
+  {
+   "fieldname": "home_post_code",
+   "fieldtype": "Data",
+   "label": "\u0e23\u0e2b\u0e31\u0e2a\u0e44\u0e1b\u0e23\u0e29\u0e13\u0e35\u0e22\u0e4c"
+  },
+  {
+   "fieldname": "section_break_cnhq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "home_telephone",
+   "fieldtype": "Data",
+   "label": "\u0e42\u0e17\u0e23\u0e28\u0e31\u0e1e\u0e17\u0e4c"
+  },
+  {
+   "fieldname": "column_break_bzpw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "home_extension",
+   "fieldtype": "Data",
+   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e15\u0e48\u0e2d"
+  },
+  {
+   "fieldname": "column_break_dsto",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ysio",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_zbql",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "home_latitude",
+   "fieldtype": "Data",
+   "label": "\u0e25\u0e30\u0e15\u0e34\u0e08\u0e39\u0e14"
+  },
+  {
+   "fieldname": "column_break_uunu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "home_longitude",
+   "fieldtype": "Data",
+   "label": "\u0e25\u0e2d\u0e07\u0e08\u0e34\u0e08\u0e39\u0e14"
+  },
+  {
+   "fieldname": "home_copy_from",
+   "fieldtype": "Select",
+   "label": "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01\u0e08\u0e32\u0e01",
+   "options": "\nIdentification\nHome\nWork"
+  },
+  {
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48"
+  },
+  {
+   "fieldname": "column_break_snzw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "address_nearby",
+   "fieldtype": "Data",
+   "label": "\u0e2a\u0e16\u0e32\u0e19\u0e17\u0e35\u0e48\u0e43\u0e01\u0e25\u0e49\u0e40\u0e04\u0e35\u0e22\u0e07"
+  },
+  {
+   "fieldname": "section_break_cfjf",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "subdistrict",
+   "fieldtype": "Link",
+   "label": "\u0e15\u0e33\u0e1a\u0e25",
+   "options": "Subdistrict"
+  },
+  {
+   "fieldname": "province",
+   "fieldtype": "Link",
+   "label": "\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14",
+   "options": "Province"
+  },
+  {
+   "fieldname": "column_break_hrhs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "district",
+   "fieldtype": "Data",
+   "label": "\u0e2d\u0e33\u0e40\u0e20\u0e2d",
+   "options": "District"
+  },
+  {
+   "fieldname": "post_code",
+   "fieldtype": "Data",
+   "label": "\u0e23\u0e2b\u0e31\u0e2a\u0e44\u0e1b\u0e23\u0e29\u0e13\u0e35\u0e22\u0e4c",
+   "options": "Post Code"
+  },
+  {
+   "fieldname": "section_break_eujl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "telephone",
+   "fieldtype": "Data",
+   "label": "\u0e42\u0e17\u0e23\u0e28\u0e31\u0e1e\u0e17\u0e4c"
+  },
+  {
+   "fieldname": "column_break_tbzm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "extension",
+   "fieldtype": "Data",
+   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e15\u0e48\u0e2d"
+  },
+  {
+   "fieldname": "column_break_nosx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ptyv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ftms",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Data",
+   "label": "\u0e25\u0e30\u0e15\u0e34\u0e08\u0e39\u0e14"
+  },
+  {
+   "fieldname": "column_break_xjzk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Data",
+   "label": "\u0e25\u0e2d\u0e07\u0e08\u0e34\u0e08\u0e39\u0e14"
+  },
+  {
+   "fieldname": "copy_from",
+   "fieldtype": "Select",
+   "label": "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01\u0e08\u0e32\u0e01",
+   "options": "\nIdentification\nHome\nWork"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-04-17 10:09:07.311265",
+ "modified": "2025-05-08 15:10:26.890197",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Guarantor",
