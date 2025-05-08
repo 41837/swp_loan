@@ -89,6 +89,27 @@ function load_application_js(callback, frm) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 frappe.ui.form.on("SWP_Loan_Request", {
     onload: function(frm) {
         // Initialize date of birth validation
@@ -303,6 +324,37 @@ frappe.ui.form.on("SWP_Loan_Request", {
     },
 
     refresh(frm) {
+
+           
+        frm.fields_dict.table_borrower_address.grid.add_custom_button(__('Duplicate'), function() {
+            let selected = frm.fields_dict.table_borrower_address.grid.get_selected_children();
+            
+            if (!selected.length) {
+                frappe.msgprint(__('Please select at least one row to duplicate.'));
+                return;
+            }
+
+            selected.forEach(row => {
+                let new_row = frm.add_child('table_borrower_address');
+
+                // คัดลอกข้อมูลที่ต้องการ
+                new_row.address_type = row.address_type;
+                new_row.address = row.address;
+                new_row.sub_district = row.sub_district;
+                new_row.district = row.district;
+                new_row.province = row.province;
+
+                // เพิ่มฟิลด์อื่นๆ ถ้ามี
+            });
+
+            frm.refresh_field('table_borrower_address');
+        });
+
+
+        // frm.fields_dict.add_test.$wrapper.on("click", function() {
+        //     console.log("Add test button clicked");
+        //     duplicate_selected_rows(frm);
+        // });
 
         load_application_js(function(frm) {
             set_col_model_year_options(frm);
