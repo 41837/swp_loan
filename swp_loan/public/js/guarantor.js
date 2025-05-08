@@ -14,52 +14,107 @@ function fn_btn_save_guarantor(frm){
         'border': 'none',
     })
     .on('click', function() {
-        $("#toggle-guarantor-btn").trigger("click");
+        // กำหนด mandatory field ใน section ข้อมูลผู้ค้ำ
+        let required_fields = [
+            // "gua_search_id",
+            // "gua_first_name",
+            // "gua_last_name",
+            // "gua_birth_date",
+            // "gua_mobile",
+            // "gua_email",
+            // "gua_line_id",
+            // "gua_facebook",
+            // "gua_instagram",
+            // "gua_tiktok",
+            // "gua_address",
+            // "gua_subdistrict",
+            // "gua_district",
+            // "gua_province",
+            // "gua_postal_code",
+            // "gua_country",
+            // "gua_address_type",
+            // "gua_platform",
+            // "gua_remark",
+        ];
 
-        // Show collateral sections
-        frm.fields_dict.section_header_collateral.wrapper.show();
-        frm.fields_dict.section_collateral_details.wrapper.show();
-        frm.fields_dict.section_collateral_details2.wrapper.show();
-        frm.fields_dict.section_collateral_vehicle.wrapper.show();
-        frm.fields_dict.section_collateral_vehicle2.wrapper.show();
-        frm.fields_dict.section_collateral_vehicle3.wrapper.show();
-        frm.fields_dict.section_collateral_vehicle4.wrapper.show();
-        frm.fields_dict.section_collateral_vehicle5.wrapper.show();
-        frm.fields_dict.section_collateral_land.wrapper.show();
-        frm.fields_dict.section_collateral_land2.wrapper.show();
-        frm.fields_dict.section_collateral_land3.wrapper.show();
-        frm.fields_dict.section_collateral_land4.wrapper.show();
-        frm.fields_dict.section_collateral_land5.wrapper.show();
-        frm.fields_dict.section_collateral_land6.wrapper.show();
-        frm.fields_dict.section_collateral_details3.wrapper.show();
-        frm.fields_dict.section_collateral_details4.wrapper.show();
+        let missing_fields = [];
 
-        // Show and initialize collateral search section
-        frm.fields_dict.section_header_collateral_search.wrapper.show();
-        frm.fields_dict.section_collateral_search.wrapper.show();
+        required_fields.forEach(fieldname => {
+            let value = frm.doc[fieldname];
+            if (!value) {
+                missing_fields.push(frm.fields_dict[fieldname].df.label);
+            }
+        });
 
-        // Initialize header_collateral HTML content
-        let html_header_collateral = `
-        <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
-            <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">หลักประกัน</div>
-            <button id="toggle-collateral-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
-                <i class="fa fa-chevron-up"></i>
-            </button>
-        </div>
-        `;
+        // Validate missing field
+        if (missing_fields.length > 0) {
+            frappe.msgprint({
+                title: "กรุณากรอกข้อมูลให้ครบ",
+                message: "ข้อมูลที่จำเป็นต้องกรอก: <br><b> - " + missing_fields.join("<br> - ") + "</bt>",
+                indicator: "red"
+            });
+            return;
+        }
 
-        frm.fields_dict.header_collateral.$wrapper.html(html_header_collateral);
+        // Save data
+        frappe.call({
+            method: "swp_loan.api.save_util.custom_save_without_validation", // Save without validation
+            args: {
+                doc: JSON.stringify(frm.doc)
+            },
+            callback: function(r) {
+                if (!r.exc && r.message.name) {
+                    // Alert message
+                    frappe.show_alert({
+                        message: 'ข้อมูลผู้ค้ำถูกบันทึกแล้ว',
+                        indicator: 'green'
+                    }, 5);
 
-        // Initialize header_collateral_search HTML content
-        let html_header_collateral_search = `
-        <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
-            <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ค้นหาหลักประกัน</div>
-            <button id="toggle-collateral_search-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
-                <i class="fa fa-chevron-up"></i>
-            </button>
-        </div>
-        `;
+                    // Collapse section
+                    // $("#toggle-guarantor-btn").trigger("click");
 
-        frm.fields_dict.header_collateral_search.$wrapper.html(html_header_collateral_search);
+                    // Show collateral search sections
+                    frm.fields_dict.section_header_collateral_search.wrapper.show();
+                    frm.fields_dict.section_collateral_search.wrapper.show();
+                    frm.fields_dict.section_header_collateral.wrapper.show();
+
+                    // Initialize header_collateral_search HTML content
+                    let html_header_collateral_search = `
+                    <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+                        <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ค้นหาหลักประกัน</div>
+                        <button id="toggle-collateral_search-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+                            <i class="fa fa-chevron-up"></i>
+                        </button>
+                    </div>
+                    `;
+
+                    frm.fields_dict.header_collateral_search.$wrapper.html(html_header_collateral_search);
+
+                    // Initialize event handler for collateral search toggle
+                    let isCollapsed_header_collateral_search = false;
+                    $("#toggle-collateral_search-btn").on("click", function () {
+                        isCollapsed_header_collateral_search = !isCollapsed_header_collateral_search;
+
+                        if (isCollapsed_header_collateral_search) {
+                            frm.fields_dict.section_collateral_search.wrapper.hide();
+                            $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+                        } else {
+                            frm.fields_dict.section_collateral_search.wrapper.show();
+                            $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+                        }
+                    });
+
+                    // Navigate to saved document and scroll to collateral search section
+                    frappe.set_route("Form", "SWP_Loan_Request", r.message.name);
+                    
+                    // Scroll to collateral search section after a short delay
+                    setTimeout(function() {
+                        $('html, body').animate({
+                            scrollTop: frm.fields_dict.section_header_collateral_search.wrapper.offset().top - 50
+                        }, 500);
+                    }, 1000);
+                }
+            }
+        });
     });
 }

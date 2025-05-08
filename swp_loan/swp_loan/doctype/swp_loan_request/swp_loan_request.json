@@ -721,8 +721,7 @@
   {
    "fieldname": "col_car_mileage",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e44\u0e21\u0e25\u0e4c",
-   "reqd": 1
+   "label": "\u0e40\u0e25\u0e02\u0e44\u0e21\u0e25\u0e4c"
   },
   {
    "fieldname": "col_insurance_policy_number",
@@ -761,8 +760,7 @@
   {
    "fieldname": "col_date_of_tax_expiry",
    "fieldtype": "Date",
-   "label": "\u0e27\u0e31\u0e19\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38\u0e20\u0e32\u0e29\u0e35\u0e23\u0e16",
-   "reqd": 1
+   "label": "\u0e27\u0e31\u0e19\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38\u0e20\u0e32\u0e29\u0e35\u0e23\u0e16"
   },
   {
    "fieldname": "col_year_of_possession",
@@ -820,8 +818,7 @@
    "fieldname": "cus_marital_status",
    "fieldtype": "Link",
    "label": "\u0e2a\u0e16\u0e32\u0e19\u0e20\u0e32\u0e1e\u0e01\u0e32\u0e23\u0e2a\u0e21\u0e23\u0e2a",
-   "options": "Marital Status",
-   "reqd": 1
+   "options": "Marital Status"
   },
   {
    "fieldname": "cus_additional_occupation",
@@ -945,20 +942,17 @@
   {
    "fieldname": "cus_customer_id",
    "fieldtype": "Data",
-   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e1a\u0e31\u0e15\u0e23",
-   "reqd": 1
+   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e25\u0e02\u0e1a\u0e31\u0e15\u0e23"
   },
   {
    "fieldname": "cus_first_name",
    "fieldtype": "Data",
-   "label": "\u0e0a\u0e37\u0e48\u0e2d",
-   "reqd": 1
+   "label": "\u0e0a\u0e37\u0e48\u0e2d"
   },
   {
    "fieldname": "cus_last_name",
    "fieldtype": "Data",
-   "label": "\u0e19\u0e32\u0e21\u0e2a\u0e01\u0e38\u0e25",
-   "reqd": 1
+   "label": "\u0e19\u0e32\u0e21\u0e2a\u0e01\u0e38\u0e25"
   },
   {
    "fieldname": "cus_search_id",
@@ -992,23 +986,20 @@
   {
    "fieldname": "col_collatteral_id",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19",
-   "reqd": 1
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
   },
   {
    "fieldname": "col_product",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "\u0e01\u0e25\u0e38\u0e48\u0e21\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19",
-   "options": "Product",
-   "reqd": 1
+   "options": "Product"
   },
   {
    "fieldname": "col_subproduct",
    "fieldtype": "Link",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19",
-   "options": "Subproduct",
-   "reqd": 1
+   "options": "Subproduct"
   },
   {
    "default": "0.00",
@@ -1036,14 +1027,12 @@
   {
    "fieldname": "col_vehicle_identification_number",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e15\u0e31\u0e27\u0e16\u0e31\u0e07",
-   "reqd": 1
+   "label": "\u0e40\u0e25\u0e02\u0e15\u0e31\u0e27\u0e16\u0e31\u0e07"
   },
   {
    "fieldname": "col_model_year",
    "fieldtype": "Select",
    "label": "\u0e1b\u0e35\u0e17\u0e35\u0e48\u0e1c\u0e25\u0e34\u0e15",
-   "reqd": 1,
    "sort_options": 1
   },
   {
@@ -1057,14 +1046,12 @@
    "fieldname": "col_color",
    "fieldtype": "Link",
    "label": "\u0e2a\u0e35\u0e23\u0e16",
-   "options": "Vehicle Color",
-   "reqd": 1
+   "options": "Vehicle Color"
   },
   {
    "fieldname": "col_engine_number",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e22\u0e19\u0e15\u0e4c",
-   "reqd": 1
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e22\u0e19\u0e15\u0e4c"
   },
   {
    "default": "0",
@@ -1076,54 +1063,46 @@
    "fieldname": "col_brand",
    "fieldtype": "Link",
    "label": "\u0e22\u0e35\u0e48\u0e2b\u0e49\u0e2d",
-   "mandatory_depends_on": "eval:![\"H\", \"L\", \"I\"].includes(doc.col_product) && doc.col_product",
    "options": "Brand"
   },
   {
    "fieldname": "col_model",
    "fieldtype": "Link",
    "label": "\u0e23\u0e38\u0e48\u0e19",
-   "options": "Model",
-   "reqd": 1
+   "options": "Model"
   },
   {
    "fieldname": "col_submodel",
    "fieldtype": "Link",
    "label": "\u0e23\u0e38\u0e48\u0e19\u0e22\u0e48\u0e2d\u0e22",
-   "options": "Submodel",
-   "reqd": 1
+   "options": "Submodel"
   },
   {
    "fieldname": "col_gear",
    "fieldtype": "Select",
    "label": "\u0e40\u0e01\u0e35\u0e22\u0e23\u0e4c",
-   "options": "\n\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\n\u0e18\u0e23\u0e23\u0e21\u0e14\u0e32",
-   "reqd": 1
+   "options": "\n\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\n\u0e18\u0e23\u0e23\u0e21\u0e14\u0e32"
   },
   {
    "fieldname": "col_engine_size",
    "fieldtype": "Data",
-   "label": "\u0e02\u0e19\u0e32\u0e14\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e22\u0e19\u0e15\u0e4c",
-   "reqd": 1
+   "label": "\u0e02\u0e19\u0e32\u0e14\u0e40\u0e04\u0e23\u0e37\u0e48\u0e2d\u0e07\u0e22\u0e19\u0e15\u0e4c"
   },
   {
    "fieldname": "col_date_of_license_expiry",
    "fieldtype": "Date",
-   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e34\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38",
-   "reqd": 1
+   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e43\u0e1a\u0e2d\u0e19\u0e38\u0e0d\u0e32\u0e15\u0e34\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38"
   },
   {
    "fieldname": "col_license_plate_number",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e23\u0e16",
-   "reqd": 1
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e23\u0e16"
   },
   {
    "fieldname": "col_province_registration",
    "fieldtype": "Link",
    "label": "\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14",
-   "options": "Province",
-   "reqd": 1
+   "options": "Province"
   },
   {
    "fieldname": "col_sheet",
@@ -1133,14 +1112,12 @@
   {
    "fieldname": "col_land_parcel_number",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19",
-   "reqd": 1
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e14\u0e34\u0e19"
   },
   {
    "fieldname": "col_dealing_file_number",
    "fieldtype": "Data",
-   "label": "\u0e2b\u0e19\u0e49\u0e32\u0e2a\u0e33\u0e23\u0e27\u0e08",
-   "reqd": 1
+   "label": "\u0e2b\u0e19\u0e49\u0e32\u0e2a\u0e33\u0e23\u0e27\u0e08"
   },
   {
    "default": "0.00",
@@ -1162,21 +1139,18 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "\u0e40\u0e02\u0e15/\u0e2d\u0e33\u0e40\u0e20\u0e2d",
-   "mandatory_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product",
-   "reqd": 1
+   "mandatory_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product"
   },
   {
    "fetch_from": "col_subdistrict.province",
    "fieldname": "col_province",
    "fieldtype": "Data",
-   "label": "\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14",
-   "reqd": 1
+   "label": "\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14"
   },
   {
    "fieldname": "col_title_deed_number",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e42\u0e09\u0e19\u0e14",
-   "reqd": 1
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e42\u0e09\u0e19\u0e14"
   },
   {
    "fieldname": "col_volume",
@@ -1235,8 +1209,7 @@
   {
    "fieldname": "col_land_owner",
    "fieldtype": "Data",
-   "label": "\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e16\u0e37\u0e2d\u0e04\u0e23\u0e2d\u0e07",
-   "reqd": 1
+   "label": "\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e16\u0e37\u0e2d\u0e04\u0e23\u0e2d\u0e07"
   },
   {
    "default": "0",
@@ -1256,8 +1229,7 @@
    "fieldname": "col_mortgage_limit",
    "fieldtype": "Float",
    "label": "\u0e27\u0e07\u0e40\u0e07\u0e34\u0e19\u0e01\u0e32\u0e23\u0e08\u0e14\u0e08\u0e33\u0e19\u0e2d\u0e07",
-   "precision": "2",
-   "reqd": 1
+   "precision": "2"
   },
   {
    "default": "0.00",
@@ -1284,27 +1256,23 @@
    "fieldname": "lease_type",
    "fieldtype": "Link",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e01\u0e32\u0e23\u0e43\u0e2b\u0e49\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d",
-   "options": "Lease Type",
-   "reqd": 1
+   "options": "Lease Type"
   },
   {
    "fieldname": "application_type",
    "fieldtype": "Select",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e43\u0e1a\u0e04\u0e33\u0e02\u0e2d",
-   "options": "\u0e43\u0e2b\u0e21\u0e48\n\u0e23\u0e35\u0e44\u0e1f\u0e41\u0e19\u0e19\u0e0b\u0e4c",
-   "reqd": 1
+   "options": "\u0e43\u0e2b\u0e21\u0e48\n\u0e23\u0e35\u0e44\u0e1f\u0e41\u0e19\u0e19\u0e0b\u0e4c"
   },
   {
    "fieldname": "registration_year",
    "fieldtype": "Select",
-   "label": "\u0e1b\u0e35\u0e17\u0e35\u0e48\u0e08\u0e14\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19",
-   "reqd": 1
+   "label": "\u0e1b\u0e35\u0e17\u0e35\u0e48\u0e08\u0e14\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19"
   },
   {
    "fieldname": "requested_amount",
    "fieldtype": "Float",
-   "label": "\u0e22\u0e2d\u0e14\u0e08\u0e31\u0e14\u0e15\u0e31\u0e49\u0e07\u0e15\u0e49\u0e19",
-   "reqd": 1
+   "label": "\u0e22\u0e2d\u0e14\u0e08\u0e31\u0e14\u0e15\u0e31\u0e49\u0e07\u0e15\u0e49\u0e19"
   },
   {
    "fieldname": "ltv",
@@ -1323,8 +1291,7 @@
    "fieldname": "installment_type",
    "fieldtype": "Link",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e04\u0e48\u0e32\u0e07\u0e27\u0e14",
-   "options": "Installment Type",
-   "reqd": 1
+   "options": "Installment Type"
   },
   {
    "fieldname": "marketing_code",
@@ -1336,8 +1303,7 @@
    "fieldname": "source_of_customer",
    "fieldtype": "Link",
    "label": "\u0e17\u0e35\u0e48\u0e21\u0e32\u0e02\u0e2d\u0e07\u0e25\u0e39\u0e01\u0e04\u0e49\u0e32",
-   "options": "Source of Customer",
-   "reqd": 1
+   "options": "Source of Customer"
   },
   {
    "fieldname": "referral",
@@ -1349,15 +1315,13 @@
    "fieldname": "ownership",
    "fieldtype": "Link",
    "label": "\u0e01\u0e23\u0e23\u0e21\u0e2a\u0e34\u0e17\u0e18\u0e34\u0e4c",
-   "options": "Ownership",
-   "reqd": 1
+   "options": "Ownership"
   },
   {
    "fieldname": "campaign_code",
    "fieldtype": "Link",
    "label": "\u0e41\u0e04\u0e21\u0e40\u0e1b\u0e0d",
-   "options": "Campaign",
-   "reqd": 1
+   "options": "Campaign"
   },
   {
    "fieldname": "campaign_interest_rate",
@@ -1368,15 +1332,13 @@
   {
    "fieldname": "payment_frequency",
    "fieldtype": "Select",
-   "label": "\u0e23\u0e30\u0e22\u0e30\u0e2b\u0e48\u0e32\u0e07\u0e1c\u0e48\u0e2d\u0e19\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e15\u0e48\u0e2d\u0e07\u0e27\u0e14",
-   "reqd": 1
+   "label": "\u0e23\u0e30\u0e22\u0e30\u0e2b\u0e48\u0e32\u0e07\u0e1c\u0e48\u0e2d\u0e19\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e15\u0e48\u0e2d\u0e07\u0e27\u0e14"
   },
   {
    "fieldname": "term",
    "fieldtype": "Link",
    "label": "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e07\u0e27\u0e14\u0e17\u0e31\u0e49\u0e07\u0e2a\u0e31\u0e0d\u0e0d\u0e32",
-   "options": "Term",
-   "reqd": 1
+   "options": "Term"
   },
   {
    "fieldname": "total_periods_month",
@@ -1386,14 +1348,12 @@
   {
    "fieldname": "due_day",
    "fieldtype": "Select",
-   "label": "\u0e0a\u0e33\u0e23\u0e30\u0e17\u0e38\u0e01\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48",
-   "reqd": 1
+   "label": "\u0e0a\u0e33\u0e23\u0e30\u0e17\u0e38\u0e01\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48"
   },
   {
    "fieldname": "agreement_date",
    "fieldtype": "Date",
-   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e17\u0e33\u0e2a\u0e31\u0e0d\u0e0d\u0e32",
-   "reqd": 1
+   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e17\u0e33\u0e2a\u0e31\u0e0d\u0e0d\u0e32"
   },
   {
    "fieldname": "first_due_date",
@@ -1554,21 +1514,17 @@
    "fieldname": "bank_account",
    "fieldtype": "Link",
    "label": "\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49",
-   "options": "Bank",
-   "reqd": 1
+   "options": "Bank"
   },
   {
    "fieldname": "bank_account_type",
    "fieldtype": "Select",
-   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1a\u0e31\u0e0d\u0e0a\u0e35",
-   "options": "\u0e2d\u0e2d\u0e21\u0e17\u0e23\u0e31\u0e1e\u0e22\u0e4c\n\u0e01\u0e23\u0e30\u0e41\u0e2a\u0e23\u0e32\u0e22\u0e27\u0e31\u0e19",
-   "reqd": 1
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1a\u0e31\u0e0d\u0e0a\u0e35"
   },
   {
    "fieldname": "bank_account_number",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e1a\u0e31\u0e0d\u0e0a\u0e35",
-   "reqd": 1
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e1a\u0e31\u0e0d\u0e0a\u0e35"
   },
   {
    "default": "0",
@@ -1580,28 +1536,24 @@
   {
    "fieldname": "cus_date_of_birth",
    "fieldtype": "Date",
-   "label": "\u0e27\u0e31\u0e19\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e1b\u0e35\u0e40\u0e01\u0e34\u0e14",
-   "reqd": 1
+   "label": "\u0e27\u0e31\u0e19\u0e40\u0e14\u0e37\u0e2d\u0e19\u0e1b\u0e35\u0e40\u0e01\u0e34\u0e14"
   },
   {
    "fieldname": "cus_issue_date",
    "fieldtype": "Date",
-   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23",
-   "reqd": 1
+   "label": "\u0e27\u0e31\u0e19\u0e17\u0e35\u0e48\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23"
   },
   {
    "fieldname": "cus_identification_type",
    "fieldtype": "Link",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1a\u0e31\u0e15\u0e23",
-   "options": "Identification Type",
-   "reqd": 1
+   "options": "Identification Type"
   },
   {
    "fieldname": "cus_salutation",
    "fieldtype": "Link",
    "label": "\u0e04\u0e33\u0e19\u0e33\u0e2b\u0e19\u0e49\u0e32",
-   "options": "Salutation",
-   "reqd": 1
+   "options": "Salutation"
   },
   {
    "fieldname": "cus_age",
@@ -1611,15 +1563,13 @@
   {
    "fieldname": "cus_expiry_date",
    "fieldtype": "Date",
-   "label": "\u0e1a\u0e31\u0e15\u0e23\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38",
-   "reqd": 1
+   "label": "\u0e1a\u0e31\u0e15\u0e23\u0e2b\u0e21\u0e14\u0e2d\u0e32\u0e22\u0e38"
   },
   {
    "fieldname": "cus_issuer",
    "fieldtype": "Link",
    "label": "\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23\u0e42\u0e14\u0e22",
-   "options": "Issuer",
-   "reqd": 1
+   "options": "Issuer"
   },
   {
    "fieldname": "cus_nick_name",
@@ -1630,22 +1580,19 @@
    "fieldname": "cus_nationality",
    "fieldtype": "Link",
    "label": "\u0e2a\u0e31\u0e0d\u0e0a\u0e32\u0e15\u0e34",
-   "options": "Nationality",
-   "reqd": 1
+   "options": "Nationality"
   },
   {
    "fieldname": "cus_race",
    "fieldtype": "Link",
    "label": "\u0e40\u0e0a\u0e37\u0e49\u0e2d\u0e0a\u0e32\u0e15\u0e34",
-   "options": "Race",
-   "reqd": 1
+   "options": "Race"
   },
   {
    "fieldname": "cus_customer_type",
    "fieldtype": "Link",
    "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49",
-   "options": "Business Segment",
-   "reqd": 1
+   "options": "Business Segment"
   },
   {
    "default": "0",
@@ -1715,22 +1662,19 @@
    "fieldname": "cus_gender",
    "fieldtype": "Link",
    "label": "\u0e40\u0e1e\u0e28",
-   "options": "Gender",
-   "reqd": 1
+   "options": "Gender"
   },
   {
    "fieldname": "cus_occupation",
    "fieldtype": "Link",
    "label": "\u0e2d\u0e32\u0e0a\u0e35\u0e1e",
-   "options": "Occupation",
-   "reqd": 1
+   "options": "Occupation"
   },
   {
    "fieldname": "cus_delivery_address",
    "fieldtype": "Select",
    "label": "\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e08\u0e31\u0e14\u0e2a\u0e48\u0e07\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23",
-   "options": "\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1a\u0e31\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e0a\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e35\u0e48\u0e17\u0e33\u0e07\u0e32\u0e19",
-   "reqd": 1
+   "options": "\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1b\u0e31\u0e08\u0e08\u0e38\u0e1a\u0e31\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e1a\u0e31\u0e15\u0e23\u0e1b\u0e23\u0e30\u0e0a\u0e32\u0e0a\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\n\u0e17\u0e35\u0e48\u0e2d\u0e22\u0e39\u0e48\u0e17\u0e35\u0e48\u0e17\u0e33\u0e07\u0e32\u0e19"
   },
   {
    "fieldname": "column_break_yxbp",
@@ -2070,9 +2014,8 @@
  "grid_page_length": 50,
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
  "links": [],
- "modified": "2025-05-07 19:23:06.418749",
+ "modified": "2025-05-08 09:38:49.011238",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",
@@ -2089,7 +2032,6 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
-   "submit": 1,
    "write": 1
   }
  ],

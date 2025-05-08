@@ -69,67 +69,6 @@ function load_loan_condition_js(callback, frm) {
 
 frappe.ui.form.on("SWP_Loan_Request", {
     onload: function(frm) {
-        frm.fields_dict.section_header_document.wrapper.hide();
-        frm.fields_dict.section_header_borrower.wrapper.hide();
-        frm.fields_dict.section_borrower_result.wrapper.hide();
-        frm.fields_dict.section_borrower_details.wrapper.hide();
-        frm.fields_dict.section_borrower_details2.wrapper.hide();
-        frm.fields_dict.section_borrower_details3.wrapper.hide();
-        frm.fields_dict.section_borrower_details4.wrapper.hide();
-        frm.fields_dict.section_borrower_details5.wrapper.hide();
-        frm.fields_dict.section_borrower_details6.wrapper.hide();
-        frm.fields_dict.section_borrower_details7.wrapper.hide();
-        frm.fields_dict.section_borrower_details8.wrapper.hide();
-        frm.fields_dict.section_borrower_details9.wrapper.hide();
-        frm.fields_dict.section_borrower_details10.wrapper.hide();
-        frm.fields_dict.section_borrower_details11.wrapper.hide();
-        frm.fields_dict.section_borrower_details12.wrapper.hide();
-        frm.fields_dict.section_borrower_details13.wrapper.hide();
-        frm.fields_dict.section_borrower_details14.wrapper.hide();
-        frm.fields_dict.section_header_guarantor.wrapper.hide();
-        frm.fields_dict.section_guarantor.wrapper.hide();
-        frm.fields_dict.section_guarantor2.wrapper.hide();
-        frm.fields_dict.section_header_collateral.wrapper.hide();
-        frm.fields_dict.section_collateral_details.wrapper.hide();
-        frm.fields_dict.section_collateral_details2.wrapper.hide();
-        frm.fields_dict.section_collateral_vehicle.wrapper.hide();
-        frm.fields_dict.section_collateral_vehicle2.wrapper.hide();
-        frm.fields_dict.section_collateral_vehicle3.wrapper.hide();
-        frm.fields_dict.section_collateral_vehicle4.wrapper.hide();
-        frm.fields_dict.section_collateral_vehicle5.wrapper.hide();
-        frm.fields_dict.section_collateral_land.wrapper.hide();
-        frm.fields_dict.section_collateral_land2.wrapper.hide();
-        frm.fields_dict.section_collateral_land3.wrapper.hide();
-        frm.fields_dict.section_collateral_land4.wrapper.hide();
-        frm.fields_dict.section_collateral_land5.wrapper.hide();
-        frm.fields_dict.section_collateral_land6.wrapper.hide();
-        frm.fields_dict.section_collateral_details3.wrapper.hide();
-        frm.fields_dict.section_collateral_details4.wrapper.hide();
-        frm.fields_dict.section_header_loan_condition.wrapper.hide();
-        frm.fields_dict.section_loan_condition.wrapper.hide();
-        frm.fields_dict.section_loan_condition2.wrapper.hide();
-        frm.fields_dict.section_loan_condition3.wrapper.hide();
-        frm.fields_dict.section_loan_condition4.wrapper.hide();
-        frm.fields_dict.section_loan_condition5.wrapper.hide();
-        frm.fields_dict.section_loan_condition6.wrapper.hide();
-        frm.fields_dict.section_loan_condition7.wrapper.hide();
-        frm.fields_dict.section_loan_condition8.wrapper.hide();
-        frm.fields_dict.section_loan_condition9.wrapper.hide();
-        frm.fields_dict.section_loan_condition10.wrapper.hide();
-        frm.fields_dict.section_loan_condition11.wrapper.hide();
-        frm.fields_dict.section_loan_condition12.wrapper.hide();
-        frm.fields_dict.section_loan_condition13.wrapper.hide();
-        frm.fields_dict.section_loan_condition14.wrapper.hide();
-        frm.fields_dict.section_loan_condition15.wrapper.hide();
-        frm.fields_dict.section_header_collateral_search.wrapper.hide();
-        frm.fields_dict.section_collateral_search.wrapper.hide();
-        frm.fields_dict.section_input_progress_bar.wrapper.hide();
-        frm.fields_dict.section_form_action.wrapper.hide();
-
-        // Show only borrower search section
-        frm.fields_dict.section_header_borrower_search.wrapper.show();
-        frm.fields_dict.section_borrower_search.wrapper.show();
-
         // แสดงข้อความในฟิลด์ html_borrower_search_remark
         frm.fields_dict.html_borrower_search_remark.$wrapper.html(`
             <div style="color: red; font-size: 14px;">
@@ -327,7 +266,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
         // End   --- Radio button consent sensitive data field
 
         // ----------------------------------------------- Start --- Header collateral search section
-        let html_header_collateral_search= `
+        let html_header_collateral_search = `
         <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
             <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ค้นหาหลักประกัน</div>
             <button id="toggle-collateral_search-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
@@ -515,9 +454,285 @@ frappe.ui.form.on("SWP_Loan_Request", {
             }
         });
         // ----------------------------------------------- End --- Header guarantor section
+
+        // Reinitialize header_collateral_search HTML content
+        frm.fields_dict.header_collateral_search.$wrapper.html(`
+        <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+            <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ค้นหาหลักประกัน</div>
+            <button id="toggle-collateral_search-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+                <i class="fa fa-chevron-up"></i>
+            </button>
+        </div>
+        `);
+
+        // Reinitialize event handler for collateral search toggle
+        $("#toggle-collateral_search-btn").off('click').on("click", function () {
+            let isCollapsed = $(this).find("i").hasClass("fa-chevron-down");
+
+            if (isCollapsed) {
+                frm.fields_dict.section_collateral_search.wrapper.show();
+                $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+            } else {
+                frm.fields_dict.section_collateral_search.wrapper.hide();
+                $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+            }
+        });
+
+        frm.fields_dict.section_header_collateral_search.wrapper.show();
+        frm.fields_dict.section_collateral_search.wrapper.show();
+        frm.fields_dict.section_header_collateral.wrapper.show();
+
+        // Reinitialize header_collateral HTML content
+        frm.fields_dict.header_collateral.$wrapper.html(`
+        <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+            <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">หลักประกัน</div>
+            <button id="toggle-collateral-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+                <i class="fa fa-chevron-up"></i>
+            </button>
+        </div>
+        `);
+
+        // Reinitialize event handler for collateral toggle
+        $("#toggle-collateral-btn").off('click').on("click", function () {
+            let isCollapsed = $(this).find("i").hasClass("fa-chevron-down");
+
+            if (isCollapsed) {
+                frm.fields_dict.section_collateral_details.wrapper.show();
+                frm.fields_dict.section_collateral_details2.wrapper.show();
+                frm.fields_dict.section_collateral_vehicle.wrapper.show();
+                frm.fields_dict.section_collateral_vehicle2.wrapper.show();
+                frm.fields_dict.section_collateral_vehicle3.wrapper.show();
+                frm.fields_dict.section_collateral_vehicle4.wrapper.show();
+                frm.fields_dict.section_collateral_vehicle5.wrapper.show();
+                frm.fields_dict.section_collateral_land.wrapper.show();
+                frm.fields_dict.section_collateral_land2.wrapper.show();
+                frm.fields_dict.section_collateral_land3.wrapper.show();
+                frm.fields_dict.section_collateral_land4.wrapper.show();
+                frm.fields_dict.section_collateral_land5.wrapper.show();
+                frm.fields_dict.section_collateral_land6.wrapper.show();
+                frm.fields_dict.section_collateral_details3.wrapper.show();
+                frm.fields_dict.section_collateral_details4.wrapper.show();
+                $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+            } else {
+                frm.fields_dict.section_collateral_details.wrapper.hide();
+                frm.fields_dict.section_collateral_details2.wrapper.hide();
+                frm.fields_dict.section_collateral_vehicle.wrapper.hide();
+                frm.fields_dict.section_collateral_vehicle2.wrapper.hide();
+                frm.fields_dict.section_collateral_vehicle3.wrapper.hide();
+                frm.fields_dict.section_collateral_vehicle4.wrapper.hide();
+                frm.fields_dict.section_collateral_vehicle5.wrapper.hide();
+                frm.fields_dict.section_collateral_land.wrapper.hide();
+                frm.fields_dict.section_collateral_land2.wrapper.hide();
+                frm.fields_dict.section_collateral_land3.wrapper.hide();
+                frm.fields_dict.section_collateral_land4.wrapper.hide();
+                frm.fields_dict.section_collateral_land5.wrapper.hide();
+                frm.fields_dict.section_collateral_land6.wrapper.hide();
+                frm.fields_dict.section_collateral_details3.wrapper.hide();
+                frm.fields_dict.section_collateral_details4.wrapper.hide();
+                $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+            }
+        });
+
+        frm.fields_dict.section_header_collateral.wrapper.show();
     },
 
     refresh(frm) {
+       
+        load_borrower_js(function(frm) {
+            initialize_borrower_search(frm);
+        }, frm);
+
+        frm.fields_dict.section_header_document.wrapper.hide();
+        frm.fields_dict.section_header_borrower.wrapper.hide();
+        frm.fields_dict.section_borrower_result.wrapper.hide();
+        frm.fields_dict.section_borrower_details.wrapper.hide();
+        frm.fields_dict.section_borrower_details2.wrapper.hide();
+        frm.fields_dict.section_borrower_details3.wrapper.hide();
+        frm.fields_dict.section_borrower_details4.wrapper.hide();
+        frm.fields_dict.section_borrower_details5.wrapper.hide();
+        frm.fields_dict.section_borrower_details6.wrapper.hide();
+        frm.fields_dict.section_borrower_details7.wrapper.hide();
+        frm.fields_dict.section_borrower_details8.wrapper.hide();
+        frm.fields_dict.section_borrower_details9.wrapper.hide();
+        frm.fields_dict.section_borrower_details10.wrapper.hide();
+        frm.fields_dict.section_borrower_details11.wrapper.hide();
+        frm.fields_dict.section_borrower_details12.wrapper.hide();
+        frm.fields_dict.section_borrower_details13.wrapper.hide();
+        frm.fields_dict.section_borrower_details14.wrapper.hide();
+        frm.fields_dict.section_header_guarantor.wrapper.hide();
+        frm.fields_dict.section_guarantor.wrapper.hide();
+        frm.fields_dict.section_guarantor2.wrapper.hide();
+        frm.fields_dict.section_header_collateral.wrapper.hide();
+        frm.fields_dict.section_collateral_details.wrapper.hide();
+        frm.fields_dict.section_collateral_details2.wrapper.hide();
+        frm.fields_dict.section_collateral_vehicle.wrapper.hide();
+        frm.fields_dict.section_collateral_vehicle2.wrapper.hide();
+        frm.fields_dict.section_collateral_vehicle3.wrapper.hide();
+        frm.fields_dict.section_collateral_vehicle4.wrapper.hide();
+        frm.fields_dict.section_collateral_vehicle5.wrapper.hide();
+        frm.fields_dict.section_collateral_land.wrapper.hide();
+        frm.fields_dict.section_collateral_land2.wrapper.hide();
+        frm.fields_dict.section_collateral_land3.wrapper.hide();
+        frm.fields_dict.section_collateral_land4.wrapper.hide();
+        frm.fields_dict.section_collateral_land5.wrapper.hide();
+        frm.fields_dict.section_collateral_land6.wrapper.hide();
+        frm.fields_dict.section_collateral_details3.wrapper.hide();
+        frm.fields_dict.section_collateral_details4.wrapper.hide();
+        frm.fields_dict.section_header_loan_condition.wrapper.hide();
+        frm.fields_dict.section_loan_condition.wrapper.hide();
+        frm.fields_dict.section_loan_condition2.wrapper.hide();
+        frm.fields_dict.section_loan_condition3.wrapper.hide();
+        frm.fields_dict.section_loan_condition4.wrapper.hide();
+        frm.fields_dict.section_loan_condition5.wrapper.hide();
+        frm.fields_dict.section_loan_condition6.wrapper.hide();
+        frm.fields_dict.section_loan_condition7.wrapper.hide();
+        frm.fields_dict.section_loan_condition8.wrapper.hide();
+        frm.fields_dict.section_loan_condition9.wrapper.hide();
+        frm.fields_dict.section_loan_condition10.wrapper.hide();
+        frm.fields_dict.section_loan_condition11.wrapper.hide();
+        frm.fields_dict.section_loan_condition12.wrapper.hide();
+        frm.fields_dict.section_loan_condition13.wrapper.hide();
+        frm.fields_dict.section_loan_condition14.wrapper.hide();
+        frm.fields_dict.section_loan_condition15.wrapper.hide();
+        frm.fields_dict.section_header_collateral_search.wrapper.hide();
+        frm.fields_dict.section_collateral_search.wrapper.hide();
+        frm.fields_dict.section_input_progress_bar.wrapper.hide();
+        frm.fields_dict.section_form_action.wrapper.hide();
+
+        // Show all sections if document is not new
+        if (!frm.is_new()) {
+            // Hide borrower search sections first
+            frm.fields_dict.section_header_borrower_search.wrapper.hide();
+            frm.fields_dict.section_borrower_search.wrapper.hide();
+            frm.fields_dict.section_borrower_result.wrapper.hide();
+
+            // Then show other sections
+            frm.fields_dict.section_header_document.wrapper.show();
+            frm.fields_dict.section_header_borrower.wrapper.show();
+            frm.fields_dict.section_borrower_details.wrapper.show();
+
+            // Show all borrower sections
+            frm.fields_dict.section_borrower_details2.wrapper.show();
+            frm.fields_dict.section_borrower_details3.wrapper.show();
+            frm.fields_dict.section_borrower_details4.wrapper.show();
+            frm.fields_dict.section_borrower_details5.wrapper.show();
+            frm.fields_dict.section_borrower_details6.wrapper.show();
+            frm.fields_dict.section_borrower_details7.wrapper.show();
+            frm.fields_dict.section_borrower_details8.wrapper.show();
+            frm.fields_dict.section_borrower_details9.wrapper.show();
+            frm.fields_dict.section_borrower_details10.wrapper.show();
+            frm.fields_dict.section_borrower_details11.wrapper.show();
+            frm.fields_dict.section_borrower_details12.wrapper.show();
+            frm.fields_dict.section_borrower_details13.wrapper.show();
+            frm.fields_dict.section_borrower_details14.wrapper.show();
+
+            frm.fields_dict.section_header_guarantor.wrapper.show();
+            frm.fields_dict.section_guarantor.wrapper.show();
+            frm.fields_dict.section_guarantor2.wrapper.show();
+
+            // Check if we need to scroll to guarantor section
+            if (window.justSavedBorrower) {
+                setTimeout(function() {
+                    $('html, body').animate({
+                        scrollTop: frm.fields_dict.section_header_guarantor.wrapper.offset().top - 50
+                    }, 500);
+                    window.justSavedBorrower = false;
+                }, 1500); // Increased delay to ensure page is fully loaded
+            }
+
+            frm.fields_dict.section_header_collateral_search.wrapper.show();
+            frm.fields_dict.section_collateral_search.wrapper.show();
+            frm.fields_dict.section_header_collateral.wrapper.show();
+            frm.fields_dict.section_collateral_details.wrapper.show();
+            frm.fields_dict.section_collateral_details2.wrapper.show();
+            frm.fields_dict.section_collateral_vehicle.wrapper.show();
+            frm.fields_dict.section_collateral_vehicle2.wrapper.show();
+            frm.fields_dict.section_collateral_vehicle3.wrapper.show();
+            frm.fields_dict.section_collateral_vehicle4.wrapper.show();
+            frm.fields_dict.section_collateral_vehicle5.wrapper.show();
+            frm.fields_dict.section_collateral_land.wrapper.show();
+            frm.fields_dict.section_collateral_land2.wrapper.show();
+            frm.fields_dict.section_collateral_land3.wrapper.show();
+            frm.fields_dict.section_collateral_land4.wrapper.show();
+            frm.fields_dict.section_collateral_land5.wrapper.show();
+            frm.fields_dict.section_collateral_land6.wrapper.show();
+            frm.fields_dict.section_collateral_details3.wrapper.show();
+            frm.fields_dict.section_collateral_details4.wrapper.show();
+            frm.fields_dict.section_header_loan_condition.wrapper.show();
+            frm.fields_dict.section_loan_condition.wrapper.show();
+            frm.fields_dict.section_loan_condition2.wrapper.show();
+            frm.fields_dict.section_loan_condition3.wrapper.show();
+            frm.fields_dict.section_loan_condition4.wrapper.show();
+            frm.fields_dict.section_loan_condition5.wrapper.show();
+            frm.fields_dict.section_loan_condition6.wrapper.show();
+            frm.fields_dict.section_loan_condition7.wrapper.show();
+            frm.fields_dict.section_loan_condition8.wrapper.show();
+            frm.fields_dict.section_loan_condition9.wrapper.show();
+            frm.fields_dict.section_loan_condition10.wrapper.show();
+            frm.fields_dict.section_loan_condition11.wrapper.show();
+            frm.fields_dict.section_loan_condition12.wrapper.show();
+            frm.fields_dict.section_loan_condition13.wrapper.show();
+            frm.fields_dict.section_loan_condition14.wrapper.show();
+            frm.fields_dict.section_loan_condition15.wrapper.show();
+            frm.fields_dict.section_input_progress_bar.wrapper.show();
+            frm.fields_dict.section_form_action.wrapper.show();
+
+            // Initialize collateral search section
+            load_collateral_js(function(frm) {
+                initialize_collateral_search(frm);
+            }, frm);
+
+            // Reinitialize header_guarantor HTML content
+            let html_header_guarantor = `
+            <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+                <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ผู้ค้ำ</div>
+                <button id="toggle-guarantor-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+                    <i class="fa fa-chevron-up"></i>
+                </button>
+            </div>
+            `;
+            frm.fields_dict.header_guarantor.$wrapper.html(html_header_guarantor);
+
+            // Reinitialize has_guarantor checkbox
+            frm.fields_dict.has_guarantor.$wrapper.html(`
+                <div style="margin: 10px 0;">
+                    <label style="display: flex; align-items: center; cursor: pointer;">
+                        <input type="checkbox" id="has_guarantor_checkbox" style="margin-right: 8px;">
+                        <span>ไม่มีผู้ค้ำ</span>
+                    </label>
+                </div>
+            `);
+
+            // Reinitialize event handlers
+            $("#has_guarantor_checkbox").on("change", function() {
+                if ($(this).is(":checked")) {
+                    frm.fields_dict.section_guarantor.wrapper.show();
+                    $("#toggle-guarantor-btn i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+                } else {
+                    frm.fields_dict.section_guarantor.wrapper.hide();
+                    $("#toggle-guarantor-btn i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+                }
+            });
+
+            let isCollapsed_header_guarantor = false;
+            $("#toggle-guarantor-btn").on("click", function () {
+                isCollapsed_header_guarantor = !isCollapsed_header_guarantor;
+
+                if (isCollapsed_header_guarantor) {
+                    frm.fields_dict.section_guarantor.wrapper.hide();
+                    frm.fields_dict.section_guarantor2.wrapper.hide();
+                    $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+                    $("#has_guarantor_checkbox").prop("checked", false);
+                } else {
+                    frm.fields_dict.section_guarantor.wrapper.show();
+                    frm.fields_dict.section_guarantor2.wrapper.show();
+                    $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+                    $("#has_guarantor_checkbox").prop("checked", true);
+                }
+            });
+
+        }
+
         // ----------------------------------------------- Start ซ่อนปุ่ม print
         $('use[href="#icon-printer"]')
             .closest('button')
