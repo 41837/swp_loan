@@ -65,7 +65,7 @@
   "section_borrower_details5",
   "copy_from",
   "column_break_jmng",
-  "f119_2",
+  "household_registration_status",
   "section_borrower_details6",
   "table_borrower_address",
   "section_borrower_details7",
@@ -302,6 +302,7 @@
   "bank_account",
   "bank_account_type",
   "bank_account_number",
+  "bank_account_name",
   "column_break_nbvq",
   "virtual_financing_amount_net",
   "virtual_total_fees_net",
@@ -920,12 +921,6 @@
   {
    "fieldname": "column_break_jmng",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "f119_2",
-   "fieldtype": "Select",
-   "label": "\u0e2a\u0e16\u0e32\u0e19\u0e30\u0e43\u0e19\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19",
-   "options": "\u0e40\u0e08\u0e49\u0e32\u0e1a\u0e49\u0e32\u0e19\n\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48\u0e08\u0e31\u0e14\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e02\u0e2d\u0e07\u0e2a\u0e32\u0e02\u0e32\n\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\u0e19\u0e32\u0e19\u0e40\u0e01\u0e34\u0e19 5 \u0e1b\u0e35\n\u0e21\u0e35\u0e1a\u0e34\u0e25\u0e04\u0e48\u0e32\u0e19\u0e49\u0e33\u0e04\u0e48\u0e32\u0e44\u0e1f\u0e0a\u0e37\u0e48\u0e2d\u0e15\u0e31\u0e27\u0e40\u0e2d\u0e07\n\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e49\u0e32\u0e23\u0e32\u0e0a\u0e01\u0e32\u0e23/\u0e23\u0e31\u0e10\u0e27\u0e34\u0e2a\u0e32\u0e2b\u0e01\u0e34\u0e08"
   },
   {
    "fieldname": "btn_search_campaign",
@@ -2018,13 +2013,24 @@
    "fieldtype": "Data",
    "label": "status_flag",
    "read_only": 1
+  },
+  {
+   "fieldname": "bank_account_name",
+   "fieldtype": "Data",
+   "label": "\u0e0a\u0e37\u0e48\u0e2d\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
+  },
+  {
+   "fieldname": "household_registration_status",
+   "fieldtype": "Select",
+   "label": "\u0e2a\u0e16\u0e32\u0e19\u0e30\u0e43\u0e19\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19",
+   "options": "\u0e40\u0e08\u0e49\u0e32\u0e1a\u0e49\u0e32\u0e19\n\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e1e\u0e37\u0e49\u0e19\u0e17\u0e35\u0e48\u0e08\u0e31\u0e14\u0e2a\u0e34\u0e19\u0e40\u0e0a\u0e37\u0e48\u0e2d\u0e02\u0e2d\u0e07\u0e2a\u0e32\u0e02\u0e32\n\u0e2d\u0e22\u0e39\u0e48\u0e43\u0e19\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19\u0e19\u0e32\u0e19\u0e40\u0e01\u0e34\u0e19 5 \u0e1b\u0e35\n\u0e21\u0e35\u0e1a\u0e34\u0e25\u0e04\u0e48\u0e32\u0e19\u0e49\u0e33\u0e04\u0e48\u0e32\u0e44\u0e1f\u0e0a\u0e37\u0e48\u0e2d\u0e15\u0e31\u0e27\u0e40\u0e2d\u0e07\n\u0e40\u0e1b\u0e47\u0e19\u0e02\u0e49\u0e32\u0e23\u0e32\u0e0a\u0e01\u0e32\u0e23/\u0e23\u0e31\u0e10\u0e27\u0e34\u0e2a\u0e32\u0e2b\u0e01\u0e34\u0e08"
   }
  ],
  "grid_page_length": 50,
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-08 11:33:15.817873",
+ "modified": "2025-05-08 17:26:10.506494",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",

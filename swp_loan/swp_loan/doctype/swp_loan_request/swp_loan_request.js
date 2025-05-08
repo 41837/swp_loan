@@ -66,13 +66,14 @@ function load_loan_condition_js(callback, frm) {
     }
 }
 
-
 frappe.ui.form.on("SWP_Loan_Request", {
     onload: function(frm) {
         // Initialize date of birth validation
         load_borrower_js(function(frm) {
             initialize_date_of_birth_validation(frm);
             initialize_customer_id_validation(frm);
+            initialize_cus_issue_date_validation(frm);
+            initialize_cus_expiry_date_validation(frm);
         }, frm);
 
         // แสดงข้อความในฟิลด์ html_borrower_search_remark
@@ -351,12 +352,11 @@ frappe.ui.form.on("SWP_Loan_Request", {
         set_registration_year_options(frm);
         set_col_year_of_possession_options(frm);
         update_days_options(frm);
-        // set_application_source_options(frm);
         disable_application_source(frm);
         display_fields_by_cus_customer_type(frm);
         display_fields_by_col_product(frm);
         hide_add_button_loan_field_checking_connection(frm);
-        set_disable_fields(frm);
+        // set_disable_fields(frm);
         // set filters
         set_filter_col_product(frm);
        
