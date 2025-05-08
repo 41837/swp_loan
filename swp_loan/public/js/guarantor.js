@@ -1,3 +1,55 @@
+function initialize_guarantor_header(frm) {
+    let html_header_guarantor = `
+    <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+        <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ผู้ค้ำ</div>
+        <button id="toggle-guarantor-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+            <i class="fa fa-chevron-up"></i>
+        </button>
+    </div>
+    `;
+
+    frm.fields_dict.header_guarantor.$wrapper.html(html_header_guarantor);
+
+    // ตั้งค่า HTML ของ has_guarantor เป็น checkbox
+    frm.fields_dict.has_guarantor.$wrapper.html(`
+        <div style="margin: 10px 0;">
+            <label style="display: flex; align-items: center; cursor: pointer;">
+                <input type="checkbox" id="has_guarantor_checkbox" style="margin-right: 8px;">
+                <span>ต้องการผู้ค้ำ</span>
+            </label>
+        </div>
+    `);
+
+    // เพิ่ม event handler สำหรับ checkbox
+    $("#has_guarantor_checkbox").on("change", function() {
+        if ($(this).is(":checked")) {
+            frm.fields_dict.section_guarantor.wrapper.show();
+            $("#toggle-guarantor-btn i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+        } else {
+            frm.fields_dict.section_guarantor.wrapper.hide();
+            $("#toggle-guarantor-btn i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+        }
+    });
+
+    // เพิ่ม event handler สำหรับปุ่ม toggle
+    let isCollapsed_header_guarantor = false;
+    $("#toggle-guarantor-btn").on("click", function () {
+        isCollapsed_header_guarantor = !isCollapsed_header_guarantor;
+
+        if (isCollapsed_header_guarantor) {
+            frm.fields_dict.section_guarantor.wrapper.hide();
+            frm.fields_dict.section_guarantor2.wrapper.hide();
+            $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+            $("#has_guarantor_checkbox").prop("checked", false);
+        } else {
+            frm.fields_dict.section_guarantor.wrapper.show();
+            frm.fields_dict.section_guarantor2.wrapper.show();
+            $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+            $("#has_guarantor_checkbox").prop("checked", true);
+        }
+    });
+}
+
 function fn_btn_save_guarantor(frm){
     frm.fields_dict.btn_save_guarantor.$wrapper
     .css({
@@ -14,107 +66,9 @@ function fn_btn_save_guarantor(frm){
         'border': 'none',
     })
     .on('click', function() {
-        // กำหนด mandatory field ใน section ข้อมูลผู้ค้ำ
-        let required_fields = [
-            // "gua_search_id",
-            // "gua_first_name",
-            // "gua_last_name",
-            // "gua_birth_date",
-            // "gua_mobile",
-            // "gua_email",
-            // "gua_line_id",
-            // "gua_facebook",
-            // "gua_instagram",
-            // "gua_tiktok",
-            // "gua_address",
-            // "gua_subdistrict",
-            // "gua_district",
-            // "gua_province",
-            // "gua_postal_code",
-            // "gua_country",
-            // "gua_address_type",
-            // "gua_platform",
-            // "gua_remark",
-        ];
-
-        let missing_fields = [];
-
-        required_fields.forEach(fieldname => {
-            let value = frm.doc[fieldname];
-            if (!value) {
-                missing_fields.push(frm.fields_dict[fieldname].df.label);
-            }
-        });
-
-        // Validate missing field
-        if (missing_fields.length > 0) {
-            frappe.msgprint({
-                title: "กรุณากรอกข้อมูลให้ครบ",
-                message: "ข้อมูลที่จำเป็นต้องกรอก: <br><b> - " + missing_fields.join("<br> - ") + "</bt>",
-                indicator: "red"
-            });
-            return;
-        }
-
-        // Save data
-        frappe.call({
-            method: "swp_loan.api.save_util.custom_save_without_validation", // Save without validation
-            args: {
-                doc: JSON.stringify(frm.doc)
-            },
-            callback: function(r) {
-                if (!r.exc && r.message.name) {
-                    // Alert message
-                    frappe.show_alert({
-                        message: 'ข้อมูลผู้ค้ำถูกบันทึกแล้ว',
-                        indicator: 'green'
-                    }, 5);
-
-                    // Collapse section
-                    // $("#toggle-guarantor-btn").trigger("click");
-
-                    // Show collateral search sections
-                    frm.fields_dict.section_header_collateral_search.wrapper.show();
-                    frm.fields_dict.section_collateral_search.wrapper.show();
-                    frm.fields_dict.section_header_collateral.wrapper.show();
-
-                    // Initialize header_collateral_search HTML content
-                    let html_header_collateral_search = `
-                    <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
-                        <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ค้นหาหลักประกัน</div>
-                        <button id="toggle-collateral_search-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
-                            <i class="fa fa-chevron-up"></i>
-                        </button>
-                    </div>
-                    `;
-
-                    frm.fields_dict.header_collateral_search.$wrapper.html(html_header_collateral_search);
-
-                    // Initialize event handler for collateral search toggle
-                    let isCollapsed_header_collateral_search = false;
-                    $("#toggle-collateral_search-btn").on("click", function () {
-                        isCollapsed_header_collateral_search = !isCollapsed_header_collateral_search;
-
-                        if (isCollapsed_header_collateral_search) {
-                            frm.fields_dict.section_collateral_search.wrapper.hide();
-                            $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
-                        } else {
-                            frm.fields_dict.section_collateral_search.wrapper.show();
-                            $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
-                        }
-                    });
-
-                    // Navigate to saved document and scroll to collateral search section
-                    frappe.set_route("Form", "SWP_Loan_Request", r.message.name);
-                    
-                    // Scroll to collateral search section after a short delay
-                    setTimeout(function() {
-                        $('html, body').animate({
-                            scrollTop: frm.fields_dict.section_header_collateral_search.wrapper.offset().top - 50
-                        }, 500);
-                    }, 1000);
-                }
-            }
-        });
+        // if (!frm.doc.cus_customer_id) {
+        //     frappe.throw(__('กรุณากรอกหมายเลขบัตร'));
+        // }
+        frm.save()
     });
 }

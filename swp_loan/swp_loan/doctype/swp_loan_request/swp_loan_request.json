@@ -315,6 +315,7 @@
   "btn_save_loan_condition",
   "section_form_action",
   "column_break_yxbp",
+  "status_flag",
   "column_break_lnrf",
   "btn_submit",
   "column_break_plas"
@@ -2010,13 +2011,20 @@
    "fieldtype": "Button",
    "is_virtual": 1,
    "label": "\u0e1a\u0e31\u0e19\u0e17\u0e36\u0e01\u0e02\u0e49\u0e2d\u0e21\u0e39\u0e25\u0e1c\u0e39\u0e49\u0e04\u0e49\u0e33"
+  },
+  {
+   "default": "draft",
+   "fieldname": "status_flag",
+   "fieldtype": "Data",
+   "label": "status_flag",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-08 13:13:26.999377",
+ "modified": "2025-05-08 11:33:15.817873",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",
