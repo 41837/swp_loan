@@ -1,3 +1,32 @@
+function initialize_borrower_search_header(frm) {
+    let html_header_borrower_search = `
+    <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #80AFE0; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+        <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ค้นหาประวัติผู้กู้</div>
+        <button id="toggle-borrower_search-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+            <i class="fa fa-chevron-up"></i>
+        </button>
+    </div>
+    `;
+    
+    frm.fields_dict.header_borrower_search.$wrapper.html(html_header_borrower_search);
+    
+    let isCollapsed_header_borrower_search = false;
+    
+    $("#toggle-borrower_search-btn").on("click", function () {
+        isCollapsed_header_borrower_search = !isCollapsed_header_borrower_search;
+    
+        if (isCollapsed_header_borrower_search) {
+            frm.fields_dict.section_borrower_search.wrapper.hide();
+            frm.fields_dict.section_borrower_result.hide();
+            $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+        } else {
+            frm.fields_dict.section_borrower_search.wrapper.show();
+            frm.fields_dict.section_borrower_result.show();
+            $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+        }
+    });
+}
+
 function fn_search_borrower(frm){
     
     frm.fields_dict.btn_search_borrower.$wrapper
@@ -10,7 +39,7 @@ function fn_search_borrower(frm){
     .css({
         "font-size": "16px",
         "padding": "8px 16px",
-        'background-color': 'salmon',
+        'background-color': '#4a7ef6',
         'color': 'white',
         'border': 'none',
     })

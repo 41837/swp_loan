@@ -20,7 +20,7 @@ function initialize_collateral_header(frm) {
     
 
     let html_header_collateral = `
-    <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #ffb28d; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+    <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #80AFE0; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
         <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">หลักประกัน</div>
         <button id="toggle-collateral-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
             <i class="fa fa-chevron-up"></i>

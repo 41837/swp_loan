@@ -374,3 +374,56 @@ function initialize_cus_expiry_date_validation(frm) {
 
     });
 }
+
+function initialize_borrower_header(frm) {
+    let html_header_borrower = `
+    <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #80AFE0; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+        <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ข้อมูลผู้กู้</div>
+        <button id="toggle-borrower-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
+            <i class="fa fa-chevron-up"></i>
+        </button>
+    </div>
+    `;
+    
+    frm.fields_dict.header_borrower.$wrapper.html(html_header_borrower);
+    
+    let isCollapsed_header_borrower = false;
+    
+    $("#toggle-borrower-btn").on("click", function () {
+        isCollapsed_header_borrower = !isCollapsed_header_borrower;
+    
+        if (isCollapsed_header_borrower) {
+            frm.fields_dict.section_borrower_details.wrapper.hide();
+            frm.fields_dict.section_borrower_details2.wrapper.hide();
+            frm.fields_dict.section_borrower_details3.wrapper.hide();
+            frm.fields_dict.section_borrower_details4.wrapper.hide();
+            frm.fields_dict.section_borrower_details5.wrapper.hide();
+            frm.fields_dict.section_borrower_details6.wrapper.hide();
+            frm.fields_dict.section_borrower_details7.wrapper.hide();
+            frm.fields_dict.section_borrower_details8.wrapper.hide();
+            frm.fields_dict.section_borrower_details9.wrapper.hide();
+            frm.fields_dict.section_borrower_details10.wrapper.hide();
+            frm.fields_dict.section_borrower_details11.wrapper.hide();
+            frm.fields_dict.section_borrower_details12.wrapper.hide();
+            frm.fields_dict.section_borrower_details13.wrapper.hide();
+            frm.fields_dict.section_borrower_details14.wrapper.hide();
+            $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+        } else {
+            frm.fields_dict.section_borrower_details.wrapper.show();
+            frm.fields_dict.section_borrower_details2.wrapper.show();
+            frm.fields_dict.section_borrower_details3.wrapper.show();
+            frm.fields_dict.section_borrower_details4.wrapper.show();
+            frm.fields_dict.section_borrower_details5.wrapper.show();
+            frm.fields_dict.section_borrower_details6.wrapper.show();
+            frm.fields_dict.section_borrower_details7.wrapper.show();
+            frm.fields_dict.section_borrower_details8.wrapper.show();
+            frm.fields_dict.section_borrower_details9.wrapper.show();
+            frm.fields_dict.section_borrower_details10.wrapper.show();
+            frm.fields_dict.section_borrower_details11.wrapper.show();
+            frm.fields_dict.section_borrower_details12.wrapper.show();
+            frm.fields_dict.section_borrower_details13.wrapper.show();
+            frm.fields_dict.section_borrower_details14.wrapper.show();                
+            $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
+        }
+    });
+}
