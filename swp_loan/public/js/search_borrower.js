@@ -1,3 +1,5 @@
+let loan_history = cur_frm.get_field("loan_history_html")
+
 function initialize_borrower_search_header(frm) {
     let html_header_borrower_search = `
     <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #80AFE0; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
@@ -28,7 +30,13 @@ function initialize_borrower_search_header(frm) {
 }
 
 function fn_search_borrower(frm){
-    
+    // Get loan_history field inside the function
+    let loan_history = frm.get_field("loan_history_html");
+    if (!loan_history) {
+        console.error("loan_history_html field not found");
+        return;
+    }
+
     frm.fields_dict.btn_search_borrower.$wrapper
     .css({
         "text-align": "left",
@@ -46,9 +54,6 @@ function fn_search_borrower(frm){
     .on('click', function() {
         // Validate empty field before search
         if (!frm.doc.cus_search_id) {
-            load_borrower_js(function () {
-                test();
-            });
             frappe.msgprint('กรุณากรอกหมายเลขประจำตัวผู้กู้ก่อน');
         
             // Set validate display field
@@ -59,41 +64,114 @@ function fn_search_borrower(frm){
             return;
         }
 
-        // Get data from database
+        // Call search_customer function from loan_application.js
         frappe.call({
-            method: 'frappe.client.get_list',
-            args: {
-                doctype: 'SWP_Loan_Request',
-                filters: {
-                    cus_customer_id: frm.doc.cus_search_id
-                },
-                fields: ['name', 'cus_first_name', 'cus_last_name'],
-                limit_page_length: 5
-            },
-            callback: function(response) {
-                const data = response.message;
-    
-                if (data && data.length) {
-                    // Set first record to form control
-                    const first = data[0];
-                    
-                    frm.set_value('cus_is_new', 0);
-                    frm.set_value('cus_first_name', first.cus_first_name);
-                    frm.set_value('cus_last_name', first.cus_last_name);
-            
-                    // Message from filters
-                    let message = '<b>ประวัติการทำสัญญา:</b><br><ul>';
-                    data.forEach(row => {
-                        message += `<li>สัญญาเลขที่: ${row.name}<br> ชื่อ-นามสกุล: ${row.cus_first_name} ${row.cus_last_name}</li>`;
-                    });
-                    message += '</ul>';
-                    frappe.msgprint(message);
-            
+            method: "z_loan.api.search_customer",
+            args: { search_id: frm.doc.cus_search_id, is_guarantor: 1 },
+            freeze: true,
+            freeze_message: __("Searching for information..."),
+            callback: async function (response) {
+                let data = response.message?.data ?? {};
+                if (data && Object.keys(data).length > 0 && response.message.statusCode == 200) {
+                    try {
+                        // Check if template exists
+                        if (!frappe.templates["tmpl_loan_history"]) {
+                            console.error("tmpl_loan_history template not found");
+                            frappe.msgprint({ 
+                                title: __("Error"), 
+                                message: __("Template for loan history not found"), 
+                                indicator: "red" 
+                            });
+                            return;
+                        }
+
+                        // Render loan history
+                        let label = {
+                            agreement_title: (__("Contract History")),
+                            guarantor_title: (__("Gurantor History")),
+                            agreement_start_date: __("Agreement Start Date"),
+                            outstanding_period: __("Outstanding Period"),
+                            current_outstanding_period: __("Current Outstanding Period"),
+                        }
+                        let history_data = [];
+                        let company_names = [];
+                        company_names = company_names.concat(data.agreement?.map(item => item.company), data.guarantor?.map(item => item.company));
+                        if (company_names.length > 0) {
+                            company_names = [...new Set(company_names)];
+                        }
+                        company_names.forEach(company => {
+                            let agreements = data.agreement?.filter(t => t.company == company);
+                            let guarantors = data.guarantor?.filter(t => t.company == company);
+                            let agreement_data = []
+                            let guarantor_data = []
+                            if (agreements) {
+                                agreements.forEach(agreement => {
+                                    agreement_data.push({
+                                        "agreement_id": `${agreement.agreement_id}[${agreement.target}]`,
+                                        "agreement_start_date": frappe.datetime.str_to_user(agreement.agreement_start_date),
+                                        "outstanding_period": agreement.outstanding_period,
+                                        "current_outstanding_period": agreement.current_outstanding_period,
+                                        "remark": agreement.remark
+                                    },)
+                                });
+                            }
+                            if (guarantors) {
+                                guarantors.forEach(guarantor => {
+                                    guarantor_data.push({
+                                        "agreement_id": `${guarantor.agreement_id}[${guarantor.target}]`,
+                                        "agreement_start_date": frappe.datetime.str_to_user(guarantor.agreement_start_date),
+                                        "outstanding_period": guarantor.outstanding_period,
+                                        "current_outstanding_period": guarantor.current_outstanding_period,
+                                        "remark": guarantor.remark
+                                    },)
+                                });
+                            }
+                            history_data.push({
+                                "name": company,
+                                "color": get_company_colors(company, null),
+                                "contracts": agreement_data,
+                                "guarantors": guarantor_data,
+                                "is_show_agreement": agreement_data.length > 0 ? true : false,
+                                "is_show_guarantor": guarantor_data.length > 0 ? true : false,
+                            })
+                        });
+
+                        // Render and set HTML
+                        let html = frappe.render_template("tmpl_loan_history", { 
+                            label: label, 
+                            contract_history: history_data 
+                        });
+                        loan_history.$wrapper.html(html);
+
+                        // Set form values
+                        frm.set_value('cus_is_new', 0);
+                        frm.set_value('cus_first_name', data.cus_first_name);
+                        frm.set_value('cus_last_name', data.cus_last_name);
+
+                        // Show success message
+                        frappe.show_alert({
+                            message: __("Found customer information"),
+                            indicator: "green"
+                        }, 5);
+
+                        // Show result section
+                        frm.fields_dict.section_borrower_result.wrapper.show();
+                    } catch (error) {
+                        console.error("Error rendering loan history:", error);
+                        frappe.msgprint({ 
+                            title: __("Error"), 
+                            message: __("Failed to render loan history"), 
+                            indicator: "red" 
+                        });
+                    }
                 } else {
-                    // frappe.msgprint('ไม่พบประวัติการทำสัญญาของผู้กู้');
+                    // Clear loan history
+                    loan_history.$wrapper.html("");
+                    
+                    // Set as new customer
                     frm.set_value('cus_is_new', 1);
 
-                    // แสดงข้อความไม่พบประวัติในฟิลด์ html_borrower_result
+                    // Show no result message
                     frm.fields_dict.html_borrower_result.$wrapper.html(`
                         <div style="font-size: 16px; font-weight: bold; margin: 10px 0;">
                             ผลการค้นหาประวัติผู้กู้
@@ -111,9 +189,8 @@ function fn_search_borrower(frm){
                         </div><br>
                     `);
 
-                    // เพิ่ม event handler สำหรับปุ่มยอมรับ
+                    // Add event handlers for buttons
                     $("#btn_accept_borrower").on("click", function() {
-
                         frm.fields_dict.section_header_borrower_search.wrapper.hide();
                         frm.fields_dict.section_borrower_search.wrapper.hide();
                         frm.fields_dict.section_borrower_result.hide();
@@ -138,12 +215,9 @@ function fn_search_borrower(frm){
                             message: 'ยอมรับประวัติผู้กู้เรียบร้อยแล้ว',
                             indicator: 'green'
                         }, 5);
-                        // เพิ่มโค้ดสำหรับการยอมรับประวัติผู้กู้ที่นี่
                     });
 
-                    // เพิ่ม event handler สำหรับปุ่มยกเลิก
                     $("#btn_cancel_borrower").on("click", function() {
-                        // ล้างค่าในฟิลด์
                         frm.set_value('cus_search_id', '');
                         frm.set_value('cus_is_new', 0);
                         frm.fields_dict.section_borrower_result.wrapper.hide();
@@ -152,12 +226,20 @@ function fn_search_borrower(frm){
                             message: 'ยกเลิกการค้นหาเรียบร้อยแล้ว',
                             indicator: 'orange'
                         }, 5);
-                        // เพิ่มโค้ดสำหรับการยกเลิกที่นี่
                     });
+
+                    // Show error message
+                    let error_message = response.message?.message;
+                    frappe.msgprint({ title: __("Error"), message: error_message, indicator: "red" });
                 }
 
-                // แสดง section ผลการค้นหา
+                // Show result section
                 frm.fields_dict.section_borrower_result.wrapper.show();
+            },
+            error: function (response) {
+                loan_history.$wrapper.html("");
+                frm.set_value('cus_is_new', 1);
+                frappe.msgprint({ title: __("Error"), message: __("Failed to search customer information"), indicator: "red" });
             }
         });
     });

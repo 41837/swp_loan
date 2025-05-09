@@ -7,6 +7,7 @@ let loanConditionJsLoaded = false;
 let customBannerJsLoaded = false;
 let loanApplication = false;
 let idCardReader = false;
+let loan_history = cur_frm.get_field("loan_history_html")
  
 function load_borrower_js(callback, frm) {
     if (!borrowerJsLoaded) {
