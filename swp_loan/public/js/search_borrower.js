@@ -195,6 +195,7 @@ function fn_search_borrower(frm){
 }
 
 function fn_search_borrower2(frm){
+    check_id_input_type(frm);
      // Get data from database
      frappe.call({
         method: 'frappe.client.get_list',
@@ -218,9 +219,6 @@ function fn_search_borrower2(frm){
                 if (frm.doc.cus_search_id) {
                     search_customer(frm, frm.doc.cus_search_id, is_refresh = true); 
                 }
-                
-                
-
                 // Add event handlers for buttons
                 $("#btn_accept_borrower").on("click", function() {
                     frm.fields_dict.section_header_borrower_search.wrapper.hide();
@@ -259,11 +257,11 @@ function fn_search_borrower2(frm){
                         indicator: 'orange'
                     }, 5);
                 });
-
-                // Show result section
                 frm.fields_dict.section_borrower_result.wrapper.show();
                 return;
             }
+
+
 
             if (data && data.length) {
                 // Set first record to form control
@@ -282,141 +280,15 @@ function fn_search_borrower2(frm){
                 frappe.msgprint(message);
         
             } else {
-                // frappe.msgprint('ไม่พบประวัติการทำสัญญาของผู้กู้');
                 frm.set_value('cus_is_new', 1);
-
-                // แสดงข้อความไม่พบประวัติในฟิลด์ html_borrower_result
-                frm.fields_dict.html_borrower_result.$wrapper.html(`
-                    <div style="margin-bottom: 20px;">
-                                    <div style="display: flex; flex-wrap: wrap; gap: 20px;">
-                                        <div style="flex: 1 1 45%; min-width: 400px;">
-                                            <div style="background: #80AFE0; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล VLoan</div>
-                                            <div style="display: flex;">
-                                                <div style="flex: 1; border: 2px solid #80AFE0; margin: 4px; border-radius: 4px;">
-                                                    <div style="background: #b3cbe6; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
-                                                    <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
-                                                </div>
-                                                <div style="flex: 1; border: 2px solid #80AFE0; margin: 4px; border-radius: 4px;">
-                                                    <div style="background: #b3cbe6; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
-                                                    <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div style="flex: 1 1 45%; min-width: 400px;">
-                                            <div style="background: #9fd19f; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล MLoan</div>
-                                            <div style="display: flex;">
-                                                <div style="flex: 1; border: 2px solid #9fd19f; margin: 4px; border-radius: 4px;">
-                                                    <div style="background: #cbe6cb; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
-                                                    <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
-                                                </div>
-                                                <div style="flex: 1; border: 2px solid #9fd19f; margin: 4px; border-radius: 4px;">
-                                                    <div style="background: #cbe6cb; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
-                                                    <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
-                                        <div style="flex: 1 1 45%; min-width: 400px;">
-                                            <div style="background: #e6cbe6; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล PLoan</div>
-                                            <div style="display: flex;">
-                                                <div style="flex: 1; border: 2px solid #e6cbe6; margin: 4px; border-radius: 4px;">
-                                                    <div style="background: #f3e6f3; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
-                                                    <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
-                                                </div>
-                                                <div style="flex: 1; border: 2px solid #e6cbe6; margin: 4px; border-radius: 4px;">
-                                                    <div style="background: #f3e6f3; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
-                                                    <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div style="flex: 1 1 45%; min-width: 400px;">
-                                            <div style="background: #b3a57a; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล S22</div>
-                                            <div style="display: flex;">
-                                                <div style="flex: 1; border: 2px solid #b3a57a; margin: 4px; border-radius: 4px;">
-                                                    <div style="background: #e6e0cb; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
-                                                    <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
-                                                </div>
-                                                <div style="flex: 1; border: 2px solid #b3a57a; margin: 4px; border-radius: 4px;">
-                                                    <div style="background: #e6e0cb; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
-                                                    <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
-                                        <div style="flex: 1 1 45%; min-width: 400px;">
-                                            <div style="background: #b3a5d1; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล DLoan</div>
-                                            <div style="display: flex;">
-                                                <div style="flex: 1; border: 2px solid #b3a5d1; margin: 4px; border-radius: 4px;">
-                                                    <div style="background: #e6e0f3; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
-                                                    <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
-                                                </div>
-                                                <div style="flex: 1; border: 2px solid #b3a5d1; margin: 4px; border-radius: 4px;">
-                                                    <div style="background: #e6e0f3; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
-                                                    <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style="text-align: center; margin-top: 30px;">
-                                        <button class="btn btn-primary" id="btn_accept_borrower" style="margin-right: 10px; padding: 8px 20px;">
-                                            <i class="fa fa-check"></i> ยอมรับประวัติผู้กู้
-                                        </button>
-                                        <button class="btn btn-default" id="btn_cancel_borrower" style="padding: 8px 20px;">
-                                            <i class="fa fa-times"></i> ยกเลิก
-                                        </button>
-                                    </div>
-                                </div>
-                `);
-
-                // เพิ่ม event handler สำหรับปุ่มยอมรับ
-                $("#btn_accept_borrower").on("click", function() {
-                    frm.fields_dict.section_header_borrower_search.wrapper.hide();
-                    frm.fields_dict.section_borrower_search.wrapper.hide();
-                    frm.fields_dict.section_borrower_result.hide();
-                    frm.fields_dict.section_header_borrower.wrapper.show();
-                    frm.fields_dict.section_preview.wrapper.show();
-                    frm.fields_dict.section_borrower_details.wrapper.show();
-                    frm.fields_dict.section_borrower_details2.wrapper.show();
-                    frm.fields_dict.section_borrower_details3.wrapper.show();
-                    frm.fields_dict.section_borrower_details4.wrapper.show();
-                    frm.fields_dict.section_borrower_details5.wrapper.show();
-                    frm.fields_dict.section_borrower_details6.wrapper.show();
-                    frm.fields_dict.section_borrower_details7.wrapper.show();
-                    frm.fields_dict.section_borrower_details8.wrapper.show();
-                    frm.fields_dict.section_borrower_details9.wrapper.show();
-                    frm.fields_dict.section_borrower_details10.wrapper.show();
-                    frm.fields_dict.section_borrower_details11.wrapper.show();
-                    frm.fields_dict.section_borrower_details12.wrapper.show();
-                    frm.fields_dict.section_borrower_details13.wrapper.show();
-                    frm.fields_dict.section_borrower_details14.wrapper.show();
-                    
-                    frappe.show_alert({
-                        message: 'ยอมรับประวัติผู้กู้เรียบร้อยแล้ว',
-                        indicator: 'green'
-                    }, 5);
-                });
-
-                // เพิ่ม event handler สำหรับปุ่มยกเลิก
-                $("#btn_cancel_borrower").on("click", function() {
-                    frm.set_value('cus_search_id', '');
-                    frm.set_value('cus_is_new', 0);
-                    frm.fields_dict.section_borrower_result.wrapper.hide();
-                    
-                    frappe.show_alert({
-                        message: 'ยกเลิกการค้นหาเรียบร้อยแล้ว',
-                        indicator: 'orange'
-                    }, 5);
-                });
+                mockup_not_found_borrower(frm);
             }
-
             // แสดง section ผลการค้นหา
             frm.fields_dict.section_borrower_result.wrapper.show();
         }
     });
 }
-function form_mockup_cus_issuer(frm) {
+function mockup_found_borrower_not_blacklist(frm) {
     let html_content = "";
 
     if(frm.doc.cus_issuer=='01'){
@@ -578,5 +450,163 @@ function form_mockup_cus_issuer(frm) {
             indicator: 'orange'
         }, 5);
     });
+
+}
+
+function mockup_not_found_borrower(frm) {
+
+    frm.fields_dict.html_borrower_result.$wrapper.html(`
+        <div style="margin-bottom: 20px;">
+                        <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                            <div style="flex: 1 1 45%; min-width: 400px;">
+                                <div style="background: #80AFE0; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล VLoan</div>
+                                <div style="display: flex;">
+                                    <div style="flex: 1; border: 2px solid #80AFE0; margin: 4px; border-radius: 4px;">
+                                        <div style="background: #b3cbe6; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
+                                        <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
+                                    </div>
+                                    <div style="flex: 1; border: 2px solid #80AFE0; margin: 4px; border-radius: 4px;">
+                                        <div style="background: #b3cbe6; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
+                                        <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="flex: 1 1 45%; min-width: 400px;">
+                                <div style="background: #9fd19f; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล MLoan</div>
+                                <div style="display: flex;">
+                                    <div style="flex: 1; border: 2px solid #9fd19f; margin: 4px; border-radius: 4px;">
+                                        <div style="background: #cbe6cb; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
+                                        <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
+                                    </div>
+                                    <div style="flex: 1; border: 2px solid #9fd19f; margin: 4px; border-radius: 4px;">
+                                        <div style="background: #cbe6cb; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
+                                        <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                            <div style="flex: 1 1 45%; min-width: 400px;">
+                                <div style="background: #e6cbe6; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล PLoan</div>
+                                <div style="display: flex;">
+                                    <div style="flex: 1; border: 2px solid #e6cbe6; margin: 4px; border-radius: 4px;">
+                                        <div style="background: #f3e6f3; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
+                                        <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
+                                    </div>
+                                    <div style="flex: 1; border: 2px solid #e6cbe6; margin: 4px; border-radius: 4px;">
+                                        <div style="background: #f3e6f3; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
+                                        <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="flex: 1 1 45%; min-width: 400px;">
+                                <div style="background: #b3a57a; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล S22</div>
+                                <div style="display: flex;">
+                                    <div style="flex: 1; border: 2px solid #b3a57a; margin: 4px; border-radius: 4px;">
+                                        <div style="background: #e6e0cb; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
+                                        <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
+                                    </div>
+                                    <div style="flex: 1; border: 2px solid #b3a57a; margin: 4px; border-radius: 4px;">
+                                        <div style="background: #e6e0cb; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
+                                        <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                            <div style="flex: 1 1 45%; min-width: 400px;">
+                                <div style="background: #b3a5d1; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล DLoan</div>
+                                <div style="display: flex;">
+                                    <div style="flex: 1; border: 2px solid #b3a5d1; margin: 4px; border-radius: 4px;">
+                                        <div style="background: #e6e0f3; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
+                                        <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
+                                    </div>
+                                    <div style="flex: 1; border: 2px solid #b3a5d1; margin: 4px; border-radius: 4px;">
+                                        <div style="background: #e6e0f3; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
+                                        <div style="padding: 16px; text-align: center;">กรุณาตรวจสอบข้อมูลก่อนค่ะ!</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 30px;">
+                            <button class="btn btn-primary" id="btn_accept_borrower" style="margin-right: 10px; padding: 8px 20px;">
+                                <i class="fa fa-check"></i> ยอมรับประวัติผู้กู้
+                            </button>
+                            <button class="btn btn-default" id="btn_cancel_borrower" style="padding: 8px 20px;">
+                                <i class="fa fa-times"></i> ยกเลิก
+                            </button>
+                        </div>
+                    </div>
+    `);
+
     
+
+                // เพิ่ม event handler สำหรับปุ่มยอมรับ
+                $("#btn_accept_borrower").on("click", function() {
+                    frm.fields_dict.section_header_borrower_search.wrapper.hide();
+                    frm.fields_dict.section_borrower_search.wrapper.hide();
+                    frm.fields_dict.section_borrower_result.hide();
+                    frm.fields_dict.section_header_borrower.wrapper.show();
+                    frm.fields_dict.section_preview.wrapper.show();
+                    frm.fields_dict.section_borrower_details.wrapper.show();
+                    frm.fields_dict.section_borrower_details2.wrapper.show();
+                    frm.fields_dict.section_borrower_details3.wrapper.show();
+                    frm.fields_dict.section_borrower_details4.wrapper.show();
+                    frm.fields_dict.section_borrower_details5.wrapper.show();
+                    frm.fields_dict.section_borrower_details6.wrapper.show();
+                    frm.fields_dict.section_borrower_details7.wrapper.show();
+                    frm.fields_dict.section_borrower_details8.wrapper.show();
+                    frm.fields_dict.section_borrower_details9.wrapper.show();
+                    frm.fields_dict.section_borrower_details10.wrapper.show();
+                    frm.fields_dict.section_borrower_details11.wrapper.show();
+                    frm.fields_dict.section_borrower_details12.wrapper.show();
+                    frm.fields_dict.section_borrower_details13.wrapper.show();
+                    frm.fields_dict.section_borrower_details14.wrapper.show();
+                    
+                    frappe.show_alert({
+                        message: 'ยอมรับประวัติผู้กู้เรียบร้อยแล้ว',
+                        indicator: 'green'
+                    }, 5);
+                });
+
+                // เพิ่ม event handler สำหรับปุ่มยกเลิก
+                $("#btn_cancel_borrower").on("click", function() {
+                    frm.set_value('cus_search_id', '');
+                    frm.set_value('cus_is_new', 0);
+                    frm.fields_dict.section_borrower_result.wrapper.hide();
+                    
+                    frappe.show_alert({
+                        message: 'ยกเลิกการค้นหาเรียบร้อยแล้ว',
+                        indicator: 'orange'
+                    }, 5);
+                });
+
+}
+
+function check_id_input_type(frm) {
+    if (frm.doc.cus_search_id) {
+        const id = frm.doc.cus_search_id;
+
+        if (id.length === 13) {
+            let sum = 0;
+            for (let i = 0; i < 12; i++) {
+                sum += parseInt(id.charAt(i)) * (13 - i);
+            }
+            let check_digit = (11 - (sum % 11)) % 10;
+
+            if (check_digit !== parseInt(id.charAt(12))) {
+                // เลขผิดเช็คว่าขึ้นต้นด้วย 6,7,8,9 → บัตรชมพู่
+                if (['6', '7', '8', '9'].includes(id.charAt(0))) {
+                    frm.set_value('cus_identification_type', '03');
+                } else {
+                    frm.set_value('cus_identification_type', '04');
+                }
+            } else {
+                console.log("บัตรประชาชน (เลขถูกต้อง)");
+                frm.set_value('cus_identification_type', '01');
+            }
+        } else if (id.length >= 9 && id.length !== 13) {
+            frm.set_value('cus_identification_type', '02');
+        }
+    }
 }

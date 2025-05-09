@@ -964,7 +964,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
     },
     cus_issuer: function (frm) {
         if(frm.doc.cus_issuer=='01'){
-            form_mockup_cus_issuer(frm);
+            mockup_found_borrower_not_blacklist(frm);
         }     
     },
 
