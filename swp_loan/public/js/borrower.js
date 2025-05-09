@@ -393,6 +393,7 @@ function initialize_borrower_header(frm) {
         isCollapsed_header_borrower = !isCollapsed_header_borrower;
     
         if (isCollapsed_header_borrower) {
+            frm.fields_dict.section_preview.wrapper.hide();
             frm.fields_dict.section_borrower_details.wrapper.hide();
             frm.fields_dict.section_borrower_details2.wrapper.hide();
             frm.fields_dict.section_borrower_details3.wrapper.hide();
@@ -409,6 +410,7 @@ function initialize_borrower_header(frm) {
             frm.fields_dict.section_borrower_details14.wrapper.hide();
             $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
         } else {
+            frm.fields_dict.section_preview.wrapper.show();
             frm.fields_dict.section_borrower_details.wrapper.show();
             frm.fields_dict.section_borrower_details2.wrapper.show();
             frm.fields_dict.section_borrower_details3.wrapper.show();
@@ -425,5 +427,31 @@ function initialize_borrower_header(frm) {
             frm.fields_dict.section_borrower_details14.wrapper.show();                
             $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
         }
+    });
+}
+
+function fn_btn_duplicate(frm) {
+    frm.fields_dict.table_borrower_address.grid.add_custom_button(__('Duplicate'), function() {
+        let selected = frm.fields_dict.table_borrower_address.grid.get_selected_children();
+        
+        if (!selected.length) {
+            frappe.msgprint(__('Please select at least one row to duplicate.'));
+            return;
+        }
+
+        selected.forEach(row => {
+            let new_row = frm.add_child('table_borrower_address');
+
+            // คัดลอกข้อมูลที่ต้องการ
+            new_row.address_type = row.address_type;
+            new_row.address = row.address;
+            new_row.sub_district = row.sub_district;
+            new_row.district = row.district;
+            new_row.province = row.province;
+
+            // เพิ่มฟิลด์อื่นๆ ถ้ามี
+        });
+
+        frm.refresh_field('table_borrower_address');
     });
 }

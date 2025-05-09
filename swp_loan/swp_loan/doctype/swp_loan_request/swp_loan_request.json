@@ -26,6 +26,8 @@
   "html_borrower_result",
   "section_header_borrower",
   "header_borrower",
+  "section_preview",
+  "preview_id_card",
   "section_borrower_details",
   "cus_customer_id",
   "cus_first_name",
@@ -2031,13 +2033,23 @@
    "fieldtype": "HTML",
    "is_virtual": 1,
    "label": "custom_banner"
+  },
+  {
+   "fieldname": "preview_id_card",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "preview"
+  },
+  {
+   "fieldname": "section_preview",
+   "fieldtype": "Section Break"
   }
  ],
  "grid_page_length": 50,
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-08 22:06:40.290676",
+ "modified": "2025-05-09 10:08:20.982762",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",
