@@ -210,26 +210,16 @@ function fn_search_borrower2(frm){
             const data = response.message;
 
             // Special case for ID 9999
-            if (frm.doc.cus_search_id === '9999') {
+            if (frm.doc.cus_search_id === '1451300001440' ||  frm.doc.cus_search_id === '1451300001441') {
                 frm.set_value('cus_is_new', 1);
                 
-                // Show special message for ID 9999
-                frm.fields_dict.html_borrower_result.$wrapper.html(`
-                    <div style="font-size: 16px; font-weight: bold; margin: 10px 0;">
-                        ผลการค้นหาประวัติผู้กู้
-                    </div><br>
-                    <div style="font-size: 14px; margin-top: 5px; text-align: center;">
-                        พบข้อมูล: 9999
-                    </div><br>
-                    <div style="text-align: center; margin-top: 20px;">
-                        <button class="btn btn-primary" id="btn_accept_borrower" style="margin-right: 10px; padding: 8px 20px;">
-                            <i class="fa fa-check"></i> ยอมรับประวัติผู้กู้
-                        </button>
-                        <button class="btn btn-default" id="btn_cancel_borrower" style="padding: 8px 20px;">
-                            <i class="fa fa-times"></i> ยกเลิก
-                        </button>
-                    </div><br>
-                `);
+                // frm.set_value('cus_identification_number', frm.doc.cus_search_id);
+                 
+                if (frm.doc.cus_search_id) {
+                    search_customer(frm, frm.doc.cus_search_id, is_refresh = true); 
+                }
+                
+                
 
                 // Add event handlers for buttons
                 $("#btn_accept_borrower").on("click", function() {
@@ -425,4 +415,168 @@ function fn_search_borrower2(frm){
             frm.fields_dict.section_borrower_result.wrapper.show();
         }
     });
+}
+function form_mockup_cus_issuer(frm) {
+    let html_content = "";
+
+    if(frm.doc.cus_issuer=='01'){
+        html_content += `
+            <form>
+                <div class="frappe-control" data-fieldtype="HTML" data-fieldname="loan_history_html">
+                    <div class="flex flex-wrap w-full justify-between">
+                        <div class="flex grow min-w-[22%] justify-between mr-2 my-2">
+                            <div class="flex-col w-full bg-swp-table-row-2-blue shadow-xl">
+                                <div class="flex-col border-white m-2">
+                                    <div class="text-xl text-center bg-swp-gradient-blue font-bold p-1 border border-white rounded-lg">
+                                        <span class="text-white">S14</span>
+                                    </div>
+                                    <div class="flex-col w-full bg-swp-table-row-2-blue justify-around">
+                                        <div class="w-full flex-col bg-swp-table-row-1-blue border-2 border-white mt-2 pb-1">
+                                            <div class="text-md text-center bg-swp-gradient-blue font-bold p-1">
+                                                <span class="text-white">Contract History</span>
+                                            </div>
+                                            <div class="bg-swp-table-row-1-blue font-bold">
+                                                <div class="flex-col text-sm p-2 my-2 mx-2 bg-swp-table-row-2-blue">
+                                                    <div>JNI630301005IS63I[ง]</div>
+                                                    <div>Agreement Start Date: 31-03-2020</div>
+                                                    <div>Outstanding Period: 0</div>
+                                                    <div>Current Outstanding Period: 8</div>
+                                                    <div>ยกเลิกสัญญา_เนื่องจากยกเลิกกรมธรรม์</div>
+                                                </div>
+                                                <div class="flex-col text-sm p-2 my-2 mx-2 bg-swp-table-row-2-blue">
+                                                    <div>JNC661001007NS53X[ก]</div>
+                                                    <div>Agreement Start Date: 09-10-2023</div>
+                                                    <div>Outstanding Period: 0</div>
+                                                    <div>Current Outstanding Period: 12</div>
+                                                    <div>ปิดบัญชี (ยกเลิกสัญญา เนื่องจากข้อมูลผิดพลาด)</div>
+                                                </div>
+                                                <div class="flex-col text-sm p-2 my-2 mx-2 bg-swp-table-row-2-blue">
+                                                    <div>JNC661001008NS53X[ก]</div>
+                                                    <div>Agreement Start Date: 09-10-2023</div>
+                                                    <div>Outstanding Period: 0</div>
+                                                    <div>Current Outstanding Period: 12</div>
+                                                    <div>ปิดบัญชี (ยกเลิกสัญญา เนื่องจากข้อมูลผิดพลาด)</div>
+                                                </div>
+                                                <div class="flex-col text-sm p-2 my-2 mx-2 bg-swp-table-row-2-blue">
+                                                    <div>JNC661001009NS53X[ก]</div>
+                                                    <div>Agreement Start Date: 09-10-2023</div>
+                                                    <div>Outstanding Period: 0</div>
+                                                    <div>Current Outstanding Period: 12</div>
+                                                    <div>ปิดบัญชี (ยกเลิกสัญญา เนื่องจากข้อมูลผิดพลาด)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex grow min-w-[22%] justify-between mr-2 my-2">
+                            <div class="flex-col w-full bg-swp-table-row-2-pink shadow-xl">
+                                <div class="flex-col border-white m-2">
+                                    <div class="text-xl text-center bg-swp-gradient-pink font-bold p-1 border border-white rounded-lg"><span class="text-white">FM</span></div>
+                                    <div class="flex-col w-full bg-swp-table-row-2-pink justify-around">
+                                        <div class="w-full flex-col bg-swp-table-row-1-pink border-2 border-white mt-2 pb-1">
+                                            <div class="text-md text-center bg-swp-gradient-pink font-bold p-1"><span class="text-white">Contract History</span></div>
+                                            <div class="bg-swp-table-row-1-pink font-bold">
+                                                <div class="flex-col text-sm p-2 my-2 mx-2 bg-swp-table-row-2-pink">
+                                                    <div>JNM670201001NF63X[M]</div>
+                                                    <div>Agreement Start Date: 02-02-2024</div>
+                                                    <div>Outstanding Period: 0</div>
+                                                    <div>Current Outstanding Period: 12</div>
+                                                    <div>ปิดบัญชี (ยกเลิกสัญญา เนื่องจากข้อมูลผิดพลาด)</div>
+                                                </div>
+                                                <div class="flex-col text-sm p-2 my-2 mx-2 bg-swp-table-row-2-pink">
+                                                    <div>JNM670202002NF63X[M]</div>
+                                                    <div>Agreement Start Date: 02-02-2024</div>
+                                                    <div>Outstanding Period: 0</div>
+                                                    <div>Current Outstanding Period: 12</div>
+                                                    <div>ปิดบัญชี (ยกเลิกสัญญา เนื่องจากข้อมูลผิดพลาด)</div>
+                                                </div>
+                                                <div class="flex-col text-sm p-2 my-2 mx-2 bg-swp-table-row-2-pink">
+                                                    <div>JNM670202003NF63X[M]</div>
+                                                    <div>Agreement Start Date: 02-02-2024</div>
+                                                    <div>Outstanding Period: 0</div>
+                                                    <div>Current Outstanding Period: 12</div>
+                                                    <div>ปิดบัญชี (ยกเลิกสัญญา เนื่องจากข้อมูลผิดพลาด)</div>
+                                                </div>
+                                                <div class="flex-col text-sm p-2 my-2 mx-2 bg-swp-table-row-2-pink">
+                                                    <div>JNC670201004NF61X[ก]</div>
+                                                    <div>Agreement Start Date: 03-02-2024</div>
+                                                    <div>Outstanding Period: 0</div>
+                                                    <div>Current Outstanding Period: 12</div>
+                                                    <div>ปิดบัญชี (ยกเลิกสัญญา เนื่องจากข้อมูลผิดพลาด)</div>
+                                                </div>
+                                                <div class="flex-col text-sm p-2 my-2 mx-2 bg-swp-table-row-2-pink">
+                                                    <div>JNM670201005NF62X[M]</div>
+                                                    <div>Agreement Start Date: 03-02-2024</div>
+                                                    <div>Outstanding Period: 0</div>
+                                                    <div>Current Outstanding Period: 12</div>
+                                                    <div>ปิดบัญชี (ยกเลิกสัญญา เนื่องจากข้อมูลผิดพลาด)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        `;
+    }
+
+    // HTML ปุ่ม ที่ใช้ร่วมกันทั้ง if และ else
+    html_content += `
+        <br>
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="btn btn-primary" id="btn_accept_borrower" style="margin-right: 10px; padding: 8px 20px;">
+                <i class="fa fa-check"></i> ยอมรับประวัติผู้กู้
+            </button>
+            <button class="btn btn-default" id="btn_cancel_borrower" style="padding: 8px 20px;">
+                <i class="fa fa-times"></i> ยกเลิก
+            </button>
+        </div><br>
+    `;
+
+    frm.fields_dict.html_borrower_result.$wrapper.html(html_content);
+
+    $("#btn_accept_borrower").on("click", function() {
+        frm.fields_dict.section_header_borrower_search.wrapper.hide();
+        frm.fields_dict.section_borrower_search.wrapper.hide();
+        frm.fields_dict.section_borrower_result.hide();
+        frm.fields_dict.section_header_borrower.wrapper.show();
+        frm.fields_dict.section_preview.wrapper.show();
+        frm.fields_dict.section_borrower_details.wrapper.show();
+        frm.fields_dict.section_borrower_details2.wrapper.show();
+        frm.fields_dict.section_borrower_details3.wrapper.show();
+        frm.fields_dict.section_borrower_details4.wrapper.show();
+        frm.fields_dict.section_borrower_details5.wrapper.show();
+        frm.fields_dict.section_borrower_details6.wrapper.show();
+        frm.fields_dict.section_borrower_details7.wrapper.show();
+        frm.fields_dict.section_borrower_details8.wrapper.show();
+        frm.fields_dict.section_borrower_details9.wrapper.show();
+        frm.fields_dict.section_borrower_details10.wrapper.show();
+        frm.fields_dict.section_borrower_details11.wrapper.show();
+        frm.fields_dict.section_borrower_details12.wrapper.show();
+        frm.fields_dict.section_borrower_details13.wrapper.show();
+        frm.fields_dict.section_borrower_details14.wrapper.show();
+        
+        frappe.show_alert({
+            message: 'ยอมรับประวัติผู้กู้เรียบร้อยแล้ว',
+            indicator: 'green'
+        }, 5);
+    });
+
+    // เพิ่ม event handler สำหรับปุ่มยกเลิก
+    $("#btn_cancel_borrower").on("click", function() {
+        frm.set_value('cus_search_id', '');
+        frm.set_value('cus_is_new', 0);
+        frm.fields_dict.section_borrower_result.wrapper.hide();
+        
+        frappe.show_alert({
+            message: 'ยกเลิกการค้นหาเรียบร้อยแล้ว',
+            indicator: 'orange'
+        }, 5);
+    });
+    
 }

@@ -957,6 +957,16 @@ frappe.ui.form.on("SWP_Loan_Request", {
             frm.set_value("col_age", col_age);
         }
     },
+    cus_search_id: function (frm) {
+        load_search_borrower_js(function(frm) {
+            fn_search_borrower2(frm);
+        }, frm);
+    },
+    cus_issuer: function (frm) {
+        if(frm.doc.cus_issuer=='01'){
+            form_mockup_cus_issuer(frm);
+        }     
+    },
 
 });
 

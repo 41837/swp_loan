@@ -877,7 +877,7 @@ async function search_customer(frm, search_id, is_refresh = false) {
         callback: async function (response) {
             let data = response.message?.data ?? {};
             if (data && Object.keys(data).length > 0 && response.message.statusCode == 200) {
-                render_loan_history(frm, data);
+                // render_loan_history(frm, data);
                 frm.set_value("cus_customer_id", frm.doc.cus_search_id);
                 if (data.cus_is_customer_blocked == true) {
                     frm.doc.cus_customer_blocked_status = data.cus_customer_blocked_status;
@@ -912,6 +912,7 @@ async function search_customer(frm, search_id, is_refresh = false) {
 
                     if (data.cus_customer_type == "Personal") {
                         if(frm.smart_card_data) {
+                            
                             let row = frm.doc.cus_addresses_detail.find(p => p.address_type == "Identification");
                             await frappe.db.get_value(
                                 "Issuer",
