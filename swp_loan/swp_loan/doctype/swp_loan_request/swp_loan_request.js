@@ -957,19 +957,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
             frm.set_value("col_age", col_age);
         }
     },
-    // ----------------------------------------------- Start --- On change field cus_search_id
-    cus_search_id: function(frm) {
-        // If has value
-        // if (frm.doc.cus_search_id) {
-        //     frm.fields_dict.cus_search_id.$wrapper
-        //         .closest('.frappe-control')
-        //         .find('.control-label')
-        //         .css('color', '');
-        // }
-        if(frm.doc.cus_search_id) {
-            fn_search_borrower2(frm);
-        }
-    },
-    // ----------------------------------------------- End --- On change field cus_search_id
+
 });
 

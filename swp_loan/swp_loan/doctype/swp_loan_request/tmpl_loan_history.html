@@ -1,0 +1,56 @@
+<!-- Loan History -->
+<div class="flex flex-wrap w-full justify-between">
+    {% for company in contract_history %}
+    {% label %}
+    <div class="flex grow min-w-[22%] justify-between mr-2 my-2">
+        <div class="flex-col w-full bg-swp-table-row-2-{{ company.color }} shadow-xl">
+            <div class="flex-col border-white m-2">
+                <div
+                    class="text-xl text-center bg-swp-gradient-{{ company.color }} font-bold p-1 border border-white rounded-lg ">
+                    <span class="text-white">{{ company.name }}</span>
+                </div>
+                <div class="flex-col w-full bg-swp-table-row-2-{{ company.color }} justify-around">
+                    {% if company.is_show_agreement %}
+                    <div class="w-full flex-col bg-swp-table-row-1-{{ company.color }} border-2 border-white mt-2 pb-1">
+                        <div
+                            class="text-md text-center bg-swp-gradient-{{ company.color }} font-bold p-1">
+                            <span class="text-white">{{label.agreement_title}}</span>
+                        </div>
+                        <div class="bg-swp-table-row-1-{{ company.color }} font-bold">
+                            {% for c in company.contracts %}
+                            <div class="flex-col text-sm p-2 my-2 mx-2 bg-swp-table-row-2-{{ company.color }}">
+                                <div>{{ c.agreement_id }}</div>
+                                <div>{{label.agreement_start_date}}: {{ c.agreement_start_date }}</div>
+                                <div>{{label.outstanding_period}}: {{ c.outstanding_period }}</div>
+                                <div>{{label.current_outstanding_period}}: {{ c.current_outstanding_period }}</div>
+                                <div>{{ c.remark }}</div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if company.is_show_guarantor %}
+                    <div class="w-full flex-col bg-swp-table-row-1-{{ company.color }} border-2 border-white mt-2 pb-1">
+                        <div
+                            class="text-md text-center bg-swp-gradient-{{ company.color }} font-bold p-1">
+                            <span class="text-white">{{label.guarantor_title}}</span>
+                        </div>
+                        <div class="bg-swp-table-row-1-{{ company.color }} font-bold">
+                            {% for g in company.guarantors %}
+                            <div class="flex-col text-sm p-2 my-2 mx-2 bg-swp-table-row-2-{{ company.color }}">
+                                <div>{{ g.agreement_id }}</div>
+                                <div>{{label.agreement_start_date}}: {{ g.agreement_start_date }}</div>
+                                <div>{{label.outstanding_period}}: {{ g.outstanding_period }}</div>
+                                <div>{{label.current_outstanding_period}}: {{ g.current_outstanding_period }}</div>
+                                <div>{{ g.remark }}</div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
