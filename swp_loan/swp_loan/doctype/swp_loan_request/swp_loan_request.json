@@ -24,6 +24,7 @@
   "cus_is_new",
   "section_borrower_result",
   "html_borrower_result",
+  "loan_history_html",
   "section_header_borrower",
   "header_borrower",
   "section_borrower_details",
@@ -2031,13 +2032,19 @@
    "fieldtype": "HTML",
    "is_virtual": 1,
    "label": "custom_banner"
+  },
+  {
+   "fieldname": "loan_history_html",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "loan_history_html"
   }
  ],
  "grid_page_length": 50,
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-08 22:06:40.290676",
+ "modified": "2025-05-09 10:40:50.841956",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",
