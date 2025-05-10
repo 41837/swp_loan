@@ -6,8 +6,7 @@ function initialize_custom_banner(frm, target_field = 'custom_banner') {
     let loanAmount = frm.doc.loan_amount || '0.00';
     let feeAmount = frm.doc.fee_amount || '0.00';
     let transferAmount = frm.doc.transfer_amount || '0.00';
-    let productName = frm.doc.product_name || '';
-
+	
     let custom_banner_html = `
         <div style="border:1px solid #b5c9e7; border-radius:8px; background:#fff; padding:10px; margin-bottom:16px; width:100%; box-sizing:border-box;">
 			<div style="display:flex; justify-content:space-between; align-items:center; background:#c5d9f1; border-radius:6px 6px 0 0; padding:10px 16px;">
@@ -21,22 +20,22 @@ function initialize_custom_banner(frm, target_field = 'custom_banner') {
 				<div style="background:#c5d9f1; border-radius:6px; padding:12px; text-align:center; font-size:22px; font-weight:bold; grid-row:span 2; display:flex; flex-direction:column; justify-content:center;">
 					LOAN
 				</div>
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div style='color:#888;'>ชื่อผู้กู้</div></div>
+				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div>ชื่อผู้กู้</div></div>
 				<div style="background:#f5f6fa; border-radius:6px; padding:12px;">${customerName}</div>
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div style='color:#888;'>ยอดจัด</div></div>
+				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div>ยอดจัด</div></div>
 				<div style="background:#f5f6fa; border-radius:6px; padding:12px;">${loanAmount}</div>
 				<div style="background:#c5d9f1; border-radius:6px; padding:12px; text-align:center; font-size:22px; font-weight:bold; grid-row:1 / span 3; grid-column:7; display:flex; flex-direction:column; align-items:center; justify-content:center;">
 					<span>A : -</span>
 					<span style="margin-top:12px;">B : -</span>
 				</div>
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div style='color:#888;'>รหัสผู้กู้</div></div>
+				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div>รหัสผู้กู้</div></div>
 				<div style="background:#f5f6fa; border-radius:6px; padding:12px;">${customerId}</div>
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div style='color:#888;'>ค่าธรรมเนียม</div></div>
+				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div>ค่าธรรมเนียม</div></div>
 				<div style="background:#f5f6fa; border-radius:6px; padding:12px;">${feeAmount}</div>
-				<div style='background:#f5f6fa; border-radius:6px; padding:12px; text-align:center; font-size:14px; grid-column: 1 / span 2;'>${productName}</div>
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div style='color:#888;'>เลขที่หลักประกัน</div></div>
+				<div style='background:#f5f6fa; border-radius:6px; padding:12px; text-align:center; font-size:14px; grid-column: 1 / span 2;'>ก030N (24% รถยนต์ แบบงวดใหญ่ งวดย่อย)</div>
+				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div>เลขที่หลักประกัน</div></div>
 				<div style="background:#f5f6fa; border-radius:6px; padding:12px;">${collateralId}</div>
-				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div style='color:#888;'>ยอดโอน</div></div>
+				<div style="background:#c5d9f1; border-radius:6px; padding:12px;"><div>ยอดโอน</div></div>
 				<div style="background:#f5f6fa; border-radius:6px; padding:12px;">${transferAmount}</div>
 			</div>
 			<div style="margin-top:20px; display:grid; grid-template-columns:repeat(5, 1fr); gap:20px; width:100%;">

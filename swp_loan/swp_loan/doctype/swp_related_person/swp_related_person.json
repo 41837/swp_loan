@@ -5,18 +5,20 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "relationship",
   "first_name",
-  "last_name"
+  "last_name",
+  "nickname",
+  "telephone",
+  "relationship"
  ],
  "fields": [
   {
    "fieldname": "relationship",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "\u0e04\u0e27\u0e32\u0e21\u0e2a\u0e31\u0e21\u0e1e\u0e31\u0e19\u0e18\u0e4c",
-   "options": "\u0e1e\u0e48\u0e2d\n\u0e41\u0e21\u0e48\n\u0e1e\u0e35\u0e48\n\u0e19\u0e49\u0e2d\u0e07"
+   "options": "Relationship"
   },
   {
    "fieldname": "first_name",
@@ -31,13 +33,23 @@
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "\u0e19\u0e32\u0e21\u0e2a\u0e01\u0e38\u0e25"
+  },
+  {
+   "fieldname": "nickname",
+   "fieldtype": "Data",
+   "label": "\u0e0a\u0e37\u0e48\u0e2d\u0e40\u0e25\u0e48\u0e19"
+  },
+  {
+   "fieldname": "telephone",
+   "fieldtype": "Data",
+   "label": "\u0e42\u0e17\u0e23\u0e28\u0e31\u0e1e\u0e17\u0e4c\u0e1a\u0e49\u0e32\u0e19/\u0e21\u0e37\u0e2d\u0e16\u0e37\u0e2d"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-04-17 10:10:59.372690",
+ "modified": "2025-05-10 12:49:58.041766",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Related_Person",

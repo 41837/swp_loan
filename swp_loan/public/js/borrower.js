@@ -42,6 +42,12 @@ function fn_btn_save_borrower(frm){
        if (resValidate) {
             frm.save()
         }
+        //เลื่อนหน้าจอ
+        setTimeout(() => {
+            $('html, body').animate({
+                scrollTop: frm.fields_dict.section_header_guarantor.wrapper.offset().top - 100
+            }, 500);
+        }, 2000);
     });    
 }
 
@@ -156,7 +162,6 @@ function ValidateFromBorrower(frm) {
 
     return true;
 }
-
 
 function initialize_date_of_birth_validation(frm) {
     frm.fields_dict.cus_date_of_birth.$wrapper.find('input').on('change', function () {

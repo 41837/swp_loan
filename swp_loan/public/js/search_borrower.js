@@ -371,33 +371,6 @@ function fn_search_borrower(frm){
                 </div>
             `);
 
-            // Event handler ปุ่ม
-            $("#btn_accept_borrower").on("click", function() {
-                frm.fields_dict.section_header_borrower_search.wrapper.hide();
-                frm.fields_dict.section_borrower_search.wrapper.hide();
-                frm.fields_dict.section_borrower_result.hide();
-                frm.fields_dict.section_header_borrower.wrapper.show();
-                frm.fields_dict.section_preview.wrapper.show();
-                frm.fields_dict.section_borrower_details.wrapper.show();
-                frm.fields_dict.section_borrower_details2.wrapper.show();
-                frm.fields_dict.section_borrower_details3.wrapper.show();
-                frm.fields_dict.section_borrower_details4.wrapper.show();
-                frm.fields_dict.section_borrower_details5.wrapper.show();
-                frm.fields_dict.section_borrower_details6.wrapper.show();
-                frm.fields_dict.section_borrower_details7.wrapper.show();
-                frm.fields_dict.section_borrower_details8.wrapper.show();
-                frm.fields_dict.section_borrower_details9.wrapper.show();
-                frm.fields_dict.section_borrower_details10.wrapper.show();
-                frm.fields_dict.section_borrower_details11.wrapper.show();
-                frm.fields_dict.section_borrower_details12.wrapper.show();
-                frm.fields_dict.section_borrower_details13.wrapper.show();
-                frm.fields_dict.section_borrower_details14.wrapper.show();
-                frappe.show_alert({
-                    message: 'ยอมรับประวัติผู้กู้เรียบร้อยแล้ว',
-                    indicator: 'green'
-                }, 5);
-            });
-
             $("#btn_cancel_borrower").on("click", function() {
                 frm.set_value('cus_search_id', '');
                 frm.set_value('cus_is_new', 0);
@@ -412,10 +385,11 @@ function fn_search_borrower(frm){
             return;
         }
         else if (frm.doc.cus_search_id === '1104500012213') { //พบประวัติผู้กู้ ติด blacklist
+            frm.set_value('cus_is_customer_blocked', 1);
             frm.set_value('cus_is_new', 0);
 
             frm.fields_dict.html_borrower_result.$wrapper.html(`
-                < style="margin-bottom: 20px;">
+                <div style="margin-bottom: 20px;">
                     <center>
                     <p style="font-weight: bold; font-size: 18px; color: red;">
                         <i class="fa fa-exclamation-triangle" style="color: red; font-size: 1.5em; vertical-align: middle; margin-right: 8px;"></i>
@@ -543,7 +517,7 @@ function fn_search_borrower(frm){
                 </div>
             `);
         }
-        // Add event handlers for buttons
+        // กดปุ่มยอมรับประวัติผู้กู้
         $("#btn_accept_borrower").on("click", function() {
             frm.fields_dict.section_header_borrower_search.wrapper.hide();
             frm.fields_dict.section_borrower_search.wrapper.hide();
@@ -565,16 +539,22 @@ function fn_search_borrower(frm){
             frm.fields_dict.section_borrower_details13.wrapper.show();
             frm.fields_dict.section_borrower_details14.wrapper.show();
             
+            // เลื่อนหน้าจอ
+            $('html, body').animate({
+                scrollTop: frm.fields_dict.section_header_borrower.wrapper.offset().top - 100
+            }, 500);
+
             frappe.show_alert({
                 message: 'ยอมรับประวัติผู้กู้เรียบร้อยแล้ว',
                 indicator: 'green'
             }, 5);
         });
-
+        // กดปุ่มยกเลิกการค้นหาผู้กู้
         $("#btn_cancel_borrower").on("click", function() {
             frm.set_value('cus_search_id', '');
             frm.set_value('cus_is_new', 0);
-            frm.fields_dict.section_borrower_result.wrapper.hide();
+            frm.set_value('cus_is_customer_blocked', 0);
+            // frm.fields_dict.section_borrower_result.wrapper.hide();
             
             frappe.show_alert({
                 message: 'ยกเลิกการค้นหาเรียบร้อยแล้ว',

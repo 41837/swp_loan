@@ -349,8 +349,8 @@ frappe.ui.form.on("SWP_Loan_Request", {
         frm.fields_dict.section_input_progress_bar.wrapper.hide();
         frm.fields_dict.section_form_action.wrapper.hide();
 
-        // Show all sections if document is not new
-        if (!frm.is_new()) {
+        // แสดง section สำหรับหน้าเอกสารที่สร้างใหม่หรือสถานะเป็น Draft อยู่
+        if (!frm.is_new() || frm.doc.status == 'Draft') {
             // Hide borrower search sections first
             frm.fields_dict.section_header_borrower_search.wrapper.hide();
             frm.fields_dict.section_borrower_search.wrapper.hide();
@@ -358,7 +358,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
             
 
             // Then show other sections
-            frm.fields_dict.section_header_document.wrapper.show();
             frm.fields_dict.section_header_borrower.wrapper.show();
             frm.fields_dict.section_preview.wrapper.show();
             frm.fields_dict.section_borrower_details.wrapper.show();
@@ -485,6 +484,11 @@ frappe.ui.form.on("SWP_Loan_Request", {
             });
 
         }
+
+        if (frm.doc.status_flag == 'Pending Approval') {
+            frm.fields_dict.section_header_document.wrapper.show();
+        }
+
 
         // ----------------------------------------------- Start ซ่อนปุ่ม print
         $('use[href="#icon-printer"]')
@@ -834,7 +838,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
             'border': 'none',
         })
         .on('click', function() {
-            frm.set_value('status_flag', 'Waiting approve');
+            frm.set_value('status_flag', 'Pending Approval');
             frm.save().then(() => {
                 frappe.show_alert({
                     message: 'สร้างใบคำขอสำเร็จ ระบบจะส่งให้ผู้อนุมัติโดยอัตโนมัติ',
@@ -1020,4 +1024,35 @@ table_transfer_on_form_rendered(frm) {
 }
 
 
+});
+frappe.ui.form.on('SWP_Related_Person', {
+    telephone: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+
+        // ตรวจสอบว่ามีค่า
+        if (row.telephone && !/^\d{10}$/.test(row.telephone)) {
+            frappe.show_alert({
+                message: __('กรุณากรอกเบอร์โทรให้ถูกต้อง (10 หลัก)'),
+                indicator: 'red'
+            }, 5);
+            frappe.model.set_value(cdt, cdn, 'telephone', '');
+            frm.refresh_field('table_related_person');
+        }
+    }
+});
+
+frappe.ui.form.on('SWP_Guarantor', {
+    identification_telephone: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+
+        // ตรวจสอบว่ามีค่า
+        if (row.identification_telephone && !/^\d{10}$/.test(row.identification_telephone)) {
+            frappe.show_alert({
+                message: __('กรุณากรอกเบอร์โทรให้ถูกต้อง (10 หลัก)'),
+                indicator: 'red'
+            }, 5);
+            frappe.model.set_value(cdt, cdn, 'identification_telephone', '');
+            frm.refresh_field('table_guarantor');
+        }
+    }
 });
