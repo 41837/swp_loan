@@ -1,0 +1,17 @@
+<div style="text-align: center;  font-size: 18px">
+	ชื่อผู้กู้: {{ loan.customer_name }} || 
+	รหัสผู้กู้: {{ loan.contract_number }} ||
+	เลขที่หลักประกัน: {{ loan.collateral_number }}<br>
+	<hr/>
+</div>
+<div style="text-align: center; color: red; font-size: 18px">
+	{{ __("Please close the attachment panel once all documents have been attached to proceed with the next step.") }}
+</div>
+<div class="file-attachment">
+	<div class="file-tree">
+		<div id="treeview"></div>
+	</div>
+	<div ce class="file-preview">
+		<div id="preview"></div>
+	</div>
+</div>

@@ -1,0 +1,42 @@
+.file-attachment {
+    display: flex;
+    width: 100%;
+}
+
+.file-tree {
+    flex: 0 0 35%;
+    box-sizing: border-box;
+}
+
+.file-preview {
+    flex: 0 0 65%;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+}
+
+.img_thumbnail {
+    display: inline-block;
+    margin: 5px;
+}
+
+.img_thumbnail img {
+    width: 180px;
+    height: auto;
+}
+
+.folder {
+    margin-bottom: 20px;
+}
+
+.folder h3 {
+    margin: 10px 0;
+}
+
+.btn.btn-secondary.btn-sm.btn-modal-secondary{
+    display: none ;
+}
+ 
+label.frappe-checkbox:has(input[type="checkbox"]){
+    display: none ;
+}

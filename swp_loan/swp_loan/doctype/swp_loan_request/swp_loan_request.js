@@ -608,7 +608,8 @@ frappe.ui.form.on("SWP_Loan_Request", {
         frm.add_custom_button(
             '<i class="fa fa-plus" style="margin-right: 5px;"></i> เพิ่มเอกสารแนบ',
             function () {
-                const url = 'http://10.1.112.126:8000/app/file-attachment/IA000%E0%B8%AEQ250400001';
+                // const url = 'http://10.1.112.126:8000/app/file-attachment/IA000%E0%B8%AEQ250400001';
+                const url = '/app/swp-file-attachment/' + frm.doc.name;
                 const width = 1000;
                 const height = 700;
                 const left = (window.screen.width / 2) - (width / 2);
