@@ -8,6 +8,8 @@ let customBannerJsLoaded = false;
 let loanApplication = false;
 let idCardReader = false;
 let loan_history = cur_frm.get_field("loan_history_html")
+let guarantorSWPJSloan = false;
+
  
 function load_borrower_js(callback, frm) {
     if (!borrowerJsLoaded) {
@@ -100,6 +102,17 @@ function load_idcardreader_js(callback, frm) {
     }
 }
 
+function load_GuarantorSWP_js(callback, frm) {
+    if (!guarantorSWPJSloan) {
+        frappe.require("/assets/swp_loan/js/validate_guarantor.js", function () {
+            guarantorSWPJSloan = true;
+            if (typeof callback === "function") callback(frm);  // ← ส่ง frm เข้า callback
+        });
+    } else {
+        if (typeof callback === "function") callback(frm);      // ← ส่ง frm เข้า callback
+    }
+}
+
 
 
 
@@ -145,8 +158,10 @@ frappe.ui.form.on("SWP_Loan_Request", {
             initialize_borrower_search_header(frm);
         }, frm);
         // ----------------------------------------------- End --- Header borrower search section
+        load_guarantor_js(function(frm){
+            initialize_guarantor_header(frm);
 
-
+        } , frm)
 
         // ----------------------------------------------- Start --- Header borrower section
         load_borrower_js(function(frm) {
@@ -802,6 +817,10 @@ frappe.ui.form.on("SWP_Loan_Request", {
         }, frm);
         // ----------------------------------------------- End --- Borrower save button
 
+        // load_GuarantorSWP_js(function(frm){
+        //     fn_btn_save_borrower_SWP(frm);
+        // }, frm);
+
         // ----------------------------------------------- Start --- Borrower save button
         load_guarantor_js(function(frm) {
             fn_btn_save_guarantor(frm);
@@ -968,5 +987,9 @@ frappe.ui.form.on("SWP_Loan_Request", {
         }     
     },
 
+    
+
 });
+
+
 
