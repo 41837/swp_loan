@@ -1,5 +1,5 @@
 // import CustomFileUploaderWrapper from "./custom_file_uploader.js";
-
+   
 frappe.pages["swp-file-attachment"].on_page_load = function (wrapper) {
 	const can_create = frappe.model.can_create("Attachment");
 	const can_delete = frappe.model.can_delete("Attachment");
