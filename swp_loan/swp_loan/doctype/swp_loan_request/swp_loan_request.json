@@ -303,10 +303,7 @@
   "column_break_bujy",
   "ob03",
   "section_loan_condition14",
-  "bank_account",
-  "bank_account_type",
-  "bank_account_number",
-  "bank_account_name",
+  "column_break_gked",
   "column_break_nbvq",
   "virtual_financing_amount_net",
   "virtual_total_fees_net",
@@ -314,6 +311,8 @@
   "total_deduction",
   "advanced_installment_amount",
   "remaining_transfer_amount",
+  "section_loan_condition14_2",
+  "table_transfer",
   "section_loan_condition15",
   "column_break_hlml",
   "column_break_ngke",
@@ -1513,22 +1512,6 @@
    "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
   },
   {
-   "fieldname": "bank_account",
-   "fieldtype": "Link",
-   "label": "\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49",
-   "options": "Bank"
-  },
-  {
-   "fieldname": "bank_account_type",
-   "fieldtype": "Select",
-   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1a\u0e31\u0e0d\u0e0a\u0e35"
-  },
-  {
-   "fieldname": "bank_account_number",
-   "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e1a\u0e31\u0e0d\u0e0a\u0e35"
-  },
-  {
    "default": "0",
    "fieldname": "cus_is_customer_blocked",
    "fieldtype": "Check",
@@ -2019,11 +2002,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "bank_account_name",
-   "fieldtype": "Data",
-   "label": "\u0e0a\u0e37\u0e48\u0e2d\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23\u0e1c\u0e39\u0e49\u0e01\u0e39\u0e49"
-  },
-  {
    "fieldname": "household_registration_status",
    "fieldtype": "Select",
    "label": "\u0e2a\u0e16\u0e32\u0e19\u0e30\u0e43\u0e19\u0e17\u0e30\u0e40\u0e1a\u0e35\u0e22\u0e19\u0e1a\u0e49\u0e32\u0e19",
@@ -2043,20 +2021,33 @@
   },
   {
    "fieldname": "section_preview",
-   "fieldtype": "Section Break"  
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "loan_history_html",
    "fieldtype": "HTML",
    "is_virtual": 1,
    "label": "loan_history_html"
+  },
+  {
+   "fieldname": "table_transfer",
+   "fieldtype": "Table",
+   "label": "\u0e1a\u0e31\u0e0d\u0e0a\u0e35\u0e18\u0e19\u0e32\u0e04\u0e32\u0e23",
+   "options": "SWP_Transfer"
+  },
+  {
+   "fieldname": "section_loan_condition14_2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_gked",
+   "fieldtype": "Column Break"
   }
  ],
- "grid_page_length": 50,
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-09 10:40:50.841956",
+ "modified": "2025-05-10 16:21:45.936691",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",

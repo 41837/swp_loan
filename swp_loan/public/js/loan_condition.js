@@ -14,10 +14,10 @@ function initialize_loan_condition_header(frm) {
     frm.fields_dict.agreement_date.$wrapper.find('.control-label').html('วันที่ทำสัญญา <span class="text-danger">*</span>');
     frm.fields_dict.first_due_date.$wrapper.find('.control-label').html('วันเริ่มสัญญา (งวดแรก) <span class="text-danger">*</span>');
     frm.fields_dict.last_due_date.$wrapper.find('.control-label').html('วันสิ้นสุดสัญญา (งวดสุดท้าย) <span class="text-danger">*</span>');
-    frm.fields_dict.bank_account.$wrapper.find('.control-label').html('บัญชีธนาคารผู้กู้ <span class="text-danger">*</span>');
-    frm.fields_dict.bank_account_type.$wrapper.find('.control-label').html('ประเภทบัญชี <span class="text-danger">*</span>');
-    frm.fields_dict.bank_account_number.$wrapper.find('.control-label').html('เลขที่บัญชี <span class="text-danger">*</span>');
-    frm.fields_dict.bank_account_name.$wrapper.find('.control-label').html('ชื่อบัญชีธนาคารผู้กู้ <span class="text-danger">*</span>');      
+    // frm.fields_dict.bank_account.$wrapper.find('.control-label').html('บัญชีธนาคารผู้กู้ <span class="text-danger">*</span>');
+    // frm.fields_dict.bank_account_type.$wrapper.find('.control-label').html('ประเภทบัญชี <span class="text-danger">*</span>');
+    // frm.fields_dict.bank_account_number.$wrapper.find('.control-label').html('เลขที่บัญชี <span class="text-danger">*</span>');
+    // frm.fields_dict.bank_account_name.$wrapper.find('.control-label').html('ชื่อบัญชีธนาคารผู้กู้ <span class="text-danger">*</span>');      
 
     let html_header_loan_condition = `
     <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #80AFE0; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
@@ -73,6 +73,13 @@ function initialize_loan_condition_header(frm) {
     });
 }
 
+function initialize_loan_condition_header_table_transfer(frm) {
+    frm.fields_dict.bank_account.$wrapper.find('.control-label').html('บัญชีธนาคารผู้กู้ <span class="text-danger">*</span>');
+    frm.fields_dict.bank_account_type.$wrapper.find('.control-label').html('ประเภทบัญชี <span class="text-danger">*</span>');
+    frm.fields_dict.bank_account_number.$wrapper.find('.control-label').html('เลขที่บัญชี <span class="text-danger">*</span>');
+    frm.fields_dict.bank_account_name.$wrapper.find('.control-label').html('ชื่อบัญชีธนาคารผู้กู้ <span class="text-danger">*</span>');
+}
+
 function fn_btn_save_loan_condition(frm){
     frm.fields_dict.btn_save_loan_condition.$wrapper
         .css({
@@ -97,7 +104,6 @@ function fn_btn_save_loan_condition(frm){
 }
 
 function ValidateFromCondition(frm) {
-
     let errors = [];
     let lease_type = frm.fields_dict.lease_type.$input.val();
     let application_type = frm.fields_dict.application_type.$input.val();
@@ -113,10 +119,10 @@ function ValidateFromCondition(frm) {
     let agreement_date = frm.fields_dict.agreement_date.$input.val();
     let first_due_date = frm.fields_dict.first_due_date.$input.val();
     let last_due_date = frm.fields_dict.last_due_date.$input.val();
-    let bank_account = frm.fields_dict.bank_account.$input.val();
-    let bank_account_type = frm.fields_dict.bank_account_type.$input.val();
-    let bank_account_number = frm.fields_dict.bank_account_number.$input.val();
-    let bank_account_name = frm.fields_dict.bank_account_name.$input.val();
+    // let bank_account = frm.fields_dict.bank_account.$input.val();
+    // let bank_account_type = frm.fields_dict.bank_account_type.$input.val();
+    // let bank_account_number = frm.fields_dict.bank_account_number.$input.val();
+    // let bank_account_name = frm.fields_dict.bank_account_name.$input.val();
 
     if (!lease_type) errors.push('- ประเภทการให้สินเชื่อ');
     if (!application_type) errors.push('- ประเภทใบคำขอ');
@@ -132,10 +138,25 @@ function ValidateFromCondition(frm) {
     if (!agreement_date) errors.push('- วันที่ทำสัญญา');
     if (!first_due_date) errors.push('- วันเริ่มสัญญา (งวดแรก)');
     if (!last_due_date) errors.push('- วันสิ้นสุดสัญญา (งวดสุดท้าย)');
-    if (!bank_account) errors.push('- บัญชีธนาคารผู้กู้');
-    if (!bank_account_type) errors.push('- ประเภทบัญชี');
-    if (!bank_account_number) errors.push('- เลขที่บัญชี');
-    if (!bank_account_name) errors.push('- ชื่อบัญชีธนาคารผู้กู้');
+    // if (!bank_account) errors.push('- บัญชีธนาคารผู้กู้');
+    // if (!bank_account_type) errors.push('- ประเภทบัญชี');
+    // if (!bank_account_number) errors.push('- เลขที่บัญชี');
+    // if (!bank_account_name) errors.push('- ชื่อบัญชีธนาคารผู้กู้');
+//Bobby Start
+// console.log(frm.doc.table_transfer);
+    frm.doc.table_transfer.forEach(function(row, index) {
+        let bank_account = row.bank_account;
+        let bank_account_type = row.bank_account_type;
+        let bank_account_number = row.bank_account_number;
+        let bank_account_name = row.bank_account_name;
+
+        // ตรวจสอบค่าทีละแถว
+        if (!bank_account) errors.push(`- บัญชีธนาคารผู้กู้ (แถว ${index + 1})`);
+        if (!bank_account_type) errors.push(`- ประเภทบัญชี (แถว ${index + 1})`);
+        if (!bank_account_number) errors.push(`- เลขที่บัญชี (แถว ${index + 1})`);
+        if (!bank_account_name) errors.push(`- ชื่อบัญชีธนาคารผู้กู้ (แถว ${index + 1})`);
+    });
+//End Start
 
     if (errors.length > 0) {
         errors.unshift('กรุณาตรวจสอบข้อมูลที่กรอกให้ถูกต้อง <br/>');

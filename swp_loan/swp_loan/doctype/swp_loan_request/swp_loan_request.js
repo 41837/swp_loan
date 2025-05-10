@@ -284,7 +284,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
         
         load_borrower_js(function(frm) {
             fn_btn_duplicate(frm);
-            ['table_borrower_address', 'table_borrower_social_info'].forEach(fieldname => {
+            ['table_borrower_address', 'table_borrower_social_info', 'table_transfer'].forEach(fieldname => {
                 bindMoveDeleteButtonOnCheck(frm, fieldname);
             });
             initialize_borrower_search(frm);
@@ -342,6 +342,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
         frm.fields_dict.section_loan_condition12.wrapper.hide();
         frm.fields_dict.section_loan_condition13.wrapper.hide();
         frm.fields_dict.section_loan_condition14.wrapper.hide();
+        frm.fields_dict.section_loan_condition14_2.wrapper.hide();
         frm.fields_dict.section_loan_condition15.wrapper.hide();
         frm.fields_dict.section_header_collateral_search.wrapper.hide();
         frm.fields_dict.section_collateral_search.wrapper.hide();
@@ -424,6 +425,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
             frm.fields_dict.section_loan_condition12.wrapper.show();
             frm.fields_dict.section_loan_condition13.wrapper.show();
             frm.fields_dict.section_loan_condition14.wrapper.show();
+            frm.fields_dict.section_loan_condition14_2.wrapper.show();
             frm.fields_dict.section_loan_condition15.wrapper.show();
             frm.fields_dict.section_input_progress_bar.wrapper.show();
             frm.fields_dict.section_form_action.wrapper.show();
@@ -973,5 +975,49 @@ frappe.ui.form.on("SWP_Loan_Request", {
         }     
     },
 
-});
+// table_transfer_on_form_rendered(frm) {
+//     const rows = frm.doc.table_transfer || [];
 
+//     if (rows.length > 0) {
+//         frm.fields_dict.table_transfer.grid.grid_rows.forEach(gridRow => {
+//             // ใช้ gridRow.grid_form.fields_dict เพื่อเข้าถึง field ภายใน child form
+//             const fields = gridRow.grid_form.fields_dict;
+
+//             fields.bank_account.$wrapper
+//                 .find('.control-label')
+//                 .html('บัญชีธนาคารผู้กู้ <span class="text-danger">*</span>');
+
+//             fields.bank_account_type.$wrapper
+//                 .find('.control-label')
+//                 .html('ประเภทบัญชี <span class="text-danger">*</span>');
+
+//             fields.bank_account_number.$wrapper
+//                 .find('.control-label')
+//                 .html('เลขที่บัญชี <span class="text-danger">*</span>');
+
+//             fields.bank_account_name.$wrapper
+//                 .find('.control-label')
+//                 .html('ชื่อบัญชีธนาคารผู้กู้ <span class="text-danger">*</span>');
+//         });
+//     } else {
+//         console.warn("ไม่มีข้อมูลใน table_transfer");
+//     }
+// }
+table_transfer_on_form_rendered(frm) {
+    const rows = frm.doc.table_transfer || [];
+
+    if (rows.length > 0) {
+        frm.fields_dict.table_transfer.grid.grid_rows.forEach(gridRow => {
+            const childFrm = gridRow.grid_form;
+
+            load_loan_condition_js(function(loadedFrm) {
+                initialize_loan_condition_header_table_transfer(loadedFrm);
+            }, childFrm);
+        });
+    } else {
+        console.warn("ไม่มีข้อมูลใน table_transfer");
+    }
+}
+
+
+});
