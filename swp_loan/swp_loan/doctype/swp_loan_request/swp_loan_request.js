@@ -158,17 +158,17 @@ frappe.ui.form.on("SWP_Loan_Request", {
 
         // ----------------------------------------------- Start --- ขั้นตอนสร้างเอกสารใหม่
         if (frm.is_new()) {
-            // const address_defaults = [
-            //     { def_address_type: "บัตรประชาชน" },
-            //     { def_address_type: "ทะเบียนบ้าน" },
-            //     { def_address_type: "ที่อยู่ปัจจุบัน" },
-            //     { def_address_type: "ที่ทำงาน" }
-            // ];
-            // address_defaults.forEach(data => {
-            //     let row = frm.add_child('table_borrower_address');
-            //     row.address_type = data.def_address_type;
-            // });
-            // frm.refresh_field('table_borrower_address');
+            const address_defaults = [
+                { def_address_type: "บัตรประชาชน" },
+                { def_address_type: "ทะเบียนบ้าน" },
+                { def_address_type: "ที่อยู่ปัจจุบัน" },
+                { def_address_type: "ที่ทำงาน" }
+            ];
+            address_defaults.forEach(data => {
+                let row = frm.add_child('table_borrower_address');
+                row.address_type = data.def_address_type;
+            });
+            frm.refresh_field('table_borrower_address');
             
             const social_defaults = [
                 { social_type: "Email", social_remark: "email@example.com" },
@@ -260,6 +260,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
             initialize_loan_condition_header(frm);
         }, frm);
         // ----------------------------------------------- End --- Header loan condition section
+
     },
 
     refresh(frm) {
@@ -283,6 +284,9 @@ frappe.ui.form.on("SWP_Loan_Request", {
         
         load_borrower_js(function(frm) {
             fn_btn_duplicate(frm);
+            ['table_borrower_address', 'table_borrower_social_info'].forEach(fieldname => {
+                bindMoveDeleteButtonOnCheck(frm, fieldname);
+            });
             initialize_borrower_search(frm);
         }, frm);
 

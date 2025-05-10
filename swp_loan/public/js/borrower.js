@@ -430,10 +430,36 @@ function initialize_borrower_header(frm) {
     });
 }
 
-function fn_btn_duplicate(frm) {
-    frm.fields_dict.table_borrower_address.grid.add_custom_button(__('Duplicate'), function() {
-        let selected = frm.fields_dict.table_borrower_address.grid.get_selected_children();
+// function fn_btn_duplicate(frm) {
+//     frm.fields_dict.table_borrower_address.grid.add_custom_button(__('Duplicate'), function() {
+//         let selected = frm.fields_dict.table_borrower_address.grid.get_selected_children();
         
+//         if (!selected.length) {
+//             frappe.msgprint(__('Please select at least one row to duplicate.'));
+//             return;
+//         }
+
+//         selected.forEach(row => {
+//             let new_row = frm.add_child('table_borrower_address');
+
+//             // คัดลอกข้อมูลที่ต้องการ
+//             new_row.address_type = row.address_type;
+//             new_row.address = row.address;
+//             new_row.sub_district = row.sub_district;
+//             new_row.district = row.district;
+//             new_row.province = row.province;
+
+//             // เพิ่มฟิลด์อื่นๆ ถ้ามี
+//         });
+
+//         frm.refresh_field('table_borrower_address');
+//     });
+// }
+
+function fn_btn_duplicate(frm) {
+    frm.fields_dict.table_borrower_address.grid.add_custom_button(__('Duplicate'), function () {
+        let selected = frm.fields_dict.table_borrower_address.grid.get_selected_children();
+
         if (!selected.length) {
             frappe.msgprint(__('Please select at least one row to duplicate.'));
             return;
@@ -441,17 +467,48 @@ function fn_btn_duplicate(frm) {
 
         selected.forEach(row => {
             let new_row = frm.add_child('table_borrower_address');
-
-            // คัดลอกข้อมูลที่ต้องการ
             new_row.address_type = row.address_type;
             new_row.address = row.address;
             new_row.sub_district = row.sub_district;
             new_row.district = row.district;
             new_row.province = row.province;
-
-            // เพิ่มฟิลด์อื่นๆ ถ้ามี
         });
 
         frm.refresh_field('table_borrower_address');
     });
+
+    // ย้ายปุ่ม Duplicate ไปหลัง
+    setTimeout(() => {
+        let $buttons = frm.fields_dict.table_borrower_address.grid.grid_buttons;
+        let $addRowBtn = $buttons.find('.grid-add-row');
+        let $duplicateBtn = $buttons.find('.btn:contains("Duplicate")');
+
+        if ($addRowBtn.length && $duplicateBtn.length) {
+            $duplicateBtn.insertAfter($addRowBtn);
+        }
+    }, 100);
 }
+
+function bindMoveDeleteButtonOnCheck(frm, fieldname) {
+    frm.fields_dict[fieldname].grid.wrapper.on('click', '.grid-row-check', function () {
+        setTimeout(() => {
+            moveDeleteButtonToEnd();
+        });
+    });
+}
+
+function moveDeleteButtonToEnd() {
+    $('.grid-remove-rows').each(function () {
+        const $deleteBtn = $(this);
+        const $container = $deleteBtn.parent();
+
+        // เอาปุ่มอื่นไว้ก่อน แล้วให้ delete มาทีหลัง
+        // $container.append($container.find('[data-action="add_row"]'));
+        // $container.append($container.find('[data-action="duplicate"]'));
+        $container.append($deleteBtn);
+    });
+}
+
+
+
+
