@@ -53,7 +53,7 @@ function fn_btn_save_borrower(frm){
 
 function ValidateFromBorrower(frm) {
     let errors = [];
-
+    
     let cus_customer_id = frm.fields_dict.cus_customer_id.$input.val();
     let cus_salutation = frm.fields_dict.cus_salutation.$input.val();
     let cus_first_name = frm.fields_dict.cus_first_name.$input.val();
@@ -89,6 +89,7 @@ function ValidateFromBorrower(frm) {
         { key: 'post_code', label: 'รหัสไปรษณีย์' },
         { key: 'mobile_number', label: 'โทรศัพท์' }
     ];
+
 
 
     if (!cus_customer_id) errors.push('- หมายเลขบัตร');

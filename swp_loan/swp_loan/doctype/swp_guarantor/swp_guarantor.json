@@ -153,8 +153,9 @@
   },
   {
    "fieldname": "identification_type",
-   "fieldtype": "Select",
-   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1a\u0e31\u0e15\u0e23"
+   "fieldtype": "Link",
+   "label": "\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e1a\u0e31\u0e15\u0e23",
+   "options": "Identification Type"
   },
   {
    "fieldname": "html_rkco",
@@ -163,8 +164,9 @@
   },
   {
    "fieldname": "salutation",
-   "fieldtype": "Select",
-   "label": "\u0e04\u0e33\u0e19\u0e33\u0e2b\u0e19\u0e49\u0e32"
+   "fieldtype": "Link",
+   "label": "\u0e04\u0e33\u0e19\u0e33\u0e2b\u0e19\u0e49\u0e32",
+   "options": "Salutation"
   },
   {
    "fieldname": "last_name",
@@ -187,8 +189,9 @@
   },
   {
    "fieldname": "issuer",
-   "fieldtype": "Select",
-   "label": "\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23\u0e42\u0e14\u0e22"
+   "fieldtype": "Link",
+   "label": "\u0e2d\u0e2d\u0e01\u0e1a\u0e31\u0e15\u0e23\u0e42\u0e14\u0e22",
+   "options": "Issuer"
   },
   {
    "fieldname": "nickname",
@@ -197,13 +200,15 @@
   },
   {
    "fieldname": "nationality",
-   "fieldtype": "Data",
-   "label": "\u0e2a\u0e31\u0e0d\u0e0a\u0e32\u0e15\u0e34"
+   "fieldtype": "Link",
+   "label": "\u0e2a\u0e31\u0e0d\u0e0a\u0e32\u0e15\u0e34",
+   "options": "Nationality"
   },
   {
    "fieldname": "race",
-   "fieldtype": "Data",
-   "label": "\u0e40\u0e0a\u0e37\u0e49\u0e2d\u0e0a\u0e32\u0e15\u0e34"
+   "fieldtype": "Link",
+   "label": "\u0e40\u0e0a\u0e37\u0e49\u0e2d\u0e0a\u0e32\u0e15\u0e34",
+   "options": "Race"
   },
   {
    "fieldname": "column_break_ovjg",
@@ -316,30 +321,45 @@
   {
    "fieldname": "identification_subdistrict",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "\u0e15\u0e33\u0e1a\u0e25/\u0e41\u0e02\u0e27\u0e07",
-   "options": "Subdistrict",
-   "read_only_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product"
+   "mandatory_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product",
+   "options": "Subdistrict"
   },
   {
+   "fetch_from": "identification_subdistrict.province",
    "fieldname": "identification_province",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14",
-   "options": "Province"
+   "options": "Province",
+   "read_only_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product"
   },
   {
    "fieldname": "column_break_rlcu",
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "identification_subdistrict.district",
    "fieldname": "identification_district",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "\u0e2d\u0e33\u0e40\u0e20\u0e2d/\u0e40\u0e02\u0e15",
-   "options": "District"
+   "mandatory_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product",
+   "options": "District",
+   "read_only": 1,
+   "read_only_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product"
   },
   {
+   "fetch_from": "identification_subdistrict.post_code",
    "fieldname": "identification_post_code",
    "fieldtype": "Data",
-   "label": "\u0e23\u0e2b\u0e31\u0e2a\u0e44\u0e1b\u0e23\u0e29\u0e13\u0e35\u0e22\u0e4c"
+   "in_list_view": 1,
+   "label": "\u0e23\u0e2b\u0e31\u0e2a\u0e44\u0e1b\u0e23\u0e29\u0e13\u0e35\u0e22\u0e4c",
+   "mandatory_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product"
   },
   {
    "fieldname": "section_break_iuvs",
@@ -410,28 +430,43 @@
   },
   {
    "fieldname": "home_subdistrict",
-   "fieldtype": "Data",
-   "label": "\u0e15\u0e33\u0e1a\u0e25"
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "\u0e15\u0e33\u0e1a\u0e25",
+   "options": "Subdistrict"
   },
   {
+   "fetch_from": "home_subdistrict.province",
    "fieldname": "home_province",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14",
-   "options": "Province"
+   "mandatory_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product",
+   "options": "Province",
+   "read_only_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product"
   },
   {
    "fieldname": "column_break_znkt",
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "home_subdistrict.district",
    "fieldname": "home_district",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "\u0e2d\u0e33\u0e40\u0e20\u0e2d",
-   "options": "District"
+   "mandatory_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product",
+   "options": "District",
+   "read_only": 1
   },
   {
+   "fetch_from": "home_subdistrict.post_code",
    "fieldname": "home_post_code",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "\u0e23\u0e2b\u0e31\u0e2a\u0e44\u0e1b\u0e23\u0e29\u0e13\u0e35\u0e22\u0e4c"
   },
   {
@@ -510,12 +545,18 @@
   {
    "fieldname": "subdistrict",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "\u0e15\u0e33\u0e1a\u0e25",
+   "mandatory_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product",
    "options": "Subdistrict"
   },
   {
+   "fetch_from": "subdistrict.province",
    "fieldname": "province",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "\u0e08\u0e31\u0e07\u0e2b\u0e27\u0e31\u0e14",
    "options": "Province"
   },
@@ -524,14 +565,22 @@
    "fieldtype": "Column Break"
   },
   {
+   "fetch_from": "subdistrict.district",
    "fieldname": "district",
    "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "\u0e2d\u0e33\u0e40\u0e20\u0e2d",
-   "options": "District"
+   "mandatory_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product",
+   "options": "District",
+   "read_only": 1,
+   "read_only_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product"
   },
   {
+   "fetch_from": "subdistrict.post_code",
    "fieldname": "post_code",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "\u0e23\u0e2b\u0e31\u0e2a\u0e44\u0e1b\u0e23\u0e29\u0e13\u0e35\u0e22\u0e4c",
    "options": "Post Code"
   },
@@ -590,12 +639,13 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-05-08 15:10:26.890197",
+ "modified": "2025-05-10 15:41:28.161969",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Guarantor",
  "owner": "Administrator",
  "permissions": [],
+ "row_format": "Dynamic",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
