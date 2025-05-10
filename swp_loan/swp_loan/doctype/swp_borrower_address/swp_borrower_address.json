@@ -25,15 +25,15 @@
   "column_break_buka",
   "extension",
   "column_break_cpwy",
-  "section_break_maln",
-  "latitude",
-  "column_break_teyl",
-  "longitude",
   "section_break_dtpq",
   "address_living_year",
   "column_break_rcpv",
   "house_ownership",
   "type_of_house",
+  "section_break_maln",
+  "latitude",
+  "column_break_teyl",
+  "longitude",
   "section_break_qpjt",
   "address_location"
  ],
@@ -60,7 +60,8 @@
   },
   {
    "fieldname": "section_break_pcox",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "hidden": 1
   },
   {
    "fieldname": "column_break_izdn",
@@ -115,7 +116,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "\u0e15\u0e33\u0e1a\u0e25",
+   "label": "\u0e15\u0e33\u0e1a\u0e25/\u0e41\u0e02\u0e27\u0e07",
    "options": "Subdistrict"
   },
   {
@@ -133,7 +134,7 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "\u0e2d\u0e33\u0e40\u0e20\u0e2d",
+   "label": "\u0e2d\u0e33\u0e40\u0e20\u0e2d/\u0e40\u0e02\u0e15",
    "mandatory_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product",
    "read_only": 1,
    "read_only_depends_on": "eval:[\"H\", \"L\"].includes(doc.col_product) && doc.col_product"
@@ -202,7 +203,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-05-08 22:06:12.221197",
+ "modified": "2025-05-10 13:30:44.363206",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Borrower_Address",
