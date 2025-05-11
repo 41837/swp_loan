@@ -110,8 +110,8 @@
   "section_header_collateral_search",
   "header_collateral_search",
   "section_collateral_search",
-  "col_search_id",
-  "btn_search_collateral",
+  "col_search_collateral",
+  "col_button_search_collateral",
   "search_collateral",
   "column_break_bffb",
   "col_search_ocr",
@@ -844,12 +844,6 @@
    "label": "\u0e1a\u0e23\u0e34\u0e29\u0e31\u0e17"
   },
   {
-   "fieldname": "btn_search_collateral",
-   "fieldtype": "Button",
-   "is_virtual": 1,
-   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e08\u0e32\u0e01\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48"
-  },
-  {
    "fieldname": "btn_save_borrower",
    "fieldtype": "Button",
    "is_virtual": 1,
@@ -1508,11 +1502,6 @@
    "read_only": 1
   },
   {
-   "fieldname": "col_search_id",
-   "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
-  },
-  {
    "default": "0",
    "fieldname": "cus_is_customer_blocked",
    "fieldtype": "Check",
@@ -2043,17 +2032,28 @@
   {
    "fieldname": "column_break_gked",
    "fieldtype": "Column Break"
-   },
-   {
+  },
+  {
    "fieldname": "mobile_number",
    "fieldtype": "Data",
    "label": "\u0e40\u0e1a\u0e2d\u0e23\u0e4c\u0e42\u0e17\u0e23 (\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e40\u0e1e\u0e22\u0e4c)"
+  },
+  {
+   "fieldname": "col_search_collateral",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
+  },
+  {
+   "fieldname": "col_button_search_collateral",
+   "fieldtype": "Button",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e08\u0e32\u0e01\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-10 12:53:27.311995",
+ "modified": "2025-05-11 11:30:06.982235",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",
