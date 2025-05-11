@@ -101,7 +101,7 @@
   "section_header_guarantor",
   "header_guarantor",
   "section_guarantor",
-  "has_guarantor",
+  "no_guarantor",
   "table_guarantor",
   "section_guarantor2",
   "column_break_hrmq",
@@ -1972,13 +1972,6 @@
    "label": "html_borrower_result"
   },
   {
-   "default": "0",
-   "fieldname": "has_guarantor",
-   "fieldtype": "HTML",
-   "is_virtual": 1,
-   "label": "has_guarantor"
-  },
-  {
    "fieldname": "section_guarantor2",
    "fieldtype": "Section Break"
   },
@@ -2054,12 +2047,19 @@
    "fieldname": "btn_find_rate_book",
    "fieldtype": "Button",
    "label": "Find Rate Book"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_guarantor",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "no_guarantor"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-11 11:39:40.002183",
+ "modified": "2025-05-11 10:02:48.987900",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",

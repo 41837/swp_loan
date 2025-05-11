@@ -188,12 +188,14 @@ frappe.ui.form.on("SWP_Loan_Request", {
         // ----------------------------------------------- End --- Header borrower search section
         load_guarantor_js(function(frm){
             initialize_guarantor_header(frm);
-
-        } , frm)
+            initialize_no_guarantor_checkbox(frm);
+        }, frm)
 
         // ----------------------------------------------- Start --- Header borrower section
         load_borrower_js(function(frm) {
             initialize_borrower_header(frm);
+            initialize_marketing_consent_radio_button(frm);
+            initialize_sensitive_data_consent_radio_button(frm);
         }, frm);
         // ----------------------------------------------- End --- Header borrower section
 
@@ -262,30 +264,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
         frm.fields_dict.table_outstanding_balance.grid.cannot_add_rows = true;
         // End   --- Disable add row button on child table
 
-        // ----------------------------------------------- Start --- Radio button consent marketing field
-        frm.fields_dict.consent_marketing.$wrapper.html(`
-            <label>ความยินยอมด้านการตลาด</label><br>
-            <input type="radio" name="marketing_consent" value="ยินยอม"> ยินยอม<br>
-            <input type="radio" name="marketing_consent" value="ไม่ยินยอม"> ไม่ยินยอม
-        `);
-        frm.fields_dict.consent_marketing.$wrapper.on("change", "input[name=marketing_consent]", function() {
-            let selected_value = $(this).val();
-            frm.set_value("consent_marketing_value", selected_value);
-        });
-        // End   --- Radio button consent marketing field
-
-        // ----------------------------------------------- Start --- Radio button consent sensitive data field
-        frm.fields_dict.consent_sensitive_data.$wrapper.html(`
-            <label>ความยินยอมด้านข้อมูลอ่อนไหว</label><br>
-            <input type="radio" name="sensitive_data_consent" value="ยินยอม"> ยินยอม<br>
-            <input type="radio" name="sensitive_data_consent" value="ไม่ยินยอม"> ไม่ยินยอม
-        `);
-        frm.fields_dict.consent_sensitive_data.$wrapper.on("change", "input[name=sensitive_data_consent]", function() {
-            let selected_value = $(this).val();
-            frm.set_value("consent_sensitive_data_value", selected_value);
-        });
-        // End   --- Radio button consent sensitive data field
-
         // ----------------------------------------------- Start --- Header collateral search section
         load_search_collateral_js(function(frm) {
             initialize_collateral_search_header(frm);
@@ -303,7 +281,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
             initialize_loan_condition_header(frm);
         }, frm);
         // ----------------------------------------------- End --- Header loan condition section
-
     },
 
     refresh(frm) {
@@ -476,56 +453,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
             load_collateral_js(function(frm) {
                 initialize_collateral_search(frm);
             }, frm);
-
-            // Reinitialize header_guarantor HTML content
-            let html_header_guarantor = `
-            <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #80AFE0; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
-                <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ผู้ค้ำ</div>
-                <button id="toggle-guarantor-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
-                    <i class="fa fa-chevron-up"></i>
-                </button>
-            </div>
-            `;
-            frm.fields_dict.header_guarantor.$wrapper.html(html_header_guarantor);
-
-            // Reinitialize has_guarantor checkbox
-            frm.fields_dict.has_guarantor.$wrapper.html(`
-                <div style="margin: 10px 0;">
-                    <label style="display: flex; align-items: center; cursor: pointer;">
-                        <input type="checkbox" id="has_guarantor_checkbox" style="margin-right: 8px;">
-                        <span>ไม่มีผู้ค้ำ</span>
-                    </label>
-                </div>
-            `);
-
-            // Reinitialize event handlers
-            $("#has_guarantor_checkbox").on("change", function() {
-                if ($(this).is(":checked")) {
-                    frm.fields_dict.section_guarantor.wrapper.show();
-                    $("#toggle-guarantor-btn i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
-                } else {
-                    frm.fields_dict.section_guarantor.wrapper.hide();
-                    $("#toggle-guarantor-btn i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
-                }
-            });
-
-            let isCollapsed_header_guarantor = false;
-            $("#toggle-guarantor-btn").on("click", function () {
-                isCollapsed_header_guarantor = !isCollapsed_header_guarantor;
-
-                if (isCollapsed_header_guarantor) {
-                    frm.fields_dict.section_guarantor.wrapper.hide();
-                    frm.fields_dict.section_guarantor2.wrapper.hide();
-                    $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
-                    $("#has_guarantor_checkbox").prop("checked", false);
-                } else {
-                    frm.fields_dict.section_guarantor.wrapper.show();
-                    frm.fields_dict.section_guarantor2.wrapper.show();
-                    $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
-                    $("#has_guarantor_checkbox").prop("checked", true);
-                }
-            });
-
         }
 
         if (frm.doc.status_flag == 'Pending Approval') {
@@ -1069,26 +996,9 @@ table_transfer_on_form_rendered(frm) {
             }, childFrm);
         });
     } else {
-        console.warn("ไม่มีข้อมูลใน table_transfer");
-    }
-}
-
-
-});
-frappe.ui.form.on('SWP_Related_Person', {
-    telephone: function(frm, cdt, cdn) {
-        let row = locals[cdt][cdn];
-
-        // ตรวจสอบว่ามีค่า
-        if (row.telephone && !/^\d{10}$/.test(row.telephone)) {
-            frappe.show_alert({
-                message: __('กรุณากรอกเบอร์โทรให้ถูกต้อง (10 หลัก)'),
-                indicator: 'red'
-            }, 5);
-            frappe.model.set_value(cdt, cdn, 'telephone', '');
-            frm.refresh_field('table_related_person');
-        }
-    }
+            console.warn("ไม่มีข้อมูลใน table_transfer");
+        }   
+    },
 });
 
 frappe.ui.form.on('SWP_Guarantor', {
