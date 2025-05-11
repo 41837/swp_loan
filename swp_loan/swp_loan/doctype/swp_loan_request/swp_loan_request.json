@@ -101,7 +101,7 @@
   "section_header_guarantor",
   "header_guarantor",
   "section_guarantor",
-  "has_guarantor",
+  "no_guarantor",
   "table_guarantor",
   "section_guarantor2",
   "column_break_hrmq",
@@ -1971,13 +1971,6 @@
    "label": "html_borrower_result"
   },
   {
-   "default": "0",
-   "fieldname": "has_guarantor",
-   "fieldtype": "HTML",
-   "is_virtual": 1,
-   "label": "has_guarantor"
-  },
-  {
    "fieldname": "section_guarantor2",
    "fieldtype": "Section Break"
   },
@@ -2043,17 +2036,24 @@
   {
    "fieldname": "column_break_gked",
    "fieldtype": "Column Break"
-   },
-   {
+  },
+  {
    "fieldname": "mobile_number",
    "fieldtype": "Data",
    "label": "\u0e40\u0e1a\u0e2d\u0e23\u0e4c\u0e42\u0e17\u0e23 (\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e40\u0e1e\u0e22\u0e4c)"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_guarantor",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "no_guarantor"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-10 12:53:27.311995",
+ "modified": "2025-05-11 10:02:48.987900",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",
