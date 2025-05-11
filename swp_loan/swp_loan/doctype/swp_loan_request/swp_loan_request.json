@@ -146,6 +146,7 @@
   "col_submodel",
   "col_gear",
   "col_engine_size",
+  "btn_find_rate_book",
   "section_collateral_vehicle2",
   "col_car_mileage",
   "col_date_of_license_expiry",
@@ -1081,7 +1082,7 @@
    "fieldname": "col_gear",
    "fieldtype": "Select",
    "label": "\u0e40\u0e01\u0e35\u0e22\u0e23\u0e4c",
-   "options": "\n\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\n\u0e18\u0e23\u0e23\u0e21\u0e14\u0e32"
+   "options": "\nAutomatic\nManual"
   },
   {
    "fieldname": "col_engine_size",
@@ -2043,17 +2044,22 @@
   {
    "fieldname": "column_break_gked",
    "fieldtype": "Column Break"
-   },
-   {
+  },
+  {
    "fieldname": "mobile_number",
    "fieldtype": "Data",
    "label": "\u0e40\u0e1a\u0e2d\u0e23\u0e4c\u0e42\u0e17\u0e23 (\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e40\u0e1e\u0e22\u0e4c)"
+  },
+  {
+   "fieldname": "btn_find_rate_book",
+   "fieldtype": "Button",
+   "label": "Find Rate Book"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-10 12:53:27.311995",
+ "modified": "2025-05-11 11:39:40.002183",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",

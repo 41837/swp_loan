@@ -802,6 +802,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
         load_collateral_js(function(frm) {
             fn_btn_save_collateral(frm);
             initialize_collateral_header(frm);
+            fn_btn_find_rate_book(frm);
         }, frm);
 
         load_search_collateral_js(function(frm) {
@@ -997,6 +998,8 @@ frappe.ui.form.on("SWP_Loan_Request", {
             mockup_found_borrower_not_blacklist(frm);
         }     
     },
+    
+    
 
 // table_transfer_on_form_rendered(frm) {
 //     const rows = frm.doc.table_transfer || [];
