@@ -128,6 +128,81 @@ function load_GuarantorSWP_js(callback, frm) {
 
 
 
+// frappe.ui.form.on('SWP_Borrower_Address', { 
+//     table_borrower_address_add: function(frm, cdt, cdn) {
+//         let child = locals[cdt][cdn];
+//         child.longitude = '13.768012333265615';
+//         frm.refresh_field('table_borrower_address');
+//     }
+// });
+
+
+// frappe.ui.form.on('SWP_Borrower_Address', {
+//     table_borrower_address_add: function(frm, cdt, cdn) {
+//         let child = locals[cdt][cdn];
+//         // กำหนดค่า Latitude และ Longitude
+//         child.latitude = '13.888197837191681';  
+//         child.longitude = '100.57529891101915'; 
+//         // กำหนดค่า Address Location ในรูปแบบ GeoJSON
+//         child.address_location = JSON.stringify({
+//             "type": "Feature",
+//             "geometry": {
+//                 "type": "Point",
+//                 "coordinates": [parseFloat(child.longitude), parseFloat(child.latitude)]
+//             },
+//             "properties": {}  // สามารถใส่ properties อื่นๆ ที่ต้องการได้
+//         });
+
+//         frm.refresh_field('table_borrower_address');
+//     }
+// });
+
+frappe.ui.form.on('SWP_Borrower_Address', {
+    // เมื่อมีการเปลี่ยนแปลงค่าในฟิลด์ latitude
+    latitude: function(frm, cdt, cdn) {
+        let child = locals[cdt][cdn];
+
+        // เมื่อ latitude เปลี่ยนแปลงให้ปรับค่า address_location
+        updateAddressLocation(child);
+
+        frm.refresh_field('table_borrower_address');
+    },
+
+    // เมื่อมีการเปลี่ยนแปลงค่าในฟิลด์ longitude
+    longitude: function(frm, cdt, cdn) {
+        let child = locals[cdt][cdn];
+
+        // เมื่อ longitude เปลี่ยนแปลงให้ปรับค่า address_location
+        updateAddressLocation(child);
+
+        frm.refresh_field('table_borrower_address');
+    },
+
+    table_borrower_address_add: function(frm, cdt, cdn) {
+        let child = locals[cdt][cdn];
+        // กำหนดค่า Latitude และ Longitude
+        child.latitude = '13.888197837191681';  
+        child.longitude = '100.57529891101915'; 
+
+        // สร้าง address_location จากค่าของ latitude และ longitude
+        updateAddressLocation(child);
+
+        frm.refresh_field('table_borrower_address');
+    }
+});
+
+// ฟังก์ชันในการอัพเดท address_location ตามค่า latitude และ longitude
+function updateAddressLocation(child) {
+    child.address_location = JSON.stringify({
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [parseFloat(child.longitude), parseFloat(child.latitude)]
+        },
+        "properties": {}  // สามารถใส่ properties อื่นๆ ที่ต้องการได้
+    });
+}
+
 
 
 
