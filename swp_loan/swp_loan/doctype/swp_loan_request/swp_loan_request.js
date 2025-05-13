@@ -174,8 +174,8 @@ function updateAddressLocation(child) {
 
 
 frappe.ui.form.on("SWP_Loan_Request", {
-    onload: function(frm) {           
-    
+    onload: function(frm) {
+        
         load_borrower_js(function(frm) {
             initialize_date_of_birth_validation(frm);
             initialize_customer_id_validation(frm);
@@ -292,9 +292,14 @@ frappe.ui.form.on("SWP_Loan_Request", {
         frm.fields_dict.table_deduction.grid.cannot_add_rows = true;
         frm.fields_dict.table_outstanding_balance.grid.cannot_add_rows = true;
         // End   --- Disable add row button on child table
+
+        // Add refresh call with 1 second delay
+        setTimeout(function() {
+            frm.refresh();
+        }, 1000);
     },
 
-    refresh(frm) {
+    refresh(frm) { 
 
         load_idcardreader_js(function(frm) {
             call_SDK_ID_Card(frm);
@@ -633,6 +638,22 @@ frappe.ui.form.on("SWP_Loan_Request", {
         </style>`).appendTo("head");
         // ----------------------------------------------- End --- Attachment custom button
 
+
+        // ปุ่มเพิ่มใบคำขอใหม่ // Start
+        frm.add_custom_button(
+            __('เพิ่มใบคำขอใหม่'),
+            function() {
+                frappe.new_doc('SWP_Loan_Request', {}, (doc) => {
+                    // Refresh the page after 1 second
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 1000);
+                });
+            }
+        )
+        // ปุ่มเพิ่มใบคำขอใหม่ // End
+
+
         // ----------------------------------------------- Start --- Scroll button
         // Check existing button (because this function use in refresh event)
         if (!frm.page.scroll_buttons_added) {
@@ -784,11 +805,12 @@ frappe.ui.form.on("SWP_Loan_Request", {
         }, frm);
         // ----------------------------------------------- End --- Loan condition save button
 
-        // ----------------------------------------------- Start --- Borrower search button
+        // ----------------------------------------------- Start --- Borrower search
         load_search_borrower_js(function(frm) {
+            initialize_borrower_search_header(frm);
             fn_search_borrower(frm);
         }, frm);
-        // ----------------------------------------------- End --- Borrower search button
+        // ----------------------------------------------- End --- Borrower search
         
         // ----------------------------------------------- Start --- Borrower save button
         load_borrower_js(function(frm) {
@@ -1180,3 +1202,4 @@ frappe.ui.form.on('SWP_Guarantor', {
         }
     }
 });
+

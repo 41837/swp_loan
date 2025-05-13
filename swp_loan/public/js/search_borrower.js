@@ -116,9 +116,7 @@ function initialize_borrower_search_header(frm) {
             `);
         
         frm.fields_dict.section_borrower_result.wrapper.show();
-    }
-
-
+    } 
 
 }
 
@@ -370,19 +368,6 @@ function fn_search_borrower(frm){
                     </div>
                 </div>
             `);
-
-            $("#btn_cancel_borrower").on("click", function() {
-                frm.set_value('cus_search_id', '');
-                frm.set_value('cus_is_new', 0);
-                frm.fields_dict.section_borrower_result.wrapper.hide();
-                frappe.show_alert({
-                    message: 'ยกเลิกการค้นหาเรียบร้อยแล้ว',
-                    indicator: 'orange'
-                }, 5);
-            });
-
-            frm.fields_dict.section_borrower_result.wrapper.show();
-            return;
         }
         else if (frm.doc.cus_search_id === '1104500012213') { //พบประวัติผู้กู้ ติด blacklist
             frm.set_value('cus_is_customer_blocked', 1);
@@ -649,6 +634,7 @@ function fn_search_borrower(frm){
                 indicator: 'orange'
             }, 5);
         });
+        
 
         frm.fields_dict.section_borrower_result.wrapper.show();
         return;
