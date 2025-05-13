@@ -101,7 +101,7 @@
   "section_header_guarantor",
   "header_guarantor",
   "section_guarantor",
-  "has_guarantor",
+  "no_guarantor",
   "table_guarantor",
   "section_guarantor2",
   "column_break_hrmq",
@@ -110,8 +110,8 @@
   "section_header_collateral_search",
   "header_collateral_search",
   "section_collateral_search",
-  "col_search_id",
-  "btn_search_collateral",
+  "col_search_collateral",
+  "col_button_search_collateral",
   "search_collateral",
   "column_break_bffb",
   "col_search_ocr",
@@ -146,6 +146,7 @@
   "col_submodel",
   "col_gear",
   "col_engine_size",
+  "btn_find_rate_book",
   "section_collateral_vehicle2",
   "col_car_mileage",
   "col_date_of_license_expiry",
@@ -256,14 +257,8 @@
   "section_loan_condition4",
   "btn_calculate_loan_condition",
   "section_loan_condition5",
-  "financing_amount_net",
-  "yield_percent",
-  "yield_amount",
-  "tax_amount",
-  "total_debtor",
   "column_break_qapy",
-  "installment_amount",
-  "last_installment_amount",
+  "financing_amount_net",
   "section_loan_condition6",
   "table_fees",
   "section_loan_condition7",
@@ -304,7 +299,12 @@
   "column_break_bujy",
   "ob03",
   "section_loan_condition14",
-  "column_break_gked",
+  "yield_percent",
+  "yield_amount",
+  "tax_amount",
+  "total_debtor",
+  "installment_amount",
+  "last_installment_amount",
   "column_break_nbvq",
   "virtual_financing_amount_net",
   "virtual_total_fees_net",
@@ -314,6 +314,7 @@
   "remaining_transfer_amount",
   "section_loan_condition14_2",
   "table_transfer",
+  "loan_details_remark",
   "section_loan_condition15",
   "column_break_hlml",
   "column_break_ngke",
@@ -844,12 +845,6 @@
    "label": "\u0e1a\u0e23\u0e34\u0e29\u0e31\u0e17"
   },
   {
-   "fieldname": "btn_search_collateral",
-   "fieldtype": "Button",
-   "is_virtual": 1,
-   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e08\u0e32\u0e01\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48"
-  },
-  {
    "fieldname": "btn_save_borrower",
    "fieldtype": "Button",
    "is_virtual": 1,
@@ -1081,7 +1076,7 @@
    "fieldname": "col_gear",
    "fieldtype": "Select",
    "label": "\u0e40\u0e01\u0e35\u0e22\u0e23\u0e4c",
-   "options": "\n\u0e2d\u0e31\u0e15\u0e42\u0e19\u0e21\u0e31\u0e15\u0e34\n\u0e18\u0e23\u0e23\u0e21\u0e14\u0e32"
+   "options": "\nAutomatic\nManual"
   },
   {
    "fieldname": "col_engine_size",
@@ -1506,11 +1501,6 @@
    "label": "\u0e04\u0e07\u0e40\u0e2b\u0e25\u0e37\u0e2d\u0e42\u0e2d\u0e19",
    "precision": "2",
    "read_only": 1
-  },
-  {
-   "fieldname": "col_search_id",
-   "fieldtype": "Data",
-   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
   },
   {
    "default": "0",
@@ -1971,13 +1961,6 @@
    "label": "html_borrower_result"
   },
   {
-   "default": "0",
-   "fieldname": "has_guarantor",
-   "fieldtype": "HTML",
-   "is_virtual": 1,
-   "label": "has_guarantor"
-  },
-  {
    "fieldname": "section_guarantor2",
    "fieldtype": "Section Break"
   },
@@ -2041,19 +2024,43 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "column_break_gked",
-   "fieldtype": "Column Break"
-   },
-   {
    "fieldname": "mobile_number",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e1a\u0e2d\u0e23\u0e4c\u0e42\u0e17\u0e23 (\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e40\u0e1e\u0e22\u0e4c)"
+   "label": "\u0e40\u0e1a\u0e2d\u0e23\u0e4c\u0e42\u0e17\u0e23 (\u0e43\u0e0a\u0e49\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e42\u0e2d\u0e19\u0e40\u0e07\u0e34\u0e19\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e40\u0e1e\u0e22\u0e4c)"
+  },
+  {
+   "fieldname": "btn_find_rate_book",
+   "fieldtype": "Button",
+   "label": "Find Rate Book"
+  },
+  {
+   "default": "0",
+   "fieldname": "no_guarantor",
+   "fieldtype": "HTML",
+   "is_virtual": 1,
+   "label": "no_guarantor"
+  },
+  {
+   "fieldname": "col_search_collateral",
+   "fieldtype": "Data",
+   "label": "\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48\u0e2b\u0e25\u0e31\u0e01\u0e1b\u0e23\u0e30\u0e01\u0e31\u0e19"
+  },
+  {
+   "fieldname": "col_button_search_collateral",
+   "fieldtype": "Button",
+   "is_virtual": 1,
+   "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e08\u0e32\u0e01\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48"
+  },
+  {
+   "fieldname": "loan_details_remark",
+   "fieldtype": "Small Text",
+   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e2b\u0e15\u0e38\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-10 12:53:27.311995",
+ "modified": "2025-05-13 10:26:31.051865",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",

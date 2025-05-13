@@ -9,6 +9,7 @@ let loanApplication = false;
 let idCardReader = false;
 let loan_history = cur_frm.get_field("loan_history_html")
 let guarantorSWPJSloan = false;
+let submitJSloaded = false;
 
  
 function load_borrower_js(callback, frm) {
@@ -113,23 +114,62 @@ function load_GuarantorSWP_js(callback, frm) {
     }
 }
 
+function load_submit_js(callback, frm) {
+    if (!submitJSloaded) {
+        frappe.require("/assets/swp_loan/js/submit.js", function () {
+            submitJSloaded = true;
+            if (typeof callback === "function") callback(frm);
+        });
+    } else {
+        if (typeof callback === "function") callback(frm);
+    }
+}
 
+frappe.ui.form.on('SWP_Borrower_Address', {
+    // เมื่อมีการเปลี่ยนแปลงค่าในฟิลด์ latitude
+    latitude: function(frm, cdt, cdn) {
+        let child = locals[cdt][cdn];
 
+        // เมื่อ latitude เปลี่ยนแปลงให้ปรับค่า address_location
+        updateAddressLocation(child);
 
+        frm.refresh_field('table_borrower_address');
+    },
 
+    // เมื่อมีการเปลี่ยนแปลงค่าในฟิลด์ longitude
+    longitude: function(frm, cdt, cdn) {
+        let child = locals[cdt][cdn];
 
+        // เมื่อ longitude เปลี่ยนแปลงให้ปรับค่า address_location
+        updateAddressLocation(child);
 
+        frm.refresh_field('table_borrower_address');
+    },
 
+    table_borrower_address_add: function(frm, cdt, cdn) {
+        let child = locals[cdt][cdn];
+        // กำหนดค่า Latitude และ Longitude
+        child.latitude = '13.888197837191681';  
+        child.longitude = '100.57529891101915'; 
 
+        // สร้าง address_location จากค่าของ latitude และ longitude
+        updateAddressLocation(child);
 
+        frm.refresh_field('table_borrower_address');
+    }
+});
 
-
-
-
-
-
-
-
+// ฟังก์ชันในการอัพเดท address_location ตามค่า latitude และ longitude
+function updateAddressLocation(child) {
+    child.address_location = JSON.stringify({
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [parseFloat(child.longitude), parseFloat(child.latitude)]
+        },
+        "properties": {}  // สามารถใส่ properties อื่นๆ ที่ต้องการได้
+    });
+}
 
 
 
@@ -141,6 +181,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
             initialize_customer_id_validation(frm);
             initialize_cus_issue_date_validation(frm);
             initialize_cus_expiry_date_validation(frm);
+            fn_btn_save_borrower(frm);
         }, frm);
 
         load_custom_banner_js(function(frm) {
@@ -154,24 +195,41 @@ frappe.ui.form.on("SWP_Loan_Request", {
             </div><br>
         `);
 
-        // ----------------------------------------------- Start --- Header borrower search section
         load_search_borrower_js(function(frm) {
             initialize_borrower_search_header(frm);
+            fn_search_borrower(frm);
         }, frm);
-        // ----------------------------------------------- End --- Header borrower search section
+        
         load_guarantor_js(function(frm){
             initialize_guarantor_header(frm);
+            initialize_no_guarantor_checkbox(frm);
+            fn_btn_save_guarantor(frm);
+        }, frm)
 
-        } , frm)
-
-        // ----------------------------------------------- Start --- Header borrower section
         load_borrower_js(function(frm) {
             initialize_borrower_header(frm);
+            initialize_marketing_consent_radio_button(frm);
+            initialize_sensitive_data_consent_radio_button(frm);
         }, frm);
-        // ----------------------------------------------- End --- Header borrower section
 
-
-
+        load_search_collateral_js(function(frm) {
+            initialize_collateral_search_header(frm);
+        }, frm);
+        
+        load_collateral_js(function(frm) {
+            initialize_collateral_header(frm);
+            fn_btn_save_collateral(frm);
+        }, frm);
+        
+        load_loan_condition_js(function(frm) {
+            initialize_loan_condition_header(frm);
+            fn_btn_save_loan_condition(frm);
+        }, frm);
+        
+        load_submit_js(function(frm) {
+            fn_btn_submit(frm);
+        }, frm);
+        
         // ----------------------------------------------- Start --- ขั้นตอนสร้างเอกสารใหม่
         if (frm.is_new()) {
             const address_defaults = [
@@ -234,49 +292,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
         frm.fields_dict.table_deduction.grid.cannot_add_rows = true;
         frm.fields_dict.table_outstanding_balance.grid.cannot_add_rows = true;
         // End   --- Disable add row button on child table
-
-        // ----------------------------------------------- Start --- Radio button consent marketing field
-        frm.fields_dict.consent_marketing.$wrapper.html(`
-            <label>ความยินยอมด้านการตลาด</label><br>
-            <input type="radio" name="marketing_consent" value="ยินยอม"> ยินยอม<br>
-            <input type="radio" name="marketing_consent" value="ไม่ยินยอม"> ไม่ยินยอม
-        `);
-        frm.fields_dict.consent_marketing.$wrapper.on("change", "input[name=marketing_consent]", function() {
-            let selected_value = $(this).val();
-            frm.set_value("consent_marketing_value", selected_value);
-        });
-        // End   --- Radio button consent marketing field
-
-        // ----------------------------------------------- Start --- Radio button consent sensitive data field
-        frm.fields_dict.consent_sensitive_data.$wrapper.html(`
-            <label>ความยินยอมด้านข้อมูลอ่อนไหว</label><br>
-            <input type="radio" name="sensitive_data_consent" value="ยินยอม"> ยินยอม<br>
-            <input type="radio" name="sensitive_data_consent" value="ไม่ยินยอม"> ไม่ยินยอม
-        `);
-        frm.fields_dict.consent_sensitive_data.$wrapper.on("change", "input[name=sensitive_data_consent]", function() {
-            let selected_value = $(this).val();
-            frm.set_value("consent_sensitive_data_value", selected_value);
-        });
-        // End   --- Radio button consent sensitive data field
-
-        // ----------------------------------------------- Start --- Header collateral search section
-        load_search_collateral_js(function(frm) {
-            initialize_collateral_search_header(frm);
-        }, frm);
-        // ----------------------------------------------- End --- Header collateral search section
-
-        // ----------------------------------------------- Start --- Header collateral section
-        load_collateral_js(function(frm) {
-            initialize_collateral_header(frm);
-        }, frm);
-        // ----------------------------------------------- End --- Header collateral section
-
-        // ----------------------------------------------- Start --- Header loan condition section
-        load_loan_condition_js(function(frm) {
-            initialize_loan_condition_header(frm);
-        }, frm);
-        // ----------------------------------------------- End --- Header loan condition section
-
     },
 
     refresh(frm) {
@@ -450,56 +465,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
             load_collateral_js(function(frm) {
                 initialize_collateral_search(frm);
             }, frm);
-
-            // Reinitialize header_guarantor HTML content
-            let html_header_guarantor = `
-            <div id="custom-toggle-header" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; background: #80AFE0; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
-                <div style="font-size: 20px; font-weight: bold; text-align: center; flex-grow: 1;">ผู้ค้ำ</div>
-                <button id="toggle-guarantor-btn" class="btn btn-sm btn-default" style="margin-left: auto;">
-                    <i class="fa fa-chevron-up"></i>
-                </button>
-            </div>
-            `;
-            frm.fields_dict.header_guarantor.$wrapper.html(html_header_guarantor);
-
-            // Reinitialize has_guarantor checkbox
-            frm.fields_dict.has_guarantor.$wrapper.html(`
-                <div style="margin: 10px 0;">
-                    <label style="display: flex; align-items: center; cursor: pointer;">
-                        <input type="checkbox" id="has_guarantor_checkbox" style="margin-right: 8px;">
-                        <span>ไม่มีผู้ค้ำ</span>
-                    </label>
-                </div>
-            `);
-
-            // Reinitialize event handlers
-            $("#has_guarantor_checkbox").on("change", function() {
-                if ($(this).is(":checked")) {
-                    frm.fields_dict.section_guarantor.wrapper.show();
-                    $("#toggle-guarantor-btn i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
-                } else {
-                    frm.fields_dict.section_guarantor.wrapper.hide();
-                    $("#toggle-guarantor-btn i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
-                }
-            });
-
-            let isCollapsed_header_guarantor = false;
-            $("#toggle-guarantor-btn").on("click", function () {
-                isCollapsed_header_guarantor = !isCollapsed_header_guarantor;
-
-                if (isCollapsed_header_guarantor) {
-                    frm.fields_dict.section_guarantor.wrapper.hide();
-                    frm.fields_dict.section_guarantor2.wrapper.hide();
-                    $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
-                    $("#has_guarantor_checkbox").prop("checked", false);
-                } else {
-                    frm.fields_dict.section_guarantor.wrapper.show();
-                    frm.fields_dict.section_guarantor2.wrapper.show();
-                    $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
-                    $("#has_guarantor_checkbox").prop("checked", true);
-                }
-            });
-
         }
 
         if (frm.doc.status_flag == 'Pending Approval') {
@@ -802,8 +767,9 @@ frappe.ui.form.on("SWP_Loan_Request", {
         
         // ----------------------------------------------- Start --- Collateral save button
         load_collateral_js(function(frm) {
-            fn_btn_save_collateral(frm);
             initialize_collateral_header(frm);
+            fn_btn_save_collateral(frm);
+            fn_btn_find_rate_book(frm);
         }, frm);
 
         load_search_collateral_js(function(frm) {
@@ -836,10 +802,14 @@ frappe.ui.form.on("SWP_Loan_Request", {
 
         // ----------------------------------------------- Start --- Borrower save button
         load_guarantor_js(function(frm) {
-            fn_btn_save_guarantor(frm);
             initialize_guarantor_header(frm);
+            fn_btn_save_guarantor(frm);
         }, frm);
         // ----------------------------------------------- End --- Borrower save button
+
+        load_submit_js(function(frm) {
+            fn_btn_submit(frm);
+        }, frm);
 
 
 
@@ -889,13 +859,12 @@ frappe.ui.form.on("SWP_Loan_Request", {
 
         // ----------------------------------------------- Start --- Hyperlink for open DOL website
         let html_hyperlink_dol_page = `
-            <a href="ttps://landsmaps.dol.go.th/" target="_blank" style="color: black; text-decoration: underline; font-size: 13px;">
+            <a href="้https://landsmaps.dol.go.th/" target="_blank" style="color: black; text-decoration: underline; font-size: 13px;">
                 ค้นหาข้อมูลกรมที่ดิน
             </a>
         `;
         frm.fields_dict['hyperlink_dol_page'].wrapper.innerHTML = html_hyperlink_dol_page;
         // ----------------------------------------------- End --- Hyperlink for open DOL website
-
     },
     
     
@@ -999,53 +968,187 @@ frappe.ui.form.on("SWP_Loan_Request", {
             mockup_found_borrower_not_blacklist(frm);
         }     
     },
+    
+    
 
-// table_transfer_on_form_rendered(frm) {
-//     const rows = frm.doc.table_transfer || [];
+    // table_transfer_on_form_rendered(frm) {
+    //     const rows = frm.doc.table_transfer || [];
 
-//     if (rows.length > 0) {
-//         frm.fields_dict.table_transfer.grid.grid_rows.forEach(gridRow => {
-//             // ใช้ gridRow.grid_form.fields_dict เพื่อเข้าถึง field ภายใน child form
-//             const fields = gridRow.grid_form.fields_dict;
+    //     if (rows.length > 0) {
+    //         frm.fields_dict.table_transfer.grid.grid_rows.forEach(gridRow => {
+    //             // ใช้ gridRow.grid_form.fields_dict เพื่อเข้าถึง field ภายใน child form
+    //             const fields = gridRow.grid_form.fields_dict;
 
-//             fields.bank_account.$wrapper
-//                 .find('.control-label')
-//                 .html('บัญชีธนาคารผู้กู้ <span class="text-danger">*</span>');
+    //             fields.bank_account.$wrapper
+    //                 .find('.control-label')
+    //                 .html('บัญชีธนาคารผู้กู้ <span class="text-danger">*</span>');
 
-//             fields.bank_account_type.$wrapper
-//                 .find('.control-label')
-//                 .html('ประเภทบัญชี <span class="text-danger">*</span>');
+    //             fields.bank_account_type.$wrapper
+    //                 .find('.control-label')
+    //                 .html('ประเภทบัญชี <span class="text-danger">*</span>');
 
-//             fields.bank_account_number.$wrapper
-//                 .find('.control-label')
-//                 .html('เลขที่บัญชี <span class="text-danger">*</span>');
+    //             fields.bank_account_number.$wrapper
+    //                 .find('.control-label')
+    //                 .html('เลขที่บัญชี <span class="text-danger">*</span>');
 
-//             fields.bank_account_name.$wrapper
-//                 .find('.control-label')
-//                 .html('ชื่อบัญชีธนาคารผู้กู้ <span class="text-danger">*</span>');
-//         });
-//     } else {
-//         console.warn("ไม่มีข้อมูลใน table_transfer");
-//     }
-// }
-table_transfer_on_form_rendered(frm) {
-    const rows = frm.doc.table_transfer || [];
+    //             fields.bank_account_name.$wrapper
+    //                 .find('.control-label')
+    //                 .html('ชื่อบัญชีธนาคารผู้กู้ <span class="text-danger">*</span>');
+    //         });
+    //     } else {
+    //         console.warn("ไม่มีข้อมูลใน table_transfer");
+    //     }
+    // }
+    table_transfer_on_form_rendered(frm) {
+        const rows = frm.doc.table_transfer || [];
 
-    if (rows.length > 0) {
-        frm.fields_dict.table_transfer.grid.grid_rows.forEach(gridRow => {
-            const childFrm = gridRow.grid_form;
+        if (rows.length > 0) {
+            frm.fields_dict.table_transfer.grid.grid_rows.forEach(gridRow => {
+                const childFrm = gridRow.grid_form;
 
-            load_loan_condition_js(function(loadedFrm) {
-                initialize_loan_condition_header_table_transfer(loadedFrm);
-            }, childFrm);
-        });
-    } else {
-        console.warn("ไม่มีข้อมูลใน table_transfer");
+                load_loan_condition_js(function(loadedFrm) {
+                    initialize_loan_condition_header_table_transfer(loadedFrm);
+                }, childFrm);
+            });
+        } else {
+            console.warn("ไม่มีข้อมูลใน table_transfer");
+        }
+    },
+
+    col_button_search_collateral(frm) {
+        console.log(frm.doc.col_search_collateral);
+        if (frm.doc.col_search_collateral) {
+            let search_collateral_id = frm.doc.col_search_collateral;
+            frappe.call({
+                method: "swp_loan.api.search_collateral",
+                args: {
+                    search_collateral_id: search_collateral_id
+                },
+                freeze: true,
+                freeze_message: __("กำลังค้นหาข้อมูล กรุณารอสักครู่.."),
+                callback: function (response) {
+                    let data = response.message?.data ?? {};
+                    console.log(response);
+                    if (data && Object.keys(data).length > 0 && response.message.statusCode == 200) {
+                        // if (data.col_is_collateral_blocked) {
+                        //     frm.doc.col_collateral_blocked_status = data["col_collateral_blocked_status"];
+                        //     if (frm.doc.col_is_collateral_blocked) {
+                        //         render_collateral_blocked_message(frm);
+                        //     }
+                        //     else {
+                        //         frm.doc.col_collateral_blocked_status = data["col_collateral_blocked_status"];
+                        //         if (frm.doc.col_is_collateral_blocked) {
+                        //             render_collateral_blocked_message(frm);
+                        //         }
+                        //         else {
+                        //             frm.set_value("col_is_collateral_blocked", true);
+                        //         }
+                        //     }
+                        //     frm.set_value("col_collatteral_id", "");
+                        //     frm.col_collatteral_id_prev_value = "";
+                        //     frm.set_value("col_product", null);
+                        // }
+                        // else {
+                        //     frm.doc.col_search_collateral = "";
+                        //     frm.refresh_field("col_search_collateral");
+                        //     let field_names = frm.meta.fields.map(field => field.fieldname);
+                        //     for (let key in data) {
+                        //         if (data.hasOwnProperty(key) && field_names.includes(key)) {
+                        //             frm.doc[key] = data[key];
+                        //             frm.refresh_field(key);
+                        //         }
+                        //     }
+
+                        //     display_fields_by_col_product(frm);
+                        //     display_agenda_button_by_product(frm);
+                        //     if (data.agreement?.length > 0) {
+                        //         let agreement_outstanding = data.agreement?.find(t => cint(t.outstanding_amount) != 0);
+                        //         if (agreement_outstanding) {
+                        //             frm.set_value("loan_reference_agreement_number", agreement_outstanding?.agreement_id);
+                        //             frm.set_value("loan_reference_agreement_company", agreement_outstanding?.company);
+                        //             frm.set_value("loan_reference_agreement_requested_amount", agreement_outstanding?.requested_amount);
+                        //         }
+                        //         render_collateral_info(frm, data.agreement);
+                        //     }
+                        //     frm.trigger("col_is_collateral_blocked");
+                        //     if (!frm.doc.col_is_collateral_new) {
+                        //         frm.trigger("col_is_collateral_new");
+                        //     }
+                        //     else {
+                        //         frm.set_value("col_is_collateral_new", false);
+                        //     }
+                        //     validate_date_of_license_expiry(frm);
+                        //     validate_date_of_tax_expiry(frm);
+
+                        //     if(frm.doc.sales_kit_number) {
+                        //         frappe.db.get_doc("Sales Kit", frm.doc.sales_kit_number).then((doc) => {
+                        //             if(doc.col_search_collateral == frm.doc.col_collatteral_id) {
+                        //                 if(["H", "L"].includes(doc.col_product)) {
+                        //                     frm.doc.col_appraisal_value = doc.col_hl_appraisal_value;
+                        //                     frm.doc.col_appraisal_value_by_branch = doc.col_branch_hl_appraisal_value;
+                        //                     frm.doc.col_appraisal_value_by_crd = doc.col_crd_hl_appraisal_value;
+                        //                 }
+                        //                 else {
+                        //                     frm.doc.col_appraisal_value = doc.col_vehicle_appraisal_value;
+                        //                     frm.doc.col_appraisal_value_by_branch = doc.col_branch_vehicle_appraisal_value;
+                        //                     frm.doc.col_appraisal_value_by_crd = doc.col_crd_vehicle_appraisal_value;
+                        //                 }
+                        //                 frm.refresh_field("col_appraisal_value");
+                        //                 frm.refresh_field("col_appraisal_value_by_branch");
+                        //                 frm.refresh_field("col_appraisal_value_by_crd");
+                        //             }
+                        //         });
+                        //     }
+
+                        //     frappe.show_alert({
+                        //         message: __("Found Collateral information"),
+                        //         indicator: "yellow"
+                        //     }, 5);
+                        // }
+                    }
+                    else {
+                        frm.doc.col_search_collateral = "";
+                        frm.refresh_field("col_search_collateral");
+
+                        frm.set_value("col_collatteral_id", search_collateral_id);
+                        frm.col_collatteral_id_prev_value = search_collateral_id;
+
+                        frm.set_value("col_vehicle_identification_number", search_collateral_id);
+                        frm.set_value("col_is_collateral_new", true);
+                        // frm.set_value("col_is_collateral_blocked", false);
+                        if (frm.doc.sales_kit_number && frm.doc.cus_is_customer_blocked == false) {
+                            set_fields_by_sales_kit(frm);
+                        }
+                        frappe.show_alert({
+                            message: response.message?.message,
+                            indicator: "yellow"
+                        }, 5);
+                    }
+                },
+                error: function (response) {
+                    frm.doc.col_search_collateral = "";
+                    frm.refresh_field("col_search_collateral");
+
+                    frm.set_value("col_collatteral_id", search_collateral_id);
+                    frm.col_collatteral_id_prev_value = search_collateral_id;
+
+                    frm.set_value("col_vehicle_identification_number", search_collateral_id);
+                    frm.set_value("col_is_collateral_new", true);
+                    // frm.set_value("col_is_collateral_blocked", false);
+                    if (frm.doc.sales_kit_number && frm.doc.cus_is_customer_blocked == false) {
+                        set_fields_by_sales_kit(frm);
+                    }
+                }
+            });
+        }
+        else {
+            frm.set_value("col_collatteral_id", "");
+            frm.col_collatteral_id_prev_value = "";
+        }
     }
-}
-
 
 });
+
 frappe.ui.form.on('SWP_Related_Person', {
     telephone: function(frm, cdt, cdn) {
         let row = locals[cdt][cdn];

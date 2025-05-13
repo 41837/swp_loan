@@ -96,7 +96,6 @@ function fn_btn_save_collateral(frm){
     });
 }
 
-
 function ValidateFromCollateral(frm) {
     let errors = [];
     let col_collatteral_id = frm.fields_dict.col_collatteral_id.$input.val();
@@ -145,4 +144,58 @@ function ValidateFromCollateral(frm) {
     }
 
     return true;
+}
+
+function fn_btn_find_rate_book(frm){
+    frm.fields_dict.btn_find_rate_book.$wrapper
+    .css({
+        "text-align": "right",
+    })
+    .find("button")
+    .removeClass("btn-xs btn-default")
+    .addClass("btn-md btn-primary")
+    .css({
+        'font-size': '16px',
+        'padding': '8px 16px',
+        'background-color': '#4a7ef6',
+        'color': 'white',
+        'border': 'none',
+    })
+    .on('click', function() {
+        let test_data = {
+            "parm_product": frm.doc.col_product,
+            "parm_sub_product": frm.doc.col_subproduct,
+            "parm_brand": frm.doc.col_brand,
+            "parm_model_year": frm.doc.col_model_year,
+            "parm_model": frm.doc.col_model,
+            "parm_sub_model": frm.doc.col_submodel,
+            "parm_gear": frm.doc.col_gear,
+            "parm_body": frm.doc.col_body,
+            "parm_driver_system": frm.doc.col_drive_system
+        }
+        console.log(test_data);
+            frappe.call({
+              args: {
+                    parm_product : frm.doc.col_product
+                    , parm_sub_product : frm.doc.col_subproduct
+                    , parm_brand : frm.doc.col_brand
+                    , parm_model_year : frm.doc.col_model_year
+                    , parm_model : frm.doc.col_model
+                    , parm_sub_model : frm.doc.col_submodel
+                    , parm_gear : frm.doc.col_gear
+                    , parm_body : frm.doc.col_body
+                    , parm_driver_system : frm.doc.col_drive_system 
+                },
+              method: "z_loan.loan.doctype.rate_book.rate_book.find_rate_book",
+              callback: function (response) {
+                console.log(response);
+                let result_rate = response.message.result_rate;
+                console.log(result_rate);
+                frm.set_value("col_appraisal_value", result_rate);
+                // frm.set_value("col_appraisal_value_by_branch", frm.doc.customer_requested_amount);
+              },
+            });
+
+
+    });
 }

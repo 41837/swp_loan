@@ -17,7 +17,8 @@ frappe.pages["swp-file-attachment"].on_page_load = function (wrapper) {
     let loan = {
         customer_name: "No data",
         contract_number: "No data",
-        collateral_number: "No data"
+        collateral_number: "No data",
+		col_product: "No data",
     };
 
     // Load loan application
@@ -27,8 +28,9 @@ frappe.pages["swp-file-attachment"].on_page_load = function (wrapper) {
 		console.log(full_doc);
         loan = {
             customer_name: full_doc.cus_first_name + " " + full_doc.cus_last_name,
-            contract_number: full_doc.cus_addresses_detail?.[0]?.mobile_number || "No mobile number",
-            collateral_number: full_doc.cus_identification_number,
+            contract_number: full_doc.cus_identification_number,
+            collateral_number: full_doc.col_vehicle_identification_number,
+			col_product: full_doc.col_product,
         };
     }
     $(frappe.render_template("swp_file_attachment", { loan })).appendTo(page.main);

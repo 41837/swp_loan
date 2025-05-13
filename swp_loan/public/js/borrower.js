@@ -18,8 +18,7 @@ function initialize_borrower_search(frm) {
     frm.fields_dict.household_registration_status.$wrapper.find('.control-label').html('สถานะในทะเบียนบ้าน <span class="text-danger">*</span>');
     frm.fields_dict.cus_delivery_address.$wrapper.find('.control-label').html('ที่อยู่จัดส่งเอกสาร <span class="text-danger">*</span>');
     
-
-
+    set_default_map_type(frm);
 }
 
 function fn_btn_save_borrower(frm){    
@@ -45,10 +44,41 @@ function fn_btn_save_borrower(frm){
         //เลื่อนหน้าจอ
         setTimeout(() => {
             $('html, body').animate({
-                scrollTop: frm.fields_dict.section_header_guarantor.wrapper.offset().top - 100
+                scrollTop: frm.fields_dict.section_header_guarantor.wrapper.offset().top - 50
             }, 500);
-        }, 2000);
+        }, 1000);
     });    
+}
+
+function fn_btn_submit(frm) {
+    frm.fields_dict.btn_submit.$wrapper
+    .css({
+        "text-align": "center",
+    })
+    .find("button")
+    .removeClass("btn-xs btn-default")
+    .addClass("btn-md btn-primary")
+    .css({
+        "font-size": "16px",
+        "padding": "8px 16px",
+        'background-color': '#4a7ef6',
+        'color': 'white',
+        'border': 'none',
+    })
+    .on('click', function() {
+        frm.set_value('status_flag', 'Pending Approval');
+        frm.save().then(() => {
+            frappe.show_alert({
+                message: 'สร้างใบคำขอสำเร็จ ระบบจะส่งให้ผู้อนุมัติโดยอัตโนมัติ',
+                indicator: 'green'
+            }, 7);
+
+            // Redirect to the specified URL after a short delay
+            setTimeout(function() {
+                window.location.href = '/app/swp_loan_request';
+            }, 2000); // 2 seconds delay to show the alert message
+        });
+    });
 }
 
 function ValidateFromBorrower(frm) {
@@ -399,40 +429,36 @@ function initialize_borrower_header(frm) {
         isCollapsed_header_borrower = !isCollapsed_header_borrower;
     
         if (isCollapsed_header_borrower) {
-            frm.fields_dict.section_preview.wrapper.hide();
-            frm.fields_dict.section_borrower_details.wrapper.hide();
-            frm.fields_dict.section_borrower_details2.wrapper.hide();
-            frm.fields_dict.section_borrower_details3.wrapper.hide();
-            frm.fields_dict.section_borrower_details4.wrapper.hide();
-            frm.fields_dict.section_borrower_details5.wrapper.hide();
-            frm.fields_dict.section_borrower_details6.wrapper.hide();
-            frm.fields_dict.section_borrower_details7.wrapper.hide();
-            frm.fields_dict.section_borrower_details8.wrapper.hide();
-            frm.fields_dict.section_borrower_details9.wrapper.hide();
-            frm.fields_dict.section_borrower_details10.wrapper.hide();
-            frm.fields_dict.section_borrower_details11.wrapper.hide();
-            frm.fields_dict.section_borrower_details12.wrapper.hide();
-            frm.fields_dict.section_borrower_details13.wrapper.hide();
-            frm.fields_dict.section_borrower_details14.wrapper.hide();
+            hide_borrower_sections(frm);
             $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
         } else {
-            frm.fields_dict.section_preview.wrapper.show();
-            frm.fields_dict.section_borrower_details.wrapper.show();
-            frm.fields_dict.section_borrower_details2.wrapper.show();
-            frm.fields_dict.section_borrower_details3.wrapper.show();
-            frm.fields_dict.section_borrower_details4.wrapper.show();
-            frm.fields_dict.section_borrower_details5.wrapper.show();
-            frm.fields_dict.section_borrower_details6.wrapper.show();
-            frm.fields_dict.section_borrower_details7.wrapper.show();
-            frm.fields_dict.section_borrower_details8.wrapper.show();
-            frm.fields_dict.section_borrower_details9.wrapper.show();
-            frm.fields_dict.section_borrower_details10.wrapper.show();
-            frm.fields_dict.section_borrower_details11.wrapper.show();
-            frm.fields_dict.section_borrower_details12.wrapper.show();
-            frm.fields_dict.section_borrower_details13.wrapper.show();
-            frm.fields_dict.section_borrower_details14.wrapper.show();                
+            show_borrower_sections(frm);
             $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
         }
+    });
+}
+
+function initialize_marketing_consent_radio_button(frm) {
+    frm.fields_dict.consent_marketing.$wrapper.html(`
+        <label>ความยินยอมด้านการตลาด</label><br>
+        <input type="radio" name="marketing_consent" value="ยินยอม"> ยินยอม<br>
+        <input type="radio" name="marketing_consent" value="ไม่ยินยอม"> ไม่ยินยอม
+    `);
+    frm.fields_dict.consent_marketing.$wrapper.on("change", "input[name=marketing_consent]", function() {
+        let selected_value = $(this).val();
+        frm.set_value("consent_marketing_value", selected_value);
+    });
+}
+
+function initialize_sensitive_data_consent_radio_button(frm) {
+    frm.fields_dict.consent_sensitive_data.$wrapper.html(`
+        <label>ความยินยอมด้านข้อมูลอ่อนไหว</label><br>
+        <input type="radio" name="sensitive_data_consent" value="ยินยอม"> ยินยอม<br>
+        <input type="radio" name="sensitive_data_consent" value="ไม่ยินยอม"> ไม่ยินยอม
+    `);
+    frm.fields_dict.consent_sensitive_data.$wrapper.on("change", "input[name=sensitive_data_consent]", function() {
+        let selected_value = $(this).val();
+        frm.set_value("consent_sensitive_data_value", selected_value);
     });
 }
 
@@ -515,6 +541,81 @@ function moveDeleteButtonToEnd() {
     });
 }
 
+function hide_borrower_sections(frm) {
+    const sections = [
+        'section_preview',
+        'section_borrower_details',
+        'section_borrower_details2',
+        'section_borrower_details3',
+        'section_borrower_details4',
+        'section_borrower_details5',
+        'section_borrower_details6',
+        'section_borrower_details7',
+        'section_borrower_details8',
+        'section_borrower_details9',
+        'section_borrower_details10',
+        'section_borrower_details11',
+        'section_borrower_details12',
+        'section_borrower_details13',
+        'section_borrower_details14'
+    ];
 
+    sections.forEach(section => {
+        if (frm.fields_dict[section]) {
+            frm.fields_dict[section].wrapper.hide();
+        }
+    });
+}
 
+function show_borrower_sections(frm) {
+    const sections = [
+        'section_preview',
+        'section_borrower_details',
+        'section_borrower_details2',
+        'section_borrower_details3',
+        'section_borrower_details4',
+        'section_borrower_details5',
+        'section_borrower_details6',
+        'section_borrower_details7',
+        'section_borrower_details8',
+        'section_borrower_details9',
+        'section_borrower_details10',
+        'section_borrower_details11',
+        'section_borrower_details12',
+        'section_borrower_details13',
+        'section_borrower_details14'
+    ];
 
+    sections.forEach(section => {
+        if (frm.fields_dict[section]) {
+            frm.fields_dict[section].wrapper.show();
+        }
+    });
+}
+
+function set_default_map_type(frm) {
+    // ตรวจสอบว่ามี child table หรือไม่
+    if (frm.doc.table_borrower_address && frm.doc.table_borrower_address.length > 0) {
+        frm.doc.table_borrower_address.forEach((row, index) => {
+            // กำหนดค่า default เป็น "กรุงเทพมหานคร"
+            frappe.model.set_value(row.doctype, row.name, 'map_type', 'กรุงเทพมหานคร');
+        });
+        frm.refresh_field('table_borrower_address');
+    }
+}
+
+frappe.ui.form.on('SWP_Related_Person', {
+    telephone: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+
+        // ตรวจสอบว่ามีค่า
+        if (row.telephone && !/^\d{10}$/.test(row.telephone)) {
+            frappe.show_alert({
+                message: __('กรุณากรอกเบอร์โทรให้ถูกต้อง (10 หลัก)'),
+                indicator: 'red'
+            }, 5);
+            frappe.model.set_value(cdt, cdn, 'telephone', '');
+            frm.refresh_field('table_related_person');
+        }
+    }
+});

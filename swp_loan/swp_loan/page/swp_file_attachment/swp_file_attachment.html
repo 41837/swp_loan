@@ -1,7 +1,9 @@
-<div style="text-align: center;  font-size: 18px">
-	ชื่อผู้กู้: {{ loan.customer_name }} || 
-	รหัสผู้กู้: {{ loan.contract_number }} ||
-	เลขที่หลักประกัน: {{ loan.collateral_number }}<br>
+<div style="text-align: center; font-size: 18px;">
+	<span class="loan-label">ชื่อผู้กู้:</span> {{ loan.customer_name }} &nbsp;
+	<span class="loan-label">รหัสผู้กู้:</span> {{ loan.contract_number }} &nbsp; <br>
+	<span class="loan-label">เลขที่หลักประกัน:</span> {{ loan.collateral_number }} &nbsp;
+	<span class="loan-label">ประเภทหลักประกัน:</span> {{ loan.col_product }} &nbsp;
+	<br>
 	<hr/>
 </div>
 <div style="text-align: center; color: red; font-size: 18px">
@@ -15,3 +17,14 @@
 		<div id="preview"></div>
 	</div>
 </div>
+
+<style>
+.loan-label {
+	background: #d6e4f5;
+	border-radius: 10px;
+	padding: 4px 12px;
+	font-weight: 500;
+	margin: 0 2px;
+	display: inline-block;
+}
+</style>

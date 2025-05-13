@@ -50,6 +50,7 @@ function initialize_loan_condition_header(frm) {
             frm.fields_dict.section_loan_condition12.wrapper.hide();
             frm.fields_dict.section_loan_condition13.wrapper.hide();
             frm.fields_dict.section_loan_condition14.wrapper.hide();
+            frm.fields_dict.section_loan_condition14_2.wrapper.hide();
             frm.fields_dict.section_loan_condition15.wrapper.hide();
             $(this).find("i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
         } else {
@@ -67,6 +68,7 @@ function initialize_loan_condition_header(frm) {
             frm.fields_dict.section_loan_condition12.wrapper.show();
             frm.fields_dict.section_loan_condition13.wrapper.show();
             frm.fields_dict.section_loan_condition14.wrapper.show();
+            frm.fields_dict.section_loan_condition14_2.wrapper.show();
             frm.fields_dict.section_loan_condition15.wrapper.show();
             $(this).find("i").removeClass("fa-chevron-down").addClass("fa-chevron-up");
         }

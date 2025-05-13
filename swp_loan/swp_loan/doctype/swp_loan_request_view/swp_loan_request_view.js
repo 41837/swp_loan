@@ -13,6 +13,34 @@ function load_custom_banner_js(callback, frm) {
 
 frappe.ui.form.on("SWP_Loan_Request_View", {
 	refresh(frm) {
+		// Load related person data
+		frappe.db.get_list('SWP_Related_Person', {
+			filters: {
+				'parent': frm.doc.name
+			},
+			fields: ['name', 'parent', 'parentfield', 'parenttype', 'idx', 'docstatus', 'doctype',
+				'first_name',
+				'last_name',
+				'nickname', 
+				'telephone']
+		}).then(records => {
+			console.log('Related Person Records:', records); // Debug log
+			if (records && records.length > 0) {
+				frm.clear_table('table_related_person');
+				records.forEach(record => {
+					let row = frm.add_child('table_related_person');
+					// Map fields explicitly
+					row.first_name = record.first_name;
+					row.last_name = record.last_name;
+					row.nickname = record.nickname;
+					row.telephone = record.telephone;
+					row.relationship = record.relationship;
+					console.log('Added row:', row); // Debug log
+				});
+				frm.refresh_field('table_related_person');
+			}
+		});
+
 		load_custom_banner_js(function(frm) {
 			if (frm.fields_dict.custom_banner_general) {
 				initialize_custom_banner(frm, 'custom_banner_general');
