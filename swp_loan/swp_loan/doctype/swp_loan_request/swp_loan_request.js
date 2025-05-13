@@ -9,6 +9,7 @@ let loanApplication = false;
 let idCardReader = false;
 let loan_history = cur_frm.get_field("loan_history_html")
 let guarantorSWPJSloan = false;
+let submitJSloaded = false;
 
  
 function load_borrower_js(callback, frm) {
@@ -113,6 +114,17 @@ function load_GuarantorSWP_js(callback, frm) {
     }
 }
 
+function load_submit_js(callback, frm) {
+    if (!submitJSloaded) {
+        frappe.require("/assets/swp_loan/js/submit.js", function () {
+            submitJSloaded = true;
+            if (typeof callback === "function") callback(frm);
+        });
+    } else {
+        if (typeof callback === "function") callback(frm);
+    }
+}
+
 frappe.ui.form.on('SWP_Borrower_Address', {
     // เมื่อมีการเปลี่ยนแปลงค่าในฟิลด์ latitude
     latitude: function(frm, cdt, cdn) {
@@ -168,6 +180,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
             initialize_customer_id_validation(frm);
             initialize_cus_issue_date_validation(frm);
             initialize_cus_expiry_date_validation(frm);
+            fn_btn_save_borrower(frm);
         }, frm);
 
         load_custom_banner_js(function(frm) {
@@ -181,26 +194,41 @@ frappe.ui.form.on("SWP_Loan_Request", {
             </div><br>
         `);
 
-        // ----------------------------------------------- Start --- Header borrower search section
         load_search_borrower_js(function(frm) {
             initialize_borrower_search_header(frm);
+            fn_search_borrower(frm);
         }, frm);
-        // ----------------------------------------------- End --- Header borrower search section
+        
         load_guarantor_js(function(frm){
             initialize_guarantor_header(frm);
             initialize_no_guarantor_checkbox(frm);
+            fn_btn_save_guarantor(frm);
         }, frm)
 
-        // ----------------------------------------------- Start --- Header borrower section
         load_borrower_js(function(frm) {
             initialize_borrower_header(frm);
             initialize_marketing_consent_radio_button(frm);
             initialize_sensitive_data_consent_radio_button(frm);
         }, frm);
-        // ----------------------------------------------- End --- Header borrower section
 
-
-
+        load_search_collateral_js(function(frm) {
+            initialize_collateral_search_header(frm);
+        }, frm);
+        
+        load_collateral_js(function(frm) {
+            initialize_collateral_header(frm);
+            fn_btn_save_collateral(frm);
+        }, frm);
+        
+        load_loan_condition_js(function(frm) {
+            initialize_loan_condition_header(frm);
+            fn_btn_save_loan_condition(frm);
+        }, frm);
+        
+        load_submit_js(function(frm) {
+            fn_btn_submit(frm);
+        }, frm);
+        
         // ----------------------------------------------- Start --- ขั้นตอนสร้างเอกสารใหม่
         if (frm.is_new()) {
             const address_defaults = [
@@ -263,24 +291,6 @@ frappe.ui.form.on("SWP_Loan_Request", {
         frm.fields_dict.table_deduction.grid.cannot_add_rows = true;
         frm.fields_dict.table_outstanding_balance.grid.cannot_add_rows = true;
         // End   --- Disable add row button on child table
-
-        // ----------------------------------------------- Start --- Header collateral search section
-        load_search_collateral_js(function(frm) {
-            initialize_collateral_search_header(frm);
-        }, frm);
-        // ----------------------------------------------- End --- Header collateral search section
-
-        // ----------------------------------------------- Start --- Header collateral section
-        load_collateral_js(function(frm) {
-            initialize_collateral_header(frm);
-        }, frm);
-        // ----------------------------------------------- End --- Header collateral section
-
-        // ----------------------------------------------- Start --- Header loan condition section
-        load_loan_condition_js(function(frm) {
-            initialize_loan_condition_header(frm);
-        }, frm);
-        // ----------------------------------------------- End --- Header loan condition section
     },
 
     refresh(frm) {
@@ -755,8 +765,8 @@ frappe.ui.form.on("SWP_Loan_Request", {
         
         // ----------------------------------------------- Start --- Collateral save button
         load_collateral_js(function(frm) {
-            fn_btn_save_collateral(frm);
             initialize_collateral_header(frm);
+            fn_btn_save_collateral(frm);
             fn_btn_find_rate_book(frm);
         }, frm);
 
@@ -790,10 +800,14 @@ frappe.ui.form.on("SWP_Loan_Request", {
 
         // ----------------------------------------------- Start --- Borrower save button
         load_guarantor_js(function(frm) {
-            fn_btn_save_guarantor(frm);
             initialize_guarantor_header(frm);
+            fn_btn_save_guarantor(frm);
         }, frm);
         // ----------------------------------------------- End --- Borrower save button
+
+        load_submit_js(function(frm) {
+            fn_btn_submit(frm);
+        }, frm);
 
 
 
@@ -843,13 +857,12 @@ frappe.ui.form.on("SWP_Loan_Request", {
 
         // ----------------------------------------------- Start --- Hyperlink for open DOL website
         let html_hyperlink_dol_page = `
-            <a href="ttps://landsmaps.dol.go.th/" target="_blank" style="color: black; text-decoration: underline; font-size: 13px;">
+            <a href="้https://landsmaps.dol.go.th/" target="_blank" style="color: black; text-decoration: underline; font-size: 13px;">
                 ค้นหาข้อมูลกรมที่ดิน
             </a>
         `;
         frm.fields_dict['hyperlink_dol_page'].wrapper.innerHTML = html_hyperlink_dol_page;
         // ----------------------------------------------- End --- Hyperlink for open DOL website
-
     },
     
     
@@ -1133,6 +1146,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
     }
 
 });
+
 frappe.ui.form.on('SWP_Related_Person', {
     telephone: function(frm, cdt, cdn) {
         let row = locals[cdt][cdn];
@@ -1164,4 +1178,3 @@ frappe.ui.form.on('SWP_Guarantor', {
         }
     }
 });
-

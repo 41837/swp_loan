@@ -517,6 +517,94 @@ function fn_search_borrower(frm){
                 </div>
             `);
         }
+        else {
+            frm.set_value('cus_is_new', 1);
+
+            frm.fields_dict.html_borrower_result.$wrapper.html(`
+                <div style="margin-bottom: 20px;">
+                                <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                                    <div style="flex: 1 1 45%; min-width: 400px;">
+                                        <div style="background: #80AFE0; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล VLoan</div>
+                                        <div style="display: flex;">
+                                            <div style="flex: 1; border: 2px solid #80AFE0; margin: 4px; border-radius: 4px;">
+                                                <div style="background: #b3cbe6; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
+                                                <div style="padding: 16px; text-align: center;">ไม่พบประวัติทำสินเชื่อใน VLoan ค่ะ!</div>
+                                            </div>
+                                            <div style="flex: 1; border: 2px solid #80AFE0; margin: 4px; border-radius: 4px;">
+                                                <div style="background: #b3cbe6; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
+                                                <div style="padding: 16px; text-align: center;">ไม่พบประวัติค้ำประกันใน VLoan ค่ะ!</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1 1 45%; min-width: 400px;">
+                                        <div style="background: #9fd19f; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล MLoan</div>
+                                        <div style="display: flex;">
+                                            <div style="flex: 1; border: 2px solid #9fd19f; margin: 4px; border-radius: 4px;">
+                                                <div style="background: #cbe6cb; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
+                                                <div style="padding: 16px; text-align: center;">ไม่พบประวัติทำสินเชื่อใน MLoan ค่ะ!</div>
+                                            </div>
+                                            <div style="flex: 1; border: 2px solid #9fd19f; margin: 4px; border-radius: 4px;">
+                                                <div style="background: #cbe6cb; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
+                                                <div style="padding: 16px; text-align: center;">ไม่พบประวัติค้ำประกันใน MLoan ค่ะ!</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                                    <div style="flex: 1 1 45%; min-width: 400px;">
+                                        <div style="background: #e6cbe6; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล PLoan</div>
+                                        <div style="display: flex;">
+                                            <div style="flex: 1; border: 2px solid #e6cbe6; margin: 4px; border-radius: 4px;">
+                                                <div style="background: #f3e6f3; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
+                                                <div style="padding: 16px; text-align: center;">ไม่พบประวัติการทำสินเชื่อใน PLoan ค่ะ!</div>
+                                            </div>
+                                            <div style="flex: 1; border: 2px solid #e6cbe6; margin: 4px; border-radius: 4px;">
+                                                <div style="background: #f3e6f3; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
+                                                <div style="padding: 16px; text-align: center;">ไม่พบประวัติค้ำประกันใน PLoan ค่ะ!</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="flex: 1 1 45%; min-width: 400px;">
+                                        <div style="background: #b3a57a; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล S22</div>
+                                        <div style="display: flex;">
+                                            <div style="flex: 1; border: 2px solid #b3a57a; margin: 4px; border-radius: 4px;">
+                                                <div style="background: #e6e0cb; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
+                                                <div style="padding: 16px; text-align: center;">ไม่พบประวัติทำสินเชื่อใน S22 ค่ะ!</div>
+                                            </div>
+                                            <div style="flex: 1; border: 2px solid #b3a57a; margin: 4px; border-radius: 4px;">
+                                                <div style="background: #e6e0cb; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
+                                                <div style="padding: 16px; text-align: center;">ไม่พบประวัติค้ำประกันใน S22 ค่ะ!</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                                    <div style="flex: 1 1 45%; min-width: 400px;">
+                                        <div style="background: #b3a5d1; color: #fff; padding: 8px; font-weight: bold; border-radius: 4px;">ฐานข้อมูล DLoan</div>
+                                        <div style="display: flex;">
+                                            <div style="flex: 1; border: 2px solid #b3a5d1; margin: 4px; border-radius: 4px;">
+                                                <div style="background: #e6e0f3; padding: 6px; font-weight: bold;">ประวัติการทำสินเชื่อ</div>
+                                                <div style="padding: 16px; text-align: center;">ไม่พบประวัติการทำสินเชื่อใน DLoan ค่ะ!</div>
+                                            </div>
+                                            <div style="flex: 1; border: 2px solid #b3a5d1; margin: 4px; border-radius: 4px;">
+                                                <div style="background: #e6e0f3; padding: 6px; font-weight: bold;">ประวัติการค้ำประกัน</div>
+                                                <div style="padding: 16px; text-align: center;">ไม่พบประวัติค้ำประกันใน DLoan ค่ะ!</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="text-align: center; margin-top: 30px;">
+                                    <button class="btn btn-primary" id="btn_accept_borrower" style="margin-right: 10px; padding: 8px 20px;">
+                                        <i class="fa fa-check"></i> ยอมรับประวัติผู้กู้
+                                    </button>
+                                    <button class="btn btn-default" id="btn_cancel_borrower" style="padding: 8px 20px;">
+                                        <i class="fa fa-times"></i> ยกเลิก
+                                    </button>
+                                </div>
+                            </div>
+                `);
+        }
+
         // กดปุ่มยอมรับประวัติผู้กู้
         $("#btn_accept_borrower").on("click", function() {
             frm.fields_dict.section_header_borrower_search.wrapper.hide();

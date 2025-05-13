@@ -257,14 +257,8 @@
   "section_loan_condition4",
   "btn_calculate_loan_condition",
   "section_loan_condition5",
-  "financing_amount_net",
-  "yield_percent",
-  "yield_amount",
-  "tax_amount",
-  "total_debtor",
   "column_break_qapy",
-  "installment_amount",
-  "last_installment_amount",
+  "financing_amount_net",
   "section_loan_condition6",
   "table_fees",
   "section_loan_condition7",
@@ -305,7 +299,12 @@
   "column_break_bujy",
   "ob03",
   "section_loan_condition14",
-  "column_break_gked",
+  "yield_percent",
+  "yield_amount",
+  "tax_amount",
+  "total_debtor",
+  "installment_amount",
+  "last_installment_amount",
   "column_break_nbvq",
   "virtual_financing_amount_net",
   "virtual_total_fees_net",
@@ -315,6 +314,7 @@
   "remaining_transfer_amount",
   "section_loan_condition14_2",
   "table_transfer",
+  "loan_details_remark",
   "section_loan_condition15",
   "column_break_hlml",
   "column_break_ngke",
@@ -2024,13 +2024,9 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "column_break_gked",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "mobile_number",
    "fieldtype": "Data",
-   "label": "\u0e40\u0e1a\u0e2d\u0e23\u0e4c\u0e42\u0e17\u0e23 (\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e40\u0e1e\u0e22\u0e4c)"
+   "label": "\u0e40\u0e1a\u0e2d\u0e23\u0e4c\u0e42\u0e17\u0e23 (\u0e43\u0e0a\u0e49\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e42\u0e2d\u0e19\u0e40\u0e07\u0e34\u0e19\u0e1e\u0e23\u0e49\u0e2d\u0e21\u0e40\u0e1e\u0e22\u0e4c)"
   },
   {
    "fieldname": "btn_find_rate_book",
@@ -2054,12 +2050,17 @@
    "fieldtype": "Button",
    "is_virtual": 1,
    "label": "\u0e04\u0e49\u0e19\u0e2b\u0e32\u0e08\u0e32\u0e01\u0e40\u0e25\u0e02\u0e17\u0e35\u0e48"
+  },
+  {
+   "fieldname": "loan_details_remark",
+   "fieldtype": "Small Text",
+   "label": "\u0e2b\u0e21\u0e32\u0e22\u0e40\u0e2b\u0e15\u0e38\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14"
   }
  ],
  "hide_toolbar": 1,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-11 11:30:06.982235",
+ "modified": "2025-05-13 10:26:31.051865",
  "modified_by": "Administrator",
  "module": "Swp Loan",
  "name": "SWP_Loan_Request",
