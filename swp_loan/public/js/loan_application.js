@@ -2373,5 +2373,57 @@ function add_confirm_customer_information_dialog(frm) {
 }
 
 
+function setup_custom_add_button_for_all_tables(frm) {
+    setTimeout(() => {
+        frm.meta.fields.forEach(field => {
+            if (field.fieldtype === 'Table') {
+                const grid = frm.fields_dict[field.fieldname]?.grid;
+                console.log(grid,"grid")
+                console.log(frm,"frm");
+                if (grid) {
+                    // ซ่อนปุ่ม add row ดั้งเดิม
+                    grid.wrapper.find('.grid-add-row').hide();
+
+                    // ป้องกันไม่ให้เพิ่มซ้ำ
+                    if (!frm[`custom_add_row_button_added_${field.fieldname}`]) {
+                        // เพิ่มปุ่ม "เพิ่มรายการใหม่" ด้านบน
+                        grid.add_custom_button(__('เพิ่มแถว'), function () {
+                            grid.add_new_row();
+                            hide_add_row_button(grid);
+                        });
+
+                        frm[`custom_add_row_button_added_${field.fieldname}`] = true;
+
+                        // Override add_new_row เพื่อซ่อนปุ่มหลังจากเพิ่มแถว
+                        const original_add_new_row = grid.add_new_row.bind(grid);
+                        grid.add_new_row = function () {
+                            original_add_new_row();
+                            setTimeout(() => {
+                                hide_add_row_button(grid);
+                                rename_delete_buttons(grid);
+                            }, 100);
+                        };
+                    }
+
+                    hide_add_row_button(grid);
+                    rename_delete_buttons(grid);
+                }
+            }
+        });
+
+        function hide_add_row_button(grid) {
+            grid.wrapper.find('.grid-add-row').hide();
+        }
+
+        function rename_delete_buttons(grid) {
+            grid.wrapper.find('.grid-remove-rows').each(function () {
+                const $btn = $(this);
+                if ($btn.text().trim() !== 'ลบแถว') {
+                    $btn.text('ลบแถว');
+                }
+            });
+        }
+    }, 100); // รอให้ตารางโหลด
+}
 
 

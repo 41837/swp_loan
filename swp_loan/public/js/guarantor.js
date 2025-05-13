@@ -68,7 +68,6 @@ function fn_btn_save_guarantor(frm){
     })
     .on('click', function() {
         const resValidate = ValidateFromGurarantor(frm);
-        console.log(resValidate,"resValidate");
         if (resValidate === true) {
             frm.save();
         }
@@ -206,8 +205,6 @@ frappe.ui.form.on('SWP_Guarantor', {
 
     identification_number: function(frm, cdt, cdn) {
         let row = locals[cdt][cdn];
-        console.log("identification_type:", row.identification_type);
-        console.log("identification_number:", row.identification_number);
         // ตรวจสอบประเภทบัตรก่อนกรอกหมายเลขบัตร
         if (row.identification_number && !row.identification_type) {
             frappe.show_alert({
@@ -316,7 +313,325 @@ frappe.ui.form.on('SWP_Guarantor', {
             return;  
         }
     },
+
+    date_of_birth: function(frm, cdt, cdn) {
+        let row = locals[cdt][cdn];
+    
+        if (row.date_of_birth) {
+            const birthDate = new Date(row.date_of_birth);
+            const today = new Date();
+    
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const m = today.getMonth() - birthDate.getMonth();
+    
+            // ถ้ายังไม่ถึงวันเกิดปีนี้ให้ลบอายุออก 1 ปี
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+    
+            if (age < 0 || isNaN(age)) {
+                frappe.show_alert({
+                    message: __('วันเกิดไม่ถูกต้อง'),
+                    indicator: 'red'
+                }, 5);
+                frappe.model.set_value(cdt, cdn, 'age', '');
+                frappe.model.set_value(cdt, cdn, 'date_of_birth', '');
+            } else if (age < 18) {
+                frappe.show_alert({
+                    message: __('อายุต้องไม่ต่ำกว่า 18 ปี'),
+                    indicator: 'red'
+                }, 5);
+                frappe.model.set_value(cdt, cdn, 'age', '');
+                frappe.model.set_value(cdt, cdn, 'date_of_birth', '');
+            } else {
+                frappe.model.set_value(cdt, cdn, 'age', age);
+            }
+    
+            frm.refresh_field('table_guarantor');
+        }
+    },
+
+    search(frm, cdt, cdn) {
+        let child = locals[cdt][cdn];
+        console.log("chid =>",child);
+
+        if (child.guarantor_is_new) {
+            let row = frm.get_field("table_guarantor").grid.get_row(child.name);
+            clear_child_row("SWP_Guarantor", child, ["guarantor_identification_number","guarantor_is_new", "guarantor_type"]);
+
+            // waiting dialog
+
+            let d = new frappe.ui.Dialog({
+                title: __("SWP_Guarantor"),
+                static: true,
+                fields: [
+                    {
+                        fieldname: 'message',
+                        fieldtype: 'HTML',
+                        options: '<p>'+__("Searching for information...")+'</p>'
+                    }
+                ]
+            });
+            d.show();
+            override_hide_dialogs_for_child_X(d);
+
+            search_guarantor_X(frm, child.guarantor_identification_number, row,false,d);
+
+        }  
+    }  
 });
 
 
 
+function override_hide_dialogs_for_child_X(d) {
+    d.$wrapper.off("hide.bs.modal");
+    d.$wrapper.on("hide.bs.modal", function () {
+        d.display = false;
+        d.is_minimized = false;
+        d.hide_scrollbar(false);
+
+        if (frappe.ui.open_dialogs[frappe.ui.open_dialogs.length - 1] === d) {
+            frappe.ui.open_dialogs.pop();
+            if (frappe.ui.open_dialogs.length) {
+                window.cur_dialog =
+                    frappe.ui.open_dialogs[frappe.ui.open_dialogs.length - 1];
+            } else {
+                window.cur_dialog = null;
+            }
+        }
+        d.onhide && d.onhide();
+        d.on_hide && d.on_hide();
+    })
+}
+
+function search_guarantor_X(frm, search_id, input_row = null, is_refresh=false,dialog=null) {
+    // console.log("Search_guarantor",search_id);
+    // return false;
+    // // call api
+    frappe.call({
+        method: "swp_loan.api.search_customer",
+        args: { search_id: search_id, is_guarantor: 0 },
+        freeze: true,
+        freeze_message: __("Searching for information..."),
+        callback: function (response) {
+            let data = response.message?.data ?? {};
+            if (data && Object.keys(data).length > 0 && response.message.statusCode == 200) {
+                if (is_refresh == true) {
+                    if (input_row.doc.guarantor_identification_number == search_id) {
+                        assign_guarantor_X(frm, input_row, data,dialog);
+                    }
+                }
+                else {
+                    assign_guarantor_X(frm, input_row, data,dialog);
+                }
+                if (!is_refresh) {
+                    frappe.show_alert({
+                        message: __("Found guarantor information"),
+                        indicator: "green"
+                    }, 5);
+                }
+            }
+            else {
+                input_row.doc["guarantor_is_new"] = true;
+                if (!is_refresh) {
+                    frappe.show_alert({
+                        message: response.message?.message,
+                        indicator: "red"
+                    }, 5);
+                }
+            }
+            frm.refresh_field("table_guarantor");
+            if(dialog) {
+                setTimeout(() => {
+                    dialog.hide();
+                }, 1000);
+            }
+        },
+        error: function (response) {
+            let grid = frm.fields_dict["table_guarantor"].grid;
+            let row = grid.grid_rows[0];
+            if (row) {
+                row.toggle_view(true);
+            }
+            frm.refresh_field("table_guarantor");
+            if(dialog) {
+                setTimeout(() => {
+                    dialog.hide();
+                }, 1000);
+            }
+        }
+    });
+}
+
+
+
+function assign_guarantor_X(frm, row, data, dialog) {
+    row.doc["guarantor_is_new"] = false;
+    prefix = "cus_";
+    let grid_row = frm.get_field("table_guarantor").grid.get_row(row.doc.name);
+    if (data["cus_is_customer_blocked"] == true) {
+        grid_row.remove();
+        if(dialog) {
+            setTimeout(() => {
+                dialog.hide();
+            }, 1000);
+        }
+        frappe.throw(frm.loan_app_settings.is_customer_block_message);
+    }
+    for (const key in data) {
+        if (data.hasOwnProperty(key) && key.startsWith(prefix)) {
+            const newKey = key.substring(prefix.length);
+            if (newKey != "is_new") {
+                row.doc[newKey] = data[key];
+            }
+        }
+    }
+
+    // calc age
+    frappe.call({
+        method: "z_loan.loan.methods.calc_age",
+        args: { date_of_birth: row.doc.date_of_birth },
+        callback: function (response) {
+            let age = response.message.age;
+            row.doc["age"] = age;
+            frm.refresh_field("table_guarantor");
+        }
+    });
+    // map address
+    data.cus_addresses_detail.forEach(address => {
+        if (address.address_type == "Home") {
+            row.doc.home_address_nearby = address.address_nearby;
+            row.doc.home_address = address.address;
+            row.doc.home_telephone = address.mobile_number;
+            row.doc.home_subdistrict = address.subdistrict;
+            row.doc.home_extension = address.extension;
+            row.doc.home_district = address.district;
+            row.doc.home_province = address.province;
+            row.doc.home_post_code = address.post_code;
+        }
+        else if (address.address_type == "Identification") {
+            row.doc.identification_address_nearby = address.address_nearby;
+            row.doc.identification_address = address.address;
+            row.doc.identification_telephone = address.mobile_number;
+            row.doc.identification_subdistrict = address.subdistrict;
+            row.doc.identification_extension = address.extension;
+            row.doc.identification_district = address.district;
+            row.doc.identification_province = address.province;
+            row.doc.identification_post_code = address.post_code;
+        } 
+        else if(address.address_type == "Current") {
+            row.doc.address_nearby = address.address_nearby;
+            row.doc.address = address.address;
+            row.doc.telephone = address.mobile_number;
+            row.doc.subdistrict = address.subdistrict;
+            row.doc.extension = address.extension;
+            row.doc.district = address.district;
+            row.doc.province = address.province;
+            row.doc.post_code = address.post_code;
+        }
+    });
+
+    // set readonly
+    // set_guarantor_readonly_X(frm, row.doc.name);
+    // refresh_table_guarantor_X(frm, row.doc.name);
+}
+
+
+
+function set_guarantor_readonly_X(frm, row_name) {
+    const ignore_readonly_list = [
+        "relationship",
+        "guarantor_type",
+        "spouse_name",
+        "spouse_nickname",
+        "spouse_identification_type",
+        "spouse_identification_number",
+        "spouse_date_of_birth",
+        "spouse_telephone",
+    ]
+    const check_null_list = [
+        "race", 
+        "marital_status",
+        "address_nearby",
+        "home_address_nearby",
+        "identification_address_nearby",
+        "work_address_nearby",
+        "sensitive_data_consent",
+        "marketing_consent",
+    ];
+    let grid_row = frm.get_field("table_guarantor").grid.get_row(row_name);
+    let child = frm.doc.table_guarantor.find(item => item.name == row_name);
+    if (child.expiry_date) {
+        let days_diff = frappe.datetime.get_day_diff(child.expiry_date, frappe.datetime.now_date());
+        if (days_diff < 0) {
+            let error_message = __("ID card has expired.");
+            child.expiry_date = null;
+            ignore_readonly_list.push("issue_date");
+            ignore_readonly_list.push("expiry_date");
+            display_error_message_for_child(error_message);
+        }
+    }
+    else {
+        ignore_readonly_list.push("issue_date");
+        ignore_readonly_list.push("expiry_date");
+    }
+
+    grid_row.docfields.forEach(field => {
+        if (ignore_readonly_list.includes(field["fieldname"])) {
+            set_child_df_property(frm, "table_guarantor", child, field["fieldname"], "read_only", 0);
+        }
+        else {
+            if (check_null_list.includes(field["fieldname"])) {
+                let value = grid_row.doc[field["fieldname"]];
+                if (value == "" || value == null) {
+                    set_child_df_property(frm, "table_guarantor", child, field["fieldname"], "read_only", 0);
+                }
+                else {
+                    set_child_df_property(frm, "table_guarantor", child, field["fieldname"], "read_only", 1);
+                }
+            }
+            else {
+                if (field["fieldname"] == "search" || field["fieldname"] == "verify_dopa") {
+                    set_child_df_property(frm, "table_guarantor", child, field["fieldname"], "hidden", 1);
+                }
+                else {
+                    set_child_df_property(frm, "table_guarantor", child, field["fieldname"], "read_only", 1);
+                }
+            }
+        }
+    });
+}
+
+
+
+function refresh_table_guarantor(frm, cdn) {
+    const sectionFields = [
+        "guarantor_information_section",
+        "address_section",
+        "home_address_section",
+        "identification_address_section",
+        "work_address_section",
+        "guarantor_spouse_information"
+    ];
+
+    const tableGuarantor = frm.fields_dict.table_guarantor.grid.grid_rows;
+
+    tableGuarantor.forEach(row => {
+        if (row.doc.name === cdn && row.grid_form) {
+            const collapseStates = sectionFields.map(field => {
+                let section = row.grid_form.fields_dict[field];
+                let isCollapsed = section.is_collapsed();
+                return isCollapsed;
+            });
+
+            frm.refresh_field("table_guarantor");
+
+            sectionFields.forEach((field, index) => {
+                let section = row.grid_form.fields_dict[field];
+                if (!collapseStates[index]) {
+                    section.collapse(false);
+                }
+            });
+        }
+    });
+}

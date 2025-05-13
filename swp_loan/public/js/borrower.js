@@ -87,7 +87,7 @@ function ValidateFromBorrower(frm) {
         { key: 'district', label: 'อำเภอ' },
         { key: 'province', label: 'จังหวัด' },
         { key: 'post_code', label: 'รหัสไปรษณีย์' },
-        { key: 'mobile_number', label: 'โทรศัพท์' }
+        // { key: 'mobile_number', label: 'โทรศัพท์' }
     ];
 
 

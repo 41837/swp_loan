@@ -132,9 +132,10 @@ function load_GuarantorSWP_js(callback, frm) {
 
 
 
+
 frappe.ui.form.on("SWP_Loan_Request", {
-    onload: function(frm) {
-        // Initialize date of birth validation
+    onload: function(frm) {           
+    
         load_borrower_js(function(frm) {
             initialize_date_of_birth_validation(frm);
             initialize_customer_id_validation(frm);
@@ -295,6 +296,7 @@ frappe.ui.form.on("SWP_Loan_Request", {
             display_fields_by_col_product(frm);
             hide_add_button_loan_field_checking_connection(frm);
             set_filter_col_product(frm);
+            setup_custom_add_button_for_all_tables(frm);
         }, frm);
         
         load_borrower_js(function(frm) {
